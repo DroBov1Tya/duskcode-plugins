@@ -1,5 +1,7 @@
 {
   "format": 1,
+  "serial": 1,
+  "expires": "2027-05-13T17:28:08Z",
   "plugins": [
     {
       "name": "telegram",
@@ -24,6 +26,7 @@
         ]
       },
       "homepage": "https://github.com/DroBov1Tya/duskcode-plugins/tree/main/plugins/telegram",
+      "providers": [],
       "downloads": [
         {
           "os": "macos",

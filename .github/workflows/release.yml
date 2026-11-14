@@ -1,6 +1,8 @@
 # A plugin's packages: a tag <name>-v<version> builds plugins/<name> for each system it
-# supports and uploads the archives to that tag's release. The store's list is signed by
-# a maintainer on their own machine afterwards (scripts/publish.py); CI holds no key.
+# supports, attests where each archive was built and uploads them to the tag's release.
+# The build runs third-party build scripts, so it holds no write token; a separate job
+# uploads. The store's list is signed by a maintainer on their own machine afterwards
+# (scripts/publish.py checks the attestations); CI holds no key.
 name: release
 
 on:
@@ -10,19 +12,11 @@ on:
 permissions:
   contents: read
 
-jobs:
-  create:
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: write
-    steps:
-      - name: Release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --notes "Packages of $GITHUB_REF_NAME for the duskcode store."
+env:
+  RUST: "1.99.1"
 
+jobs:
   build:
-    needs: create
     strategy:
       fail-fast: false
       matrix:
@@ -30,21 +24,23 @@ jobs:
           - target: aarch64-apple-darwin
             runner: macos-15
     runs-on: ${{ matrix.runner }}
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Plugin
         id: plugin
+        env:
+          TAG: ${{ github.ref_name }}
+          TARGET: ${{ matrix.target }}
         run: |
-          name="${GITHUB_REF_NAME%-v*}"
-          version="${GITHUB_REF_NAME##*-v}"
+          name="${TAG%-v*}"
+          version="${TAG##*-v}"
+          case "$name" in *[!a-z0-9_-]*|"") echo "bad plugin name" >&2; exit 1 ;; esac
           manifest="plugins/$name/plugin.yml"
           test -f "$manifest"
           grep -qx "version: $version" "$manifest"
-          case "${{ matrix.target }}" in *apple*) os=macos ;; *) os=linux ;; esac
+          case "$TARGET" in *apple*) os=macos ;; *) os=linux ;; esac
           # A plugin made for other systems only is not built here.
           if grep -q "^platforms:" "$manifest" && ! grep -Eq "^platforms:.*[^a-z]$os([^a-z]|$)" "$manifest"; then
             echo "build=false" >> "$GITHUB_OUTPUT"
@@ -54,21 +50,50 @@ jobs:
           echo "name=$name" >> "$GITHUB_OUTPUT"
       - name: Toolchain
         if: steps.plugin.outputs.build == 'true'
+        env:
+          TARGET: ${{ matrix.target }}
         run: |
-          rustup update stable
-          rustup default stable
-          rustup target add ${{ matrix.target }}
+          rustup toolchain install "$RUST" --profile minimal --target "$TARGET"
+          rustup default "$RUST"
       - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
         if: steps.plugin.outputs.build == 'true'
         with:
           key: ${{ matrix.target }}
       - name: Build
         if: steps.plugin.outputs.build == 'true'
+        env:
+          NAME: ${{ steps.plugin.outputs.name }}
+          TARGET: ${{ matrix.target }}
         run: |
-          cargo build --release --locked --target ${{ matrix.target }} -p ${{ steps.plugin.outputs.name }}
-          sh scripts/package.sh ${{ steps.plugin.outputs.name }} ${{ matrix.target }}
-      - name: Upload
+          cargo build --release --locked --target "$TARGET" -p "$NAME"
+          sh scripts/package.sh "$NAME" "$TARGET"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: steps.plugin.outputs.build == 'true'
+        with:
+          name: package-${{ matrix.target }}
+          path: dist/*.tar.gz
+          if-no-files-found: error
+
+  upload:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: package-*
+          path: dist
+          merge-multiple: true
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: dist/*.tar.gz
+      - name: Release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release upload "$GITHUB_REF_NAME" dist/*.tar.gz --repo "$GITHUB_REPOSITORY"
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --title "$TAG" \
+            --notes "Packages of $TAG for the duskcode store." dist/*.tar.gz
