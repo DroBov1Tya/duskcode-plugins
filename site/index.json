@@ -29,8 +29,8 @@
           "os": "macos",
           "arch": "aarch64",
           "url": "https://github.com/DroBov1Tya/duskcode-plugins/releases/download/telegram-v1.0.0/telegram-1.0.0-macos-aarch64.tar.gz",
-          "sha256": "02cd9bbe33b0d28067d9f99809738aa59e45f7a82f96711a5a6f5e6f174a6acf",
-          "size": 2773721
+          "sha256": "be7843f2f607753e17d550aacd91af998f39cff0aad56929deab09a4ca117263",
+          "size": 2773848
         }
       ]
     }
