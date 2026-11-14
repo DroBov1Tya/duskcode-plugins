@@ -1,0 +1,20 @@
+[package]
+name = "telegram"
+version = "1.0.0"
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "telegram"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+teloxide.workspace = true
+parking_lot.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+uuid.workspace = true

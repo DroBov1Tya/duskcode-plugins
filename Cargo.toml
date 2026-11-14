@@ -1,0 +1,21 @@
+[workspace]
+resolver = "3"
+members = ["plugins/telegram"]
+
+[workspace.package]
+edition = "2024"
+publish = false
+license = "MIT"
+
+[workspace.dependencies]
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+uuid = { version = "1", features = ["v4", "v7"] }
+parking_lot = "0.12"
+teloxide = { version = "0.17", default-features = false, features = ["macros", "rustls", "throttle"] }
+
+[profile.release]
+strip = true
