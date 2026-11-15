@@ -1,8 +1,39 @@
 {
   "format": 1,
-  "serial": 1,
-  "expires": "2027-05-13T17:28:08Z",
+  "serial": 2,
+  "expires": "2027-05-14T07:19:02Z",
   "plugins": [
+    {
+      "name": "ios-simulator",
+      "version": "1.0.0",
+      "description": "Xcode's iOS Simulator beside your work, and a tool for the agent to tap, type and look at it.",
+      "platforms": [
+        "macos"
+      ],
+      "clients": [
+        "gui"
+      ],
+      "permissions": {
+        "exec": [
+          "xcrun",
+          "axe"
+        ],
+        "read": [
+          "~/Library/Developer"
+        ]
+      },
+      "homepage": "https://github.com/DroBov1Tya/duskcode-plugins/tree/main/plugins/ios-simulator",
+      "providers": [],
+      "downloads": [
+        {
+          "os": "macos",
+          "arch": "aarch64",
+          "url": "https://github.com/DroBov1Tya/duskcode-plugins/releases/download/ios-simulator-v1.0.0/ios-simulator-1.0.0-macos-aarch64.tar.gz",
+          "sha256": "e7539681d0351ab7b89175b04855588c7174633008735dbe6f0f7a26cdd3ecdf",
+          "size": 1461225
+        }
+      ]
+    },
     {
       "name": "telegram",
       "version": "1.0.0",
@@ -34,6 +65,40 @@
           "url": "https://github.com/DroBov1Tya/duskcode-plugins/releases/download/telegram-v1.0.0/telegram-1.0.0-macos-aarch64.tar.gz",
           "sha256": "be7843f2f607753e17d550aacd91af998f39cff0aad56929deab09a4ca117263",
           "size": 2773848
+        }
+      ]
+    },
+    {
+      "name": "vphone",
+      "version": "1.0.0",
+      "description": "A vphone virtual iPhone beside your work, and a tool for the agent to tap, type and look at it.",
+      "platforms": [
+        "macos"
+      ],
+      "clients": [
+        "gui"
+      ],
+      "permissions": {
+        "exec": [
+          "vphone-launchpad-cli"
+        ],
+        "sockets": [
+          "~/.vphone",
+          "~/Library/Application Support/vphone-launchpad"
+        ],
+        "read": [
+          "~/.vphone"
+        ]
+      },
+      "homepage": "https://github.com/DroBov1Tya/duskcode-plugins/tree/main/plugins/vphone",
+      "providers": [],
+      "downloads": [
+        {
+          "os": "macos",
+          "arch": "aarch64",
+          "url": "https://github.com/DroBov1Tya/duskcode-plugins/releases/download/vphone-v1.0.0/vphone-1.0.0-macos-aarch64.tar.gz",
+          "sha256": "50be68eccbea170744eb69bc93d779b8bc45649ead9b5e11f2245db37318cd3b",
+          "size": 1478676
         }
       ]
     }
