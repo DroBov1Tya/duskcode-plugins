@@ -38,7 +38,12 @@ showed the user.
 
 | Plugin | What it does | Systems |
 | --- | --- | --- |
+| [ios-simulator](plugins/ios-simulator) | Xcode's iOS Simulator in a panel, and a tool for the agent to use it | macOS |
 | [telegram](plugins/telegram) | Talk to duskcode from Telegram: messages, answers, questions and approvals | macOS |
+| [vphone](plugins/vphone) | A vphone virtual iPhone in a panel, and a tool for the agent to use it | macOS |
+
+`crates/phone-kit` is shared by ios-simulator and vphone: the phone panel and the MCP
+tool over one `Phone` trait.
 
 ## Trying it locally
 
