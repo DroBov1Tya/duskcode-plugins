@@ -20,7 +20,7 @@ const MAX_FRAME: usize = 8 * 1024 * 1024;
 
 /// Streams until `frames` closes or AXe stops; `udid` has been checked.
 pub async fn watch(udid: &str, frames: mpsc::Sender<Vec<u8>>) -> Result<()> {
-    let mut axe = command("axe");
+    let mut axe = command(crate::run::axe_program());
     axe.args([
         "stream-video",
         "--udid",

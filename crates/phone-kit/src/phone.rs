@@ -26,6 +26,9 @@ pub struct Setup {
     pub blocker: Option<String>,
     /// Works, but not all of it, such as touches without AXe.
     pub note: Option<String>,
+    /// The host can install the dependency named by the setup notice.
+    pub dependency_missing: bool,
+    pub hardware_buttons_unavailable: bool,
 }
 
 /// The hardware buttons the agent and the panel press.
@@ -55,6 +58,7 @@ pub trait Phone: Send + Sync + 'static {
     /// What the panel and the tool call it, such as "iOS Simulator".
     fn title(&self) -> &'static str;
     fn setup(&self) -> impl Future<Output = Setup> + Send;
+
     /// The devices, running ones first.
     fn list(&self) -> impl Future<Output = Result<Vec<Device>>> + Send;
     /// Starts a device and returns once its screen can be pictured.

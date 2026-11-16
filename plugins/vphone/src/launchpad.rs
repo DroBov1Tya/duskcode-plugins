@@ -1,6 +1,5 @@
-//! vphone Launchpad through its CLI: whether it is set up, the machines, and starting and
-//! stopping one. Only these commands are run; nothing that installs, accepts or changes
-//! the Mac's security, which is the owner's to do in the app.
+//! vphone Launchpad setup and machine management through its CLI. Host Setup is completed
+//! by the owner in Launchpad.
 
 use std::{path::PathBuf, time::Duration};
 
@@ -9,16 +8,54 @@ use phone_kit::{Device, Setup, run};
 use serde::Deserialize;
 
 const CLI: &str = "vphone-launchpad-cli";
-/// Where the app keeps its CLI, for a PATH without `~/.local/bin`.
-const APP_CLI: &str = "/Applications/vphone-launchpad.app/Contents/MacOS/vphone-launchpad-cli";
+const APP_NAME: &str = "vphone-launchpad.app";
+const CLI_SUBPATH: &str = "Contents/MacOS/vphone-launchpad-cli";
 const LIMIT: Duration = Duration::from_secs(60);
 /// A first boot can take this long; the CLI waits for vphoned to answer.
 const START_SECONDS: u64 = 300;
 const MAX_OUTPUT: usize = 4 * 1024 * 1024;
 
-const INSTALL: &str = "Install vphone Launchpad: download it from github.com/Lakr233/vphone-cli/releases, \
-                       move it to Applications, open it once and finish Host Setup. Then link its CLI: \
-                       ln -sf /Applications/vphone-launchpad.app/Contents/MacOS/vphone-launchpad-cli ~/.local/bin/";
+const INSTALL: &str = "vphone Launchpad manages the virtual iPhone and its system bundle. Install Launchpad, then follow Host Setup in the app.";
+
+pub fn user_app() -> Option<PathBuf> {
+    let home = PathBuf::from(std::env::var_os("HOME")?);
+    if !home.is_absolute() {
+        return None;
+    }
+    Some(
+        home.canonicalize()
+            .ok()?
+            .join("Applications")
+            .join(APP_NAME),
+    )
+}
+
+async fn install_setup() -> Setup {
+    let silicon = run::run("/usr/sbin/sysctl", &["-n", "hw.optional.arm64"], LIMIT, 64).await;
+    let version = run::run("/usr/bin/sw_vers", &["-productVersion"], LIMIT, 64).await;
+    let supported = silicon.is_ok_and(|value| value == b"1\n")
+        && version
+            .ok()
+            .and_then(|value| {
+                std::str::from_utf8(&value)
+                    .ok()?
+                    .split('.')
+                    .next()?
+                    .parse::<u32>()
+                    .ok()
+            })
+            .is_some_and(|major| major >= 15);
+    let message = if supported {
+        INSTALL
+    } else {
+        "vphone Launchpad requires macOS 15 or newer on an Apple silicon Mac."
+    };
+    Setup {
+        blocker: Some(message.into()),
+        dependency_missing: supported,
+        ..Setup::default()
+    }
+}
 
 /// What `status` says, the part that tells the next step.
 #[derive(Debug, Deserialize)]
@@ -47,19 +84,16 @@ pub struct Machine {
 
 pub async fn setup() -> Setup {
     match cli(&["status"], LIMIT).await {
-        Err(error) if run::not_found(&error) => Setup {
-            blocker: Some(INSTALL.into()),
-            note: None,
-        },
+        Err(error) if run::not_found(&error) => install_setup().await,
         Err(error) => Setup {
             blocker: Some(format!("vphone Launchpad does not answer: {error:#}")),
-            note: None,
+            ..Setup::default()
         },
         Ok(out) => match serde_json::from_slice::<Status>(&out) {
             Ok(status) => status.setup(),
             Err(_) => Setup {
                 blocker: Some("vphone Launchpad gave a status this plugin cannot read.".into()),
-                note: None,
+                ..Setup::default()
             },
         },
     }
@@ -84,7 +118,11 @@ impl Status {
             _ => None,
         };
         let note = host.filter(|_| blocker.is_none());
-        Setup { blocker, note }
+        Setup {
+            blocker,
+            note,
+            ..Setup::default()
+        }
     }
 }
 
@@ -170,12 +208,18 @@ pub fn is_name(name: &str) -> bool {
 }
 
 async fn cli(args: &[&str], limit: Duration) -> Result<Vec<u8>> {
-    match run::run(CLI, args, limit, MAX_OUTPUT).await {
-        Err(error) if run::not_found(&error) && std::path::Path::new(APP_CLI).exists() => {
-            run::run(APP_CLI, args, limit, MAX_OUTPUT).await
-        }
-        other => other,
+    let result = run::run(CLI, args, limit, MAX_OUTPUT).await;
+    if !result.as_ref().is_err_and(run::not_found) {
+        return result;
     }
+    let system_app = PathBuf::from("/Applications").join(APP_NAME);
+    for app in user_app().into_iter().chain([system_app]) {
+        let path = app.join(CLI_SUBPATH);
+        if let Some(cli) = path.to_str().filter(|_| path.is_file()) {
+            return run::run(cli, args, limit, MAX_OUTPUT).await;
+        }
+    }
+    result
 }
 
 /// Text from the CLI, short and without control characters.
