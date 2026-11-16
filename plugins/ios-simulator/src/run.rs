@@ -1,7 +1,7 @@
 //! simctl through xcrun, and AXe, which touches, types and streams. A device is named
 //! only by a UDID that parses as one, so nothing else reaches their arguments.
 
-use std::time::Duration;
+use std::{path::Path, time::Duration};
 
 use anyhow::{Context, Result, ensure};
 use phone_kit::run::run;
@@ -32,9 +32,17 @@ pub async fn simctl(args: &[&str], limit: Duration) -> Result<Vec<u8>> {
 }
 
 pub async fn axe(args: &[&str]) -> Result<Vec<u8>> {
-    run("axe", args, LIMIT, MAX_OUTPUT)
+    run(axe_program(), args, LIMIT, MAX_OUTPUT)
         .await
         .context("AXe could not reach the device")
+}
+
+/// Finder-launched apps may not inherit the Homebrew directories on PATH.
+pub fn axe_program() -> &'static str {
+    ["/opt/homebrew/bin/axe", "/usr/local/bin/axe"]
+        .into_iter()
+        .find(|path| Path::new(path).is_file())
+        .unwrap_or("axe")
 }
 
 #[cfg(test)]

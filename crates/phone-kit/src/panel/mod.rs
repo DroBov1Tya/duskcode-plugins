@@ -138,6 +138,8 @@ struct Panel<P> {
     sized: Option<String>,
     /// A device whose stream failed; it is not restarted until the user acts.
     stalled: Option<String>,
+    looking: bool,
+    look_again: bool,
     done: mpsc::Sender<Done>,
     /// Lines to write, each one JSON object.
     out: Vec<String>,
@@ -163,6 +165,8 @@ impl<P: Phone> Panel<P> {
             generation: 0,
             sized: None,
             stalled: None,
+            looking: false,
+            look_again: false,
             done,
             out: Vec::new(),
         }
@@ -260,6 +264,11 @@ impl<P: Phone> Panel<P> {
     fn on_done(&mut self, done: Done) {
         match done {
             Done::Looked(setup, devices) => {
+                self.looking = false;
+                if std::mem::take(&mut self.look_again) {
+                    self.look();
+                    return;
+                }
                 self.state.looked = true;
                 self.state.setup = setup;
                 match devices {
@@ -411,6 +420,11 @@ impl<P: Phone> Panel<P> {
 
     /// Looks at the setup and the devices aside.
     fn look(&mut self) {
+        if self.looking {
+            self.look_again = true;
+            return;
+        }
+        self.looking = true;
         let (phone, done) = (Arc::clone(&self.phone), self.done.clone());
         tokio::spawn(async move {
             let (setup, devices) = tokio::join!(phone.setup(), phone.list());

@@ -3,16 +3,26 @@
 
 use super::{
     State,
-    wire::{ListItem, Size, Tone, Widget},
+    wire::{ButtonIcon, ListItem, RowLayout, Size, Tone, Widget},
 };
 
 pub fn render(state: &State) -> Widget {
     let mut children = vec![head(state)];
     if let Some(blocker) = &state.setup.blocker {
-        children.push(Widget::text(blocker.clone(), Tone::Normal, Size::Body));
+        children.push(Widget::notice(
+            blocker.clone(),
+            Tone::Normal,
+            Size::Body,
+            state.setup.dependency_missing && state.setup.note.is_none(),
+        ));
     }
     if let Some(note) = &state.setup.note {
-        children.push(Widget::text(note.clone(), Tone::Muted, Size::Small));
+        children.push(Widget::notice(
+            note.clone(),
+            Tone::Muted,
+            Size::Small,
+            state.setup.dependency_missing,
+        ));
     }
     if let Some(error) = &state.error {
         children.push(Widget::text(error.clone(), Tone::Danger, Size::Small));
@@ -32,7 +42,16 @@ fn head(state: &State) -> Widget {
         },
     };
     Widget::Row {
-        children: vec![picker, Widget::button("refresh", "Refresh", false)],
+        layout: RowLayout::Toolbar,
+        children: vec![
+            picker,
+            Widget::icon_button(
+                "refresh",
+                "Refresh",
+                ButtonIcon::Refresh,
+                state.busy.is_some(),
+            ),
+        ],
     }
 }
 
@@ -87,10 +106,21 @@ fn body(state: &State) -> Widget {
         },
     };
     let buttons = Widget::Row {
+        layout: RowLayout::Center,
         children: vec![
-            Widget::button("home", "Home", false),
-            Widget::button("lock", "Lock", false),
-            Widget::button("stop", "Shut down", false),
+            Widget::icon_button(
+                "home",
+                "Home",
+                ButtonIcon::Home,
+                state.setup.hardware_buttons_unavailable,
+            ),
+            Widget::icon_button(
+                "lock",
+                "Lock",
+                ButtonIcon::Lock,
+                state.setup.hardware_buttons_unavailable,
+            ),
+            Widget::icon_button("stop", "Shut down", ButtonIcon::Power, false),
         ],
     };
     Widget::Column {

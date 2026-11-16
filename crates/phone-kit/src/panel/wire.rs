@@ -80,6 +80,22 @@ pub struct ListItem {
     pub detail: String,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum RowLayout {
+    Center,
+    Toolbar,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ButtonIcon {
+    Home,
+    Lock,
+    Power,
+    Refresh,
+}
+
 /// The widgets a phone panel draws with.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 #[serde(tag = "kind", rename_all = "snake_case")]
@@ -89,15 +105,19 @@ pub enum Widget {
     },
     Row {
         children: Vec<Widget>,
+        layout: RowLayout,
     },
     Text {
         text: String,
+        dependency: bool,
         tone: Tone,
         size: Size,
     },
     Button {
         id: &'static str,
         label: &'static str,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        icon: Option<ButtonIcon>,
         primary: bool,
         disabled: bool,
     },
@@ -121,9 +141,14 @@ pub enum Widget {
 impl Widget {
     /// A text, cut to what the core draws.
     pub fn text(text: impl Into<String>, tone: Tone, size: Size) -> Self {
+        Self::notice(text, tone, size, false)
+    }
+
+    pub fn notice(text: impl Into<String>, tone: Tone, size: Size, dependency: bool) -> Self {
         let text: String = text.into();
         Self::Text {
             text: text.chars().take(MAX_TEXT).collect(),
+            dependency,
             tone,
             size,
         }
@@ -133,8 +158,23 @@ impl Widget {
         Self::Button {
             id,
             label,
+            icon: None,
             primary,
             disabled: false,
+        }
+    }
+    pub fn icon_button(
+        id: &'static str,
+        label: &'static str,
+        icon: ButtonIcon,
+        disabled: bool,
+    ) -> Self {
+        Self::Button {
+            id,
+            label,
+            icon: Some(icon),
+            primary: false,
+            disabled,
         }
     }
 }

@@ -20,12 +20,12 @@ use tokio::sync::mpsc;
 
 use crate::{
     listing::listing,
-    run::{BOOT_LIMIT, LIMIT, axe, device, simctl},
+    run::{BOOT_LIMIT, LIMIT, axe, axe_program, device, simctl},
     screen, stream, tree,
 };
 
-const AXE_HINT: &str = "Touches, keys and a live screen need AXe, a free command line tool: \
-                        brew install cameroncooke/axe/axe, then press Refresh.";
+const AXE_HINT: &str =
+    "AXe lets you tap, swipe, and use the simulator’s hardware buttons. It installs with Homebrew.";
 /// Between two pictures when there is no AXe to stream.
 const POLL_PAUSE: Duration = Duration::from_millis(200);
 
@@ -43,7 +43,9 @@ impl Phone for Simulator {
     }
 
     async fn setup(&self) -> Setup {
-        let axe = run("axe", &["--version"], LIMIT, 1024).await.is_ok();
+        let axe = run(axe_program(), &["--version"], LIMIT, 1024)
+            .await
+            .is_ok();
         self.axe.store(axe, Ordering::Relaxed);
         let note = (!axe).then(|| AXE_HINT.to_owned());
         let blocker = match run("xcrun", &["--find", "simctl"], LIMIT, 4096).await {
@@ -60,7 +62,12 @@ impl Phone for Simulator {
                 Ok(_) => None,
             },
         };
-        Setup { blocker, note }
+        Setup {
+            blocker,
+            note,
+            dependency_missing: !axe,
+            hardware_buttons_unavailable: !axe,
+        }
     }
 
     async fn list(&self) -> Result<Vec<Device>> {
