@@ -1,40 +1,44 @@
-# duskcode plugins
+# Duskcode Workshop
 
-The plugin store of [Dusk Code](https://github.com/DroBov1Tya/dusk_code), the
-open-source coding agent in Rust: its plugins, their signed packages and the
-[Workshop](https://drobov1tya.github.io/duskcode-plugins/) page. In the app they are
-under Plugins, Workshop, one click to install.
+The Workshop of [Dusk Code](https://github.com/DroBov1Tya/dusk_code), the open-source
+coding agent in Rust: plugins, skills, skill packs and agents, each with its own cover,
+their signed packages and the [Workshop page](https://drobov1tya.github.io/duskcode-plugins/).
+In the app they are under Plugins, Workshop, one click to install.
 
 [Dusk Code](https://github.com/DroBov1Tya/dusk_code) ·
 [Site](https://drobov1tya.github.io/dusk_code/) ·
 [Workshop](https://drobov1tya.github.io/duskcode-plugins/) ·
-[Writing a plugin](https://github.com/DroBov1Tya/dusk_code/blob/main/docs/plugins.md)
+[Writing a plugin](https://github.com/DroBov1Tya/dusk_code/blob/main/docs/plugins.md) ·
+[Publishing here](docs/publishing.md)
 
-Contributions are welcome: a new plugin is a pull request with its folder under
-`plugins/`; the maintainer builds, reviews and signs it.
+(The GitHub repository is to be renamed `duskcode-workshop`; the old address keeps working
+as the list's fallback.)
 
-## How a plugin gets to a user
+## What it holds
 
-1. A plugin lives in `plugins/<name>/`: its `plugin.yml` (see
-   [Writing a plugin](https://github.com/DroBov1Tya/dusk_code/blob/main/docs/plugins.md))
-   and, for a program, a Rust crate whose binary has the plugin's name.
-2. A tag `<name>-v<version>` builds it for each system in its `platforms`, attests
-   where each `<name>-<version>-<os>-<arch>.tar.gz` was built and uploads them to that
-   tag's release. The build job holds no write token.
-3. A maintainer runs `scripts/publish.py` on their own machine. It keeps every version
-   already signed as it was signed, so a release changed on GitHub is never signed
-   again; for a new version it checks the build attestations and asks before signing
-   the hashes it shows. It writes `site/index.json` with the next serial and an expiry
-   (180 days) and signs it with the store's Ed25519 key from their keychain into
-   `site/index.json.sig`. The key never reaches GitHub.
-4. A push of `site/` puts the page and the signed list on GitHub Pages.
+```
+plugins/<name>/                 a plugin: plugin.yml, its source, icons
+packs/<pack>/pack.yml           a pack: name, title, description, vendor, kind, items, license
+packs/<pack>/<item>/            each item: a skill folder (SKILL.md, LICENSE, NOTICE) or an agent folder
+covers/<name>.webp              the card picture of each plugin and pack (at most 512 KiB)
+covers/src/<name>.svg           its source; scripts/make-covers.py writes them, render-covers.sh renders
+catalog.yml                     category, tags and upstream repo of each item
+verified.yml                    mirrors the maintainer vouches for
+scripts/                        package.sh, package-packs.sh, publish.py, check-index.py
+site/                           the page and the signed list (index.json, index.json.sig, covers/)
+```
 
-duskcode installs a plugin only when the list's signature checks against the key built
-into it, the package has the size and hash the list names, it unpacks to plain files
-inside its own folder, and its `plugin.yml` asks for exactly the permissions the list
-showed the user.
+| Pack | Kind | Vendor | License |
+| --- | --- | --- | --- |
+| [duskcode-engineering](packs/duskcode-engineering) | skills | duskcode | MIT |
+| [duskcode-security](packs/duskcode-security) | skills | duskcode | MIT |
+| [duskcode-agents](packs/duskcode-agents) | agents | duskcode | MIT |
+| [anthropic](packs/anthropic) | skills | Anthropic ([upstream](https://github.com/anthropics/skills)) | Apache-2.0 |
+| [openai](packs/openai) | skills | OpenAI ([upstream](https://github.com/openai/skills)) | Apache-2.0 |
+| [nvidia](packs/nvidia) | skills | NVIDIA ([upstream](https://github.com/NVIDIA/skills)) | CC-BY-4.0 AND Apache-2.0 |
 
-## Plugins
+`duskcode-agents` holds every agent of duskcode, including those it also builds in.
+Vendor skills keep their license and notice files and name their changes.
 
 | Plugin | What it does | Systems |
 | --- | --- | --- |
@@ -44,6 +48,41 @@ showed the user.
 
 `crates/phone-kit` is shared by ios-simulator and vphone: the phone panel and the MCP
 tool over one `Phone` trait.
+
+## Tiers
+
+- **Official**: what this repository's list offers, signed by the store's Ed25519 key
+  that is built into duskcode. A contribution becomes Official when a pull request is
+  reviewed and merged, and the maintainer builds it and signs the next list.
+- **Verified**: a mirror somebody else runs. It publishes its own `index.json` and
+  `index.json.sig`, signed with its own Ed25519 key. The maintainer checks it and adds its
+  `name`, `url` and `key` to `verified.yml`; the next signed official list carries them, and
+  duskcode shows a mirror a user added with exactly that address and key as Verified.
+- **Community**: any mirror a user adds in `config.yml` with its key. Nobody vouches for it.
+
+## How an item gets to a user
+
+1. A plugin lives in `plugins/<name>/` (see
+   [Writing a plugin](https://github.com/DroBov1Tya/dusk_code/blob/main/docs/plugins.md)).
+   A pack lives in `packs/<pack>/`. Both need a cover and an entry in `catalog.yml`.
+2. A tag `<name>-v<version>` builds a plugin for each system in its `platforms`, or a
+   pack with `scripts/package-packs.sh`, attests where each package was built and uploads
+   it to that tag's release. The build job holds no write token. A pack's version is
+   `1.<date of its last commit>.0`.
+3. A maintainer runs `scripts/publish.py` on their own machine. It keeps every version
+   already signed as it was signed; for a new version it checks the build attestations and
+   asks before signing the hashes it shows. It writes `site/index.json` (format 2: kind,
+   category, tags, cover, stars, created, updated, verified) with the next serial and an
+   expiry (180 days) and signs it with the key from their keychain into
+   `site/index.json.sig`. The key never reaches GitHub. `scripts/publish.py --dry-run`
+   writes the unsigned list to a temp folder for review and signs nothing;
+   `scripts/check-index.py <index.json>` checks it against duskcode's format 2 rules.
+4. A push of `site/` puts the page and the signed list on GitHub Pages.
+
+duskcode installs a plugin only when the list's signature checks against the key built
+into it, the package has the size and hash the list names, it unpacks to plain files
+inside its own folder, and its `plugin.yml` asks for exactly the permissions the list
+showed the user.
 
 ## Trying it locally
 

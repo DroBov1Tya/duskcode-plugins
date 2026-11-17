@@ -1,0 +1,8 @@
+name: nvidia
+title: "NVIDIA Skills"
+description: "Skills by NVIDIA for GPU work: finding CUDA bugs with Compute Sanitizer and accelerating DataFrames with cuDF. Evals and the upstream signature file removed."
+vendor: NVIDIA
+kind: skills
+items: [compute-sanitizer-diagnose-cuda-bugs, accelerated-computing-cudf]
+license: CC-BY-4.0 AND Apache-2.0
+upstream: https://github.com/NVIDIA/skills

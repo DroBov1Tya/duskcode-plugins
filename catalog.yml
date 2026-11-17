@@ -1,0 +1,14 @@
+# What the signed list says about each item beyond its manifest: category, tags (up to 8,
+# a-z, 0-9 and -) and, for a vendor's pack, the upstream repository whose stars it shows.
+# Items of duskcode's own show this repository's stars.
+plugins:
+  ios-simulator: {category: devices, tags: [ios, simulator, xcode, panel]}
+  telegram: {category: chat, tags: [telegram, bot, remote]}
+  vphone: {category: devices, tags: [ios, virtual-device, panel]}
+packs:
+  duskcode-engineering: {category: engineering, tags: [design, debugging, testing]}
+  duskcode-security: {category: security, tags: [pentest, assessment, appsec]}
+  duskcode-agents: {category: engineering, tags: [agents, roster, review]}
+  anthropic: {category: design, tags: [frontend, mcp, vendor], stars_repo: anthropics/skills}
+  openai: {category: testing, tags: [github, ci, playwright, vendor], stars_repo: openai/skills}
+  nvidia: {category: engineering, tags: [cuda, gpu, vendor], stars_repo: NVIDIA/skills}

@@ -1,0 +1,7 @@
+name: duskcode-engineering
+title: "Duskcode Engineering"
+description: "Habits for sound engineering work: design patterns, domain structure, a project tree, spikes, systematic debugging and test-driven development."
+vendor: duskcode
+kind: skills
+items: [design-patterns, domain-structure, project-tree, spike, systematic-debugging, test-driven-development]
+license: MIT
