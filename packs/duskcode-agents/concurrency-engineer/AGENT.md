@@ -3,7 +3,7 @@ name: concurrency-engineer
 description: Async execution, ownership, races, cancellation, attempt fencing and bounded resource use.
 entry: false
 links: []
-skills: [systematic-debugging]
+skills: [duskcode-engineering/systematic-debugging]
 source: Dusk Code
 tags: [concurrency, async, lifecycle]
 ---

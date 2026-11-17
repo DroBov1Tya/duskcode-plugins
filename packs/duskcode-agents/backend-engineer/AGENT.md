@@ -2,8 +2,8 @@
 name: backend-engineer
 description: Backend services, business logic and durable execution, with API, database and concurrency specialists.
 entry: true
-links: [api-engineer, database-engineer, concurrency-engineer]
-skills: [systematic-debugging, test-driven-development]
+links: [duskcode-agents/api-engineer, duskcode-agents/database-engineer, duskcode-agents/concurrency-engineer]
+skills: [duskcode-engineering/systematic-debugging, duskcode-engineering/test-driven-development]
 source: Dusk Code
 tags: [backend, services, reliability]
 ---

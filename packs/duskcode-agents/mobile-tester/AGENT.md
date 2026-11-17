@@ -3,7 +3,7 @@ name: mobile-tester
 description: Mobile journey verification with explicit emulator, simulator and real-device evidence boundaries.
 entry: false
 links: []
-skills: [systematic-debugging]
+skills: [duskcode-engineering/systematic-debugging]
 source: Dusk Code
 tags: [mobile, qa, devices]
 ---

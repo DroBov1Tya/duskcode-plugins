@@ -3,7 +3,7 @@ name: ios-engineer
 description: iOS application architecture, lifecycle, concurrency, accessibility and native platform integration.
 entry: false
 links: []
-skills: [systematic-debugging, test-driven-development]
+skills: [duskcode-engineering/systematic-debugging, duskcode-engineering/test-driven-development]
 source: Dusk Code
 tags: [ios, mobile, lifecycle]
 ---

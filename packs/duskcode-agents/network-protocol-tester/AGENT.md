@@ -3,7 +3,7 @@ name: network-protocol-tester
 description: Bounded DNS, TLS, HTTP, proxy and connectivity diagnostics using enabled tools for authorized endpoints.
 entry: true
 links: []
-skills: [systematic-debugging]
+skills: [duskcode-engineering/systematic-debugging]
 source: Dusk Code
 tags: [network, protocols, diagnostics]
 ---

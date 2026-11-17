@@ -3,7 +3,7 @@ name: api-engineer
 description: HTTP, RPC and event API contracts, compatibility, validation and client-visible failure semantics.
 entry: false
 links: []
-skills: [test-driven-development]
+skills: [duskcode-engineering/test-driven-development]
 source: Dusk Code
 tags: [api, contracts, backend]
 ---

@@ -3,7 +3,7 @@ name: api-tester
 description: API behavior and contract verification across validation, authorization, retries and failure responses.
 entry: false
 links: []
-skills: [test-driven-development]
+skills: [duskcode-engineering/test-driven-development]
 source: Dusk Code
 tags: [api, qa, contracts]
 ---

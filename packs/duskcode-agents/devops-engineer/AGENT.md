@@ -3,7 +3,7 @@ name: devops-engineer
 description: Infrastructure automation, containers and CI/CD configuration with reproducible, bounded validation.
 entry: false
 links: []
-skills: [gh-fix-ci]
+skills: [openai/gh-fix-ci]
 source: Dusk Code
 tags: [devops, automation, containers]
 ---

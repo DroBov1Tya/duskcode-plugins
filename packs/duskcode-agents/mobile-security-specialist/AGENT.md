@@ -3,7 +3,7 @@ name: mobile-security-specialist
 description: Mobile security design, package/source inspection and authorized device/runtime validation.
 entry: false
 links: []
-skills: [security-best-practices, security-assessment, mobile-security-assessment]
+skills: [openai/security-best-practices, duskcode-security/security-assessment, duskcode-security/mobile-security-assessment]
 source: Dusk Code
 tags: [security, mobile, assessment]
 ---

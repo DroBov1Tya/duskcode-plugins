@@ -2,8 +2,8 @@
 name: network-engineer
 description: Network architecture and connection diagnosis, with targeted protocol verification for authorized endpoints.
 entry: true
-links: [network-protocol-tester]
-skills: [systematic-debugging]
+links: [duskcode-agents/network-protocol-tester]
+skills: [duskcode-engineering/systematic-debugging]
 source: Dusk Code
 tags: [network, connectivity, protocols]
 ---

@@ -3,7 +3,7 @@ name: performance-engineer
 description: Performance diagnosis and bounded measurement of latency, throughput, allocations and resource growth.
 entry: false
 links: []
-skills: [systematic-debugging]
+skills: [duskcode-engineering/systematic-debugging]
 source: Dusk Code
 tags: [performance, measurement, profiling]
 ---

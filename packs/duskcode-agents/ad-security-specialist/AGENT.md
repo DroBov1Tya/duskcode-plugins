@@ -3,7 +3,7 @@ name: ad-security-specialist
 description: Active Directory security assessment of identity, trust and effective access with bounded evidence.
 entry: false
 links: []
-skills: [security-assessment, ad-security-assessment]
+skills: [duskcode-security/security-assessment, duskcode-security/ad-security-assessment]
 source: Dusk Code
 tags: [security, assessment]
 ---

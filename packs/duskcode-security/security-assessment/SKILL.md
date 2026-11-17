@@ -1,7 +1,7 @@
 ---
 name: security-assessment
 description: Coordinate scoped security assessments through discovery, enumeration, validation and evidence review.
-links: [web-security-assessment, api-security-assessment, mobile-security-assessment, ad-security-assessment, infrastructure-security-assessment]
+links: [duskcode-security/web-security-assessment, duskcode-security/api-security-assessment, duskcode-security/mobile-security-assessment, duskcode-security/ad-security-assessment, duskcode-security/infrastructure-security-assessment]
 source: "dusk_code"
 license: MIT
 tags: [security, assessment]

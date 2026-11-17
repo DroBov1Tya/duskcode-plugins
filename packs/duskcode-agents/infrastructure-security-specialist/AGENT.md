@@ -3,7 +3,7 @@ name: infrastructure-security-specialist
 description: Infrastructure and network security assessment of exposed services, hosts and isolation boundaries.
 entry: false
 links: []
-skills: [security-assessment, infrastructure-security-assessment]
+skills: [duskcode-security/security-assessment, duskcode-security/infrastructure-security-assessment]
 source: Dusk Code
 tags: [security, assessment]
 ---
