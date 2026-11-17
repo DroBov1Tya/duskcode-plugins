@@ -1,0 +1,7 @@
+name: duskcode-security
+title: "Duskcode Security"
+description: "Authorized security assessment workflows: general, web, API, mobile, Active Directory and infrastructure."
+vendor: duskcode
+kind: skills
+items: [security-assessment, web-security-assessment, api-security-assessment, mobile-security-assessment, ad-security-assessment, infrastructure-security-assessment]
+license: MIT

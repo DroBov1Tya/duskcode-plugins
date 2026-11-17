@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-ESkQY0Wme26ZOCqQKWjLRYLDO99InylCBwIWm4XEYzg='; style-src 'sha256-YOA0ljGY3NvjFz54HnbXZhnbHcqjg5L7LcBstLTOOkI='; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-jGLr5hDiHHr31lKMaCg7Bw0k29fuXugf11RWtHeqyA4='; style-src 'sha256-Yxv6A336tFhcUE99670ut5jj7c14By1og/EKnxn28X0='; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>duskcode Workshop</title>
-<meta name="description" content="Plugins for duskcode, checked and signed. Install them from Plugins, Workshop in the app.">
+<meta name="description" content="Plugins, skills, packs and agents for duskcode, checked and signed. Install them from Plugins, Workshop in the app.">
 <link rel="icon" href="img/icon.png">
 <style>
 :root {
@@ -114,6 +114,7 @@ footer span { margin-right: auto; }
 .plugin h3 { margin: 0; font-size: 18px; font-weight: 620; display: flex; align-items: baseline; gap: 8px; }
 .plugin h3 code { font: 13px var(--mono); color: var(--amber); }
 .plugin p { margin: 0; color: var(--soft); font-size: 15.5px; }
+.cover { display: block; width: calc(100% + 40px); margin: -18px -20px 4px; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 14px 14px 0 0; background: var(--raised); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { font-size: 12.5px; color: var(--soft); background: var(--raised); border-radius: 999px; padding: 2px 10px; }
 .plugin details { color: var(--muted); font-size: 14px; }
@@ -217,16 +218,39 @@ function consent(plugin) {
 
 function card(plugin) {
   var node = el('article', 'plugin');
+  // A cover is shown only from the list's own covers/ folder, as an image.
+  if (plugin.cover && /^covers\/[A-Za-z0-9._-]+\.(webp|png)$/.test(plugin.cover.path || '')) {
+    var picture = el('img', 'cover');
+    picture.src = plugin.cover.path;
+    picture.alt = '';
+    picture.loading = 'lazy';
+    node.appendChild(picture);
+  }
   var title = el('h3', '', plugin.name);
   title.appendChild(el('code', '', plugin.version));
   node.appendChild(title);
   node.appendChild(el('p', '', plugin.description || ''));
   var chips = el('div', 'chips');
+  var pack = plugin.kind === 'pack';
+  chips.appendChild(el('span', 'chip', 'Official'));
+  chips.appendChild(el('span', 'chip', pack ? 'Pack of ' + (plugin.skills || []).length : 'Plugin'));
+  if (plugin.stars) chips.appendChild(el('span', 'chip', plugin.stars + ' stars'));
   var systems = (plugin.platforms || []).map(function (s) { return SYSTEMS[s] || s; });
   var clients = (plugin.clients || []).map(function (c) { return CLIENTS[c] || c; });
-  chips.appendChild(el('span', 'chip', systems.length ? systems.join(' · ') : 'Every system'));
-  chips.appendChild(el('span', 'chip', clients.length ? clients.join(' · ') : 'Every client'));
+  if (!pack) {
+    chips.appendChild(el('span', 'chip', systems.length ? systems.join(' · ') : 'Every system'));
+    chips.appendChild(el('span', 'chip', clients.length ? clients.join(' · ') : 'Every client'));
+  }
   node.appendChild(chips);
+  if (pack) {
+    var items = el('details');
+    items.appendChild(el('summary', '', 'Holds ' + (plugin.skills || []).length + ' items; text only, it runs nothing'));
+    var names = el('ul');
+    (plugin.skills || []).forEach(function (s) { names.appendChild(el('li', '', s)); });
+    items.appendChild(names);
+    node.appendChild(items);
+    return finish(node, plugin);
+  }
   var lines = consent(plugin);
   var details = el('details');
   details.appendChild(el('summary', '', lines.length ? 'It may ' + lines.length + (lines.length > 1 ? ' things' : ' thing') : 'It asks for nothing beyond its own folder'));
@@ -236,6 +260,10 @@ function card(plugin) {
     details.appendChild(list);
   }
   node.appendChild(details);
+  return finish(node, plugin);
+}
+
+function finish(node, plugin) {
   if (/^https:\/\//.test(plugin.homepage || '')) {
     var more = el('a', 'more', 'Source and notes');
     more.href = plugin.homepage;
@@ -247,12 +275,12 @@ function card(plugin) {
 function show() {
   var words = document.getElementById('search').value.trim().toLowerCase();
   var shown = all.filter(function (p) {
-    return !words || (p.name + ' ' + (p.description || '')).toLowerCase().indexOf(words) !== -1;
+    return !words || (p.name + ' ' + (p.description || '') + ' ' + (p.category || '') + ' ' + (p.tags || []).join(' ')).toLowerCase().indexOf(words) !== -1;
   });
   var grid = document.getElementById('plugins');
   grid.replaceChildren.apply(grid, shown.map(card));
-  if (!shown.length) grid.appendChild(el('p', 'empty', all.length ? 'No plugin matches.' : 'No plugins yet.'));
-  document.getElementById('count').textContent = shown.length + ' of ' + all.length + ' plugins';
+  if (!shown.length) grid.appendChild(el('p', 'empty', all.length ? 'Nothing matches.' : 'No plugins yet.'));
+  document.getElementById('count').textContent = shown.length + ' of ' + all.length + ' items';
 }
 
 fetch('index.json', { cache: 'no-cache' })

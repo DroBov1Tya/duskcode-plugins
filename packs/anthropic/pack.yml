@@ -1,0 +1,8 @@
+name: anthropic
+title: "Anthropic Skills"
+description: "Skills by Anthropic: frontend design, building MCP servers and testing web apps. Markdown-only; executable helpers removed."
+vendor: Anthropic
+kind: skills
+items: [frontend-design, mcp-builder, webapp-testing]
+license: Apache-2.0
+upstream: https://github.com/anthropics/skills

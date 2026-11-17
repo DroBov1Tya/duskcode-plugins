@@ -1,0 +1,10 @@
+# Mirrors the maintainer vouches for. The signed official list carries this list as
+# `verified`; duskcode shows a mirror a user added with exactly this address and key as
+# Verified. To add one, append an entry and publish a new list:
+#
+#   - name: friends                                  # a-z, 0-9 and -
+#     url: https://friends.example.com/index.json    # https only
+#     key: BASE64-OF-ITS-ED25519-PUBLIC-KEY          # the mirror's own signing key
+#
+# Check the mirror yourself first (who runs it, that its list is signed by that key).
+[]
