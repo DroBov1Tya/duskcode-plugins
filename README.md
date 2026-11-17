@@ -22,10 +22,11 @@ packs/<pack>/pack.yml           a pack: name, title, description, vendor, kind, 
 packs/<pack>/<item>/            each item: a skill folder (SKILL.md, LICENSE, NOTICE) or an agent folder
 covers/<name>.webp              the card picture of each plugin and pack (at most 512 KiB)
 covers/src/<name>.svg           its source; scripts/make-covers.py writes them, render-covers.sh renders
-catalog.yml                     category, tags and upstream repo of each item
+screenshots/<name>/             optional demo pictures of an item (up to 8, at most 1 MiB each)
+catalog.yml                     category, tags, screenshots and upstream repo of each item
 verified.yml                    mirrors the maintainer vouches for
 scripts/                        package.sh, package-packs.sh, publish.py, check-index.py
-site/                           the page and the signed list (index.json, index.json.sig, covers/)
+site/                           the page and the signed list (index.json, index.json.sig, covers/, screenshots/)
 ```
 
 | Pack | Kind | Vendor | License |
@@ -72,7 +73,7 @@ tool over one `Phone` trait.
 3. A maintainer runs `scripts/publish.py` on their own machine. It keeps every version
    already signed as it was signed; for a new version it checks the build attestations and
    asks before signing the hashes it shows. It writes `site/index.json` (format 2: kind,
-   category, tags, cover, stars, created, updated, verified) with the next serial and an
+   category, tags, cover, screenshots, stars, created, updated, verified) with the next serial and an
    expiry (180 days) and signs it with the key from their keychain into
    `site/index.json.sig`. The key never reaches GitHub. `scripts/publish.py --dry-run`
    writes the unsigned list to a temp folder for review and signs nothing;
