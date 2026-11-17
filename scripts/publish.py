@@ -15,7 +15,8 @@ their hashes are shown for a yes before they are signed. Every list gets the nex
 and an expiry, so duskcode refuses an older or a stale list.
 
 The list is format 2: plugins and packs, each with kind, category, tags, a cover (copied
-to site/covers/), stars (counted here from the GitHub API, 0 with a warning when it
+to site/covers/), screenshots (from screenshots/<name>/, copied to site/screenshots/<name>/
+in catalog.yml's order), stars (counted here from the GitHub API, 0 with a warning when it
 cannot be reached) and created/updated dates from git. A pack is built by
 scripts/package-packs.sh; its version is 1.<date of its last commit>.0.
 
@@ -38,6 +39,8 @@ from datetime import datetime, timedelta, timezone
 
 import yaml
 
+import pictures
+
 REPO = "DroBov1Tya/duskcode-plugins"
 KEYCHAIN_SERVICE = "duskcode-plugins-signing"
 KEYCHAIN_ACCOUNT = "ed25519"
@@ -45,7 +48,6 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WORKFLOW = f"{REPO}/.github/workflows/release.yml"
 # A list lives this long; publish again before then.
 LIFETIME = timedelta(days=180)
-COVER_LIMIT = 512 * 1024
 CATALOG = yaml.safe_load((ROOT / "catalog.yml").read_text())
 VERIFIED = yaml.safe_load((ROOT / "verified.yml").read_text()) or []
 PACKAGE = re.compile(r"^(?P<name>[a-z0-9_-]+)-(?P<version>[^-]+)-(?P<os>macos|linux|windows)-(?P<arch>[a-z0-9_]+)\.tar\.gz$")
@@ -120,20 +122,50 @@ def copy_cover(name, out):
         sys.exit(f"no cover for {name}: covers/{name}.webp or .png")
     file = found[0]
     data = file.read_bytes()
-    if len(data) > COVER_LIMIT:
-        sys.exit(f"{file.name} is {len(data)} bytes, over 512 KiB")
+    if why := pictures.problem(f"covers/{file.name}", data, pictures.COVER_LIMIT):
+        sys.exit(f"covers/{file.name}: {why}")
     (out / "covers").mkdir(parents=True, exist_ok=True)
     (out / "covers" / file.name).write_bytes(data)
     return {"path": f"covers/{file.name}", "sha256": hashlib.sha256(data).hexdigest(), "size": len(data)}
 
 
+def copy_screenshots(name, meta, out):
+    """catalog.yml's screenshots of `name`, checked as the core checks them, copied
+    beside the list."""
+    shots = meta.get("screenshots") or []
+    if len(shots) > pictures.MAX_SCREENSHOTS:
+        sys.exit(f"{name}: {len(shots)} screenshots, at most {pictures.MAX_SCREENSHOTS}")
+    found = []
+    for shot in shots:
+        if set(shot) - {"file", "caption"} or "/" in shot.get("file", "/"):
+            sys.exit(f"{name}: a screenshot is {{file, caption}} with a plain file name: {shot}")
+        path = f"screenshots/{name}/{shot['file']}"
+        file = ROOT / path
+        if not file.is_file() or file.is_symlink():
+            sys.exit(f"{path} is not a file")
+        data = file.read_bytes()
+        if why := pictures.problem(path, data, pictures.SCREENSHOT_LIMIT):
+            sys.exit(f"{path}: {why}")
+        item = {"path": path, "sha256": hashlib.sha256(data).hexdigest(), "size": len(data)}
+        if "caption" in shot:
+            if not pictures.caption_ok(shot["caption"]):
+                sys.exit(f"{path}: the caption is not one plain line of up to {pictures.MAX_CAPTION} characters")
+            item["caption"] = shot["caption"]
+        (out / path).parent.mkdir(parents=True, exist_ok=True)
+        (out / path).write_bytes(data)
+        found.append(item)
+    return found
+
+
 def extras(name, folder, meta, out, own_repo=REPO):
     """Fields of format 2 shared by plugins and packs."""
     created, updated = git_dates(folder)
+    screenshots = copy_screenshots(name, meta, out)
     return {
         "category": meta["category"],
         "tags": meta["tags"],
         "cover": copy_cover(name, out),
+        **({"screenshots": screenshots} if screenshots else {}),
         "stars": stars(meta.get("stars_repo", own_repo)),
         "created": created,
         "updated": updated,

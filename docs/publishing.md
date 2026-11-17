@@ -24,6 +24,34 @@ next list; nothing reaches users before that.
 - Keep the source as `covers/src/<name>.svg` with generic fonts only (no font files).
   `scripts/make-covers.py` and `scripts/render-covers.sh` show how the existing ones are made.
 
+## Screenshots
+
+Optional, and shown as a gallery in the item's detail window, in the order listed.
+
+- Up to 8 per item, in `screenshots/<item>/`, each a `.png` or `.webp` of at most 1 MiB
+  whose bytes are that format (duskcode checks the first bytes, not only the name).
+- 16:9 or 16:10; 1600x1000 is recommended. WebP keeps a shot of an interface well under
+  the limit.
+- List them in `catalog.yml` with a short caption (one line, at most 120 characters, no
+  control characters):
+
+  ```yaml
+  my-pack:
+    category: engineering
+    tags: [testing]
+    screenshots:
+      - {file: 1-overview.webp, caption: "The list of skills"}
+  ```
+
+- Show the item itself: its own interface or its own files. No secrets, tokens, real
+  names, addresses or other personal data anywhere in a shot, including window titles,
+  paths and terminal prompts. No trademarks or interfaces of other vendors beyond what
+  the item's own UI shows.
+- `scripts/publish.py` checks each one as duskcode does, copies it to
+  `site/screenshots/<item>/` and names its size and SHA-256 in the signed list;
+  `scripts/check-index.py` checks the list's screenshots again. The text screenshots of
+  the duskcode packs are rendered from their files by `scripts/render-screenshots.py`.
+
 ## A plugin
 
 `plugins/<name>/plugin.yml` and the program. Permissions are asked for exactly and

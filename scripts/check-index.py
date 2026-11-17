@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Checks an index.json against the rules duskcode's reader applies to format 2
 (projects/core/src/plugins/store/index.rs): known fields only, words, dates, https,
-sizes, and that each cover is the file the list names.
+sizes, and that each cover and screenshot is the file the list names and the picture its
+name says.
 
     scripts/check-index.py /path/to/index.json
 """
@@ -13,8 +14,10 @@ import re
 import sys
 from datetime import datetime
 
+import pictures
+
 ENTRY = {"name", "version", "kind", "description", "platforms", "clients", "permissions", "homepage",
-         "providers", "downloads", "category", "tags", "cover", "stars", "created", "updated", "skills"}
+         "providers", "downloads", "category", "tags", "cover", "screenshots", "stars", "created", "updated", "skills"}
 DOWNLOAD = {"os", "arch", "url", "sha256", "size"}
 WORD = re.compile(r"^[a-z0-9-]{1,32}$")
 NAME = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
@@ -24,6 +27,20 @@ KINDS = {"plugin", "skill", "pack", "agent"}
 
 def fail(entry, message):
     sys.exit(f"{entry}: {message}")
+
+
+def check_picture(n, index, item, fields, limit):
+    """A cover or screenshot: its fields, and the file beside the list is the one named."""
+    if not isinstance(item, dict) or set(item) - fields or not {"path", "sha256", "size"} <= set(item) \
+            or not SHA.match(item["sha256"]) or not isinstance(item["size"], int) or not 1 <= item["size"] <= limit:
+        fail(n, f"bad picture {item}")
+    if not pictures.plain_path(item["path"]):
+        fail(n, f"{item['path']}: not a plain relative path")
+    data = (index.parent / item["path"]).read_bytes()
+    if len(data) != item["size"] or hashlib.sha256(data).hexdigest() != item["sha256"]:
+        fail(n, f"{item['path']} differs from the list")
+    if why := pictures.problem(item["path"], data, limit):
+        fail(n, f"{item['path']}: {why}")
 
 
 def check(path):
@@ -57,14 +74,15 @@ def check(path):
             datetime.fromisoformat(e[key].replace("Z", "+00:00"))
         if e.get("skills") and e["kind"] != "pack":
             fail(n, "only a pack names skills")
-        cover = e.get("cover")
-        if cover:
-            if set(cover) != {"path", "sha256", "size"} or not re.match(r"^[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$", cover["path"]) \
-                    or not cover["path"].endswith((".webp", ".png")) or not 1 <= cover["size"] <= 512 * 1024:
-                fail(n, "bad cover")
-            data = (path.parent / cover["path"]).read_bytes()
-            if len(data) != cover["size"] or hashlib.sha256(data).hexdigest() != cover["sha256"]:
-                fail(n, "cover file differs from the list")
+        if e.get("cover"):
+            check_picture(n, path, e["cover"], {"path", "sha256", "size"}, pictures.COVER_LIMIT)
+        shots = e.get("screenshots", [])
+        if not isinstance(shots, list) or len(shots) > pictures.MAX_SCREENSHOTS:
+            fail(n, f"screenshots is not a list of at most {pictures.MAX_SCREENSHOTS}")
+        for shot in shots:
+            check_picture(n, path, shot, {"path", "sha256", "size", "caption"}, pictures.SCREENSHOT_LIMIT)
+            if "caption" in shot and not pictures.caption_ok(shot["caption"]):
+                fail(n, f"bad caption {shot['caption']!r}")
         if e["kind"] == "pack":
             assert all(NAME.match(s) for s in e["skills"]), n
     for m in index["verified"]:
