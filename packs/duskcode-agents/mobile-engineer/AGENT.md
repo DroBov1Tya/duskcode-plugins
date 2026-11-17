@@ -2,7 +2,7 @@
 name: mobile-engineer
 description: Mobile product behavior and platform integration, with Android, iOS and cross-platform specialists.
 entry: true
-links: [android-engineer, ios-engineer, cross-platform-mobile-engineer]
+links: [duskcode-agents/android-engineer, duskcode-agents/ios-engineer, duskcode-agents/cross-platform-mobile-engineer]
 source: Dusk Code
 tags: [mobile, product, platform]
 ---

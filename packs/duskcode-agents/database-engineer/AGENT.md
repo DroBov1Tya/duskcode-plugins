@@ -3,7 +3,7 @@ name: database-engineer
 description: Storage modeling, queries, transactions and safe schema evolution backed by actual database behavior.
 entry: false
 links: []
-skills: [test-driven-development]
+skills: [duskcode-engineering/test-driven-development]
 source: Dusk Code
 tags: [database, storage, transactions]
 ---

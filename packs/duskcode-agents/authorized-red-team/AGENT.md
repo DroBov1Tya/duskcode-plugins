@@ -2,8 +2,8 @@
 name: authorized-red-team
 description: Authorized attack-path assessment with domain specialists, bounded active validation and independent evidence.
 entry: true
-links: [web-security-specialist, api-security-specialist, mobile-security-specialist, cloud-security-specialist, ad-security-specialist, infrastructure-security-specialist]
-skills: [security-threat-model, security-assessment]
+links: [duskcode-agents/web-security-specialist, duskcode-agents/api-security-specialist, duskcode-agents/mobile-security-specialist, duskcode-agents/cloud-security-specialist, duskcode-agents/ad-security-specialist, duskcode-agents/infrastructure-security-specialist]
+skills: [openai/security-threat-model, duskcode-security/security-assessment]
 source: Dusk Code
 tags: [security, pentest, red-team]
 ---

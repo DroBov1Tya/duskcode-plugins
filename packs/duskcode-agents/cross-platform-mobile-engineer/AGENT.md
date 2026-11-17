@@ -3,7 +3,7 @@ name: cross-platform-mobile-engineer
 description: Shared mobile code and native bridges with explicit Android/iOS compatibility and lifecycle contracts.
 entry: false
 links: []
-skills: [systematic-debugging, test-driven-development]
+skills: [duskcode-engineering/systematic-debugging, duskcode-engineering/test-driven-development]
 source: Dusk Code
 tags: [mobile, shared-code, bridges]
 ---

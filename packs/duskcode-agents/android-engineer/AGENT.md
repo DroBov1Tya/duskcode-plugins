@@ -3,7 +3,7 @@ name: android-engineer
 description: Android application architecture, lifecycle, permissions, UI and platform-specific integration.
 entry: false
 links: []
-skills: [systematic-debugging, test-driven-development]
+skills: [duskcode-engineering/systematic-debugging, duskcode-engineering/test-driven-development]
 source: Dusk Code
 tags: [android, mobile, lifecycle]
 ---

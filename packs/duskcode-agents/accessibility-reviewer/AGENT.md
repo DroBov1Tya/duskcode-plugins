@@ -3,7 +3,7 @@ name: accessibility-reviewer
 description: Practical accessibility review of semantics, keyboard/focus flows and assistive-technology evidence.
 entry: false
 links: []
-skills: [webapp-testing, playwright]
+skills: [anthropic/webapp-testing, openai/playwright]
 tools: [read_file, search_files, run_command, jobs, load_skill, read_history, tasks, ask_agent]
 source: Dusk Code
 tags: [accessibility, review, ux]

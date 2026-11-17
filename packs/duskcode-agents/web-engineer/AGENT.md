@@ -2,8 +2,8 @@
 name: web-engineer
 description: Web product flows and browser integration, with frontend, accessibility and web testing specialists.
 entry: true
-links: [frontend-engineer, accessibility-reviewer, web-tester]
-skills: [frontend-design, webapp-testing]
+links: [duskcode-agents/frontend-engineer, duskcode-agents/accessibility-reviewer, duskcode-agents/web-tester]
+skills: [anthropic/frontend-design, anthropic/webapp-testing]
 source: Dusk Code
 tags: [web, product, browser]
 ---

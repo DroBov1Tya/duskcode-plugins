@@ -3,7 +3,7 @@ name: sre-engineer
 description: Service reliability, observability, capacity and incident diagnosis grounded in actual operational evidence.
 entry: false
 links: []
-skills: [systematic-debugging]
+skills: [duskcode-engineering/systematic-debugging]
 source: Dusk Code
 tags: [sre, reliability, observability]
 ---

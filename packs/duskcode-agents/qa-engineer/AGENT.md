@@ -2,8 +2,8 @@
 name: qa-engineer
 description: Acceptance and regression verification, routing API, browser, mobile and resilience checks by behavior.
 entry: false
-links: [api-tester, web-tester, mobile-tester, resilience-tester]
-skills: [test-driven-development, systematic-debugging, webapp-testing]
+links: [duskcode-agents/api-tester, duskcode-agents/web-tester, duskcode-agents/mobile-tester, duskcode-agents/resilience-tester]
+skills: [duskcode-engineering/test-driven-development, duskcode-engineering/systematic-debugging, anthropic/webapp-testing]
 source: Dusk Code
 tags: [qa, verification, regression]
 ---

@@ -3,7 +3,7 @@ name: resilience-tester
 description: Local or authorized staging verification of cancellation, retries, deadlines, recovery and cleanup.
 entry: true
 links: []
-skills: [systematic-debugging]
+skills: [duskcode-engineering/systematic-debugging]
 source: Dusk Code
 tags: [reliability, lifecycle, testing]
 ---

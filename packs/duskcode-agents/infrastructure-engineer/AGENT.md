@@ -2,7 +2,7 @@
 name: infrastructure-engineer
 description: Infrastructure and delivery design, with DevOps, reliability and build/release specialists.
 entry: true
-links: [devops-engineer, sre-engineer, build-release-engineer]
+links: [duskcode-agents/devops-engineer, duskcode-agents/sre-engineer, duskcode-agents/build-release-engineer]
 source: Dusk Code
 tags: [infrastructure, operations, delivery]
 ---
