@@ -21,17 +21,27 @@ next list; nothing reaches users before that.
   may appear as text. A pack of a vendor's skills is not endorsed by that vendor.
 - `covers/<name>.webp` or `.png`, at most 512 KiB, 1200x630. Keep the Workshop look: dark
   background, one accent colour, geometric shapes, the name as large text.
+- One ratio, 40:21 (1200x630), everywhere a cover is drawn, in the app and on the site.
+  The picture is cropped to fill that frame, never stretched, so a cover of another shape
+  loses its edges.
+- Keep the name and the drawing at least 24 px (at 1200 wide) from every edge: the frame's
+  corners are rounded and a frame a pixel off the ratio crops a little.
+- Every item here has a cover; `scripts/publish.py` refuses one without. Where a cover
+  cannot be fetched or fails its checks, duskcode and the site draw a plain placeholder
+  with the item's kind instead.
 - Keep the source as `covers/src/<name>.svg` with generic fonts only (no font files).
   `scripts/make-covers.py` and `scripts/render-covers.sh` show how the existing ones are made.
 
 ## Screenshots
 
-Optional, and shown as a gallery in the item's detail window, in the order listed.
+Optional, and shown as a gallery with the item's details, in the order listed.
 
 - Up to 8 per item, in `screenshots/<item>/`, each a `.png` or `.webp` of at most 1 MiB
   whose bytes are that format (duskcode checks the first bytes, not only the name).
-- 16:9 or 16:10; 1600x1000 is recommended. WebP keeps a shot of an interface well under
-  the limit.
+- 16:10, at most 3200x2000 pixels; 1600x1000 is recommended. The gallery's frame is 16:10
+  and fits a shot whole, so a shot of another shape (16:9 included) gets bars at its sides
+  or above and below; it is never cropped or stretched. WebP keeps a shot of an interface
+  well under the limit.
 - List them in `catalog.yml` with a short caption (one line, at most 120 characters, no
   control characters):
 
@@ -51,6 +61,15 @@ Optional, and shown as a gallery in the item's detail window, in the order liste
   `site/screenshots/<item>/` and names its size and SHA-256 in the signed list;
   `scripts/check-index.py` checks the list's screenshots again. The text screenshots of
   the duskcode packs are rendered from their files by `scripts/render-screenshots.py`.
+
+## Stars
+
+`stars` in the list is the star count of a GitHub **repository**, read by
+`scripts/publish.py` when it signs the list: this repository's for duskcode's own items, and
+the repository named by `stars_repo` in `catalog.yml` for a vendor's pack. So every
+duskcode item carries the same number, and a vendor's pack carries the stars of that
+vendor's whole repository. It is not a count of the item, not a rating and not installs;
+nobody rates or counts items in the Workshop. A publisher does not set it by hand.
 
 ## A plugin
 
