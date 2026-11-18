@@ -29,7 +29,7 @@ from datetime import datetime, timedelta, timezone
 
 import yaml
 
-REPO = "DroBov1Tya/duskcode-plugins"
+REPO = "DroBov1Tya/duskcode-workshop"
 KEYCHAIN_SERVICE = "duskcode-plugins-signing"
 KEYCHAIN_ACCOUNT = "ed25519"
 ROOT = pathlib.Path(__file__).resolve().parent.parent

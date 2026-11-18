@@ -2,12 +2,12 @@
 
 The plugin store of [Dusk Code](https://github.com/DroBov1Tya/dusk_code), the
 open-source coding agent in Rust: its plugins, their signed packages and the
-[Workshop](https://drobov1tya.github.io/duskcode-plugins/) page. In the app they are
+[Workshop](https://drobov1tya.github.io/duskcode-workshop/) page. In the app they are
 under Plugins, Workshop, one click to install.
 
 [Dusk Code](https://github.com/DroBov1Tya/dusk_code) ·
 [Site](https://drobov1tya.github.io/dusk_code/) ·
-[Workshop](https://drobov1tya.github.io/duskcode-plugins/) ·
+[Workshop](https://drobov1tya.github.io/duskcode-workshop/) ·
 [Writing a plugin](https://github.com/DroBov1Tya/dusk_code/blob/main/docs/plugins.md)
 
 Contributions are welcome: a new plugin is a pull request with its folder under
