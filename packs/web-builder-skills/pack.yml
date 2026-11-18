@@ -1,0 +1,8 @@
+name: web-builder-skills
+title: "Skills for Claude"
+description: "Skills for frontend design, building MCP servers and testing web apps, written by Anthropic for Claude and published under Apache-2.0. Markdown-only; executable helpers removed. Not affiliated with or endorsed by Anthropic."
+vendor: Anthropic
+kind: skills
+items: [frontend-design, mcp-builder, webapp-testing]
+license: Apache-2.0
+upstream: https://github.com/anthropics/skills

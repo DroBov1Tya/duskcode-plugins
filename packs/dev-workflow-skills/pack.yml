@@ -1,0 +1,8 @@
+name: dev-workflow-skills
+title: "Skills for GPT"
+description: "Skills for GitHub review and CI fixing, Jupyter notebooks, browser automation with Playwright, security best practices and threat modeling, written by OpenAI for Codex and published under Apache-2.0. Markdown-only; executable helpers removed. Not affiliated with or endorsed by OpenAI."
+vendor: OpenAI
+kind: skills
+items: [gh-address-comments, gh-fix-ci, jupyter-notebook, playwright, security-best-practices, security-threat-model]
+license: Apache-2.0
+upstream: https://github.com/openai/skills

@@ -1,0 +1,23 @@
+name: ios-simulator
+version: 1.0.0
+description: "Xcode's iOS Simulator beside your work, and a tool for the agent to tap, type and look at it."
+platforms: [macos]
+# The panel is drawn by the desktop app; the agent's tool works in every client.
+clients: [gui]
+permissions:
+  # simctl through xcrun lists, boots and pictures devices; AXe touches, types and streams.
+  exec: [xcrun, axe]
+  # The simulator's devices and their data.
+  read: [~/Library/Developer]
+mcp:
+  ios-simulator:
+    command: ./bin/ios-simulator
+    args: [mcp]
+ui:
+  command: [./bin/ios-simulator, panel]
+  parts:
+    - id: phone
+      title: iOS Simulator
+      icon: icons/phone.svg
+      place: header
+      opens: right_panel

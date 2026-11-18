@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-9Yu0blkfZRRwHwFQIoV5PtVn0CnbckTZHM41dL02q5A='; style-src 'sha256-/SZVBr9+oNOFM2MPszn1MpoYdDSyvDxs+DXP2ywKb2M='; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>duskcode Workshop</title>
+<meta name="description" content="Plugins, skills, packs and agents for duskcode, checked and signed. Install them from Plugins, Workshop in the app.">
+<link rel="icon" href="img/mark-64.png" type="image/png">
+<style>
+:root {
+  --bg: #0e0f18; --panel: #13141f; --surface: #1b1c2a; --raised: #262839; --hover: #20212f;
+  --text: #efedf7; --soft: #aeadc4; --muted: #9695ae; --line: rgba(239,237,247,.08);
+  --accent: #b4a0f8; --on-accent: #13121d; --amber: #ecc46e; --info: #7fb4f5;
+  --meta: 12.5px; --small: 13.75px; --body: 15.2px;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+svg { display: block; flex: none; }
+.wrap { max-width: 1248px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 900px) { .wrap { padding: 0 32px; } }
+
+/* The sky: violet going to the last light at the horizon, and a few stars. */
+.sky {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(120% 70% at 50% 108%, rgba(236,160,90,.30), rgba(180,110,170,.14) 38%, transparent 70%),
+    linear-gradient(#0b0b16, #14132a 60%, #1a1630);
+  border-bottom: 1px solid var(--line);
+}
+.stars { position: absolute; inset: 0; pointer-events: none; }
+.stars i {
+  position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #dcd6ff;
+  opacity: .5; animation: twinkle 4s ease-in-out infinite;
+}
+@keyframes twinkle { 50% { opacity: .12; } }
+
+nav { display: flex; align-items: center; gap: 8px 22px; padding: 6px 0; position: relative; }
+nav a { display: inline-flex; align-items: center; min-height: 44px; }
+nav .brand { font-weight: 650; font-size: 18px; color: var(--text); margin-right: auto; gap: 10px; }
+nav .brand img { width: 28px; height: 28px; }
+nav .brand b { color: var(--accent); font-weight: 650; }
+nav a.link { color: var(--soft); font-size: 15px; }
+@media (max-width: 560px) { nav a.hide { display: none; } }
+
+.hero { position: relative; padding: 48px 0 40px; text-align: center; }
+h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 18px; font-weight: 680; }
+h1 span { color: var(--amber); }
+.lead { color: var(--soft); font-size: clamp(17px, 2.2vw, 20px); max-width: 640px; margin: 0 auto 28px; }
+.search {
+  display: flex; max-width: 620px; margin: 0 auto; background: rgba(14,15,24,.72);
+  border: 1px solid var(--line); border-radius: 12px; padding: 4px 6px 4px 18px;
+}
+.search:focus-within { border-color: var(--accent); }
+.search input {
+  flex: 1; min-width: 0; min-height: 44px; background: none; border: 0; color: var(--text);
+  font: 16px inherit; padding: 10px 0; outline: none;
+}
+.search input::placeholder { color: var(--muted); }
+.count { color: var(--muted); font-size: 14px; margin: 12px 0 0; min-height: 22px; }
+
+/* The install path: what to do in the app, since this page installs nothing. */
+.install {
+  max-width: 760px; margin: 24px auto 0; text-align: left;
+  background: rgba(14,15,24,.72); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px;
+}
+.install h2 { font-size: var(--small); font-weight: 600; color: var(--text); margin: 0 0 8px; letter-spacing: 0; }
+.install ol { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 8px; }
+.install li { counter-increment: step; display: flex; gap: 10px; align-items: baseline; color: var(--soft); font-size: var(--small); line-height: 1.45; }
+.install li::before {
+  content: counter(step); flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--raised);
+  color: var(--accent); font-weight: 650; font-size: 12px; display: grid; place-items: center; transform: translateY(-1px);
+}
+.install b { color: var(--text); font-weight: 600; }
+.install p { margin: 10px 0 0; color: var(--muted); font-size: var(--meta); }
+@media (min-width: 760px) { .install ol { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+
+section { padding: 48px 0 64px; border-bottom: 1px solid var(--line); }
+h2 { font-size: clamp(26px, 3.6vw, 34px); letter-spacing: -.015em; margin: 0 0 10px; font-weight: 650; }
+.sub { color: var(--soft); max-width: 640px; margin: 0 0 36px; }
+
+/* One grid, one card: equal heights in a row whatever the text (3.4, 3.5, 7). */
+.items { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 600px) { .items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .items { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .items { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.card {
+  position: relative; display: flex; flex-direction: column; min-width: 0;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  transition: border-color 160ms var(--ease), background 160ms var(--ease);
+}
+.card:hover { border-color: rgba(180,160,248,.45); background: var(--hover); }
+.card:active { border-color: rgba(180,160,248,.6); background: var(--surface); }
+/* The cover carries its own top radius inside the 1px border. */
+.frame { aspect-ratio: 40 / 21; border-radius: 11px 11px 0 0; overflow: hidden; background: var(--raised); }
+.frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.ph { width: 100%; height: 100%; display: grid; place-items: center; background: var(--raised); box-shadow: inset 0 0 0 1px var(--line); color: rgba(150,149,174,.6); border-radius: inherit; }
+.body { display: flex; flex-direction: column; gap: 4px; padding: 12px 12px 8px; }
+.name { display: flex; align-items: center; gap: 8px; height: 22px; }
+.name h3 { flex: 1; min-width: 0; margin: 0; font-size: var(--body); font-weight: 600; line-height: 22px; }
+.open {
+  display: block; max-width: 100%; padding: 0; border: 0; background: none; color: inherit; font: inherit;
+  text-align: left; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.open::after { content: ""; position: absolute; inset: -1px; border-radius: 12px; }
+.open:focus-visible { outline: none; }
+.open:focus-visible::after { outline: 2px solid var(--accent); outline-offset: 2px; }
+.kind, .meta { font-size: var(--meta); color: var(--muted); white-space: nowrap; }
+.desc {
+  margin: 0; height: 40px; font-size: var(--small); line-height: 20px; color: var(--muted); overflow: hidden;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow-wrap: anywhere;
+}
+.foot { display: flex; align-items: center; gap: 8px; height: 32px; margin-top: 4px; min-width: 0; }
+.foot .meta { margin-left: auto; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.tier { display: inline-flex; align-items: center; gap: 4px; font-size: var(--meta); font-weight: 500; white-space: nowrap; }
+.t-official { color: var(--accent); }
+.t-community { color: var(--muted); }
+.empty { grid-column: 1 / -1; color: var(--muted); margin: 0; }
+
+/* An item's details open over the page, so a card never grows. */
+dialog {
+  width: min(640px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 0; overflow: auto;
+  background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 12px;
+}
+dialog::backdrop { background: rgba(5,5,10,.72); }
+.sheet { display: flex; flex-direction: column; gap: 14px; padding: 0 20px 20px; }
+.sheet .frame { flex: none; border-radius: 8px; }
+.bar { position: sticky; top: 0; z-index: 1; display: flex; justify-content: flex-end; margin: 0 -20px; padding: 8px; background: var(--panel); }
+.sheet h2 { font-size: 24px; line-height: 1.2; margin: 0; overflow-wrap: anywhere; }
+.sheet h2 code { font: 14px var(--mono); color: var(--amber); margin-left: 8px; }
+.sheet h3 { margin: 0 0 4px; font-size: var(--small); font-weight: 600; color: var(--soft); }
+.sheet p, .sheet li { margin: 0; color: var(--soft); font-size: 15px; overflow-wrap: anywhere; }
+.sheet ul { margin: 0; padding-left: 18px; }
+.facts { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: var(--meta); color: var(--muted); }
+.how-to { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.how-to p { flex: 1 1 240px; }
+.how-to code { font: 14px var(--mono); color: var(--text); }
+.btn {
+  min-height: 44px; min-width: 88px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--line);
+  background: transparent; color: var(--text); font: 500 var(--small)/1 inherit; cursor: pointer;
+}
+.btn:hover { background: var(--raised); }
+.source { font-size: 15px; }
+
+.points { display: grid; gap: 28px 36px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.points h3 { margin: 0 0 6px; font-size: 17px; font-weight: 620; }
+.points h3::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 10px; vertical-align: 2px; }
+.points p { margin: 0; color: var(--soft); font-size: 15.5px; }
+.noscript { color: var(--soft); max-width: 760px; margin: 0; }
+
+footer { padding: 34px 0 48px; color: var(--muted); font-size: 14.5px; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+footer span { margin-right: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stars i { animation: none; }
+  html { scroll-behavior: auto; }
+  .card { transition: none; }
+}
+</style>
+</head>
+<body>
+<header class="sky">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav aria-label="Site">
+      <a class="brand" href="./"><img src="img/mark-64.png" width="28" height="28" alt=""><span><b>Dusk</b>code Workshop</span></a>
+      <a class="link hide" href="#how">How it works</a>
+      <a class="link hide" href="https://drobov1tya.github.io/dusk_code/">duskcode</a>
+      <a class="link" href="https://github.com/DroBov1Tya/duskcode-workshop">GitHub</a>
+    </nav>
+    <div class="hero">
+      <h1>The <span>Workshop</span> of duskcode</h1>
+      <p class="lead">Plugins, skills, packs and agents. A plugin runs in its own sandbox, sees none of your keys and reaches only the sites it names; skills and agents are text.</p>
+      <label class="search" hidden><input id="search" type="search" placeholder="Search the Workshop" autocomplete="off" aria-label="Search the Workshop"></label>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="install" role="group" aria-labelledby="install-title">
+        <h2 id="install-title">Install in duskcode</h2>
+        <ol>
+          <li><span>Open <b>Plugins</b>, then <b>Workshop</b>.</span></li>
+          <li><span>Search the item's name.</span></li>
+          <li><span>Read what it may access, then <b>Install</b>.</span></li>
+        </ol>
+        <p>This page installs nothing. The app checks the signed list and every package itself.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section aria-label="Items">
+  <div class="wrap">
+    <noscript><p class="noscript">This is the Workshop of duskcode: plugins, skills, packs and agents on a list signed with a key built into duskcode. Drawing the list here needs JavaScript; the list itself is <a href="index.json">index.json</a>. To install an item, open duskcode, go to Plugins, then Workshop, and search its name.</p></noscript>
+    <div class="items" id="items"></div>
+  </div>
+</section>
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">The app checks every item before it installs one.</p>
+    <div class="points">
+      <div><h3>Signed list</h3><p>The list of this page is signed with a key built into duskcode. A list changed on the way is refused.</p></div>
+      <div><h3>Checked package</h3><p>Every package has its size and SHA-256 in the signed list, and unpacks only into its own folder.</p></div>
+      <div><h3>What it may do</h3><p>You see a plugin's permissions before it is installed. An update that asks for more is switched off until you allow it.</p></div>
+      <div><h3>Your keys stay yours</h3><p>A plugin's own token is put into its requests by duskcode, only for the site it was given for.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <span>duskcode Workshop · MIT · no trackers, no third-party scripts or fonts</span>
+    <a href="https://github.com/DroBov1Tya/duskcode-workshop">Source</a>
+    <a href="https://github.com/DroBov1Tya/dusk_code/blob/main/docs/plugins.md">Writing a plugin</a>
+  </footer>
+</div>
+
+<dialog id="item" aria-labelledby="item-name"></dialog>
+
+<script>
+(function () {
+  var sky = document.querySelector('.stars'), seed = 7;
+  function next() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  for (var n = 0; n < 46; n++) {
+    var star = document.createElement('i'), big = next() > 0.86;
+    star.style.left = (next() * 100) + '%';
+    star.style.top = (next() * 58) + '%';
+    star.style.animationDelay = (-next() * 4) + 's';
+    if (big) { star.style.width = star.style.height = '3px'; star.style.opacity = '.8'; }
+    sky.appendChild(star);
+  }
+})();
+
+// The list is third-party data: every value goes in as text, never as markup.
+var SYSTEMS = { macos: 'macOS', linux: 'Linux', windows: 'Windows' };
+var CLIENTS = { gui: 'Desktop', tui: 'Terminal', web: 'Browser' };
+var KINDS = { plugin: 'Plugin', pack: 'Pack', skill: 'Skill', agent: 'Agent' };
+var FORMATS = [1, 2];
+var COVER = /^covers\/[A-Za-z0-9._-]+\.(webp|png)$/;
+// "Official" is true only for the list this address serves: the one signed with the key
+// built into duskcode. A copy of the page on another host serves another list.
+var OFFICIAL_PAGE = 'https://drobov1tya.github.io/duskcode-workshop/';
+var SVG = 'http://www.w3.org/2000/svg';
+// Constant glyphs, 16 px tier marks and 40 px placeholders: [viewBox size, filled, path].
+var GLYPHS = {
+  official: [16, true, 'M8 1 2.5 3v4.6c0 3.2 2.2 6 5.5 7.4 3.3-1.4 5.5-4.2 5.5-7.4V3L8 1Zm-.8 9.6L4.6 8l1-1 1.6 1.6 3.3-3.3 1 1-4.3 4.3Z'],
+  community: [16, false, 'M6 3a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM1.5 13.5c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4M10.5 3.2a2.5 2.5 0 0 1 0 4.6M12 9.8c1.5.5 2.5 1.8 2.5 3.7'],
+  plugin: [40, false, 'M15 6h10v7h7v10h-5a4 4 0 1 0 0 8h5v3H8V13h7V6Z'],
+  pack: [40, false, 'M6 13 20 6l14 7-14 7L6 13Zm0 7 14 7 14-7M6 27l14 7 14-7'],
+  skill: [40, false, 'M11 5h13l6 6v24H11V5Zm13 0v6h6M16 19h9M16 25h9'],
+  agent: [40, false, 'M20 8a6 6 0 1 1 0 12 6 6 0 0 1 0-12ZM8 34c0-7 5.4-11 12-11s12 4 12 11']
+};
+var TIERS = { official: 'Official', community: 'Community' };
+var listTier = tierFor(location.origin + location.pathname);
+var all = [];
+var returnTo = null;
+
+function tierFor(address) {
+  return address.replace(/index\.html$/, '') === OFFICIAL_PAGE ? 'official' : 'community';
+}
+
+// Control characters and bidi overrides could hide or reorder what a listing says.
+var HIDDEN = /[\u0000-\u001f\u007f-\u009f\u202a-\u202e\u2066-\u2069]/g;
+
+function el(tag, className, text) {
+  var node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = String(text).replace(/[\t\n\r]+/g, ' ').replace(HIDDEN, '');
+  return node;
+}
+
+function glyph(name) {
+  var g = GLYPHS[name], size = g[0], svg = document.createElementNS(SVG, 'svg');
+  var path = document.createElementNS(SVG, 'path');
+  svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
+  svg.setAttribute('width', size);
+  svg.setAttribute('height', size);
+  svg.setAttribute('aria-hidden', 'true');
+  path.setAttribute('d', g[2]);
+  if (g[1]) {
+    path.setAttribute('fill', 'currentColor');
+  } else {
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke', 'currentColor');
+    path.setAttribute('stroke-width', size === 40 ? '2' : '1.5');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+  }
+  svg.appendChild(path);
+  return svg;
+}
+
+// Only the map's own keys: a listing's word must not reach Object.prototype.
+function own(map, key) { return Object.prototype.hasOwnProperty.call(map, key) ? map[key] : undefined; }
+
+function arr(value) { return Array.isArray(value) ? value : []; }
+
+function kindOf(item) { return own(KINDS, item.kind) ? item.kind : 'plugin'; }
+
+function tierMark() {
+  var mark = el('span', 'tier t-' + listTier);
+  mark.appendChild(glyph(listTier));
+  mark.appendChild(el('span', '', TIERS[listTier]));
+  return mark;
+}
+
+function placeholder(item) {
+  var box = el('div', 'ph');
+  box.setAttribute('role', 'img');
+  box.setAttribute('aria-label', 'No cover');
+  box.appendChild(glyph(kindOf(item)));
+  return box;
+}
+
+// A cover only from the list's own covers/ folder, as an image; else the placeholder.
+function cover(item) {
+  var frame = el('div', 'frame'), path = item.cover && item.cover.path;
+  if (typeof path === 'string' && COVER.test(path)) {
+    var picture = el('img');
+    picture.src = path;
+    picture.alt = '';
+    picture.width = 1200;
+    picture.height = 630;
+    picture.loading = 'lazy';
+    picture.decoding = 'async';
+    picture.addEventListener('error', function () { frame.replaceChildren(placeholder(item)); });
+    frame.appendChild(picture);
+  } else {
+    frame.appendChild(placeholder(item));
+  }
+  return frame;
+}
+
+function card(item) {
+  var node = el('article', 'card');
+  node.appendChild(cover(item));
+  var body = el('div', 'body'), name = el('div', 'name'), title = el('h3');
+  var open = el('button', 'open', item.name);
+  open.type = 'button';
+  open.title = open.textContent;
+  open.setAttribute('aria-haspopup', 'dialog');
+  open.addEventListener('click', function () { details(item, open); });
+  title.appendChild(open);
+  name.appendChild(title);
+  name.appendChild(el('span', 'kind', KINDS[kindOf(item)]));
+  body.appendChild(name);
+  body.appendChild(el('p', 'desc', item.description || ''));
+  var foot = el('div', 'foot');
+  foot.appendChild(tierMark());
+  if (item.category) foot.appendChild(el('span', 'meta', item.category));
+  body.appendChild(foot);
+  node.appendChild(body);
+  return node;
+}
+
+function permissions(p) {
+  var lines = [];
+  arr(p.network).forEach(function (o) { lines.push('connect to ' + o); });
+  arr(p.exec).forEach(function (x) { lines.push('run ' + x); });
+  arr(p.read).forEach(function (f) { lines.push('read ' + f); });
+  arr(p.keys).forEach(function (k) {
+    k = k || {};
+    var to = arr(k.origins).join(', ');
+    lines.push(k.handed ? 'read your ' + k.name + ' itself, to use with ' + to
+                        : 'use your ' + k.name + ' with ' + to + '; it never sees the key');
+  });
+  return lines;
+}
+
+function consent(item) {
+  var lines = permissions(item.permissions || {});
+  arr(item.providers).forEach(function (u) { lines.push('send your chats to ' + u + ' when you pick its model'); });
+  return lines;
+}
+
+function list(lines) {
+  var node = el('ul');
+  lines.forEach(function (line) { node.appendChild(el('li', '', line)); });
+  return node;
+}
+
+function block(heading, content) {
+  var node = el('div');
+  node.appendChild(el('h3', '', heading));
+  node.appendChild(typeof content === 'string' ? el('p', '', content) : content);
+  return node;
+}
+
+function details(item, from) {
+  returnTo = from;
+  var dialog = document.getElementById('item'), sheet = el('div', 'sheet'), kind = kindOf(item);
+  var close = el('button', 'btn', 'Close');
+  close.type = 'button';
+  close.addEventListener('click', function () { dialog.close(); });
+  var bar = el('div', 'bar');
+  bar.appendChild(close);
+  sheet.appendChild(bar);
+  sheet.appendChild(cover(item));
+  var title = el('h2', '', item.name);
+  title.id = 'item-name';
+  title.appendChild(el('code', '', item.version || ''));
+  sheet.appendChild(title);
+  var facts = el('div', 'facts'), items = arr(item.skills);
+  facts.appendChild(tierMark());
+  facts.appendChild(el('span', '', KINDS[kind] + (kind === 'pack' ? ' of ' + items.length : '')));
+  if (item.category) facts.appendChild(el('span', '', item.category));
+  sheet.appendChild(facts);
+  sheet.appendChild(el('p', '', item.description || ''));
+  if (kind === 'plugin') {
+    var systems = arr(item.platforms).map(function (s) { return own(SYSTEMS, s) || s; });
+    var clients = arr(item.clients).map(function (c) { return own(CLIENTS, c) || c; });
+    sheet.appendChild(block('Runs on', (systems.length ? systems.join(', ') : 'Every system') + ' · ' + (clients.length ? clients.join(', ') : 'every client')));
+    var lines = consent(item);
+    sheet.appendChild(block('What it may access', lines.length ? list(lines) : 'Nothing beyond its own folder.'));
+  } else {
+    sheet.appendChild(block('What it holds', items.length ? list(items) : 'Text only.'));
+    sheet.appendChild(block('What it may access', 'Nothing: it is text the model reads and runs nothing.'));
+  }
+  sheet.appendChild(installStep(item.name));
+  if (/^https:\/\//.test(item.homepage || '')) {
+    var source = el('a', 'source', 'Source and notes');
+    source.href = item.homepage;
+    source.rel = 'noopener noreferrer';
+    sheet.appendChild(source);
+  }
+  dialog.replaceChildren(sheet);
+  dialog.showModal();
+  close.focus();
+}
+
+function installStep(name) {
+  var box = el('div', 'how-to'), text = el('p', '', 'In duskcode: Plugins, then Workshop, and search ');
+  text.appendChild(el('code', '', name));
+  box.appendChild(text);
+  var copy = el('button', 'btn', 'Copy name');
+  copy.type = 'button';
+  copy.addEventListener('click', function () {
+    navigator.clipboard.writeText(String(name).replace(HIDDEN, '')).then(
+      function () { copy.textContent = 'Copied'; },
+      function () { copy.textContent = 'Copy failed'; });
+  });
+  box.appendChild(copy);
+  return box;
+}
+
+function show() {
+  var words = document.getElementById('search').value.trim().toLowerCase();
+  var shown = all.filter(function (p) {
+    var text = [p.name, p.description, p.category, KINDS[kindOf(p)]].concat(arr(p.tags)).join(' ');
+    return !words || text.toLowerCase().indexOf(words) !== -1;
+  });
+  var grid = document.getElementById('items');
+  grid.replaceChildren.apply(grid, shown.map(card));
+  if (!shown.length) grid.appendChild(el('p', 'empty', all.length ? 'Nothing matches.' : 'No items yet.'));
+  document.getElementById('count').textContent = shown.length + ' of ' + all.length + ' items';
+}
+
+function failed(text) {
+  document.getElementById('items').replaceChildren(el('p', 'empty', text));
+}
+
+var dialog = document.getElementById('item');
+// A click on the backdrop lands on the dialog itself and closes it.
+dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
+// Focus goes back to the card that opened it, however the dialog was opened.
+dialog.addEventListener('close', function () { if (returnTo && returnTo.isConnected) returnTo.focus(); });
+document.querySelector('.search').hidden = false;
+document.getElementById('search').addEventListener('input', show);
+
+fetch('index.json', { cache: 'no-cache' })
+  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(function (index) {
+    if (FORMATS.indexOf(index.format) === -1) return failed('This list is in a format this page does not read.');
+    all = (Array.isArray(index.plugins) ? index.plugins : [])
+      .filter(function (p) { return p && typeof p.name === 'string'; })
+      .sort(function (a, b) { return a.name < b.name ? -1 : 1; });
+    show();
+  })
+  .catch(function () { failed('The list did not load. Try again in a moment.'); });
+</script>
+</body>
+</html>

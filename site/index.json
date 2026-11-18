@@ -1,0 +1,312 @@
+{
+  "format": 2,
+  "serial": 3,
+  "expires": "2027-05-17T13:29:25Z",
+  "plugins": [
+    {
+      "name": "ios-simulator",
+      "version": "1.0.0",
+      "kind": "plugin",
+      "description": "Xcode's iOS Simulator beside your work, and a tool for the agent to tap, type and look at it.",
+      "platforms": [
+        "macos"
+      ],
+      "clients": [
+        "gui"
+      ],
+      "permissions": {
+        "exec": [
+          "xcrun",
+          "axe"
+        ],
+        "read": [
+          "~/Library/Developer"
+        ]
+      },
+      "homepage": "https://github.com/DroBov1Tya/duskcode-workshop/tree/main/plugins/ios-simulator",
+      "providers": [],
+      "downloads": [
+        {
+          "os": "macos",
+          "arch": "aarch64",
+          "url": "https://github.com/DroBov1Tya/duskcode-plugins/releases/download/ios-simulator-v1.0.0/ios-simulator-1.0.0-macos-aarch64.tar.gz",
+          "sha256": "e7539681d0351ab7b89175b04855588c7174633008735dbe6f0f7a26cdd3ecdf",
+          "size": 1461225
+        }
+      ],
+      "category": "devices",
+      "tags": [
+        "ios",
+        "simulator",
+        "xcode",
+        "panel"
+      ],
+      "cover": {
+        "path": "covers/ios-simulator.webp",
+        "sha256": "18e63ddb106c9a3e466be82ceb6dc38bfdf2ff60dc1191a45a8083afd032fc88",
+        "size": 18310
+      },
+      "created": "2026-11-15T07:13:16Z",
+      "updated": "2026-11-16T05:49:29Z"
+    },
+    {
+      "name": "telegram",
+      "version": "1.0.0",
+      "kind": "plugin",
+      "description": "Talk to duskcode from Telegram: messages, answers, questions and approvals.",
+      "platforms": [
+        "macos"
+      ],
+      "clients": [],
+      "permissions": {
+        "network": [
+          "https://api.telegram.org"
+        ],
+        "keys": [
+          {
+            "name": "token",
+            "origins": [
+              "https://api.telegram.org"
+            ],
+            "handed": true
+          }
+        ]
+      },
+      "homepage": "https://github.com/DroBov1Tya/duskcode-workshop/tree/main/plugins/telegram",
+      "providers": [],
+      "downloads": [
+        {
+          "os": "macos",
+          "arch": "aarch64",
+          "url": "https://github.com/DroBov1Tya/duskcode-plugins/releases/download/telegram-v1.0.0/telegram-1.0.0-macos-aarch64.tar.gz",
+          "sha256": "be7843f2f607753e17d550aacd91af998f39cff0aad56929deab09a4ca117263",
+          "size": 2773848
+        }
+      ],
+      "category": "chat",
+      "tags": [
+        "telegram",
+        "bot",
+        "remote"
+      ],
+      "cover": {
+        "path": "covers/telegram.webp",
+        "sha256": "ab349537ab9d791d17cdc547d98cda04a81b2b605d0db82dff1cc280c986f776",
+        "size": 14984
+      },
+      "created": "2026-11-14T17:12:19Z",
+      "updated": "2026-11-14T17:12:19Z"
+    },
+    {
+      "name": "vphone",
+      "version": "1.0.0",
+      "kind": "plugin",
+      "description": "A vphone virtual iPhone beside your work, and a tool for the agent to tap, type and look at it.",
+      "platforms": [
+        "macos"
+      ],
+      "clients": [
+        "gui"
+      ],
+      "permissions": {
+        "exec": [
+          "vphone-launchpad-cli"
+        ],
+        "sockets": [
+          "~/.vphone",
+          "~/Library/Application Support/vphone-launchpad"
+        ],
+        "read": [
+          "~/.vphone"
+        ]
+      },
+      "homepage": "https://github.com/DroBov1Tya/duskcode-workshop/tree/main/plugins/vphone",
+      "providers": [],
+      "downloads": [
+        {
+          "os": "macos",
+          "arch": "aarch64",
+          "url": "https://github.com/DroBov1Tya/duskcode-plugins/releases/download/vphone-v1.0.0/vphone-1.0.0-macos-aarch64.tar.gz",
+          "sha256": "50be68eccbea170744eb69bc93d779b8bc45649ead9b5e11f2245db37318cd3b",
+          "size": 1478676
+        }
+      ],
+      "category": "devices",
+      "tags": [
+        "ios",
+        "virtual-device",
+        "panel"
+      ],
+      "cover": {
+        "path": "covers/vphone.webp",
+        "sha256": "4250f2af88ae616c2632e5b7943df3a341847b3e6303777a0bd3c6be41b0d7f1",
+        "size": 18238
+      },
+      "created": "2026-11-15T07:13:16Z",
+      "updated": "2026-11-16T05:49:29Z"
+    },
+    {
+      "name": "anthropic",
+      "version": "1.20261117.0",
+      "kind": "pack",
+      "description": "Skills by Anthropic: frontend design, building MCP servers and testing web apps. Markdown-only; executable helpers removed.",
+      "homepage": "https://github.com/DroBov1Tya/duskcode-workshop/tree/main/packs/anthropic",
+      "downloads": [
+        {
+          "os": "any",
+          "arch": "any",
+          "url": "https://github.com/DroBov1Tya/duskcode-workshop/releases/download/anthropic-v1.20261117.0/anthropic-1.20261117.0.tar.gz",
+          "sha256": "c8b8c515f72d6a5831710e3ffa029823e8f032fa4ee68d48db3ba68d849a8b7b",
+          "size": 50131
+        }
+      ],
+      "skills": [
+        "frontend-design",
+        "mcp-builder",
+        "webapp-testing"
+      ],
+      "category": "design",
+      "tags": [
+        "frontend",
+        "mcp",
+        "vendor"
+      ],
+      "cover": {
+        "path": "covers/anthropic.webp",
+        "sha256": "2fd7f462db9b2c7f56135778ee86cd095166e6d14204565b154fd7dada844fd2",
+        "size": 15210
+      },
+      "created": "2026-11-17T16:15:45Z",
+      "updated": "2026-11-17T16:15:45Z"
+    },
+    {
+      "name": "duskcode-engineering",
+      "version": "1.20261117.0",
+      "kind": "pack",
+      "description": "Habits for sound engineering work: design patterns, domain structure, a project tree, spikes, systematic debugging and test-driven development.",
+      "homepage": "https://github.com/DroBov1Tya/duskcode-workshop/tree/main/packs/duskcode-engineering",
+      "downloads": [
+        {
+          "os": "any",
+          "arch": "any",
+          "url": "https://github.com/DroBov1Tya/duskcode-workshop/releases/download/duskcode-engineering-v1.20261117.0/duskcode-engineering-1.20261117.0.tar.gz",
+          "sha256": "52dd9254d12753b4e9d80787293bb14397bf388aa6e5fd2bfc1bc8594e3b5ba3",
+          "size": 12904
+        }
+      ],
+      "skills": [
+        "design-patterns",
+        "domain-structure",
+        "project-tree",
+        "spike",
+        "systematic-debugging",
+        "test-driven-development"
+      ],
+      "category": "engineering",
+      "tags": [
+        "design",
+        "debugging",
+        "testing"
+      ],
+      "cover": {
+        "path": "covers/duskcode-engineering.webp",
+        "sha256": "4f1df4d81d73e19984d869dd7854e4dadb0029c84cc371eb42dcb0404e550030",
+        "size": 15198
+      },
+      "screenshots": [
+        {
+          "path": "screenshots/duskcode-engineering/1-pack.webp",
+          "sha256": "adf2072edfaa3d3e8ac870a390feca3e5c0281f852d0530b36e272c850c6fc3f",
+          "size": 13616,
+          "caption": "pack.yml: the six skills of the pack"
+        },
+        {
+          "path": "screenshots/duskcode-engineering/2-skills.webp",
+          "sha256": "5d85ff5ebf05260e966cfe29c55e1882cb62140a9999144e446798ea2f4fe890",
+          "size": 21532,
+          "caption": "What each skill is for, from its SKILL.md"
+        },
+        {
+          "path": "screenshots/duskcode-engineering/3-debugging.webp",
+          "sha256": "087171e4bdf4cea0346f5e2bb34802da169cf29e075c2079de61a906cd10e52f",
+          "size": 26282,
+          "caption": "The start of the systematic-debugging skill"
+        }
+      ],
+      "created": "2026-11-17T16:15:45Z",
+      "updated": "2026-11-17T16:15:45Z"
+    },
+    {
+      "name": "nvidia",
+      "version": "1.20261117.0",
+      "kind": "pack",
+      "description": "Skills by NVIDIA for GPU work: finding CUDA bugs with Compute Sanitizer and accelerating DataFrames with cuDF. Evals and the upstream signature file removed.",
+      "homepage": "https://github.com/DroBov1Tya/duskcode-workshop/tree/main/packs/nvidia",
+      "downloads": [
+        {
+          "os": "any",
+          "arch": "any",
+          "url": "https://github.com/DroBov1Tya/duskcode-workshop/releases/download/nvidia-v1.20261117.0/nvidia-1.20261117.0.tar.gz",
+          "sha256": "836774d5fa289d6eb0f5fcc76f6602e3d0d66a05d2cadabccbbcfc3bd22da0f0",
+          "size": 55751
+        }
+      ],
+      "skills": [
+        "compute-sanitizer-diagnose-cuda-bugs",
+        "accelerated-computing-cudf"
+      ],
+      "category": "engineering",
+      "tags": [
+        "cuda",
+        "gpu",
+        "vendor"
+      ],
+      "cover": {
+        "path": "covers/nvidia.webp",
+        "sha256": "00cfd86519915fb7ce73708eb390356a889ae00440c893b5285cc212492aa5be",
+        "size": 14206
+      },
+      "created": "2026-11-17T16:15:45Z",
+      "updated": "2026-11-17T16:15:45Z"
+    },
+    {
+      "name": "openai",
+      "version": "1.20261117.0",
+      "kind": "pack",
+      "description": "Skills by OpenAI: GitHub review and CI fixing, Jupyter notebooks, Playwright, security best practices and threat modeling.",
+      "homepage": "https://github.com/DroBov1Tya/duskcode-workshop/tree/main/packs/openai",
+      "downloads": [
+        {
+          "os": "any",
+          "arch": "any",
+          "url": "https://github.com/DroBov1Tya/duskcode-workshop/releases/download/openai-v1.20261117.0/openai-1.20261117.0.tar.gz",
+          "sha256": "8d85a0fdef76a75554d57f53ddf35ea4b8cffff38b53747d64149c4c6ab08039",
+          "size": 146296
+        }
+      ],
+      "skills": [
+        "gh-address-comments",
+        "gh-fix-ci",
+        "jupyter-notebook",
+        "playwright",
+        "security-best-practices",
+        "security-threat-model"
+      ],
+      "category": "testing",
+      "tags": [
+        "github",
+        "ci",
+        "playwright",
+        "vendor"
+      ],
+      "cover": {
+        "path": "covers/openai.webp",
+        "sha256": "a9b56b7d00d000b2ba7c75b4d3b40eb3c53f022971d3a3d4e6c5d2900de7fbde",
+        "size": 23350
+      },
+      "created": "2026-11-17T16:15:45Z",
+      "updated": "2026-11-17T16:15:45Z"
+    }
+  ],
+  "verified": []
+}

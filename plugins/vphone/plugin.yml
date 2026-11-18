@@ -1,0 +1,25 @@
+name: vphone
+version: 1.0.0
+description: "A vphone virtual iPhone beside your work, and a tool for the agent to tap, type and look at it."
+platforms: [macos]
+# The panel is drawn by the desktop app; the agent's tool works in every client.
+clients: [gui]
+permissions:
+  # vphone Launchpad's CLI: status, the machines, start and stop. It talks to the app
+  # through its control socket.
+  exec: [vphone-launchpad-cli]
+  # Each running machine's vphone.sock, and Launchpad's control socket for its CLI.
+  sockets: [~/.vphone, "~/Library/Application Support/vphone-launchpad"]
+  read: [~/.vphone]
+mcp:
+  vphone:
+    command: ./bin/vphone
+    args: [mcp]
+ui:
+  command: [./bin/vphone, panel]
+  parts:
+    - id: phone
+      title: vphone
+      icon: icons/phone.svg
+      place: header
+      opens: right_panel

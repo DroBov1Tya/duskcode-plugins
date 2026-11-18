@@ -1,0 +1,47 @@
+# What the list says about each item beyond its manifest; scripts/check-index.py --repo .
+# checks it. See docs/publishing.md.
+#   categories   1 to 3 of: coding review testing security research writing data devops
+#                design productivity devices communication
+#   tags         up to 8, a-z, 0-9 and -
+#   screenshots  optional, up to 8: [{file, caption}], files in screenshots/<item>/
+# A plugin also names its `author`, `license` (SPDX) and `source` (https) here; a pack
+# has them in its pack.yml as `vendor`, `license` and `upstream`.
+# No badge and no stars: the badge follows from the author (Official for duskcode's own
+# work, Verified for anybody else's), and stars are not the item's.
+plugins:
+  ios-simulator:
+    author: duskcode
+    license: MIT
+    source: https://github.com/DroBov1Tya/duskcode-workshop/tree/main/plugins/ios-simulator
+    categories: [devices, testing]
+    tags: [ios, simulator, xcode, panel]
+  telegram:
+    author: duskcode
+    license: MIT
+    source: https://github.com/DroBov1Tya/duskcode-workshop/tree/main/plugins/telegram
+    categories: [communication]
+    tags: [telegram, bot, remote]
+  vphone:
+    author: duskcode
+    license: MIT
+    source: https://github.com/DroBov1Tya/duskcode-workshop/tree/main/plugins/vphone
+    categories: [devices, testing]
+    tags: [ios, virtual-device, panel]
+packs:
+  duskcode-engineering:
+    categories: [coding, testing]
+    tags: [design, debugging, testing]
+    screenshots:
+      - {file: 1-pack.webp, caption: "pack.yml: the six skills of the pack"}
+      - {file: 2-skills.webp, caption: "What each skill is for, from its SKILL.md"}
+      - {file: 3-debugging.webp, caption: "The start of the systematic-debugging skill"}
+  duskcode-security:
+    categories: [security]
+    tags: [pentest, assessment, appsec]
+    screenshots:
+      - {file: 1-skills.webp, caption: "What each assessment skill is for, from its SKILL.md"}
+      - {file: 2-web.webp, caption: "The start of the web-security-assessment skill"}
+  duskcode-agents: {categories: [coding, review, security], tags: [agents, roster, review]}
+  web-builder-skills: {categories: [design, coding, testing], tags: [frontend, mcp, web]}
+  dev-workflow-skills: {categories: [review, testing, security], tags: [github, ci, playwright, notebooks]}
+  gpu-computing-skills: {categories: [coding, data], tags: [cuda, gpu, dataframes]}

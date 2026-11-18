@@ -1,0 +1,8 @@
+name: gpu-computing-skills
+title: "GPU Computing Skills"
+description: "Skills for GPU work: finding CUDA bugs with Compute Sanitizer and accelerating DataFrames with cuDF, written by NVIDIA and published under CC-BY-4.0 and Apache-2.0. Evals and the upstream signature file removed. Not affiliated with or endorsed by NVIDIA."
+vendor: NVIDIA
+kind: skills
+items: [compute-sanitizer-diagnose-cuda-bugs, accelerated-computing-cudf]
+license: CC-BY-4.0 AND Apache-2.0
+upstream: https://github.com/NVIDIA/skills
