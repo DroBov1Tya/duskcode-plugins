@@ -64,12 +64,16 @@ Optional, and shown as a gallery with the item's details, in the order listed.
 
 ## Stars
 
-`stars` in the list is the star count of a GitHub **repository**, read by
-`scripts/publish.py` when it signs the list: this repository's for duskcode's own items, and
-the repository named by `stars_repo` in `catalog.yml` for a vendor's pack. So every
-duskcode item carries the same number, and a vendor's pack carries the stars of that
-vendor's whole repository. It is not a count of the item, not a rating and not installs;
-nobody rates or counts items in the Workshop. A publisher does not set it by hand.
+The official list carries no `stars`. The only count it could give was a GitHub
+repository's: this repository's for duskcode's own items, a vendor's whole repository for a
+vendor's pack. Neither is a count of the item, so it was a placeholder, and duskcode drops
+the stars of an official or a verified listing whatever a list says. `scripts/publish.py`
+writes none and `scripts/check-index.py` refuses a list that has them.
+
+A mirror's list may carry `stars`: the star count of the GitHub repository its `homepage`
+names. duskcode shows it only for a mirror the user added, only when `homepage` is a
+`https://github.com/owner/name` page, and only as "N GitHub stars of owner/name" on the
+item's page: never as a rating, never on a card, and nothing is sorted or ranked by it.
 
 ## A plugin
 

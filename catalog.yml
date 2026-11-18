@@ -1,6 +1,5 @@
-# What the signed list says about each item beyond its manifest: category, tags (up to 8,
-# a-z, 0-9 and -) and, for a vendor's pack, the upstream repository whose stars it shows.
-# Items of duskcode's own show this repository's stars.
+# What the signed list says about each item beyond its manifest: category and tags (up to
+# 8, a-z, 0-9 and -). No stars: see docs/publishing.md.
 # `screenshots` (optional, up to 8): [{file, caption}], files in screenshots/<item>/,
 # shown in this order in the item's detail window; see docs/publishing.md.
 plugins:
@@ -22,6 +21,6 @@ packs:
       - {file: 1-skills.webp, caption: "What each assessment skill is for, from its SKILL.md"}
       - {file: 2-web.webp, caption: "The start of the web-security-assessment skill"}
   duskcode-agents: {category: engineering, tags: [agents, roster, review]}
-  anthropic: {category: design, tags: [frontend, mcp, vendor], stars_repo: anthropics/skills}
-  openai: {category: testing, tags: [github, ci, playwright, vendor], stars_repo: openai/skills}
-  nvidia: {category: engineering, tags: [cuda, gpu, vendor], stars_repo: NVIDIA/skills}
+  anthropic: {category: design, tags: [frontend, mcp, vendor]}
+  openai: {category: testing, tags: [github, ci, playwright, vendor]}
+  nvidia: {category: engineering, tags: [cuda, gpu, vendor]}
