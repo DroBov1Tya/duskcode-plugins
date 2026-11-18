@@ -16,8 +16,9 @@ and an expiry, so duskcode refuses an older or a stale list.
 
 The list is format 2: plugins and packs, each with kind, category, tags, a cover (copied
 to site/covers/), screenshots (from screenshots/<name>/, copied to site/screenshots/<name>/
-in catalog.yml's order), stars (counted here from the GitHub API, 0 with a warning when it
-cannot be reached) and created/updated dates from git. A pack is built by
+in catalog.yml's order) and created/updated dates from git. It writes no stars: this is
+the official list, and a count of this repository's or a vendor's whole repository's
+stars is not the item's, so duskcode drops it anyway. A pack is built by
 scripts/package-packs.sh; its version is 1.<date of its last commit>.0.
 
 A plugin's release is tagged <name>-v<version>; its packages are named
@@ -34,7 +35,6 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import urllib.request
 from datetime import datetime, timedelta, timezone
 
 import yaml
@@ -102,20 +102,6 @@ def git_dates(folder):
     return utc(out[-1]), utc(out[0])
 
 
-def stars(repo):
-    """Stars of a public repository; 0 with a warning when GitHub cannot be asked."""
-    request = urllib.request.Request(
-        f"https://api.github.com/repos/{repo}",
-        headers={"Accept": "application/vnd.github+json", "User-Agent": "workshop-publisher"},
-    )
-    try:
-        with urllib.request.urlopen(request, timeout=10) as reply:
-            return int(json.load(reply)["stargazers_count"])
-    except Exception as error:
-        print(f"warning: stars of {repo} not read ({error}); using 0", file=sys.stderr)
-        return 0
-
-
 def copy_cover(name, out):
     found = [f for ext in ("webp", "png") if (f := ROOT / "covers" / f"{name}.{ext}").exists()]
     if not found:
@@ -157,7 +143,7 @@ def copy_screenshots(name, meta, out):
     return found
 
 
-def extras(name, folder, meta, out, own_repo=REPO):
+def extras(name, folder, meta, out):
     """Fields of format 2 shared by plugins and packs."""
     created, updated = git_dates(folder)
     screenshots = copy_screenshots(name, meta, out)
@@ -166,7 +152,6 @@ def extras(name, folder, meta, out, own_repo=REPO):
         "tags": meta["tags"],
         "cover": copy_cover(name, out),
         **({"screenshots": screenshots} if screenshots else {}),
-        "stars": stars(meta.get("stars_repo", own_repo)),
         "created": created,
         "updated": updated,
     }

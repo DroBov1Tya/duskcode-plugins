@@ -2,7 +2,8 @@
 """Checks an index.json against the rules duskcode's reader applies to format 2
 (projects/core/src/plugins/store/index.rs): known fields only, words, dates, https,
 sizes, and that each cover and screenshot is the file the list names and the picture its
-name says.
+name says. This is the official list, so it carries no `stars`: duskcode drops an official
+or verified listing's stars, since the only count there was a repository's, not the item's.
 
     scripts/check-index.py /path/to/index.json
 """
@@ -53,6 +54,8 @@ def check(path):
         n = e.get("name", "?")
         if set(e) - ENTRY:
             fail(n, f"unknown fields {sorted(set(e) - ENTRY)}")
+        if "stars" in e:
+            fail(n, "the official list carries no stars")
         if not NAME.match(n) or n in seen:
             fail(n, "bad or repeated name")
         seen.add(n)

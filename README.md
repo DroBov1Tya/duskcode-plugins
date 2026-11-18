@@ -73,7 +73,7 @@ tool over one `Phone` trait.
 3. A maintainer runs `scripts/publish.py` on their own machine. It keeps every version
    already signed as it was signed; for a new version it checks the build attestations and
    asks before signing the hashes it shows. It writes `site/index.json` (format 2: kind,
-   category, tags, cover, screenshots, stars, created, updated, verified) with the next serial and an
+   category, tags, cover, screenshots, created, updated, verified; no stars) with the next serial and an
    expiry (180 days) and signs it with the key from their keychain into
    `site/index.json.sig`. The key never reaches GitHub. `scripts/publish.py --dry-run`
    writes the unsigned list to a temp folder for review and signs nothing;
