@@ -1,0 +1,34 @@
+# Outside skill catalogues that scripts/mirror.py turns into unsigned Dusk lists, one per
+# mirror, in dist/mirrors/<name>/. See docs/mirrors.md.
+#
+#   name        a-z, 0-9 and -; the list's folder. Name it for the repository it reads,
+#               never as if it were that vendor's own list.
+#   kind        skills-repo | claude-marketplace | hermes-index
+#   repo        owner/name on GitHub (skills-repo, claude-marketplace)
+#   ref         optional: a branch, tag or commit; the default branch when left out
+#   path        optional (skills-repo): the folder to look for SKILL.md folders in
+#   url         the index's https address (hermes-index)
+#   author      optional: who wrote a skill whose front matter names nobody
+#   categories  optional: 1 to 3 of the fixed list, for a skill no word of which says one
+#   manual      optional: true leaves it out of --all; run it by name with --match/--limit
+mirrors:
+  - name: anthropics-skills
+    kind: skills-repo
+    repo: anthropics/skills
+    path: skills
+    author: Anthropic
+    categories: [productivity]
+
+  - name: claude-plugins-official
+    kind: claude-marketplace
+    repo: anthropics/claude-plugins-official
+    categories: [coding]
+    manual: true
+
+  # 104k pointers, 45 MB. Nothing of it is listed by default: a slice is converted on
+  # request, e.g. scripts/mirror.py hermes-hub --match 'optional-skills/' --limit 50.
+  - name: hermes-hub
+    kind: hermes-index
+    url: https://nousresearch.github.io/hermes-agent/docs/api/skills-index.json
+    categories: [productivity]
+    manual: true
