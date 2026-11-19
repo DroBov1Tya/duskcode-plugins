@@ -83,6 +83,10 @@ MAX_CREDIT = 64
 MAX_URL = 200
 # The store's entry names (index.rs is_plain_folder_name, check-index.py NAME), lower case.
 NAME = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
+# Names duskcode keeps for itself: its built-in skills (resources/skills) and the duskcode
+# pack. An Unverified listing that is, or is one edit from, one of them is refused as taken
+# (store/guard.rs `shadow`), so it is skipped here rather than listed dead.
+RESERVED = ("computer-use", "skill-creator", "skill-evolve", "token-thrift", "duskcode")
 # Folders the skill graph never reads as nodes (graph.rs SKIPPED).
 GRAPH_SKIPS = ("node_modules", "target", "venv", "__pycache__", "dist", "build")
 PART = re.compile(r"^[A-Za-z0-9._-]+$")
@@ -100,15 +104,15 @@ SCRIPTS = {"py", "sh", "bash", "zsh", "fish", "js", "mjs", "cjs", "ts", "mts", "
            "bat", "cmd", "lua", "r", "go", "rs", "swift", "kt", "java", "cs"}
 # Front matter that only Claude Code reads, and what to tell the user about each.
 CLAUDE_FIELDS = {
-    "allowed-tools": "allowed-tools (Claude Code only; it grants nothing in Dusk)",
+    "allowed-tools": "allowed-tools (Claude Code only, grants nothing in Dusk)",
     "disallowed-tools": "disallowed-tools (Claude Code only)",
-    "hooks": "hooks (Claude Code only; not installed)",
+    "hooks": "hooks (Claude Code only, not installed)",
     "disable-model-invocation": "meant to run only as a /command in Claude Code",
     "model": "picks a Claude model (ignored)",
     "shell": "shell (Claude Code only)",
 }
 HERMES_FIELDS = {
-    "required_environment_variables": "expects environment variables (Hermes asks for them; Dusk does not)",
+    "required_environment_variables": "expects environment variables (Hermes asks for them, Dusk does not)",
 }
 INJECTION = re.compile(r"!`[^`\n]+`")
 ARGUMENTS = re.compile(r"\$ARGUMENTS\b|\$\{?ARGUMENTS")
@@ -547,11 +551,27 @@ def categories_of(name, tags, description, fallback):
     return found or list(fallback)
 
 
+def close(a, b):
+    """store/guard.rs `close`: the same name, or one edit apart once case and dashes are
+    left out, for names of at least 5 such letters."""
+    a, b = a.replace("-", "").lower(), b.replace("-", "").lower()
+    if a == b:
+        return True
+    if min(len(a), len(b)) < 5 or abs(len(a) - len(b)) > 1:
+        return False
+    short, long = sorted((a, b), key=len)
+    start = next((i for i, (x, y) in enumerate(zip(short, long)) if x != y), len(short))
+    return short[start + 1:] == long[start + 1:] if len(short) == len(long) else short[start:] == long[start + 1:]
+
+
 def convert(gh, c, fallback):
     """The list entry of candidate `c`, with its notes; or Skip."""
     name = c.folder.rsplit("/", 1)[-1] if c.folder else c.repo.split("/")[1]
     if not NAME.match(name):
         raise Skip("name not allowed", f"{name!r}: a-z, 0-9, - and _, at most 64, starting with a letter or digit")
+    taken = next((r for r in RESERVED if close(name, r)), None)
+    if taken:
+        raise Skip("name taken in Dusk", f"{name} is or is too close to Dusk's own {taken}")
     if name in GRAPH_SKIPS:
         raise Skip("name not allowed", f"{name}: Dusk's skill graph never reads a folder of that name")
     if c.folder and not plain_path(c.folder):
@@ -933,6 +953,8 @@ class Run:
 
     def __init__(self, previous):
         self.entries, self.taken, self.skipped = {}, [], []
+        # What the list will weigh, as build_index writes it, against duskcode's cap.
+        self.bytes = 200
         self.previous = {e["name"]: e for e in previous.get("plugins", [])}
 
     def skip(self, ident, skip):
@@ -944,8 +966,11 @@ class Run:
             other = self.entries.get(entry["name"])
             if other:
                 raise Skip("name taken", f"{entry['name']} is already {other['upstream']['repo']}")
-            if len(self.entries) >= MAX_ENTRIES:
-                raise Skip("list full", f"a list holds at most {MAX_ENTRIES} entries; narrow --match or --limit")
+            text = json.dumps(entry, indent=2, ensure_ascii=False)
+            weight = len(text.encode()) + 4 * (text.count("\n") + 1) + 2
+            if len(self.entries) >= MAX_ENTRIES or self.bytes + weight > MAX_INDEX_BYTES:
+                raise Skip("list full", f"a list holds at most {MAX_ENTRIES} entries and {MAX_INDEX_BYTES} bytes; "
+                                        "take the rest with --offset, or narrow --match")
         except Skip as skip:
             self.skip(candidate.ident, skip)
             return
@@ -958,6 +983,7 @@ class Run:
         elif before:
             entry["created"] = before.get("created", entry["created"])
         self.entries[entry["name"]] = entry
+        self.bytes += weight
         self.taken.append((entry, candidate, notes))
 
 
