@@ -41,9 +41,12 @@ async fn work<P: Phone>(
     // The press of a backend without touches by phase, or of a scroll going on.
     let mut pressed: Option<(String, (u32, u32))> = None;
     let mut scroll: Option<(String, (u32, u32))> = None;
+    // An input read while joining text, handled next.
+    let mut held: Option<(String, Input)> = None;
     loop {
-        let next = match &scroll {
-            Some(_) => match tokio::time::timeout(SCROLL_REST, inputs.recv()).await {
+        let next = match (held.take(), &scroll) {
+            (Some(next), _) => Some(next),
+            (None, Some(_)) => match tokio::time::timeout(SCROLL_REST, inputs.recv()).await {
                 Ok(next) => next,
                 Err(_) => {
                     if let Some((id, at)) = scroll.take() {
@@ -52,7 +55,7 @@ async fn work<P: Phone>(
                     continue;
                 }
             },
-            None => inputs.recv().await,
+            (None, None) => inputs.recv().await,
         };
         let Some((id, input)) = next else { return };
         if !matches!(input, Input::Scroll { .. })
@@ -73,7 +76,19 @@ async fn work<P: Phone>(
                 None => Ok(()),
             },
             Input::Key(key) => phone.key(&id, key).await,
-            Input::Text(text) => phone.type_text(&id, &text).await,
+            Input::Text(mut text) => {
+                // Text typed meanwhile joins in: one paste, not one per key.
+                while let Ok(next) = inputs.try_recv() {
+                    match next {
+                        (next_id, Input::Text(more)) if next_id == id => text.push_str(&more),
+                        other => {
+                            held = Some(other);
+                            break;
+                        }
+                    }
+                }
+                phone.type_text(&id, &text).await
+            }
             Input::Scroll { x, y, dx, dy } if touches => {
                 let (from, result) = match scroll.take() {
                     Some((_, at)) => (at, Ok(())),

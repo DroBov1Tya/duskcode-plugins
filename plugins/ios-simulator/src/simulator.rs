@@ -28,6 +28,8 @@ use crate::{
 };
 
 const AXE_HINT: &str = "AXe adds a smooth live screen and the list of the screen’s elements. It installs with Homebrew.";
+/// The pause before a launch the springboard refused is tried again.
+const LAUNCH_RETRY: Duration = Duration::from_secs(1);
 /// Between two pictures when there is no AXe to stream.
 const POLL_PAUSE: Duration = Duration::from_millis(200);
 
@@ -232,7 +234,17 @@ impl Phone for Simulator {
     async fn launch(&self, id: &str, bundle_id: &str) -> Result<()> {
         let udid = device(id)?;
         ensure!(is_bundle_id(bundle_id), "not a bundle ID");
-        simctl(&["launch", &udid, bundle_id], LIMIT).await?;
+        let launch = ["launch", udid.as_str(), bundle_id];
+        match simctl(&launch, LIMIT).await {
+            // Right after Home the springboard refuses a launch for a moment.
+            Err(error) if format!("{error:#}").contains("No such process") => {
+                tokio::time::sleep(LAUNCH_RETRY).await;
+                simctl(&launch, LIMIT).await?;
+            }
+            result => {
+                result?;
+            }
+        }
         Ok(())
     }
 
