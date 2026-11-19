@@ -247,6 +247,10 @@ impl<P: Phone> Server<P> {
             }
             Action::OpenUrl => {
                 let url = arguments.url.context("give url")?;
+                ensure!(
+                    is_web_link(&url),
+                    "open_url opens only http and https links; to open the app, use launch"
+                );
                 phone.open_url(id, &url).await?;
                 "opened".into()
             }
@@ -266,6 +270,14 @@ impl<P: Phone> Server<P> {
         };
         Ok(vec![ContentBlock::text(said)])
     }
+}
+
+/// Whether the agent may open `url`: a web page only, since an app's scheme can act
+/// inside that app on the model's word.
+fn is_web_link(url: &str) -> bool {
+    let lower = url.get(..8).unwrap_or(url).to_ascii_lowercase();
+    (lower.starts_with("http://") || lower.starts_with("https://"))
+        && crate::phone::is_openable(url)
 }
 
 /// The places of a drag: two at least, each a step after the last, not too long.
@@ -327,7 +339,7 @@ fn tool(spec: &Spec) -> Tool {
             "to_y": {"type": "integer", "minimum": 0},
             "text": {"type": "string", "description": "For type: the text, typed into the focused field"},
             "button": {"type": "string", "enum": spec.buttons, "description": "For button"},
-            "url": {"type": "string", "description": "For open_url: a web page or an app's own link"},
+            "url": {"type": "string", "description": "For open_url: an http or https link"},
             "bundle_id": {"type": "string", "description": "For launch: an installed app's bundle ID, such as com.apple.mobilesafari"}
         },
         "required": ["action"],
@@ -375,6 +387,22 @@ mod tests {
         ];
         assert!(check_path(&slow).is_err());
         assert!(check_path(&slow[..1]).is_err());
+    }
+
+    #[test]
+    fn the_agent_opens_only_web_links() {
+        assert!(is_web_link("https://example.com/a"));
+        assert!(is_web_link("HTTP://example.com"));
+        for bad in [
+            "myapp://open",
+            "tel:123",
+            "file:///etc/passwd",
+            "https:",
+            "javascript:x",
+            "https://a\nb",
+        ] {
+            assert!(!is_web_link(bad), "{bad}");
+        }
     }
 
     #[test]
