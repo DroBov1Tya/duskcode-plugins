@@ -119,7 +119,10 @@ source are in `pack.yml`); a plugin also takes `author`, `license` and `source`.
    and no trust of your own to give) and sign its exact bytes into `index.json.sig`
    (base64 of the 64-byte signature). `scripts/publish.py` does this for a repository laid
    out as above, with `WORKSHOP_REPO=owner/name` and the key in the macOS keychain item it
-   names; read it before you run it.
+   names; read it before you run it. With `--format=3` it also writes who made each
+   item and, for a plugin, the `mcp`, `programs` and `skills` its `plugin.yml` brings;
+   only a duskcode that reads format 3 accepts such a list, and it refuses a package
+   whose `plugin.yml` brings anything else.
 4. Each list has a higher `serial` than the last and an `expires` in the future: duskcode
    refuses an older or an expired list.
 5. Serve `index.json`, `index.json.sig`, `covers/` and `screenshots/` from one https

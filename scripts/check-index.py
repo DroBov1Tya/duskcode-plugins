@@ -5,7 +5,9 @@ sizes, and that each cover and screenshot is the file the list names and the pic
 name says. This is the official list, so it carries no `stars`: duskcode drops an official
 or verified listing's stars, since the only count there was a repository's, not the item's.
 A format 3 list also names each item's author, license, source, categories and badge;
-the Official badge is refused for an author who is not the Workshop's owner.
+the Official badge is refused for an author who is not the Workshop's owner, and a
+plugin's `mcp`, `programs` and `skills` must be exactly what its plugin.yml in this
+repository brings (scripts/repo.py `brings`), since duskcode refuses the package otherwise.
 
     scripts/check-index.py /path/to/index.json
     scripts/check-index.py --repo /path/to/repository   its catalog.yml, packs and plugins,
@@ -19,6 +21,8 @@ import re
 import sys
 from datetime import datetime
 
+import yaml
+
 import pictures
 import repo
 
@@ -31,6 +35,9 @@ SHA = re.compile(r"^[0-9a-f]{64}$")
 KINDS = {"plugin", "skill", "pack", "agent"}
 # What format 3 adds to an entry; all of them or none.
 CREDIT = {"author", "license", "source", "categories", "badge"}
+# What format 3 adds to a plugin: what it runs and adds, checked against its manifest.
+BRINGS = {"mcp", "programs"}
+ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
 def fail(entry, message):
@@ -66,6 +73,19 @@ def check_credit(n, e):
         fail(n, f"the name carries the company name {company}")
 
 
+def check_brings(n, e, root):
+    """A plugin's mcp, programs and skills against its plugin.yml in `root`."""
+    file = root / "plugins" / n / "plugin.yml"
+    if not file.is_file():
+        fail(n, f"no {file.relative_to(root)} to check what it brings against")
+    want = repo.brings(file.parent, yaml.safe_load(file.read_text()))
+    if why := repo.brings_problems(n, want):
+        sys.exit(why[0])
+    for key in ("mcp", "programs", "skills"):
+        if e.get(key, []) != want[key]:
+            fail(n, f"the list's {key} {e.get(key, [])} is not what plugin.yml brings: {want[key]}")
+
+
 def check_repo(root):
     found, items = repo.problems(root)
     for line in found:
@@ -77,7 +97,7 @@ def check_repo(root):
     print(f"ok: {len(items)} items")
 
 
-def check(path):
+def check(path, root=ROOT):
     index = json.loads(path.read_text())
     assert set(index) <= {"format", "serial", "expires", "plugins", "verified"}, "unknown top field"
     assert index["format"] in (2, 3) and isinstance(index["serial"], int)
@@ -85,7 +105,7 @@ def check(path):
     seen = set()
     for e in index["plugins"]:
         n = e.get("name", "?")
-        known = ENTRY | CREDIT if index["format"] == 3 else ENTRY
+        known = ENTRY | CREDIT | BRINGS if index["format"] == 3 else ENTRY
         if set(e) - known:
             fail(n, f"unknown fields {sorted(set(e) - known)}")
         if index["format"] == 3:
@@ -111,8 +131,12 @@ def check(path):
             fail(n, "bad tags")
         for key in ("created", "updated"):
             datetime.fromisoformat(e[key].replace("Z", "+00:00"))
-        if e.get("skills") and e["kind"] != "pack":
-            fail(n, "only a pack names skills")
+        if e.get("kind", "plugin") != "plugin" and set(e) & BRINGS:
+            fail(n, "only a plugin brings mcp or programs")
+        if e.get("skills") and e["kind"] != "pack" and not (index["format"] == 3 and e["kind"] == "plugin"):
+            fail(n, "only a pack, or a plugin in format 3, names skills")
+        if index["format"] == 3 and e["kind"] == "plugin":
+            check_brings(n, e, root)
         if e.get("cover"):
             check_picture(n, path, e["cover"], {"path", "sha256", "size"}, pictures.COVER_LIMIT)
         shots = e.get("screenshots", [])

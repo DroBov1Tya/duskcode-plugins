@@ -8,8 +8,10 @@ keychain and never reaches GitHub.
     scripts/publish.py --dry-run  unsigned list into a temp folder for review: builds the
                                   packs, asks nothing, never touches the key
     scripts/publish.py --format=3 also writes each item's author, license, source,
-                                  categories and badge; only once the duskcode in use
-                                  reads format 3, since an older one refuses the list
+                                  categories and badge, and for a plugin the mcp,
+                                  programs and skills its plugin.yml brings; only once
+                                  the duskcode in use reads format 3, since an older one
+                                  refuses the list
 
 The repository is checked first (scripts/repo.py), and nothing is written when it fails.
 Another repository laid out the same way publishes its own list with WORKSHOP_REPO set to
@@ -262,6 +264,7 @@ def entry(manifest_file, local, signed, confirm, out):
         "providers": providers,
         "downloads": downloads,
         **extras(name, manifest_file.parent, meta, out, meta["author"], meta["license"], meta["source"]),
+        **(repo.brings(manifest_file.parent, manifest) if FORMAT == 3 else {}),
     }
 
 

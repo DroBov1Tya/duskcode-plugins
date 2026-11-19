@@ -22,6 +22,8 @@ trap 'rm -rf "$stage"' EXIT
 mkdir -p "$stage/bin"
 cp "$folder/plugin.yml" "$here/LICENSE" "$stage/"
 [ -d "$folder/icons" ] && cp -R "$folder/icons" "$stage/"
+# The skills a format 3 list names for it; duskcode refuses a package that differs.
+[ -d "$folder/skills" ] && cp -R "$folder/skills" "$stage/"
 cp "$here/target/$target/release/$plugin" "$stage/bin/$plugin"
 chmod 755 "$stage/bin/$plugin"
 chmod 644 "$stage/plugin.yml" "$stage/LICENSE"

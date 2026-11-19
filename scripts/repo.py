@@ -40,6 +40,10 @@ MAX_FILES = 4000
 MAX_FILE_BYTES = 4 * 1024 * 1024
 MAX_PACK_BYTES = 256 * 1024 * 1024
 MAX_PATH = 300
+# What a plugin brings, as duskcode's reader caps it (store/index.rs check_brings).
+MAX_SERVERS = 16
+MAX_PROGRAMS = 8
+MAX_LINE = 200
 
 
 def badge(author, upstream=None):
@@ -164,6 +168,53 @@ def pack_problems(folder, meta):
     return found + files_problems(folder) + meta_problems(name, meta)
 
 
+def line_ok(text, limit=MAX_LINE):
+    """One plain line as duskcode reads it: not padded, no control or bidi character."""
+    bidi = lambda c: 0x202A <= ord(c) <= 0x202E or 0x2066 <= ord(c) <= 0x2069
+    return isinstance(text, str) and text.strip() == text and 0 < len(text) <= limit \
+        and not any(ord(c) < 0x20 or 0x7F <= ord(c) <= 0x9F or bidi(c) for c in text)
+
+
+def brings(folder, manifest):
+    """A plugin's `mcp`, `programs` and `skills` as format 3 lists them and as duskcode
+    derives them from the package's plugin.yml (store/mod.rs `servers`, manifest.rs
+    `programs`, the folders under skills/): servers sorted by name, programs sorted and
+    each once, skills by folder name."""
+    servers = []
+    for name, server in sorted((manifest.get("mcp") or {}).items()):
+        if "url" in server:
+            servers.append({"name": name, "url": server["url"]})
+        else:
+            servers.append({"name": name, "command": server.get("command"),
+                            **({"args": server["args"]} if server.get("args") else {})})
+    commands = [manifest["platform"]["command"]] if manifest.get("platform") else []
+    commands += [manifest["ui"]["command"]] if manifest.get("ui") else []
+    commands += [hook["command"] for hook in manifest.get("hooks") or []]
+    programs = sorted({" ".join(command) for command in commands})
+    skills = sorted(p.name for p in (folder / "skills").iterdir() if p.is_dir()) \
+        if (folder / "skills").is_dir() else []
+    return {"mcp": servers, "programs": programs, "skills": skills}
+
+
+def brings_problems(name, found):
+    """The caps and shapes duskcode's reader applies to what a plugin brings."""
+    servers, programs, skills = found["mcp"], found["programs"], found["skills"]
+    problems = []
+    if len(servers) > MAX_SERVERS:
+        problems.append(f"{name}: at most {MAX_SERVERS} MCP servers")
+    for server in servers:
+        url, command = server.get("url"), server.get("command")
+        line = url if url is not None else " ".join([command or "", *server.get("args", [])])
+        if not WORD.match(server["name"]) or (url is None) == (command is None) \
+                or (url is not None and not https(url)) or not line_ok(line):
+            problems.append(f"{name}: the MCP server {server['name']} is a word with a command or an https url, one line of up to {MAX_LINE}")
+    if len(programs) > MAX_PROGRAMS or not all(line_ok(p) for p in programs):
+        problems.append(f"{name}: programs are up to {MAX_PROGRAMS} plain lines of up to {MAX_LINE}")
+    if len(skills) > MAX_ITEMS or not all(PACK_NAME.match(s) for s in skills):
+        problems.append(f"{name}: skills are up to {MAX_ITEMS} folders of a-z, 0-9 and -")
+    return problems
+
+
 def plugin_problems(folder, meta):
     name = folder.name
     try:
@@ -176,6 +227,11 @@ def plugin_problems(folder, meta):
         found.append(f"{name}: plugin.yml has the folder's name and a version")
     if company := company_in(name):
         found.append(f"{name}: the name carries the company name {company}")
+    if isinstance(manifest, dict):
+        try:
+            found += brings_problems(name, brings(folder, manifest))
+        except (KeyError, TypeError, AttributeError) as error:
+            found.append(f"{name}: plugin.yml's mcp, platform, ui or hooks cannot be read: {error}")
     return found + credit_problems(name, meta.get("author"), meta.get("license"), meta.get("source")) \
         + meta_problems(name, meta)
 
