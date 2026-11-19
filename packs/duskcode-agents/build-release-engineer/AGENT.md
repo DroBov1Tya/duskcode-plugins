@@ -3,7 +3,7 @@ name: build-release-engineer
 description: Reproducible builds, packaging, resource delivery, compatibility and reviewable release preparation.
 entry: false
 links: []
-skills: [openai/gh-fix-ci]
+skills: [dev-workflow-skills/gh-fix-ci]
 source: Dusk Code
 tags: [build, release, packaging]
 ---

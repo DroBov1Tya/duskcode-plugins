@@ -3,7 +3,7 @@ name: web-tester
 description: Browser journey and regression testing, including responsive, session and network failure behavior.
 entry: false
 links: []
-skills: [anthropic/webapp-testing, openai/playwright]
+skills: [web-builder-skills/webapp-testing, dev-workflow-skills/playwright]
 source: Dusk Code
 tags: [web, qa, browser]
 ---

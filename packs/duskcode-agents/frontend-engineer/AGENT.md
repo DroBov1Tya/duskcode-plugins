@@ -3,7 +3,7 @@ name: frontend-engineer
 description: Frontend components, application state, responsive layout and resilient browser interaction.
 entry: false
 links: []
-skills: [anthropic/frontend-design, anthropic/webapp-testing]
+skills: [web-builder-skills/frontend-design, web-builder-skills/webapp-testing]
 source: Dusk Code
 tags: [frontend, ui, state]
 ---
