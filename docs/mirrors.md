@@ -17,23 +17,31 @@ was (see [third-party.md](third-party.md)).
 
 ## What Unverified means
 
-- **Nobody vouches for the list.** No key signed it, so Dusk believes only the file pins.
-  `author` and `description` are the source's claims. The identity Dusk shows is the list's
-  host and the upstream `owner/repo`.
-- **Only pinned text.** From a source without a key, Dusk keeps only skills and packs
-  pinned upstream. It drops plugins (programs), agents, packaged downloads, covers,
-  screenshots and stars. Every file must be UTF-8 text. Dusk writes the files readable and
-  writable by the user only, never executable.
-- **No silent updates.** "Update all" skips Unverified items. Before an install or update,
-  Dusk shows the files it would write and what changed against the installed copy.
-- **No shadowing.** An Unverified skill cannot take a name that is trusted or already
-  installed, or one a single edit away from such a name.
-- **Scripts stay the user's call.** Scripts in a skill are kept as text, and the entry says
-  how many there are. The agent can run one only through the usual command approval.
+Dusk reads a source without a key since v0.76.0. See its `docs/plugins.md`, "Sources
+without a key", and `projects/core/src/plugins/store/guard.rs`.
 
-The rules on the app side live on the app's `keyless-sources` branch until it is merged.
-The converter makes lists that fit them: skills only, pinned upstream, with no pictures
-or stars.
+- **Nobody vouches for the list.** Dusk does not fetch a `.sig` for it. Every other check
+  of a list still applies: https only, public addresses, no redirects, at most 4 MiB and
+  2000 entries, format 3, not expired, names, paths and per-file SHA-256.
+- **Only pinned text.** Dusk keeps only skills, packs and agents whose files are pinned
+  upstream, as UTF-8 text. It drops plugins and packaged downloads, and says so on the
+  source's row. It reads no covers, screenshots or stars from the list. The converter
+  writes skills only.
+- **The serial is not held to.** Anyone who serves an unsigned list can write any serial.
+  What protects the user is the commit and the file hashes in the install record.
+- **No shadowing.** A name that is, or is one edit away from, one of these is refused as
+  taken: a name an Official or Verified listing offers, anything installed from another
+  source, a built-in skill, or the `duskcode` pack. The converter already skips Dusk's
+  built-in names (`RESERVED` in `scripts/mirror.py`). It cannot know what the user has
+  installed or what other lists offer.
+- **A review before every install or update.** Dusk shows the files, what changed against
+  the copy on disk, the `SKILL.md` diff and the scripts. It says plainly that nobody
+  vouches for the item. "Update all" never updates an Unverified item.
+- **At runtime.** `load_skill` gives the skill's text after a line saying it comes from an
+  unverified source and is third-party data. Its `links:` stay inside its own folder. Its
+  scripts are plain text that runs only under the user's permission mode, like any command.
+- **Identity.** A listing shows its source, the host of its list and the pinned
+  repository. Its `author` is shown as that source's claim.
 
 ## Kinds of mirror
 
@@ -145,6 +153,11 @@ into the skill's folder as `LICENSE`.
   (see below).
 - A repository, commit or file GitHub does not serve, or a skill name already taken by an
   earlier entry of the same list.
+- A name that is, or is one edit away from, one of Dusk's own (`skill-creator`,
+  `skill-evolve`, `computer-use`, `token-thrift`, `duskcode`). Dusk would refuse it as
+  taken.
+- A list already at Dusk's cap of 2000 entries or 4 MiB. The rest of the catalogue is
+  taken with `--offset`.
 
 **Flagged, but taken.** The note goes into the entry's description, after "Notes:":
 - `allowed-tools`, `disallowed-tools` or `hooks` in the front matter: Claude Code only;
@@ -201,24 +214,33 @@ A list is used once it is served over https. The Workshop's Pages site can carry
 host works if it serves the file without redirects, at a public address, with no query
 string or credentials in the address.
 
-In `config.yml`, a source with no `key` is read unsigned, as Unverified:
+A user adds it in one of three ways. Each way makes it an Unverified source, and a
+source's name is `a-z 0-9 -`, at most 32 characters:
 
-```yaml
-workshop:
-  sources:
-    - name: anthropics-skills
-      url: https://drobov1tya.github.io/duskcode-workshop/mirrors/anthropics-skills/index.json
-```
+- **Settings → Workshop sources:** give a name and the list's address, and leave the key
+  empty.
+- **`config.yml`:** add the source without a `key`:
 
-The app's store does the same through **Add source**: the address with an empty key. An
-agent asked to "connect the Hermes skills for X" does this:
+  ```yaml
+  workshop:
+    sources:
+      - name: anthropics-skills
+        url: https://drobov1tya.github.io/duskcode-workshop/mirrors/anthropics-skills/index.json
+  ```
 
-1. It runs `scripts/mirror.py hermes-hub --survey`, and then
+- **From a chat:** the agent calls `add_workshop_source { name, url }`, with no `key`.
+  This only proposes the source. The user is asked every time, in every mode, full access
+  included, and is shown that the source is Unverified and what it may bring. Only the
+  desktop app or the terminal can answer, not a browser or a chat platform.
+
+An agent asked to "connect the Hermes skills for X":
+
+1. Runs `scripts/mirror.py hermes-hub --survey`, then
    `scripts/mirror.py hermes-hub --match '<what the user asked for>' --limit N --out <folder>`.
-   The `--limit` keeps the GitHub requests bounded.
-2. It reads `report.md` with the user: what was taken, what was skipped, and the notes.
-3. It publishes `index.json` at an https address the user controls, and adds that address
-   as a keyless source.
+   `--limit` keeps the GitHub requests bounded.
+2. Goes through `report.md` with the user: what was taken, what was skipped, and the notes.
+3. Publishes `index.json` at an https address the user controls.
+4. Proposes that address with `add_workshop_source`.
 
 Nothing from Hermes or the Claude marketplace is published by default. Those mirrors are
 `manual` in `mirrors.yml`.
@@ -228,10 +250,10 @@ Nothing from Hermes or the Claude marketplace is published by default. Those mir
 `scripts/check-index.py --unsigned <index.json>` checks a list against Dusk's rules for
 keyless sources:
 - format 3, not expired, at most 2000 entries and 4 MiB;
-- only skills and packs pinned upstream, with no packages, pictures or stars;
+- only skills, packs and agents pinned upstream, with no packages, pictures or stars;
 - the `upstream` rules of `upstream.rs`: `owner/name`, a 40-hex commit, 1 to 200 files,
   plain paths, sizes and hashes;
-- a skill's files all under `<name>/`, with `<name>/SKILL.md`.
+- a skill's or agent's files all under `<name>/`, with its `SKILL.md` or `AGENT.md`.
 
 `--fetch [NAME ...]` also downloads the pinned files and checks each one's size, SHA-256
 and UTF-8 text, and that each `SKILL.md` loads.

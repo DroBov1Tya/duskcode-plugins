@@ -67,8 +67,9 @@ about who wrote an item of this list.
   `name`, `url` and `key` to `verified.yml`; the next signed official list carries them, and
   duskcode shows a mirror a user added with exactly that address and key as Verified.
 - **Community**: any mirror a user adds in `config.yml` with its key. Nobody vouches for it.
-- **Unverified**: a list a user adds without a key. Only skills and packs pinned to a
-  commit of their author's GitHub repository are taken from it, as text.
+- **Unverified**: a list a user adds without a key (duskcode 0.76 and later). Only
+  skills, packs and agents pinned to a commit of their author's GitHub repository are
+  taken from it, as text.
   `scripts/mirror.py` writes such lists from outside catalogues (a GitHub repository of
   skills, a Claude Code marketplace, Hermes Agent's index); see [docs/mirrors.md](docs/mirrors.md).
 
