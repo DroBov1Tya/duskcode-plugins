@@ -29,12 +29,12 @@ next list; nothing reaches users before that.
   `scripts/check-index.py` refuses a list that says otherwise.
 - An item's name, title and cover never carry a company's name (Anthropic, OpenAI, NVIDIA
   and the like) and never suggest that the company made, backs or runs the item here.
-  Name it for what it does or for the product it was written for: "GPU Computing Skills"
-  or "Skills for Claude", not "<Company> Skills".
+  Name it for what it does: "GPU Computing Skills" or "Web Builder Skills", not
+  "<Company> Skills" or "Skills for <product>".
 - The company is named where it is a fact the license asks for: in `vendor` / `author`,
   in `upstream` / `source`, in the license and notice files, and once in the description
-  ("written by X"). A product's name (Claude, GPT, CUDA) may appear in a description or,
-  as "Skills for <product>", in a title; never in an id or a cover.
+  ("written by X"). A product's name (Claude, GPT, CUDA) may appear in a description, where
+  it says what the item works with; never in a title or a cover.
 - The description of somebody else's work ends with "Not affiliated with or endorsed by
   <author>."
 - No license, or one that does not allow copying (anything outside MIT, Apache-2.0,
