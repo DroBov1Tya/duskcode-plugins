@@ -52,6 +52,46 @@ impl Button {
     }
 }
 
+/// One phase of a finger on the screen.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Phase {
+    Down,
+    Move,
+    Up,
+}
+
+/// The keys the agent and the panel press besides typed text.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Key {
+    Return,
+    Delete,
+    ForwardDelete,
+    Tab,
+    Escape,
+    Space,
+    Left,
+    Right,
+    Up,
+    Down,
+    Home,
+    End,
+    PageUp,
+    PageDown,
+    SelectAll,
+    Undo,
+    Redo,
+}
+
+/// Light or dark mode.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Appearance {
+    Light,
+    Dark,
+}
+
 /// A backend. `id` is always one [`Phone::list`] gave; a backend still checks it,
 /// since it reaches the arguments of a program.
 pub trait Phone: Send + Sync + 'static {
@@ -82,6 +122,41 @@ pub trait Phone: Send + Sync + 'static {
     fn tree(&self, id: &str) -> impl Future<Output = Result<String>> + Send;
     fn open_url(&self, id: &str, url: &str) -> impl Future<Output = Result<()>> + Send;
     fn launch(&self, id: &str, bundle_id: &str) -> impl Future<Output = Result<()>> + Send;
+
+    /// Whether [`Phone::touch`] works; the panel otherwise taps and swipes on a lift.
+    fn touches(&self) -> bool {
+        false
+    }
+    /// One phase of a touch at a point, for live drags and long presses. A backend
+    /// without it has only [`Phone::tap`] and [`Phone::swipe`].
+    fn touch(
+        &self,
+        _id: &str,
+        _phase: Phase,
+        _x: u32,
+        _y: u32,
+    ) -> impl Future<Output = Result<()>> + Send {
+        async { anyhow::bail!("{} has no touches by phase", self.title()) }
+    }
+    fn key(&self, _id: &str, _key: Key) -> impl Future<Output = Result<()>> + Send {
+        async { anyhow::bail!("{} has no keys", self.title()) }
+    }
+    fn appearance(
+        &self,
+        _id: &str,
+        _appearance: Appearance,
+    ) -> impl Future<Output = Result<()>> + Send {
+        async { anyhow::bail!("{} cannot change its appearance", self.title()) }
+    }
+    /// Installs the app built at `app`, a path the caller has checked, and returns its
+    /// bundle ID.
+    fn install(
+        &self,
+        _id: &str,
+        _app: &std::path::Path,
+    ) -> impl Future<Output = Result<String>> + Send {
+        async { anyhow::bail!("{} cannot install apps", self.title()) }
+    }
 
     /// Sends the screen's pictures as it changes until `frames` closes or the device
     /// fails. This one takes a picture every `pause`; a backend with a stream sends its

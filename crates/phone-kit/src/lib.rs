@@ -15,4 +15,4 @@ pub mod phone;
 pub mod picture;
 pub mod run;
 
-pub use phone::{Button, Device, Phone, Setup};
+pub use phone::{Appearance, Button, Device, Key, Phase, Phone, Setup};
