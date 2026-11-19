@@ -43,6 +43,40 @@ pub async fn run(program: &str, args: &[&str], limit: Duration, max: usize) -> R
     Ok(out)
 }
 
+/// Runs `program` with `input` on its stdin, for a tool that reads what it acts on there;
+/// its output is dropped.
+pub async fn run_with_input(
+    program: &str,
+    args: &[&str],
+    input: &[u8],
+    limit: Duration,
+) -> Result<()> {
+    use tokio::io::AsyncWriteExt;
+    let mut child = command(program)
+        .args(args)
+        .stdin(Stdio::piped())
+        .stdout(Stdio::null())
+        .stderr(Stdio::piped())
+        .spawn()
+        .with_context(|| format!("{program} did not start"))?;
+    let mut stdin = child.stdin.take().context("no stdin")?;
+    let stderr = child.stderr.take().context("no stderr")?;
+    let work = async {
+        stdin.write_all(input).await?;
+        drop(stdin);
+        let err = read_capped(stderr, MAX_STDERR as usize).await?;
+        let status = child.wait().await?;
+        anyhow::Ok((err, status))
+    };
+    let (err, status) = tokio::time::timeout(limit, work)
+        .await
+        .with_context(|| format!("{program} took too long"))??;
+    if !status.success() {
+        bail!("{}", last_line(&err));
+    }
+    Ok(())
+}
+
 /// A command with nothing on its stdin that dies with its handle.
 pub fn command(program: &str) -> Command {
     let mut command = Command::new(program);

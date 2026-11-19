@@ -6,6 +6,7 @@
 //! - `wire`: the messages and widgets;
 //! - `view`: the view drawn from the state.
 
+mod input;
 mod view;
 pub mod wire;
 
@@ -81,7 +82,8 @@ pub async fn run<P: Phone>(phone: P) -> Result<()> {
     let (lines_in, mut lines) = mpsc::channel(16);
     tokio::spawn(read_stdin(lines_in));
     let (done_in, mut done) = mpsc::channel(16);
-    let mut panel = Panel::new(phone, done_in);
+    let (failed_in, mut failed) = mpsc::channel(16);
+    let mut panel = Panel::new(phone, done_in, failed_in);
     let mut stdout = tokio::io::stdout();
     loop {
         tokio::select! {
@@ -90,6 +92,7 @@ pub async fn run<P: Phone>(phone: P) -> Result<()> {
                 None => break,
             },
             Some(event) = done.recv() => panel.on_done(event),
+            Some(error) = failed.recv() => panel.notice(error),
             Some(frame) = next_frame(&mut panel.stream) => panel.on_frame(frame),
         }
         for line in panel.out.drain(..) {
@@ -141,15 +144,19 @@ struct Panel<P> {
     looking: bool,
     look_again: bool,
     done: mpsc::Sender<Done>,
+    /// The user's touches and keys, sent in order.
+    inputs: mpsc::UnboundedSender<(String, input::Input)>,
     /// Lines to write, each one JSON object.
     out: Vec<String>,
 }
 
 impl<P: Phone> Panel<P> {
-    fn new(phone: P, done: mpsc::Sender<Done>) -> Self {
+    fn new(phone: P, done: mpsc::Sender<Done>, failed: mpsc::Sender<String>) -> Self {
         let title = phone.title();
+        let phone = Arc::new(phone);
         Self {
-            phone: Arc::new(phone),
+            inputs: input::start(Arc::clone(&phone), failed),
+            phone,
             state: State {
                 title,
                 setup: Setup::default(),
@@ -257,8 +264,29 @@ impl<P: Phone> Panel<P> {
                     phone.swipe(&id, from, to).await
                 });
             }
+            (SCREEN, UiEvent::Touch { phase, x, y }) if running => {
+                self.input(input::Input::Touch(phase, x, y))
+            }
+            (SCREEN, UiEvent::Key { key }) if running => self.input(input::Input::Key(key)),
+            (SCREEN, UiEvent::Text { text }) if running && !text.is_empty() => {
+                self.input(input::Input::Text(text))
+            }
+            (SCREEN, UiEvent::Scroll { x, y, dx, dy }) if running => {
+                self.input(input::Input::Scroll { x, y, dx, dy })
+            }
             _ => {}
         }
+    }
+
+    fn input(&mut self, input: input::Input) {
+        if let Some(id) = self.state.chosen.clone() {
+            let _ = self.inputs.send((id, input));
+        }
+    }
+
+    fn notice(&mut self, error: String) {
+        let text = error.chars().take(MAX_NOTICE).collect();
+        self.send(&FromPlugin::Notice { text });
     }
 
     fn on_done(&mut self, done: Done) {

@@ -32,10 +32,41 @@ pub enum ToPlugin {
 #[serde(tag = "kind", rename_all = "snake_case")]
 pub enum UiEvent {
     Click,
-    Input { value: String },
-    Select { item: String },
-    Tap { x: u32, y: u32 },
-    Swipe { from: (u32, u32), to: (u32, u32) },
+    Input {
+        value: String,
+    },
+    Select {
+        item: String,
+    },
+    Tap {
+        x: u32,
+        y: u32,
+    },
+    Swipe {
+        from: (u32, u32),
+        to: (u32, u32),
+    },
+    /// One phase of a press on a screen, for drags and long presses.
+    Touch {
+        phase: crate::Phase,
+        x: u32,
+        y: u32,
+    },
+    /// A key pressed while the screen has focus.
+    Key {
+        key: crate::Key,
+    },
+    /// Text typed while the screen has focus.
+    Text {
+        text: String,
+    },
+    /// A wheel turned over the screen at `x`, `y`; the finger moves by `dx`, `dy`.
+    Scroll {
+        x: u32,
+        y: u32,
+        dx: i32,
+        dy: i32,
+    },
 }
 
 /// To the core.
@@ -204,6 +235,24 @@ mod tests {
             }
         );
         assert!(serde_json::from_str::<ToPlugin>(r#"{"type":"open"}"#).is_err());
+        let touch: UiEvent =
+            serde_json::from_str(r#"{"kind":"touch","phase":"move","x":3,"y":4}"#).unwrap();
+        assert_eq!(
+            touch,
+            UiEvent::Touch {
+                phase: crate::Phase::Move,
+                x: 3,
+                y: 4
+            }
+        );
+        let key: UiEvent = serde_json::from_str(r#"{"kind":"key","key":"select_all"}"#).unwrap();
+        assert_eq!(
+            key,
+            UiEvent::Key {
+                key: crate::Key::SelectAll
+            }
+        );
+        assert!(serde_json::from_str::<UiEvent>(r#"{"kind":"key","key":"power"}"#).is_err());
         let view = FromPlugin::View {
             part: "phone",
             root: Widget::Screen {
