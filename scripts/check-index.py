@@ -17,7 +17,7 @@ repository brings (scripts/repo.py `brings`), since duskcode refuses the package
 A format 3 skill or pack may name `upstream`, files pinned at a commit of its author's
 GitHub repository (store/upstream.rs), instead of `downloads`. `--unsigned` checks a list
 for a source without a key (scripts/mirror.py, docs/mirrors.md): format 3, not expired,
-only skills and packs pinned upstream, no pictures or stars; a company's name in an item's
+only skills, packs and agents pinned upstream, no pictures or stars; a company's name in an item's
 name is only a warning there, since the name is its author's. `--fetch` downloads the
 pinned files of every entry, or of the entries named, and checks each as duskcode does
 before it writes anything: size, SHA-256, UTF-8 text without NUL, and SKILL.md's front
@@ -81,11 +81,12 @@ def plain_path(path, limit=300):
 
 
 def check_upstream(n, e):
-    """store/upstream.rs `Upstream::check`, and the layout content.rs reads: a skill's
-    files all under `<name>/` with its SKILL.md; a pack's under its items' folders."""
+    """store/upstream.rs `Upstream::check`, and the layout content.rs reads: a skill's or
+    agent's files all under `<name>/` with its SKILL.md or AGENT.md; a pack's under its
+    items' folders."""
     up = e["upstream"]
-    if e.get("kind") not in ("skill", "pack") or e.get("downloads"):
-        fail(n, "only a skill or a pack comes from upstream, and then without packages")
+    if e.get("kind") not in ("skill", "pack", "agent") or e.get("downloads"):
+        fail(n, "only a skill, pack or agent comes from upstream, and then without packages")
     if not isinstance(up, dict) or set(up) != UPSTREAM:
         fail(n, f"upstream is exactly {sorted(UPSTREAM)}")
     parts = up["repo"].split("/") if isinstance(up["repo"], str) else []
@@ -111,9 +112,10 @@ def check_upstream(n, e):
         if not isinstance(f["size"], int) or not 1 <= f["size"] <= MAX_UPSTREAM_BYTES:
             fail(n, f"{f['path']}: the size is not 1 to {MAX_UPSTREAM_BYTES} bytes")
     tops = {to.split("/", 1)[0] for to in targets}
-    if e["kind"] == "skill":
-        if tops != {n} or f"{n}/SKILL.md" not in targets:
-            fail(n, f"an upstream skill's files are all under {n}/, with {n}/SKILL.md")
+    if e["kind"] in ("skill", "agent"):
+        file = "SKILL.md" if e["kind"] == "skill" else "AGENT.md"
+        if tops != {n} or f"{n}/{file}" not in targets:
+            fail(n, f"an upstream {e['kind']}'s files are all under {n}/, with {n}/{file}")
     else:
         items = e.get("skills") or []
         if tops != set(items) or not all(f"{item}/SKILL.md" in targets for item in items):
@@ -215,7 +217,7 @@ def check(path, root=ROOT, unsigned=False, fetch=None):
         if index["format"] == 3:
             check_credit(n, e, unsigned)
         if unsigned and ("upstream" not in e or set(e) & {"cover", "screenshots", "stars"}):
-            fail(n, "a list without a key brings only skills and packs pinned upstream, without pictures or stars")
+            fail(n, "a list without a key brings only skills, packs and agents pinned upstream, without pictures or stars")
         if "upstream" in e:
             check_upstream(n, e)
             if fetch is not None and (not fetch or n in fetch):
