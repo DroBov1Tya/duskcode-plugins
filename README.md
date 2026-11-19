@@ -25,7 +25,8 @@ covers/src/<name>.svg           its source; scripts/make-covers.py writes them, 
 screenshots/<name>/             optional demo pictures of an item (up to 8, at most 1 MiB each)
 catalog.yml                     categories, tags and screenshots of each item; a plugin's author, license, source
 verified.yml                    mirrors the maintainer vouches for
-scripts/                        package.sh, package-packs.sh, publish.py, check-index.py (a list, or --repo a repository)
+mirrors.yml                     outside skill catalogues scripts/mirror.py turns into unsigned lists
+scripts/                        package.sh, package-packs.sh, publish.py, check-index.py (a list, or --repo a repository), mirror.py
 site/                           the page and the signed list (index.json, index.json.sig, covers/, screenshots/)
 ```
 
@@ -66,6 +67,10 @@ about who wrote an item of this list.
   `name`, `url` and `key` to `verified.yml`; the next signed official list carries them, and
   duskcode shows a mirror a user added with exactly that address and key as Verified.
 - **Community**: any mirror a user adds in `config.yml` with its key. Nobody vouches for it.
+- **Unverified**: a list a user adds without a key. Only skills and packs pinned to a
+  commit of their author's GitHub repository are taken from it, as text.
+  `scripts/mirror.py` writes such lists from outside catalogues (a GitHub repository of
+  skills, a Claude Code marketplace, Hermes Agent's index); see [docs/mirrors.md](docs/mirrors.md).
 
 ## How an item gets to a user
 
