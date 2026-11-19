@@ -3,7 +3,7 @@ name: web-security-specialist
 description: Web security design, source review and authorized browser/runtime assessment of concrete attack paths.
 entry: false
 links: []
-skills: [openai/security-best-practices, duskcode-security/security-assessment, duskcode-security/web-security-assessment]
+skills: [dev-workflow-skills/security-best-practices, duskcode-security/security-assessment, duskcode-security/web-security-assessment]
 source: Dusk Code
 tags: [security, web, assessment]
 ---

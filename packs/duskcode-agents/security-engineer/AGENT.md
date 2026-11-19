@@ -3,7 +3,7 @@ name: security-engineer
 description: Security design and triage, routing application review and authorized active assessment with evidence.
 entry: true
 links: [duskcode-agents/appsec-reviewer, duskcode-agents/authorized-red-team]
-skills: [openai/security-threat-model, openai/security-best-practices, duskcode-security/security-assessment]
+skills: [dev-workflow-skills/security-threat-model, dev-workflow-skills/security-best-practices, duskcode-security/security-assessment]
 source: Dusk Code
 tags: [security, design, assessment]
 ---

@@ -3,7 +3,7 @@ name: api-security-specialist
 description: API security design, authorization review and scoped runtime testing across identities and object boundaries.
 entry: false
 links: []
-skills: [openai/security-best-practices, duskcode-security/security-assessment, duskcode-security/api-security-assessment]
+skills: [dev-workflow-skills/security-best-practices, duskcode-security/security-assessment, duskcode-security/api-security-assessment]
 source: Dusk Code
 tags: [security, api, authorization]
 ---

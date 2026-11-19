@@ -24,9 +24,11 @@ OWNERS = ("duskcode", "DroBov1Tya")
 # Licenses that let the text be copied here with attribution.
 LICENSES = ("MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "0BSD", "MPL-2.0",
             "CC-BY-4.0", "CC0-1.0", "Unlicense")
-# Company names an item's name and title never carry: the item is not theirs to brand,
-# whoever wrote it. The author field is where a company is named.
-COMPANIES = ("anthropic", "openai", "nvidia", "microsoft", "google", "amazon", "apple", "meta")
+# Company and product names an item's name and title never carry: the item is not theirs to
+# brand, whoever wrote it. The author field is where a company is named, and a product's
+# name may sit in a description. Checked only in a pack's name and title and a plugin's name.
+COMPANIES = ("anthropic", "claude", "openai", "chatgpt", "gpt", "codex", "nvidia", "microsoft",
+             "copilot", "google", "gemini", "amazon", "aws", "apple", "meta", "hermes", "nous")
 UNAFFILIATED = "not affiliated with or endorsed by"
 
 WORD = re.compile(r"^[a-z0-9-]{1,32}$")

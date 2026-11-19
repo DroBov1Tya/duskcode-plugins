@@ -24,21 +24,13 @@ repositories on 2026-11-18. This is a working note, not legal advice.
 
 ## Names
 
-No id, title or cover carries a company's name, and no id or cover a product's. Two
-titles name the product the skills were written for, by the owner's decision:
-web-builder-skills is "Skills for Claude" and dev-workflow-skills is "Skills for GPT".
-What the brand pages say about that (read 2026-11-18):
+No id, title or cover carries a company's or a product's name. The two packs from
+Anthropic and OpenAI were titled "Skills for Claude" and "Skills for GPT" until
+2026-11-19; their titles are now "Web Builder Skills" and "Developer Workflow Skills",
+which say what the packs hold. Their ids did not change. Anthropic's trademark guidelines
+allow its marks only as it specifically permits, and OpenAI's brand page could not be read
+(it answered 403); a title is not the place to rely on either.
 
-- Anthropic's trademark guidelines allow its marks only as it specifically permits, in
-  material it approved, and forbid implying sponsorship or endorsement. They say nothing
-  of "for Claude" titles, so the title rests on descriptive use, not on a permission.
-- OpenAI's brand page could not be read (it answered 403). Summaries of it say "GPT" is
-  not permitted in product names, and that "powered by GPT-4" or "<name> plugin for
-  ChatGPT" is the accepted form. By that reading "Skills for GPT" is outside the
-  guidelines; read the live page before publishing.
-- The safest wording keeps both marks out of titles ("Web Builder Skills", "Developer
-  Workflow Skills"); changing back is one line of each `pack.yml`, and the ids stay.
-
-The author is named as a fact in
-`vendor`, `upstream`, the notices and one clause of the description, each description
-ends with "Not affiliated with or endorsed by <author>", and no logo is used.
+The author is named as a fact in `vendor`, `upstream`, the notices and one clause of the
+description, each description ends with "Not affiliated with or endorsed by <author>", and
+no logo is used.
