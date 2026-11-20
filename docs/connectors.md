@@ -23,7 +23,7 @@ against the service's own documentation and signs the next list.
   registers itself on the first sign-in. A server that only accepts clients registered
   in advance by the vendor (an allowlist, a client ID the user must create) does not work
   with one click; leave it out.
-- A local server starts with `npx -y <package>@<version>` or `uvx <package>==<version>`:
+- A local server starts with `npx -y <package>@<version>` or `uvx <package>===<version>` (`===`, so no padded or local version matches):
   one exact version, never `latest` or a range. It runs on the user's computer with their
   rights, so the Workshop lists it only signed (Official or Verified); duskcode refuses a
   local connector from any other source.

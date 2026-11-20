@@ -36,7 +36,7 @@ VENDOR_TERMS = "LicenseRef-vendor-terms"
 # What a connector's server may say, as duskcode's reader takes it (store/connector.rs).
 SERVER_FIELDS = {"url", "command", "args", "auth", "secrets", "docs", "run_by", "reaches"}
 CONNECTOR_FIELDS = {"name", "version", "description", "server"}
-RUNNERS = {"npx": "@", "uvx": "=="}
+RUNNERS = {"npx": "@", "uvx": "==="}
 MAX_SECRETS = 4
 MAX_ARGS = 16
 
