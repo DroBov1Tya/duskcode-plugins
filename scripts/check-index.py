@@ -12,6 +12,18 @@ repository brings (scripts/repo.py `brings`), since duskcode refuses the package
     scripts/check-index.py /path/to/index.json
     scripts/check-index.py --repo /path/to/repository   its catalog.yml, packs and plugins,
                                                         before a list is built (scripts/repo.py)
+    scripts/check-index.py [--unsigned] /path/to/index.json [--fetch [NAME ...]]
+    scripts/check-index.py --pins [/path/to/repository]  fetch every file pinned/*/pins.json
+                                                          names and check its SHA-256
+
+A format 3 skill or pack may name `upstream`, files pinned at a commit of its author's
+GitHub repository (store/upstream.rs), instead of `downloads`. `--unsigned` checks a list
+for a source without a key (scripts/mirror.py, docs/mirrors.md): format 3, not expired,
+only skills, packs and agents pinned upstream, no pictures or stars; a company's name in an item's
+name is only a warning there, since the name is its author's. `--fetch` downloads the
+pinned files of every entry, or of the entries named, and checks each as duskcode does
+before it writes anything: size, SHA-256, UTF-8 text without NUL, and SKILL.md's front
+matter as the skill graph reads it.
 """
 
 import hashlib
@@ -19,7 +31,7 @@ import json
 import pathlib
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 import yaml
 
@@ -38,6 +50,13 @@ CREDIT = {"author", "license", "source", "categories", "badge"}
 # What format 3 adds to a plugin: what it runs and adds, checked against its manifest.
 BRINGS = {"mcp", "programs"}
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+UPSTREAM = {"repo", "commit", "files"}
+UPSTREAM_FILE = {"path", "to", "sha256", "size"}
+PART = re.compile(r"^[A-Za-z0-9._-]+$")
+MAX_UPSTREAM_FILES = 200
+MAX_UPSTREAM_BYTES = 4 * 1024 * 1024
+MAX_ENTRIES = 2000
+MAX_INDEX_BYTES = 4 * 1024 * 1024
 
 
 def fail(entry, message):
@@ -58,7 +77,117 @@ def check_picture(n, index, item, fields, limit):
         fail(n, f"{item['path']}: {why}")
 
 
-def check_credit(n, e):
+def plain_path(path, limit=300):
+    return isinstance(path, str) and 0 < len(path.encode()) <= limit and all(
+        part not in (".", "..") and PART.match(part) for part in path.split("/"))
+
+
+def check_upstream(n, e):
+    """store/upstream.rs `Upstream::check`, and the layout content.rs reads: a skill's or
+    agent's files all under `<name>/` with its SKILL.md or AGENT.md; a pack's under its
+    items' folders."""
+    up = e["upstream"]
+    if e.get("kind") not in ("skill", "pack", "agent") or e.get("downloads"):
+        fail(n, "only a skill, pack or agent comes from upstream, and then without packages")
+    if not isinstance(up, dict) or set(up) != UPSTREAM:
+        fail(n, f"upstream is exactly {sorted(UPSTREAM)}")
+    parts = up["repo"].split("/") if isinstance(up["repo"], str) else []
+    if len(parts) != 2 or not all(plain_path(p) for p in parts):
+        fail(n, "the upstream repository is not owner/name")
+    if not isinstance(up["commit"], str) or not re.match(r"^[0-9a-f]{40}$", up["commit"]):
+        fail(n, "the upstream commit is not 40 hex digits")
+    files = up["files"]
+    if not isinstance(files, list) or not 1 <= len(files) <= MAX_UPSTREAM_FILES:
+        fail(n, f"an upstream names 1 to {MAX_UPSTREAM_FILES} files")
+    paths, targets = set(), set()
+    for f in files:
+        if not isinstance(f, dict) or set(f) != UPSTREAM_FILE:
+            fail(n, f"an upstream file is exactly {sorted(UPSTREAM_FILE)}")
+        if not plain_path(f["path"]) or not plain_path(f["to"]):
+            fail(n, f"{f['path']} -> {f['to']}: not a plain relative path")
+        if f["path"] in paths or f["to"] in targets:
+            fail(n, f"{f['path']}: named twice")
+        paths.add(f["path"])
+        targets.add(f["to"])
+        if not isinstance(f["sha256"], str) or not SHA.match(f["sha256"]):
+            fail(n, f"{f['path']}: the sha256 is not 64 hex digits")
+        if not isinstance(f["size"], int) or not 1 <= f["size"] <= MAX_UPSTREAM_BYTES:
+            fail(n, f"{f['path']}: the size is not 1 to {MAX_UPSTREAM_BYTES} bytes")
+    tops = {to.split("/", 1)[0] for to in targets}
+    if e["kind"] in ("skill", "agent"):
+        file = "SKILL.md" if e["kind"] == "skill" else "AGENT.md"
+        if tops != {n} or f"{n}/{file}" not in targets:
+            fail(n, f"an upstream {e['kind']}'s files are all under {n}/, with {n}/{file}")
+    else:
+        items = e.get("skills") or []
+        if tops != set(items) or not all(f"{item}/SKILL.md" in targets for item in items):
+            fail(n, "an upstream pack's files are exactly its skills' folders, each with a SKILL.md")
+
+
+def raw(n, url, limit):
+    """The bytes at `url` on GitHub's raw host, waiting out a 429; a missing file, or a
+    redirect duskcode would not follow, fails."""
+    import time
+    import urllib.error
+    import urllib.request
+    request = urllib.request.Request(url, headers={"User-Agent": "duskcode-workshop-check"})
+    for attempt in range(6):
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                if response.geturl() != url:
+                    fail(n, f"{url}: the raw host redirected, and duskcode follows no redirect here")
+                return response.read(limit)
+        except urllib.error.HTTPError as error:
+            if (error.code != 429 and error.code < 500) or attempt == 5:
+                fail(n, f"{url}: HTTP {error.code}; the pinned file is gone")
+            time.sleep(max(2 ** attempt, min(int(error.headers.get("Retry-After") or 0), 120)))
+        except (urllib.error.URLError, OSError) as error:
+            # A dropped connection or a timeout is the network's, not the pin's: try again.
+            if attempt == 5:
+                fail(n, f"{url}: {getattr(error, 'reason', error)}")
+            time.sleep(2 ** attempt)
+
+
+def check_pins(root):
+    """Every file of every pinned pack (pinned/<pack>/pins.json), fetched again from GitHub
+    and checked against its size and SHA-256: fails when an author's repository no longer
+    serves exactly what the list will pin."""
+    import concurrent.futures
+    import pinned
+    folders = sorted(f.parent for f in pathlib.Path(root).glob("pinned/*/pins.json"))
+    one = lambda folder: fetch_upstream(folder.name, {"upstream": pinned.upstream(pinned.read(folder)[1])})
+    # A pack at a time per worker: the first pin that fails stops the check.
+    with concurrent.futures.ThreadPoolExecutor(6) as pool:
+        count = sum(pool.map(one, folders))
+    print(f"ok: {len(folders)} pinned packs, {count} files match their pins")
+
+
+def fetch_upstream(n, e):
+    """Every pinned file, fetched from GitHub's raw host and checked as store/upstream.rs
+    `assemble` does, and each SKILL.md read as the skill graph reads it."""
+    import mirror
+    up = e["upstream"]
+    for f in up["files"]:
+        url = f"https://raw.githubusercontent.com/{up['repo']}/{up['commit']}/{f['path']}"
+        data = raw(n, url, f["size"] + 1)
+        if len(data) != f["size"] or hashlib.sha256(data).hexdigest() != f["sha256"]:
+            fail(n, f"{f['path']} is not the file the list pins")
+        try:
+            data.decode()
+        except UnicodeDecodeError:
+            fail(n, f"{f['path']} is not UTF-8 text")
+        if b"\0" in data:
+            fail(n, f"{f['path']} holds NUL, so it is not text")
+        to = f["to"].split("/")
+        if len(to) == 2 and to[1] == "SKILL.md":
+            try:
+                mirror.read_front(data, to[0])
+            except mirror.Skip as skip:
+                fail(n, f"{f['to']} will not load as a skill: {skip}")
+    return len(up["files"])
+
+
+def check_credit(n, e, unsigned=False):
     """Who made it and how it is filed, and the badge that follows from the author."""
     if not CREDIT <= set(e):
         fail(n, f"a format 3 entry names {sorted(CREDIT)}")
@@ -70,7 +199,10 @@ def check_credit(n, e):
     if e["badge"] == "verified" and e.get("kind") == "pack" and repo.UNAFFILIATED not in e["description"].lower():
         fail(n, "the description of somebody else's work says it is not affiliated")
     if company := repo.company_in(n):
-        fail(n, f"the name carries the company name {company}")
+        if unsigned:
+            print(f"warning: {n}: the name carries the company name {company}", file=sys.stderr)
+        else:
+            fail(n, f"the name carries the company name {company}")
 
 
 def check_brings(n, e, root):
@@ -97,19 +229,34 @@ def check_repo(root):
     print(f"ok: {len(items)} items")
 
 
-def check(path, root=ROOT):
-    index = json.loads(path.read_text())
+def check(path, root=ROOT, unsigned=False, fetch=None):
+    data = path.read_bytes()
+    index = json.loads(data)
     assert set(index) <= {"format", "serial", "expires", "plugins", "verified"}, "unknown top field"
     assert index["format"] in (2, 3) and isinstance(index["serial"], int)
     datetime.fromisoformat(index["expires"].replace("Z", "+00:00"))
+    if len(index["plugins"]) > MAX_ENTRIES or len(data) > MAX_INDEX_BYTES:
+        sys.exit(f"over duskcode's caps: {MAX_ENTRIES} entries, {MAX_INDEX_BYTES} bytes")
+    if unsigned:
+        if index["format"] != 3 or index.get("verified"):
+            sys.exit("a list without a key is format 3 and vouches for no mirrors")
+        if datetime.fromisoformat(index["expires"].replace("Z", "+00:00")) <= datetime.now(timezone.utc):
+            sys.exit(f"the list expired on {index['expires']}")
     seen = set()
+    fetched = 0
     for e in index["plugins"]:
         n = e.get("name", "?")
-        known = ENTRY | CREDIT | BRINGS if index["format"] == 3 else ENTRY
+        known = ENTRY | CREDIT | BRINGS | {"upstream"} if index["format"] == 3 else ENTRY
         if set(e) - known:
             fail(n, f"unknown fields {sorted(set(e) - known)}")
         if index["format"] == 3:
-            check_credit(n, e)
+            check_credit(n, e, unsigned)
+        if unsigned and ("upstream" not in e or set(e) & {"cover", "screenshots", "stars"}):
+            fail(n, "a list without a key brings only skills, packs and agents pinned upstream, without pictures or stars")
+        if "upstream" in e:
+            check_upstream(n, e)
+            if fetch is not None and (not fetch or n in fetch):
+                fetched += fetch_upstream(n, e)
         if "stars" in e:
             fail(n, "the official list carries no stars")
         if not NAME.match(n) or n in seen:
@@ -119,9 +266,9 @@ def check(path, root=ROOT):
             fail(n, "unknown kind")
         if not e["version"] or len(e["version"]) > 40:
             fail(n, "bad version")
-        if not e["downloads"]:
+        if not e.get("downloads") and "upstream" not in e:
             fail(n, "no downloads")
-        for d in e["downloads"]:
+        for d in e.get("downloads", []):
             if set(d) - DOWNLOAD or not d["url"].startswith("https://") or not SHA.match(d["sha256"]) \
                     or not 1 <= d["size"] <= 64 * 1024 * 1024:
                 fail(n, f"bad download {d}")
@@ -130,7 +277,8 @@ def check(path, root=ROOT):
         if len(e.get("tags", [])) > 8 or not all(WORD.match(t) for t in e.get("tags", [])):
             fail(n, "bad tags")
         for key in ("created", "updated"):
-            datetime.fromisoformat(e[key].replace("Z", "+00:00"))
+            if key in e or not unsigned:
+                datetime.fromisoformat(e[key].replace("Z", "+00:00"))
         if e.get("kind", "plugin") != "plugin" and set(e) & BRINGS:
             fail(n, "only a plugin brings mcp or programs")
         if e.get("skills") and e["kind"] != "pack" and not (index["format"] == 3 and e["kind"] == "plugin"):
@@ -148,15 +296,25 @@ def check(path, root=ROOT):
                 fail(n, f"bad caption {shot['caption']!r}")
         if e["kind"] == "pack":
             assert all(NAME.match(s) for s in e["skills"]), n
-    for m in index["verified"]:
+    for m in index.get("verified", []):
         assert set(m) == {"name", "url", "key"} and m["url"].startswith("https://")
-    print(f"ok: {len(index['plugins'])} entries, serial {index['serial']}")
+    if fetch and not set(fetch) <= seen:
+        sys.exit(f"not in the list: {' '.join(sorted(set(fetch) - seen))}")
+    print(f"ok: {len(index['plugins'])} entries, serial {index['serial']}"
+          + (", unsigned" if unsigned else "") + (f", {fetched} pinned files fetched and checked" if fetch is not None else ""))
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 3 and sys.argv[1] == "--repo":
-        check_repo(sys.argv[2])
-    elif len(sys.argv) == 2:
-        check(pathlib.Path(sys.argv[1]))
+    args = sys.argv[1:]
+    unsigned = "--unsigned" in args
+    args = [a for a in args if a != "--unsigned"]
+    fetch = args[args.index("--fetch") + 1:] if "--fetch" in args else None
+    args = args[:args.index("--fetch")] if "--fetch" in args else args
+    if len(args) == 2 and args[0] == "--repo" and not unsigned and fetch is None:
+        check_repo(args[1])
+    elif args[:1] == ["--pins"] and len(args) <= 2 and not unsigned and fetch is None:
+        check_pins(args[1] if len(args) == 2 else ROOT)
+    elif len(args) == 1 and not args[0].startswith("--"):
+        check(pathlib.Path(args[0]), unsigned=unsigned, fetch=fetch)
     else:
         sys.exit(__doc__)

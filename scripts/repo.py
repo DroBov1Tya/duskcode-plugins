@@ -277,6 +277,12 @@ def problems(root):
     for kind, manifest, check, fields in kinds:
         listed = catalog.get(kind) or {}
         folders = {f.parent.name: f.parent for f in root.glob(f"{kind}/*/{manifest}")}
+        if kind == "packs":
+            # Packs pinned in their author's repository (pinned.py) are packs of the list too.
+            for f in root.glob(f"pinned/*/{manifest}"):
+                if f.parent.name in folders:
+                    found.append(f"{f.parent.name}: in packs/ and in pinned/")
+                folders[f.parent.name] = f.parent
         for name in sorted(set(listed) ^ set(folders)):
             found.append(f"{name}: in catalog.yml or in {kind}/, not in both")
         for name in sorted(set(listed) & set(folders)):
@@ -284,10 +290,13 @@ def problems(root):
             if not isinstance(meta, dict) or set(meta) - fields:
                 found.append(f"{name}: catalog.yml takes {' '.join(sorted(fields))} for one of the {kind}")
                 continue
-            found += check(folders[name], meta) + picture_problems(root, name, meta)
+            is_pinned = folders[name].parent.name == "pinned"
+            if is_pinned:
+                import pinned
+            found += (pinned.problems if is_pinned else check)(folders[name], meta) + picture_problems(root, name, meta)
             if kind == "packs":
                 pack = yaml.safe_load((folders[name] / manifest).read_text())
-                mark = badge(pack.get("vendor"), pack.get("upstream")) if isinstance(pack, dict) else "?"
+                mark = badge(pack.get("vendor"), pack.get("upstream") or pack.get("repo")) if isinstance(pack, dict) else "?"
             else:
                 mark = badge(meta.get("author"))
             items.append((kind[:-1], name, mark))

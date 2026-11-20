@@ -3,7 +3,8 @@
 fonts, and no name, mark or colours of anybody else: a pack of somebody else's skills is
 named for what it does. The covers of web-builder-skills, dev-workflow-skills and
 gpu-computing-skills are not rendered yet (the maintainer draws them); until covers/ has
-them, they are listed without a cover and shown with the plain placeholder.
+them, they are listed without a cover and shown with the plain placeholder. The packs of
+pinned/ get generated ones here: a generic title and shape, no mark of their authors.
 
     scripts/make-covers.py && scripts/render-covers.sh
 """
@@ -22,6 +23,20 @@ COVERS = {
     "ios-simulator": ("ios-simulator", "PLUGIN / DEVICES", "#38bdf8", "phone"),
     "vphone": ("vphone", "PLUGIN / DEVICES", "#e879f9", "phone2"),
     "telegram": ("telegram", "PLUGIN / CHAT", "#60a5fa", "bubbles"),
+    # Packs pinned in their authors' repositories (pinned/): named for what they do.
+    "office-document-skills": ("Documents", "SKILL PACK / PINNED", "#34d399", "slabs"),
+    "visual-design-skills": ("Visual Design", "SKILL PACK / PINNED", "#f472b6", "rings"),
+    "communication-skills": ("Comms", "SKILL PACK / PINNED", "#60a5fa", "bubbles"),
+    "hosting-deploy-skills": ("Deploy", "SKILL PACK / PINNED", "#22d3ee", "stairs"),
+    "team-workspace-skills": ("Workspace", "SKILL PACK / PINNED", "#a3e635", "slabs"),
+    "dotnet-app-skills": (".NET Apps", "SKILL PACK / PINNED", "#a78bfa", "arches"),
+    "speech-audio-skills": ("Speech", "SKILL PACK / PINNED", "#fb923c", "rings"),
+    "repository-utility-skills": ("Repo Tools", "SKILL PACK / PINNED", "#94a3b8", "stairs"),
+    "tile-kernel-skills": ("Tile Kernels", "SKILL PACK / PINNED", "#4ade80", "slabs"),
+    "gpu-simulation-skills": ("Simulation", "SKILL PACK / PINNED", "#38bdf8", "orbit"),
+    "multi-gpu-memory-skills": ("Multi-GPU", "SKILL PACK / PINNED", "#facc15", "arches"),
+    "optimization-solver-skills": ("Solvers", "SKILL PACK / PINNED", "#f87171", "stairs"),
+    "gpu-acceleration-skills": ("GPU Porting", "SKILL PACK / PINNED", "#2dd4bf", "orbit"),
 }
 
 

@@ -1,0 +1,230 @@
+{
+  "repo": "openai/skills",
+  "commit": "49f948faa9258a0c61caceaf225e179651397431",
+  "files": [
+    {
+      "path": "skills/.curated/aspnet-core/LICENSE.txt",
+      "to": "aspnet-core/LICENSE.txt",
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+      "size": 11357
+    },
+    {
+      "path": "skills/.curated/aspnet-core/SKILL.md",
+      "to": "aspnet-core/SKILL.md",
+      "sha256": "1f487ef3565e5ac1ee6c93cbeb9ac666292b30285877c82ddb0a77c9777fe92f",
+      "size": 5544
+    },
+    {
+      "path": "skills/.curated/aspnet-core/agents/openai.yaml",
+      "to": "aspnet-core/agents/openai.yaml",
+      "sha256": "06a421ca2f92fc86d83dc7c02e31ad5c85da8193eebbe17aa883ef274e26011a",
+      "size": 222
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/_sections.md",
+      "to": "aspnet-core/references/_sections.md",
+      "sha256": "eefa51074986d078dd108857ff1e376bf6b75935ee125ebdafef47ba53a57f19",
+      "size": 2412
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/apis-minimal-and-controllers.md",
+      "to": "aspnet-core/references/apis-minimal-and-controllers.md",
+      "sha256": "156283486289a1765d0cad6f7c296bad2f8aa45ad24d730c8ed0b845713cfee1",
+      "size": 3040
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/data-state-and-services.md",
+      "to": "aspnet-core/references/data-state-and-services.md",
+      "sha256": "9b0f2253c77a9ade7ebd39103de8fdfe1ae0cd73f71a86936bb1f5ccde064ef4",
+      "size": 2422
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/program-and-pipeline.md",
+      "to": "aspnet-core/references/program-and-pipeline.md",
+      "sha256": "375d4e4580ce43f72f5d3d01e7c26a292eec2f43dc63c03f0200a4e24dbcd543",
+      "size": 4182
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/realtime-grpc-and-background-work.md",
+      "to": "aspnet-core/references/realtime-grpc-and-background-work.md",
+      "sha256": "ba6cfd463620b608c33ed65bcc4d6b25c4ec921cc77bd2fb9379cb486a11a824",
+      "size": 1896
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/security-and-identity.md",
+      "to": "aspnet-core/references/security-and-identity.md",
+      "sha256": "a661dc33dc64e44f9a389d08c20f4e89f1ed62970197a3d2df35036b07884f35",
+      "size": 2941
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/source-map.md",
+      "to": "aspnet-core/references/source-map.md",
+      "sha256": "21e11fee79253f9c0050a3fb207b91e0c44360572662b2c900a855d0a332fa93",
+      "size": 2040
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/stack-selection.md",
+      "to": "aspnet-core/references/stack-selection.md",
+      "sha256": "9de61ba6c4c1fbb9b4b68d2fb6a9f3ed475feb87d912999c8a1c81911f38c8a3",
+      "size": 3700
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/testing-performance-and-operations.md",
+      "to": "aspnet-core/references/testing-performance-and-operations.md",
+      "sha256": "14fecd1e3f5c7a54de2e7ffdd51a91a52101da5765f1ccdfd1f6c6437dd6c8ec",
+      "size": 2698
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/ui-blazor.md",
+      "to": "aspnet-core/references/ui-blazor.md",
+      "sha256": "37267429839b21d084b35749550e85fa96077e06e96fef4917d558b8602afdcc",
+      "size": 2478
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/ui-mvc.md",
+      "to": "aspnet-core/references/ui-mvc.md",
+      "sha256": "25657bf06f9f485967cc07d9cd93b5631d4a49871cd63bd7b2ae982fb776e659",
+      "size": 1954
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/ui-razor-pages.md",
+      "to": "aspnet-core/references/ui-razor-pages.md",
+      "sha256": "3f3e2dc6e47ce6202649f28fd3143087c067048e60cb997030f8f0bc17a09f1a",
+      "size": 1937
+    },
+    {
+      "path": "skills/.curated/aspnet-core/references/versioning-and-upgrades.md",
+      "to": "aspnet-core/references/versioning-and-upgrades.md",
+      "sha256": "3a51900fb9046ea9c0aec738410389854ab2474950253ab0719909aaf709a840",
+      "size": 2085
+    },
+    {
+      "path": "skills/.curated/winui-app/LICENSE.txt",
+      "to": "winui-app/LICENSE.txt",
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+      "size": 11357
+    },
+    {
+      "path": "skills/.curated/winui-app/SKILL.md",
+      "to": "winui-app/SKILL.md",
+      "sha256": "917341ec9eb688d73e21362910a7178a92b2ae49544b7d8f17ee9e19adfe2ea8",
+      "size": 11272
+    },
+    {
+      "path": "skills/.curated/winui-app/agents/openai.yaml",
+      "to": "winui-app/agents/openai.yaml",
+      "sha256": "78ce2654ae038782bc270a6a6474f3cbf7df10889d646882dd140ab6c42346f4",
+      "size": 202
+    },
+    {
+      "path": "skills/.curated/winui-app/config.yaml",
+      "to": "winui-app/config.yaml",
+      "sha256": "fd335882f053f82290342f2f49fae4b1bf3deb2317cf2c23298e119d5c5f17da",
+      "size": 2515
+    },
+    {
+      "path": "skills/.curated/winui-app/references/_sections.md",
+      "to": "winui-app/references/_sections.md",
+      "sha256": "54f055a86da3ef06e50a857ca9ab4cc256f5938a247774377d6d037045a2feda",
+      "size": 4279
+    },
+    {
+      "path": "skills/.curated/winui-app/references/accessibility-input-and-localization.md",
+      "to": "winui-app/references/accessibility-input-and-localization.md",
+      "sha256": "62d03a806ce883ac4ef58947a1f0b173011dbfbfcfb0cb992cca95b8c25696a3",
+      "size": 2026
+    },
+    {
+      "path": "skills/.curated/winui-app/references/build-run-and-launch-verification.md",
+      "to": "winui-app/references/build-run-and-launch-verification.md",
+      "sha256": "a6e15a7fbc7969a5e716653bc7848a974ed9471b1fef914ff70778c3c80c2c24",
+      "size": 4332
+    },
+    {
+      "path": "skills/.curated/winui-app/references/community-toolkit-controls-and-helpers.md",
+      "to": "winui-app/references/community-toolkit-controls-and-helpers.md",
+      "sha256": "abb4dd07d96094bf37b928d3769b52d23b411e45e76221ee0008ef6565dfc449",
+      "size": 1954
+    },
+    {
+      "path": "skills/.curated/winui-app/references/controls-layout-and-adaptive-ui.md",
+      "to": "winui-app/references/controls-layout-and-adaptive-ui.md",
+      "sha256": "90d2087e73aa617cea8c853f5d8b2440b5e5eb6f3c9e55fedd84e7bf4be7ee15",
+      "size": 6012
+    },
+    {
+      "path": "skills/.curated/winui-app/references/foundation-environment-audit-and-remediation.md",
+      "to": "winui-app/references/foundation-environment-audit-and-remediation.md",
+      "sha256": "8bd585792a576a40c882918916135789dc84eb6e319fbb5ee4ebd2fbedc38928",
+      "size": 3730
+    },
+    {
+      "path": "skills/.curated/winui-app/references/foundation-setup-and-project-selection.md",
+      "to": "winui-app/references/foundation-setup-and-project-selection.md",
+      "sha256": "4440a2a6babd2c293d6f0efc7fb3a6975b2978e711295924ecf145e139124a72",
+      "size": 4412
+    },
+    {
+      "path": "skills/.curated/winui-app/references/foundation-template-first-recovery.md",
+      "to": "winui-app/references/foundation-template-first-recovery.md",
+      "sha256": "6718919c530b0bb0c4abc8aea7f56564412db58e60d8e3bfd282dabc86d5d94b",
+      "size": 3381
+    },
+    {
+      "path": "skills/.curated/winui-app/references/foundation-winui-app-structure.md",
+      "to": "winui-app/references/foundation-winui-app-structure.md",
+      "sha256": "5d2a8e8ca4a7e7058722566622bddca98ae18c136c0c3f76dd0a5edfb78cd51c",
+      "size": 2479
+    },
+    {
+      "path": "skills/.curated/winui-app/references/motion-animations-and-polish.md",
+      "to": "winui-app/references/motion-animations-and-polish.md",
+      "sha256": "d22b9b919bdc9dd5674da28b5980988a41e1cc5ee37182c0a470268b9d126134",
+      "size": 1577
+    },
+    {
+      "path": "skills/.curated/winui-app/references/performance-diagnostics-and-responsiveness.md",
+      "to": "winui-app/references/performance-diagnostics-and-responsiveness.md",
+      "sha256": "01d47d229c1903b875e6dc0b55d0935963afed2bd99b65638a06bfdfe931359e",
+      "size": 1759
+    },
+    {
+      "path": "skills/.curated/winui-app/references/sample-source-map.md",
+      "to": "winui-app/references/sample-source-map.md",
+      "sha256": "fd03ee0e1abd41bd3cf2fa7f5131686498597d56122f219742854ac4d33f0ce2",
+      "size": 2201
+    },
+    {
+      "path": "skills/.curated/winui-app/references/shell-navigation-and-windowing.md",
+      "to": "winui-app/references/shell-navigation-and-windowing.md",
+      "sha256": "3fda8c2dc98c710c08f901d83475391d53bb6e92fa2ace140693f5783380bf71",
+      "size": 3551
+    },
+    {
+      "path": "skills/.curated/winui-app/references/styling-theming-materials-and-icons.md",
+      "to": "winui-app/references/styling-theming-materials-and-icons.md",
+      "sha256": "14c9b4aff55d63a8afc3501643a8fc0e75056f0cdd55331f356d50ad6ad45014",
+      "size": 3948
+    },
+    {
+      "path": "skills/.curated/winui-app/references/testing-debugging-and-review-checklists.md",
+      "to": "winui-app/references/testing-debugging-and-review-checklists.md",
+      "sha256": "1e3e2890e14f3216cf6485839592293d5b02652da19453a460cfa2368e89fb10",
+      "size": 4288
+    },
+    {
+      "path": "skills/.curated/winui-app/references/windows-app-sdk-lifecycle-notifications-and-deployment.md",
+      "to": "winui-app/references/windows-app-sdk-lifecycle-notifications-and-deployment.md",
+      "sha256": "099ee45361e1d0ef5c017b08bda43699e578dad615e27438591798a95e353009",
+      "size": 2731
+    }
+  ],
+  "notes": {
+    "aspnet-core": [
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ],
+    "winui-app": [
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ]
+  }
+}

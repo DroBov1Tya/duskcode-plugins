@@ -1,0 +1,18 @@
+name: multi-gpu-memory-skills
+title: "Multi GPU Memory Skills"
+description: "Install, configure, tune and troubleshoot a shared-memory library for programs that span many GPUs and nodes: transports, NIC mapping, TMA, performance data and bug reports. Written by NVIDIA and published under Apache-2.0; installed from its repository at a pinned commit. Not affiliated with or endorsed by NVIDIA."
+vendor: NVIDIA
+kind: skills
+license: Apache-2.0
+repo: NVIDIA/skills
+commit: b0694f6d55b4037ffd414aba5759b59f38380c5e
+items:
+  nvshmem-collect-performance-data: skills/nvshmem-collect-performance-data
+  nvshmem-configure-nic-pe-mapping: skills/nvshmem-configure-nic-pe-mapping
+  nvshmem-docs: skills/nvshmem-docs
+  nvshmem-enable-tma: skills/nvshmem-enable-tma
+  nvshmem-get-started: skills/nvshmem-get-started
+  nvshmem-install: skills/nvshmem-install
+  nvshmem-select-remote-transport: skills/nvshmem-select-remote-transport
+  nvshmem-troubleshoot-and-report-bugs: skills/nvshmem-troubleshoot-and-report-bugs
+  nvshmem-tune-performance: skills/nvshmem-tune-performance

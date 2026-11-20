@@ -1,0 +1,15 @@
+name: team-workspace-skills
+title: "Team Workspace Skills"
+description: "Work with Linear issues, Sentry errors and Notion pages: capture decisions, prepare meetings, research across pages and turn specs into tasks. They expect those services' own command-line tools or connectors. Written by OpenAI (the Notion skills under MIT, the rest under Apache-2.0); installed from its repository at a pinned commit. Not affiliated with or endorsed by OpenAI."
+vendor: OpenAI
+kind: skills
+license: Apache-2.0 AND MIT
+repo: openai/skills
+commit: 49f948faa9258a0c61caceaf225e179651397431
+items:
+  linear: skills/.curated/linear
+  sentry: skills/.curated/sentry
+  notion-knowledge-capture: skills/.curated/notion-knowledge-capture
+  notion-meeting-intelligence: skills/.curated/notion-meeting-intelligence
+  notion-research-documentation: skills/.curated/notion-research-documentation
+  notion-spec-to-implementation: skills/.curated/notion-spec-to-implementation

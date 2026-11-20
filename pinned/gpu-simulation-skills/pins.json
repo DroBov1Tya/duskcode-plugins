@@ -1,0 +1,1050 @@
+{
+  "repo": "NVIDIA/skills",
+  "commit": "b0694f6d55b4037ffd414aba5759b59f38380c5e",
+  "files": [
+    {
+      "path": "skills/warp-compile-time-optimizer/BENCHMARK.md",
+      "to": "warp-compile-time-optimizer/BENCHMARK.md",
+      "sha256": "ffc94985c98e36a657ef8ae41da0e4273a1b064e04b926c40e1b3135b0a94ca1",
+      "size": 4413
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/SKILL.md",
+      "to": "warp-compile-time-optimizer/SKILL.md",
+      "sha256": "40dc08bf8e5401cb26a9cebd2414d505314ca19e5be8ed4517688a462981c753",
+      "size": 13984
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/config/skillspector-baseline.yaml",
+      "to": "warp-compile-time-optimizer/config/skillspector-baseline.yaml",
+      "sha256": "2cfb193a9279b574374a80517ace68b773a09336852d3a23ac59f0eb8f468eb6",
+      "size": 903
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/config.yml",
+      "to": "warp-compile-time-optimizer/evals/config.yml",
+      "sha256": "12d1441d60b41e1d3b76c8b57475ed988eef97c4b3768f7cb8e17ccdd616916b",
+      "size": 1341
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/evals.json",
+      "to": "warp-compile-time-optimizer/evals/evals.json",
+      "sha256": "2217a2ed34f90b01cda3485979c66f6183c9dbea989fb879870747b5e63b86d8",
+      "size": 17560
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/pyproject.toml",
+      "sha256": "01e8d5fbd446fb61f362d3745fd085e21ba0d34e879d5c6687404f712d35c8e4",
+      "size": 262
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/__init__.py",
+      "sha256": "79ae1abb56abdf42443e368cd27a6462df149e5c9ea25aeae96d0ef690b5218c",
+      "size": 309
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/__main__.py",
+      "to": "warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/__main__.py",
+      "sha256": "c694695145da0c0c5cfd08894c75dd4a7448a6ce26623cb0c69ed95c6d029362",
+      "size": 731
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/pipeline.py",
+      "to": "warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/pipeline.py",
+      "sha256": "03959ca2a1f3ff938ced167763400e66097dbc815c9313a7a60e3ff1d086fa1c",
+      "size": 2277
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/plugins.py",
+      "to": "warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/plugins.py",
+      "sha256": "7984e7f813d5ba74f2c37f2454539a7e9b13696384896809df3a1e243ff6ef2c",
+      "size": 1243
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/stages.py",
+      "to": "warp-compile-time-optimizer/evals/files/c01_particle_preprocessing/src/particle_prep/stages.py",
+      "sha256": "0cb6f8b96a96d086dcb7931664564f92260de7cff9017174372da6f77e080d9d",
+      "size": 1404
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c04_batch_signals/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/c04_batch_signals/pyproject.toml",
+      "sha256": "6d20c3d8f01bce40280a63b1385a506bdcd13ebc33d9201d970454d2d2a0eba4",
+      "size": 332
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/__init__.py",
+      "sha256": "70aa9ee5b3ba5049177c3d6b9841effb5f4502ba04d781c50b5f9767dd766d2b",
+      "size": 336
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/__main__.py",
+      "to": "warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/__main__.py",
+      "sha256": "38a078e2cf32e85b75ebab885a86085eec7f35da42deccf200693bd0ff18852a",
+      "size": 820
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/conditioning.py",
+      "to": "warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/conditioning.py",
+      "sha256": "9c030194f9d74474363d54bdef6d7b1fc7e2ed0c2f62d21789149c4d4e95f897",
+      "size": 2122
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/maintenance.py",
+      "to": "warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/maintenance.py",
+      "sha256": "c0ba86a4ce5a7783ea28bacbd2537a8407efa51dcd4e033a3666768db7976811",
+      "size": 691
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/runtime.py",
+      "to": "warp-compile-time-optimizer/evals/files/c04_batch_signals/src/batch_signals/runtime.py",
+      "sha256": "d639ca001cbf4a329da205622fd8488fd646e4afe92f51f9bb84f43e0c8beb16",
+      "size": 1001
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g01_pde_stepper/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g01_pde_stepper/pyproject.toml",
+      "sha256": "21c1c71e73166ba377f82f95ce62dcbe033d8a5e9c83fb0b849ef582fab383d0",
+      "size": 260
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/__init__.py",
+      "sha256": "d6d7509adb891bab10f77dd9354cb7a81ad0a095014d3d8bc19d38a2b4207779",
+      "size": 273
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/__main__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/__main__.py",
+      "sha256": "eb5770fb9991725a9cf60d87dce639b02114cde0d176eabe6e28e8bf124525dc",
+      "size": 784
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/boundaries.py",
+      "to": "warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/boundaries.py",
+      "sha256": "330d0cb487b87d82671a49282e5689f65e95599a1505e0781c5a368690eece91",
+      "size": 1494
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/operators.py",
+      "to": "warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/operators.py",
+      "sha256": "91546c8432fefe02baa768a3070230710b5e5231d39a4ac0eece83ef73f43b1d",
+      "size": 2251
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/solver.py",
+      "to": "warp-compile-time-optimizer/evals/files/g01_pde_stepper/src/pde_stepper/solver.py",
+      "sha256": "69f6d9745ff4e385cc01448673a7fbfe4f61b6d2a3c0d918880533ba83aae6e4",
+      "size": 3016
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g02_stencil_bank/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g02_stencil_bank/pyproject.toml",
+      "sha256": "e0b91bb382b4847783ea791f32a93ce20271fb1474581d8e88757ba7a9085acd",
+      "size": 261
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/__init__.py",
+      "sha256": "2678047d1ef04045395446ac7d415fa8ef5f5d713476c4acdaf077b85f4b543b",
+      "size": 303
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/__main__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/__main__.py",
+      "sha256": "a49105dde43a0b224af7cb3a04950396235e5765d22c7e59995319b3fa62040d",
+      "size": 684
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/analysis.py",
+      "to": "warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/analysis.py",
+      "sha256": "dabecb71ab65f7ccde71ef6f138a87047b4d85cbdd57e254f9ba60fc6c9bc843",
+      "size": 2061
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/loss.py",
+      "to": "warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/loss.py",
+      "sha256": "678eb8e6c30eb62ae38606862e07e2583fdb0dc1ec39faee77484c2984bddcfa",
+      "size": 1948
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/stencils.py",
+      "to": "warp-compile-time-optimizer/evals/files/g02_stencil_bank/src/stencil_bank/stencils.py",
+      "sha256": "bf085f966cc8a0cb80aedbf6d3e012c80941943cade8421bbddb33099b8871c2",
+      "size": 1328
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g04_image_pyramid/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g04_image_pyramid/pyproject.toml",
+      "sha256": "f55257f4d407858442c3c7be83de6d1f22a73edc6069280924694d0d7b2d56c1",
+      "size": 262
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/__init__.py",
+      "sha256": "c5cedae2c730de86877c20ab557298eabcbdda8eb6bb34db95be49d55e8d3d00",
+      "size": 306
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/__main__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/__main__.py",
+      "sha256": "55274be627fe8cfd0e450b229658d1f47ba1306e0aeff7e2f3f852e4e263cdf8",
+      "size": 690
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/adaptive.py",
+      "to": "warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/adaptive.py",
+      "sha256": "e91a06ef1ed5e63838a8466e6bdfe73100fca929d70fc3b647922f8349919cd3",
+      "size": 1621
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/filters.py",
+      "to": "warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/filters.py",
+      "sha256": "d60f495af72e5b07d8db2ea42561358b3b9ac6e0b83173a63c4d6bca789fe902",
+      "size": 2640
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/pyramid.py",
+      "to": "warp-compile-time-optimizer/evals/files/g04_image_pyramid/src/image_pyramid/pyramid.py",
+      "sha256": "0ea7168589e0746d1d660e71ee4248d64ecdb10669892bc42da576adbc440bea",
+      "size": 2079
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g06_gpu_analytics/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g06_gpu_analytics/pyproject.toml",
+      "sha256": "7812dc6dd3cec20d64797efa415f0a7a96de73aeef868194453213df2a31f511",
+      "size": 336
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/__init__.py",
+      "sha256": "f0b0dbc70e1939231f395184c8e335493e813a36168b984fbfbb4943d96e2f2c",
+      "size": 355
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/__main__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/__main__.py",
+      "sha256": "9d55627290430f91b649725613414f490b1cef3239b75f12e5de2c0c5641a4af",
+      "size": 821
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/analytics.py",
+      "to": "warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/analytics.py",
+      "sha256": "e17777c3147fbcd5ecd8ac8344c520f8728d5c9fc963f857dea46dd51ba87827",
+      "size": 4791
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/diagnostics.py",
+      "to": "warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/diagnostics.py",
+      "sha256": "282049ccf72981ff6ee87d5c1ea9fa1ba56e12de68ad78c699d3c73edd47c01c",
+      "size": 1365
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/reductions.py",
+      "to": "warp-compile-time-optimizer/evals/files/g06_gpu_analytics/src/gpu_analytics/reductions.py",
+      "sha256": "e57dcdf239d60d1ebe9da0501e019fdf3ce07f77b1e41e81664225ceb2dc11d3",
+      "size": 751
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g08_tile_projection/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g08_tile_projection/pyproject.toml",
+      "sha256": "9aeb8aecbff898b10bddc900641c3fd25732fda7fb4c9c11ccbf47bdddf84ccf",
+      "size": 331
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/__init__.py",
+      "sha256": "1e99a939afeac064792152b5759d1594a9bc29c7500e1e00a836df608c19fc39",
+      "size": 318
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/__main__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/__main__.py",
+      "sha256": "61c3cc073a2ffb01a3da2ba4b0e26eafb5208fe2ff4550ec72081cae65005ab1",
+      "size": 1376
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/maintenance.py",
+      "to": "warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/maintenance.py",
+      "sha256": "e9d0b9c5bdf59eca1a3169e0defde9a2050a2b37b8d1ca4a13a0c0a5b6b99cc5",
+      "size": 675
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/session.py",
+      "to": "warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/session.py",
+      "sha256": "54ca7c43c6300363300c5567251075675abfc8bf371f1554f869787bf9d840a6",
+      "size": 2259
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/stages.py",
+      "to": "warp-compile-time-optimizer/evals/files/g08_tile_projection/src/tile_projection/stages.py",
+      "sha256": "3ef9e25152357c29a94c8ca488298fefaad536acd8492b49ef1595c58431c71b",
+      "size": 1626
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g09_mixed_precision/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g09_mixed_precision/pyproject.toml",
+      "sha256": "c24a9b845827542f727d9e14c7d474c00ce3a8f08518d210616ccc00443788d7",
+      "size": 338
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g09_mixed_precision/src/mixed_precision/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g09_mixed_precision/src/mixed_precision/__init__.py",
+      "sha256": "dc258e6340a399ef30835a9dced2bfd83ee9dabcdbd40bc008ba1cf1f84bb805",
+      "size": 277
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g09_mixed_precision/src/mixed_precision/__main__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g09_mixed_precision/src/mixed_precision/__main__.py",
+      "sha256": "1e9919412cc06df389c962fd632606e4f9a76d1a59764f197c94a7d1715063e5",
+      "size": 1127
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g09_mixed_precision/src/mixed_precision/kernels.py",
+      "to": "warp-compile-time-optimizer/evals/files/g09_mixed_precision/src/mixed_precision/kernels.py",
+      "sha256": "8ef96d7b435a063102c565a0af66a39364e2917a8ef88bc9d0d88d4b4616e2bc",
+      "size": 1708
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g09_mixed_precision/src/mixed_precision/service.py",
+      "to": "warp-compile-time-optimizer/evals/files/g09_mixed_precision/src/mixed_precision/service.py",
+      "sha256": "bd6cc306337e0b2eade6edcbab8e0e709496a88375e393b5047c7fb9fdf3215b",
+      "size": 2322
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g10_shared_solver/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g10_shared_solver/pyproject.toml",
+      "sha256": "11362890fb7a114f8bab4a8c2126dacd6b7e4ec1ae6ecd7ebdfb18dabc34be65",
+      "size": 261
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g10_shared_solver/run_calibrate.py",
+      "to": "warp-compile-time-optimizer/evals/files/g10_shared_solver/run_calibrate.py",
+      "sha256": "a9e577e2a5ff93ab3b1e063b43d982044547a1ff30c17e0fffdf74186dc65892",
+      "size": 2224
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g10_shared_solver/run_inspect.py",
+      "to": "warp-compile-time-optimizer/evals/files/g10_shared_solver/run_inspect.py",
+      "sha256": "15bed36ad6720ebd516f04bfe519fc0614303d8b727fef020d4c623ddaba6cb1",
+      "size": 723
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g10_shared_solver/src/field_solver/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g10_shared_solver/src/field_solver/__init__.py",
+      "sha256": "87d64d2890cc9b9e83244e6a916a8226da43751a85f9e506cb893b51e914fec3",
+      "size": 436
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g10_shared_solver/src/field_solver/calibrate.py",
+      "to": "warp-compile-time-optimizer/evals/files/g10_shared_solver/src/field_solver/calibrate.py",
+      "sha256": "bf66c1a6910e88a5a91007c92929db2d86814182d82c36c4e0ba555f2bc3d7ab",
+      "size": 2318
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g10_shared_solver/src/field_solver/inspect_field.py",
+      "to": "warp-compile-time-optimizer/evals/files/g10_shared_solver/src/field_solver/inspect_field.py",
+      "sha256": "ea7e1d025a32f813573590b8090a160f716fd986344a4f7231d56db03dc7f4ba",
+      "size": 2543
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g10_shared_solver/src/field_solver/kernels.py",
+      "to": "warp-compile-time-optimizer/evals/files/g10_shared_solver/src/field_solver/kernels.py",
+      "sha256": "0b4dec643c10a1d9da713feefa9811d3adf68fdffacd44b16f93b96241f3bb7d",
+      "size": 5639
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g11_stage_pipeline/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g11_stage_pipeline/pyproject.toml",
+      "sha256": "1e3ed0f142e5a88a0340a86f7da15d0ee81f8b2f0c12409e50b6ca85f77f32c1",
+      "size": 263
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g11_stage_pipeline/run_pipeline.py",
+      "to": "warp-compile-time-optimizer/evals/files/g11_stage_pipeline/run_pipeline.py",
+      "sha256": "3610972ba8f1e6d98a064b0d75bdb64e2999ce0fdaabf39533c2c6bbfc69af2a",
+      "size": 6837
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/__init__.py",
+      "sha256": "61bcf890f09d79f9583d0e070698303cfd639f39bf2cef72152ea045e8feb35c",
+      "size": 508
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/geometry.py",
+      "to": "warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/geometry.py",
+      "sha256": "55218f9bb434d97f7c18e7310660b35d8687abd7e54a7af37d844de17b5e4ccb",
+      "size": 1813
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/reduction.py",
+      "to": "warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/reduction.py",
+      "sha256": "bab592a95fe90bff0136b93da5a386d4451412b2bd90ccc9a78cf121f15b2c1b",
+      "size": 1816
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/spectral.py",
+      "to": "warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/spectral.py",
+      "sha256": "d5d2b4460c529a51a71c92a25fb93d6db853bde5a4618200aa8b2511f55dffc3",
+      "size": 5343
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/statistics.py",
+      "to": "warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/statistics.py",
+      "sha256": "4ffa36bc93e8c9b704b3f22d5865c01f4e10c4df541125b8184553f2cb5af72e",
+      "size": 2304
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/transport.py",
+      "to": "warp-compile-time-optimizer/evals/files/g11_stage_pipeline/src/stage_pipeline/transport.py",
+      "sha256": "87ac7664d2bf03e36cab3140282b00c5ee63d605acfb9211fd53f06ed7f9b374",
+      "size": 1956
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g12_dense_stage/pyproject.toml",
+      "to": "warp-compile-time-optimizer/evals/files/g12_dense_stage/pyproject.toml",
+      "sha256": "d467f8f663ce139c04b5d6e3b3cdec66f2b6dad0d764ca1616ac74ee21b8ac3b",
+      "size": 260
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g12_dense_stage/run_stage.py",
+      "to": "warp-compile-time-optimizer/evals/files/g12_dense_stage/run_stage.py",
+      "sha256": "791707332337b0ed06b23d3ca2c993f117ab679ca0516b1bdaf8564e30cc4cb3",
+      "size": 2654
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g12_dense_stage/src/dense_stage/__init__.py",
+      "to": "warp-compile-time-optimizer/evals/files/g12_dense_stage/src/dense_stage/__init__.py",
+      "sha256": "358512584a0c208cb1209cb1a71072504f821669c9bdbf730095d027db8a936b",
+      "size": 262
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/g12_dense_stage/src/dense_stage/kernels.py",
+      "to": "warp-compile-time-optimizer/evals/files/g12_dense_stage/src/dense_stage/kernels.py",
+      "sha256": "da6e758acb664e5c53386775cccc6a0e930f5c0752d59be0a2a0dc1c1d8234fe",
+      "size": 5750
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/evals/files/triton_service.py",
+      "to": "warp-compile-time-optimizer/evals/files/triton_service.py",
+      "sha256": "e39193ae5f19fe8ced3b23bf17d0f2e73e73904b1f057737d4ff8899d1c246b3",
+      "size": 1800
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/references/measurement.md",
+      "to": "warp-compile-time-optimizer/references/measurement.md",
+      "sha256": "25b382e443fd58580b676b2938130b709461d2b7822bcf8ad64d17abf2ed8e11",
+      "size": 12896
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/references/mechanisms.md",
+      "to": "warp-compile-time-optimizer/references/mechanisms.md",
+      "sha256": "9ef466ba3c9abf1b260335bd4dd855c924b036c4d2f7f4b47aee08ac49e2dc2c",
+      "size": 29448
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/scripts/warp_compile_probe.py",
+      "to": "warp-compile-time-optimizer/scripts/warp_compile_probe.py",
+      "sha256": "3e898de7e46029e9057dc654a2a7215036f773b6704fb599fc0075d44a94a9b1",
+      "size": 39579
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/skill-card.md",
+      "to": "warp-compile-time-optimizer/skill-card.md",
+      "sha256": "56b6c88d0130b2d5a1136fd68c63519b191e8c4c57189aac3d27304f16375c91",
+      "size": 4129
+    },
+    {
+      "path": "skills/warp-compile-time-optimizer/skill.oms.sig",
+      "to": "warp-compile-time-optimizer/skill.oms.sig",
+      "sha256": "33d9088269f3f808d73027a7704209f906498f488e15a83d9eb27ceedff54a7b",
+      "size": 24481
+    },
+    {
+      "path": "skills/warp-debug-gradients/BENCHMARK.md",
+      "to": "warp-debug-gradients/BENCHMARK.md",
+      "sha256": "8f250e61d137066474d76e7913ba96d1106fd7c07309f61caca432f27b285f3e",
+      "size": 4462
+    },
+    {
+      "path": "skills/warp-debug-gradients/SKILL.md",
+      "to": "warp-debug-gradients/SKILL.md",
+      "sha256": "dcecca323f24e88298bb3d9ac2f2283c12f4603bb28e0613ac982fff751fdb34",
+      "size": 19170
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/EVAL.md",
+      "to": "warp-debug-gradients/evals/EVAL.md",
+      "sha256": "a44202e056b629cfed8f391d57c243c681704a3debf45130b4b35906ee5a8ed9",
+      "size": 10648
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/evals-full.json",
+      "to": "warp-debug-gradients/evals/evals-full.json",
+      "sha256": "12adef36714e27f34abe99a1da6509eaa3cea821ddd1178917beef43d57c4f1c",
+      "size": 70599
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/evals.json",
+      "to": "warp-debug-gradients/evals/evals.json",
+      "sha256": "42bd031673a100d1c76824dfe8aabc844dd89b6e91b404cc116851266d2d4cf4",
+      "size": 13991
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/checkpoint_control.py",
+      "to": "warp-debug-gradients/evals/files/checkpoint_control.py",
+      "sha256": "d18587c0af47105263e4fbea4aa53ef9b9d00354daf8d691ff80feb7e99c2a29",
+      "size": 3942
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/compound/objective.py",
+      "to": "warp-debug-gradients/evals/files/compound/objective.py",
+      "sha256": "20ffec948cbbb0c7f65af65caeb9ed01a66b5137ccf59f9c4aab5965a371fdb9",
+      "size": 702
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/compound/physics.py",
+      "to": "warp-debug-gradients/evals/files/compound/physics.py",
+      "sha256": "6b1c758650904b2343d937a5e5a235ef5916eed563e2c0f526d64225f8f4d355",
+      "size": 2350
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/compound/state.py",
+      "to": "warp-debug-gradients/evals/files/compound/state.py",
+      "sha256": "6b1e070af9cf4a9130f67fe4f14ef7c300789df9f19f775162f7d5cf859a39db",
+      "size": 1785
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/compound/train.py",
+      "to": "warp-debug-gradients/evals/files/compound/train.py",
+      "sha256": "ce29c6f9395b7c15e94aef1b6b31137be5852dba5fe03e8d228aa05ad5286795",
+      "size": 3085
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/compreassign/model.py",
+      "to": "warp-debug-gradients/evals/files/compreassign/model.py",
+      "sha256": "29ffca085d643bdf70e66a07bd23b35b0dc47bdd5edb4ff208d2e2db2d5a6173",
+      "size": 2113
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/compreassign/train.py",
+      "to": "warp-debug-gradients/evals/files/compreassign/train.py",
+      "sha256": "74de9c29a367099b49ae904fbad8b2e28c156c6a498f84c7840b883bbd94596c",
+      "size": 3189
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/contact.py",
+      "to": "warp-debug-gradients/evals/files/contact.py",
+      "sha256": "20e987e56b550f3540b6165c89cc78c267227fa89da95cadff3dabeadc3152ce",
+      "size": 2384
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/dac.py",
+      "to": "warp-debug-gradients/evals/files/dac.py",
+      "sha256": "7646839901c9e3b51aa2b8626f9c0a32d5724b692b67becdf6c57a1138e1466d",
+      "size": 1764
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/deblur.py",
+      "to": "warp-debug-gradients/evals/files/deblur.py",
+      "sha256": "8ef9df3847772c63f2c0db80eee7d27fd1cd1d3285c5913de4565a13754ee90e",
+      "size": 2374
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/dynloop/model.py",
+      "to": "warp-debug-gradients/evals/files/dynloop/model.py",
+      "sha256": "8c218ac4186f7fe6de77d37becf64fc9ee50a5b118810d1a1d4e6210e09a6966",
+      "size": 1765
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/dynloop/train.py",
+      "to": "warp-debug-gradients/evals/files/dynloop/train.py",
+      "sha256": "9d3490a5b873d66ea0da5b3a0d594ddfb43eb4c4b644c18069ec15d1ec54aee0",
+      "size": 2810
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/emitters.py",
+      "to": "warp-debug-gradients/evals/files/emitters.py",
+      "sha256": "f0e5e0da1054e5324ded71b01709518d96e2a550e6cfc5aead1d5215fb113525",
+      "size": 2544
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/funcgradassign/model.py",
+      "to": "warp-debug-gradients/evals/files/funcgradassign/model.py",
+      "sha256": "c3186c21760ef7d1ac9ebb7d640dbeef7d262013124001cc59991f54d3f3bdf7",
+      "size": 1448
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/funcgradassign/train.py",
+      "to": "warp-debug-gradients/evals/files/funcgradassign/train.py",
+      "sha256": "72faef922d4288f95c0c2e872745518a25b8cdc09144e914683e6df65c05b470",
+      "size": 2134
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/gain_train.py",
+      "to": "warp-debug-gradients/evals/files/gain_train.py",
+      "sha256": "2ff3d465de892cdcd42e76b5858558b40dac0c83719822c828ca8728a961a0e0",
+      "size": 1963
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/heightfit.py",
+      "to": "warp-debug-gradients/evals/files/heightfit.py",
+      "sha256": "5114002833c667b1a10a0884ad7353a5af0d2a3e4ba93baad627ad4dfdb64ba4",
+      "size": 2655
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/huber_fit.py",
+      "to": "warp-debug-gradients/evals/files/huber_fit.py",
+      "sha256": "eb1f228d7d45dd46f8cca2d6d4234f2cc168ef75a350d95526abd7e931503964",
+      "size": 2235
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/inplacemul/model.py",
+      "to": "warp-debug-gradients/evals/files/inplacemul/model.py",
+      "sha256": "c7981f852b4a96e62cfbef43edec5e76af973f8337109a886af629691ecc68aa",
+      "size": 1254
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/inplacemul/train.py",
+      "to": "warp-debug-gradients/evals/files/inplacemul/train.py",
+      "sha256": "6747c5b172f7754876265fffc4912c911d412cce7c6c6f34b12613f7a79411e5",
+      "size": 1991
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/lattice.py",
+      "to": "warp-debug-gradients/evals/files/lattice.py",
+      "sha256": "126d258e79aa037b5a3a9dd980f2bb21e5f0ddad8f512548351d67b65e584962",
+      "size": 2717
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/lens_calibrate.py",
+      "to": "warp-debug-gradients/evals/files/lens_calibrate.py",
+      "sha256": "6e8e7c0fcf2c1b63a5fc8162112df492e10707b28c1e6f5a7c41d195dbad9ffb",
+      "size": 2079
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/missingzero/model.py",
+      "to": "warp-debug-gradients/evals/files/missingzero/model.py",
+      "sha256": "731e3d6449d34f69b4d5575d4560e105c36053ee8d160039a2d567d6a9a380d2",
+      "size": 1879
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/missingzero/train.py",
+      "to": "warp-debug-gradients/evals/files/missingzero/train.py",
+      "sha256": "6fd2f5928c192b9b15e80108aa11905adad03b0c24f8697a94da23a33d8ca9e7",
+      "size": 1117
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/nangrad/model.py",
+      "to": "warp-debug-gradients/evals/files/nangrad/model.py",
+      "sha256": "ed1bdbe397561f4a861082fbf924e9a7748f04e1754787b0ac2644e57f2a735b",
+      "size": 1465
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/nangrad/train.py",
+      "to": "warp-debug-gradients/evals/files/nangrad/train.py",
+      "sha256": "1f2cc747da2c1f6b4668f95f817e422651f24bb3e33facb5e96ef60be9f3ed46",
+      "size": 1226
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/optlib.py",
+      "to": "warp-debug-gradients/evals/files/optlib.py",
+      "sha256": "f751470b5fcabfa4251f92480fb5fb3360c79bccb8c0a637d1eaed5be73e57b6",
+      "size": 881
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/replaycounter/sim.py",
+      "to": "warp-debug-gradients/evals/files/replaycounter/sim.py",
+      "sha256": "add26b845d547b17924cd538307d83072932f3584a5a75a44ea770269d7e58b6",
+      "size": 2690
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/replaycounter/train.py",
+      "to": "warp-debug-gradients/evals/files/replaycounter/train.py",
+      "sha256": "b3c0c3bcfda31681372a78cf1a34d352b5872be28fbca70be5b3ad398b9a6065",
+      "size": 1537
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/retaingrad/model.py",
+      "to": "warp-debug-gradients/evals/files/retaingrad/model.py",
+      "sha256": "e1a9867bf90d4e5df8c36565be66bb4a785b6a22abfca63e6fb787eb806d27f8",
+      "size": 2342
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/retaingrad/train.py",
+      "to": "warp-debug-gradients/evals/files/retaingrad/train.py",
+      "sha256": "2c792a3dbe5ff86154dc5a920c5281831fa7d049bd551928d80d8a5017937b6e",
+      "size": 2222
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/sensor_train.py",
+      "to": "warp-debug-gradients/evals/files/sensor_train.py",
+      "sha256": "ad4ca75f0006fe76f378dad2f0816ed1b1ab8acd24a2108b4c6797c0dd179cd4",
+      "size": 1327
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/solver_design.py",
+      "to": "warp-debug-gradients/evals/files/solver_design.py",
+      "sha256": "aa891acaa6fbf7b55996046295b74750698effa45c502b48eb28f286aa7c6852",
+      "size": 2883
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/springs.py",
+      "to": "warp-debug-gradients/evals/files/springs.py",
+      "sha256": "074fa36102602646d049d5da40ff20ce2c8639c0b27a6f1cf09f7fd3770583d7",
+      "size": 3579
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/stiffcontrol/sim.py",
+      "to": "warp-debug-gradients/evals/files/stiffcontrol/sim.py",
+      "sha256": "1493bb4f92f4ab433f2c741d5dd1d92971c949bdb928f1809c6f10c6b686e860",
+      "size": 2674
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/stiffcontrol/train.py",
+      "to": "warp-debug-gradients/evals/files/stiffcontrol/train.py",
+      "sha256": "0b72bf37729d1af49ecee37737995802524f0469a23f7c855f1d1ec6bdc76d06",
+      "size": 1327
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/structwar/sim.py",
+      "to": "warp-debug-gradients/evals/files/structwar/sim.py",
+      "sha256": "6d1bce4c72dc12f7a01b4ad11359f97e932412e7fde348c26fa69cbcc73db75f",
+      "size": 5828
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/structwar/train.py",
+      "to": "warp-debug-gradients/evals/files/structwar/train.py",
+      "sha256": "05a2d9f976c7ac1d98c255031ac41b95ea8f79355b98d1faf7532f5f7a9b3715",
+      "size": 2818
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/tapescope/sim.py",
+      "to": "warp-debug-gradients/evals/files/tapescope/sim.py",
+      "sha256": "d824fd0733d48f4bfe25ec881a8abab2f87c58bf0c6b9076398425ad0c1e75fc",
+      "size": 3199
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/tapescope/train.py",
+      "to": "warp-debug-gradients/evals/files/tapescope/train.py",
+      "sha256": "9ed9d7b7c26ac668d8e1c4dd920f3eb725d738865ba932eeec5859b2f7077296",
+      "size": 1843
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/torch_train.py",
+      "to": "warp-debug-gradients/evals/files/torch_train.py",
+      "sha256": "3f8766a28924e01407e973fd6c6f82847b49b8773a7db144d457b1c588a74404",
+      "size": 1008
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/walker/sim.py",
+      "to": "warp-debug-gradients/evals/files/walker/sim.py",
+      "sha256": "118ef51ba32fd0f69b26116abb71bb10603ffe994a9faa0d463fea507ea29f58",
+      "size": 5597
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/walker/train.py",
+      "to": "warp-debug-gradients/evals/files/walker/train.py",
+      "sha256": "56a57b039b415bfbed6f4d1b168da9fcfedf687ff9db3fdfc313a41bae1d2bee",
+      "size": 4193
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/warp_layer.py",
+      "to": "warp-debug-gradients/evals/files/warp_layer.py",
+      "sha256": "9cd9da8cfb300d9cdf4753b29b5e38bb3f4b1f128e4dc38aba0bb3f9e6097087",
+      "size": 1466
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/writeback/solver.py",
+      "to": "warp-debug-gradients/evals/files/writeback/solver.py",
+      "sha256": "a630c549702f4beb38b8a4b12ad7c360a489190e0682de26d174d85f01530f92",
+      "size": 1636
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/writeback/train.py",
+      "to": "warp-debug-gradients/evals/files/writeback/train.py",
+      "sha256": "686bcd10e5853668191e220fed888598f1fb7c8fbbe2eb4445fba6a090210ce0",
+      "size": 3397
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/zerograds/pipeline.py",
+      "to": "warp-debug-gradients/evals/files/zerograds/pipeline.py",
+      "sha256": "df2477c4936d9ca0a4f9eb6a437296b5d0115ef61b09bee3eb5215d3d3e785ab",
+      "size": 3027
+    },
+    {
+      "path": "skills/warp-debug-gradients/evals/files/zerograds/train.py",
+      "to": "warp-debug-gradients/evals/files/zerograds/train.py",
+      "sha256": "f5a4b6d5b08f447cb55b3ea6fbee6385424568a314b65b8eadf94fd49fc44e23",
+      "size": 1417
+    },
+    {
+      "path": "skills/warp-debug-gradients/references/case-studies.md",
+      "to": "warp-debug-gradients/references/case-studies.md",
+      "sha256": "18ed11211cacf6edd0d7ebf9a5a30acbb554f50d1538c83e3de099c4521a0dd6",
+      "size": 6968
+    },
+    {
+      "path": "skills/warp-debug-gradients/references/custom-gradients.md",
+      "to": "warp-debug-gradients/references/custom-gradients.md",
+      "sha256": "310254d4b17a6989aeaf0ff63f125fa5c4c090d892f46e0d97cb4814f26a6767",
+      "size": 4514
+    },
+    {
+      "path": "skills/warp-debug-gradients/references/quick-checks.md",
+      "to": "warp-debug-gradients/references/quick-checks.md",
+      "sha256": "56e3bb879a8bb90b0558be8df9fac0c15d147ccdd40e1bdbb3e25bf5a8e57a6a",
+      "size": 18145
+    },
+    {
+      "path": "skills/warp-debug-gradients/references/verification.md",
+      "to": "warp-debug-gradients/references/verification.md",
+      "sha256": "237a684268b4991b4aeb67948691848fc09cf6ca83a5ec28b4cb49ee32673a43",
+      "size": 8939
+    },
+    {
+      "path": "skills/warp-debug-gradients/skill-card.md",
+      "to": "warp-debug-gradients/skill-card.md",
+      "sha256": "9f8369cf4ec3764a9b7d397e4e62067a2cf34c37669dcc799baa6b94c9ed1e2b",
+      "size": 4245
+    },
+    {
+      "path": "skills/warp-debug-gradients/skill.oms.sig",
+      "to": "warp-debug-gradients/skill.oms.sig",
+      "sha256": "6fb084fd86ee0079111067a67e930d0fe49ddace1394c8862d6d3593839c3021",
+      "size": 17621
+    },
+    {
+      "path": "skills/warp-eval/BENCHMARK.md",
+      "to": "warp-eval/BENCHMARK.md",
+      "sha256": "e43577a96250c4c4f0b3f8b1ad61d3cd9c921014c490678bd9c071947459c09e",
+      "size": 4451
+    },
+    {
+      "path": "skills/warp-eval/SKILL.md",
+      "to": "warp-eval/SKILL.md",
+      "sha256": "f3acfabcb1241d08bab3779902de987fc3a4ea8ed5a9b54d074aad98f939d96d",
+      "size": 19706
+    },
+    {
+      "path": "skills/warp-eval/assets/warp-evaluation-report-template.md",
+      "to": "warp-eval/assets/warp-evaluation-report-template.md",
+      "sha256": "e8c60f91b539385d8482b814e16b90c9f334c8612a1231e0bc9b6a03b134e91c",
+      "size": 5987
+    },
+    {
+      "path": "skills/warp-eval/config/skillspector-baseline.yaml",
+      "to": "warp-eval/config/skillspector-baseline.yaml",
+      "sha256": "bc23b6d227f4b6ddc0f8d129b11ad47b47f0879afaee23ce3b0977be9dddb265",
+      "size": 475
+    },
+    {
+      "path": "skills/warp-eval/evals/evals.json",
+      "to": "warp-eval/evals/evals.json",
+      "sha256": "c1010ae3fbbc60da82611ba6f79910cf06507a86100bad036f1b0d8676adcc3c",
+      "size": 22806
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-a-required-portability/deployment.md",
+      "to": "warp-eval/evals/files/gate-a-required-portability/deployment.md",
+      "sha256": "6ff8a386d8c910836e1bca10faf5d5eeef24316cb1655ae815b3b291347bf4b0",
+      "size": 638
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-a-required-portability/neighbors.py",
+      "to": "warp-eval/evals/files/gate-a-required-portability/neighbors.py",
+      "sha256": "55b477160c21b2b1e8d06d897b06548878094414bf76045ae23c12f04a3744b4",
+      "size": 872
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-b-unwidenable-host-boundary/architecture.md",
+      "to": "warp-eval/evals/files/gate-b-unwidenable-host-boundary/architecture.md",
+      "sha256": "6f89fa9d0dc706fbb3117bdfc30c50ec3ce28f258234fe1f86f30ead37a4b9fd",
+      "size": 794
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-b-unwidenable-host-boundary/scoring.py",
+      "to": "warp-eval/evals/files/gate-b-unwidenable-host-boundary/scoring.py",
+      "sha256": "4ab83617bdab13411b768e1f31cb00b6490427443f31df53d186bdd2dbfd9554",
+      "size": 880
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-c-dense-vendor-lowered/feature_stage.py",
+      "to": "warp-eval/evals/files/gate-c-dense-vendor-lowered/feature_stage.py",
+      "sha256": "526e1526405dcab03c35fc64e2c22a19cf67794253ec565dd52fd5bf527fc094",
+      "size": 615
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-d-cpu-incumbent-not-cuda/baseline.md",
+      "to": "warp-eval/evals/files/gate-d-cpu-incumbent-not-cuda/baseline.md",
+      "sha256": "88ac57fbcdf60f3ee2880850bd9405e0d08e95d09da7f49355d6ed7d7999f7b2",
+      "size": 472
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-d-cpu-incumbent-not-cuda/operation_api.py",
+      "to": "warp-eval/evals/files/gate-d-cpu-incumbent-not-cuda/operation_api.py",
+      "sha256": "dedb9b95c0bd32c2f7ad27104f72f541336090a47d5a9a0bc7520656af0fe07f",
+      "size": 440
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-d-mature-incumbent/baseline.md",
+      "to": "warp-eval/evals/files/gate-d-mature-incumbent/baseline.md",
+      "sha256": "4d9d91bfd0bc93e8010c46b63b74925576301ad91d36838313be939afc9d1b24",
+      "size": 960
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-d-mature-incumbent/contact_api.py",
+      "to": "warp-eval/evals/files/gate-d-mature-incumbent/contact_api.py",
+      "sha256": "c9c71a24378e4e5d59d2fc6fde4417849cfa61d586a7ff2995a54a4c4857b3c1",
+      "size": 948
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-e-runtime-obligations-forbidden/candidates.py",
+      "to": "warp-eval/evals/files/gate-e-runtime-obligations-forbidden/candidates.py",
+      "sha256": "91a44f5e8d650cbd8aeb5f34f396c8f61a8a7706fe93d167d1882352b2144d9b",
+      "size": 735
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-e-runtime-obligations-forbidden/packaging-policy.md",
+      "to": "warp-eval/evals/files/gate-e-runtime-obligations-forbidden/packaging-policy.md",
+      "sha256": "7fa80257de7524b45d2071cceb14d2eccc9810f7627f87a205e73f1b4a19e66b",
+      "size": 845
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-f-immaterial-stage/profile.json",
+      "to": "warp-eval/evals/files/gate-f-immaterial-stage/profile.json",
+      "sha256": "09103fe1d43e805251f8065a689a125d7369e103ef9bc58c75865ae83dacb9d7",
+      "size": 603
+    },
+    {
+      "path": "skills/warp-eval/evals/files/gate-f-immaterial-stage/spatial_filter.py",
+      "to": "warp-eval/evals/files/gate-f-immaterial-stage/spatial_filter.py",
+      "sha256": "02cc43b9d3095a895784cf1307aa5ac4447059e75851228f1b3f04cb819c2ee8",
+      "size": 646
+    },
+    {
+      "path": "skills/warp-eval/evals/files/pattern-fused-edge-intermediate/context.md",
+      "to": "warp-eval/evals/files/pattern-fused-edge-intermediate/context.md",
+      "sha256": "76d48ce8f2bddc6615842a2be4cd92a1269e28bb27ceaf4247139107962a99cc",
+      "size": 742
+    },
+    {
+      "path": "skills/warp-eval/evals/files/pattern-fused-edge-intermediate/message_passing.py",
+      "to": "warp-eval/evals/files/pattern-fused-edge-intermediate/message_passing.py",
+      "sha256": "9fb49fed981d047ecfd45ba79b0232f463395b725fcc40b734bef08f3ad0d674",
+      "size": 521
+    },
+    {
+      "path": "skills/warp-eval/evals/files/pattern-sequential-recurrence/adaptive_filter.py",
+      "to": "warp-eval/evals/files/pattern-sequential-recurrence/adaptive_filter.py",
+      "sha256": "b2ba66873054d64518eab5f45d4b58532aba5c8d2fc95cf8b36b7228f98d7195",
+      "size": 462
+    },
+    {
+      "path": "skills/warp-eval/evals/files/pattern-sequential-recurrence/context.md",
+      "to": "warp-eval/evals/files/pattern-sequential-recurrence/context.md",
+      "sha256": "c15306cce194cc6b9db152775ae86b7eccd50fc421558ce035940d9e305f8831",
+      "size": 596
+    },
+    {
+      "path": "skills/warp-eval/evals/files/proceed-persistent-mesh-query/context.md",
+      "to": "warp-eval/evals/files/proceed-persistent-mesh-query/context.md",
+      "sha256": "dd221cd36ff7563da357b5f94961bc81c02b898ff84a6c777c4e9ffbd3631a7e",
+      "size": 767
+    },
+    {
+      "path": "skills/warp-eval/evals/files/proceed-persistent-mesh-query/queries.py",
+      "to": "warp-eval/evals/files/proceed-persistent-mesh-query/queries.py",
+      "sha256": "06c6cdb9cbccf761a72ab2e92ba016172c2e6f692e0b4cf3b49d1a772ba2e35d",
+      "size": 804
+    },
+    {
+      "path": "skills/warp-eval/references/authorization-checkpoint.md",
+      "to": "warp-eval/references/authorization-checkpoint.md",
+      "sha256": "2c53d22850d81afba2db4d2b54b1ce59af3832322a728ac943951282bb450e79",
+      "size": 3856
+    },
+    {
+      "path": "skills/warp-eval/references/baselines.md",
+      "to": "warp-eval/references/baselines.md",
+      "sha256": "82c9c1ca0bb217fc6b00c4d05a0505ba48e301e77de251870b04058ef5246529",
+      "size": 12475
+    },
+    {
+      "path": "skills/warp-eval/references/benchmark-protocol.md",
+      "to": "warp-eval/references/benchmark-protocol.md",
+      "sha256": "fcaae5f31a9b312021b09754dd1780b5592030e3fe85b2fb59a91b45886904d8",
+      "size": 16683
+    },
+    {
+      "path": "skills/warp-eval/references/evidence-and-reporting.md",
+      "to": "warp-eval/references/evidence-and-reporting.md",
+      "sha256": "fb8cea81f23db592451662e5687445510912aa84f5c463d963b46763c5b9fae0",
+      "size": 7362
+    },
+    {
+      "path": "skills/warp-eval/references/rejection-gates.md",
+      "to": "warp-eval/references/rejection-gates.md",
+      "sha256": "7dd1a3220cf0b3a32b7b385f88c1b64006edf1717a47df3fe30e4342de99ff6c",
+      "size": 8383
+    },
+    {
+      "path": "skills/warp-eval/references/semantic-contract.md",
+      "to": "warp-eval/references/semantic-contract.md",
+      "sha256": "0507e59c386784355889d953c74b6aa8411669117c17da7497240955e7b72dcd",
+      "size": 13597
+    },
+    {
+      "path": "skills/warp-eval/references/target-patterns.md",
+      "to": "warp-eval/references/target-patterns.md",
+      "sha256": "c84a54703af3f41b40b45a9f6dde0fafbbdd3ca085d8132c7e1e653c4553f833",
+      "size": 16673
+    },
+    {
+      "path": "skills/warp-eval/scripts/driver-template.py",
+      "to": "warp-eval/scripts/driver-template.py",
+      "sha256": "c98b646b34b61156f44668f3a243c98c4504442c9d94bbb2530c0a459cc9ff80",
+      "size": 3451
+    },
+    {
+      "path": "skills/warp-eval/scripts/measure.py",
+      "to": "warp-eval/scripts/measure.py",
+      "sha256": "3d186b76e71df11053a01a46be8f7cb1cdef364e466411b9ad777147b6078b50",
+      "size": 21250
+    },
+    {
+      "path": "skills/warp-eval/scripts/validate_report_schema.py",
+      "to": "warp-eval/scripts/validate_report_schema.py",
+      "sha256": "349aaf4af632d1282a1635d41174763c1e54e2aa16900485342f0b00db683d70",
+      "size": 13803
+    },
+    {
+      "path": "skills/warp-eval/skill-card.md",
+      "to": "warp-eval/skill-card.md",
+      "sha256": "f11b5b05b57a60977ca86f9627f7d1776bdcba980440b078d38855fb4fb12a58",
+      "size": 4463
+    },
+    {
+      "path": "skills/warp-eval/skill.oms.sig",
+      "to": "warp-eval/skill.oms.sig",
+      "sha256": "4ac3bb9a72911ec64929e0cdfd9f63b4cdabb6d731d31a439a1e6abb752ef18f",
+      "size": 12793
+    }
+  ],
+  "notes": {
+    "warp-compile-time-optimizer": [
+      "allowed-tools (Claude Code only, grants nothing in Dusk)",
+      "57 scripts the agent may ask to run"
+    ],
+    "warp-debug-gradients": [
+      "48 scripts the agent may ask to run"
+    ],
+    "warp-eval": [
+      "13 scripts the agent may ask to run"
+    ]
+  }
+}

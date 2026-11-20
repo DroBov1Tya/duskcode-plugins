@@ -1,0 +1,13 @@
+name: repository-utility-skills
+title: "Repository Utility Skills"
+description: "Map who owns security-sensitive code in a git repository, stage-commit-push-and-open a pull request in one step, take desktop screenshots, and read or check PDFs by rendering them. Written by OpenAI and published under Apache-2.0; installed from its repository at a pinned commit. Not affiliated with or endorsed by OpenAI."
+vendor: OpenAI
+kind: skills
+license: Apache-2.0
+repo: openai/skills
+commit: 49f948faa9258a0c61caceaf225e179651397431
+items:
+  security-ownership-map: skills/.curated/security-ownership-map
+  yeet: skills/.curated/yeet
+  screenshot: skills/.curated/screenshot
+  pdf: skills/.curated/pdf

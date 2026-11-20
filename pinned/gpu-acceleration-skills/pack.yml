@@ -1,0 +1,12 @@
+name: gpu-acceleration-skills
+title: "GPU Acceleration Skills"
+description: "Move work from the CPU to the GPU: port CPU code guided by profiling, run machine-learning models on the GPU, and build GPU-accelerated query engines over dataframes. Written by NVIDIA (text under CC-BY-4.0, code under Apache-2.0); installed from its repository at a pinned commit. Not affiliated with or endorsed by NVIDIA."
+vendor: NVIDIA
+kind: skills
+license: CC-BY-4.0 AND Apache-2.0
+repo: NVIDIA/skills
+commit: b0694f6d55b4037ffd414aba5759b59f38380c5e
+items:
+  nsight-port-cpu-to-gpu: skills/nsight-port-cpu-to-gpu
+  cuml: skills/cuml
+  cudf-query-engine-builder: skills/cudf-query-engine-builder

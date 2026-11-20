@@ -1,0 +1,171 @@
+{
+  "repo": "openai/skills",
+  "commit": "49f948faa9258a0c61caceaf225e179651397431",
+  "files": [
+    {
+      "path": "skills/.curated/pdf/LICENSE.txt",
+      "to": "pdf/LICENSE.txt",
+      "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+      "size": 10776
+    },
+    {
+      "path": "skills/.curated/pdf/SKILL.md",
+      "to": "pdf/SKILL.md",
+      "sha256": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2",
+      "size": 2517
+    },
+    {
+      "path": "skills/.curated/pdf/agents/openai.yaml",
+      "to": "pdf/agents/openai.yaml",
+      "sha256": "f8b223e25343559f57e1839ccd849fd1494a9729da33da04bb5074b7f80f4887",
+      "size": 219
+    },
+    {
+      "path": "skills/.curated/screenshot/LICENSE.txt",
+      "to": "screenshot/LICENSE.txt",
+      "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+      "size": 10776
+    },
+    {
+      "path": "skills/.curated/screenshot/SKILL.md",
+      "to": "screenshot/SKILL.md",
+      "sha256": "081935a6a163277537d46365f49d6b4a3cb40b4748347e7e88759c5927fa8cf5",
+      "size": 7754
+    },
+    {
+      "path": "skills/.curated/screenshot/agents/openai.yaml",
+      "to": "screenshot/agents/openai.yaml",
+      "sha256": "f29638eb930e27d44846474620b0d817b4b77fb5d09caf27db269463ae45cfa8",
+      "size": 273
+    },
+    {
+      "path": "skills/.curated/screenshot/assets/screenshot-small.svg",
+      "to": "screenshot/assets/screenshot-small.svg",
+      "sha256": "b0ff24097dfcd889504fab312a0e20d1d79dde0745268647a8cc2471b4baf794",
+      "size": 1019
+    },
+    {
+      "path": "skills/.curated/screenshot/scripts/ensure_macos_permissions.sh",
+      "to": "screenshot/scripts/ensure_macos_permissions.sh",
+      "sha256": "9aa750f1e9592519d6c18b966fd65c1d4108c25bd3471ce625dfafd784856d7f",
+      "size": 1702
+    },
+    {
+      "path": "skills/.curated/screenshot/scripts/macos_display_info.swift",
+      "to": "screenshot/scripts/macos_display_info.swift",
+      "sha256": "0969cfef9c9890c82cae5ad75a6cd40fd56d33b28f27347642ef5e837f18b042",
+      "size": 482
+    },
+    {
+      "path": "skills/.curated/screenshot/scripts/macos_permissions.swift",
+      "to": "screenshot/scripts/macos_permissions.swift",
+      "sha256": "cf110651350e50d600268f0a1a892ac8d662505474b4455cdfde2ac5b5f4aca6",
+      "size": 929
+    },
+    {
+      "path": "skills/.curated/screenshot/scripts/macos_window_info.swift",
+      "to": "screenshot/scripts/macos_window_info.swift",
+      "sha256": "c7faff7913d6072284b7ef1e5d26c524ab861ad32afc0c066f24ba95ae3f3597",
+      "size": 3595
+    },
+    {
+      "path": "skills/.curated/screenshot/scripts/take_screenshot.ps1",
+      "to": "screenshot/scripts/take_screenshot.ps1",
+      "sha256": "a31a2242e41fd1c5471651afbcced660f98fbc884f11e531218348f700a3f826",
+      "size": 4947
+    },
+    {
+      "path": "skills/.curated/screenshot/scripts/take_screenshot.py",
+      "to": "screenshot/scripts/take_screenshot.py",
+      "sha256": "56eeabe2dac5d23915b9a0fb57a07431fad2d310c5444f60f71f09299899232b",
+      "size": 19659
+    },
+    {
+      "path": "skills/.curated/security-ownership-map/LICENSE.txt",
+      "to": "security-ownership-map/LICENSE.txt",
+      "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+      "size": 10776
+    },
+    {
+      "path": "skills/.curated/security-ownership-map/SKILL.md",
+      "to": "security-ownership-map/SKILL.md",
+      "sha256": "f06c1a59247569326702c945f397af163ea96cf2ecfdf2dde280605bf89a3ec8",
+      "size": 8736
+    },
+    {
+      "path": "skills/.curated/security-ownership-map/agents/openai.yaml",
+      "to": "security-ownership-map/agents/openai.yaml",
+      "sha256": "40877a3cdb1753aa187fc85a83bc138a866a1edb74165e009c885cfb6a16e433",
+      "size": 253
+    },
+    {
+      "path": "skills/.curated/security-ownership-map/references/neo4j-import.md",
+      "to": "security-ownership-map/references/neo4j-import.md",
+      "sha256": "176d0ef2ed3588530ed65ccda7cb30ae322e4cbec5c374dba5d1685e2bb9dd02",
+      "size": 2428
+    },
+    {
+      "path": "skills/.curated/security-ownership-map/scripts/build_ownership_map.py",
+      "to": "security-ownership-map/scripts/build_ownership_map.py",
+      "sha256": "c0454c47c7eb001b6e247cd7e473df1b28a3a148a2dca6b2fe88a74a7602cc9b",
+      "size": 34330
+    },
+    {
+      "path": "skills/.curated/security-ownership-map/scripts/community_maintainers.py",
+      "to": "security-ownership-map/scripts/community_maintainers.py",
+      "sha256": "95adec5458cc85b41d0ae7965b0a17e4e8eaa6aaab274459324580d9a91cc3cc",
+      "size": 18122
+    },
+    {
+      "path": "skills/.curated/security-ownership-map/scripts/query_ownership.py",
+      "to": "security-ownership-map/scripts/query_ownership.py",
+      "sha256": "0f8d1a1ac3ef807a9b66939a8cdfd02564f4cda018489a3664d37f8c3a7b1b93",
+      "size": 17991
+    },
+    {
+      "path": "skills/.curated/security-ownership-map/scripts/run_ownership_map.py",
+      "to": "security-ownership-map/scripts/run_ownership_map.py",
+      "sha256": "362b547d6133659eb5c4fe889b8b930bea790f31e412f3198671baae09eec692",
+      "size": 5890
+    },
+    {
+      "path": "skills/.curated/yeet/LICENSE.txt",
+      "to": "yeet/LICENSE.txt",
+      "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+      "size": 10776
+    },
+    {
+      "path": "skills/.curated/yeet/SKILL.md",
+      "to": "yeet/SKILL.md",
+      "sha256": "4829d4909081e1abf91507fb581e6f566ce7064001892414f32191895b08a595",
+      "size": 6952
+    },
+    {
+      "path": "skills/.curated/yeet/agents/openai.yaml",
+      "to": "yeet/agents/openai.yaml",
+      "sha256": "6f0a463b53232932ad70aec529e25fad9d54312de0bd29d64a38bb14a4e748de",
+      "size": 273
+    },
+    {
+      "path": "skills/.curated/yeet/assets/yeet-small.svg",
+      "to": "yeet/assets/yeet-small.svg",
+      "sha256": "e4b365d5389b8772e9bad36ad7a37d8333436fa961bb98c8d77b8fbf4e9dbc3b",
+      "size": 967
+    }
+  ],
+  "notes": {
+    "security-ownership-map": [
+      "4 scripts the agent may ask to run"
+    ],
+    "yeet": [
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ],
+    "screenshot": [
+      "6 scripts the agent may ask to run",
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ],
+    "pdf": [
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ]
+  }
+}

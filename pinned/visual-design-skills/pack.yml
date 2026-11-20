@@ -1,0 +1,14 @@
+name: visual-design-skills
+title: "Visual Design Skills"
+description: "Generative art in p5.js, posters and visual pieces, themes for slides and documents, animated GIFs and bundled single-page web artifacts. Written by Anthropic and published under Apache-2.0; installed from its repository at a pinned commit. Fonts and images of the upstream folders are left out (text only); the artifact builder targets claude.ai artifacts. Not affiliated with or endorsed by Anthropic."
+vendor: Anthropic
+kind: skills
+license: Apache-2.0
+repo: anthropics/skills
+commit: e4bb5d960d87126ff3b3a8af1a104b7db67560ba
+items:
+  algorithmic-art: skills/algorithmic-art
+  canvas-design: skills/canvas-design
+  theme-factory: skills/theme-factory
+  slack-gif-creator: skills/slack-gif-creator
+  web-artifacts-builder: skills/web-artifacts-builder

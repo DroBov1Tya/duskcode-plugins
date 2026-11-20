@@ -1,0 +1,210 @@
+{
+  "repo": "openai/skills",
+  "commit": "49f948faa9258a0c61caceaf225e179651397431",
+  "files": [
+    {
+      "path": "skills/.curated/netlify-deploy/LICENSE.txt",
+      "to": "netlify-deploy/LICENSE.txt",
+      "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+      "size": 10776
+    },
+    {
+      "path": "skills/.curated/netlify-deploy/SKILL.md",
+      "to": "netlify-deploy/SKILL.md",
+      "sha256": "bb2c29bf599a043cade932f60cc64f632ca100e8767ccdfa2ba1a42c8d43958f",
+      "size": 7011
+    },
+    {
+      "path": "skills/.curated/netlify-deploy/agents/openai.yaml",
+      "to": "netlify-deploy/agents/openai.yaml",
+      "sha256": "7d3acb1ee5376c98f3366401cd413200a4aab82af48bbe97382565dcdd04870f",
+      "size": 318
+    },
+    {
+      "path": "skills/.curated/netlify-deploy/assets/netlify-small.svg",
+      "to": "netlify-deploy/assets/netlify-small.svg",
+      "sha256": "a2d9b9b5087c840247eb8e8360120ce9a20780c5470519b7703f49e920f780cd",
+      "size": 1291
+    },
+    {
+      "path": "skills/.curated/netlify-deploy/references/cli-commands.md",
+      "to": "netlify-deploy/references/cli-commands.md",
+      "sha256": "a24b08401b8c796e4a58933a71441b3341b61afc840d690d9127b27ab00cfe05",
+      "size": 2652
+    },
+    {
+      "path": "skills/.curated/netlify-deploy/references/deployment-patterns.md",
+      "to": "netlify-deploy/references/deployment-patterns.md",
+      "sha256": "fdb8c3b96fe03099826e4207b4933df3ff97571415f5e283567979bdc86cdc85",
+      "size": 6702
+    },
+    {
+      "path": "skills/.curated/netlify-deploy/references/netlify-toml.md",
+      "to": "netlify-deploy/references/netlify-toml.md",
+      "sha256": "436ea3c2e0ce04abb34895db993d91b8660423977d9c52a89f2dfa014cad0b9c",
+      "size": 3972
+    },
+    {
+      "path": "skills/.curated/render-deploy/LICENSE.txt",
+      "to": "render-deploy/LICENSE.txt",
+      "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+      "size": 10776
+    },
+    {
+      "path": "skills/.curated/render-deploy/SKILL.md",
+      "to": "render-deploy/SKILL.md",
+      "sha256": "c17c75adeb1834ed5cee1e440a651ae476c4101cd63762fcd9a58eada917552d",
+      "size": 17582
+    },
+    {
+      "path": "skills/.curated/render-deploy/agents/openai.yaml",
+      "to": "render-deploy/agents/openai.yaml",
+      "sha256": "9d14eae8aad5f2e02112f1003e823df2da2b5b5df626fae4439f44349f59d291",
+      "size": 480
+    },
+    {
+      "path": "skills/.curated/render-deploy/assets/docker.yaml",
+      "to": "render-deploy/assets/docker.yaml",
+      "sha256": "3fd98d72fc490df5c2a57ee5ddb3997347d31ea72ac68035f6442e787a19e091",
+      "size": 1398
+    },
+    {
+      "path": "skills/.curated/render-deploy/assets/go-api.yaml",
+      "to": "render-deploy/assets/go-api.yaml",
+      "sha256": "fed7f5f2f59dc98cfc505533177d7b35dd3a993e6a93d0a6be1fae59a676af0b",
+      "size": 848
+    },
+    {
+      "path": "skills/.curated/render-deploy/assets/nextjs-postgres.yaml",
+      "to": "render-deploy/assets/nextjs-postgres.yaml",
+      "sha256": "0c3d482632b88c0e5f3dc620d32b06216b356205b1fd988f69b6fc69ee41d2d3",
+      "size": 870
+    },
+    {
+      "path": "skills/.curated/render-deploy/assets/node-express.yaml",
+      "to": "render-deploy/assets/node-express.yaml",
+      "sha256": "1785a380074f7439e983f0cd50381559fd804a76c56f8d2da7d988a30ac8b519",
+      "size": 619
+    },
+    {
+      "path": "skills/.curated/render-deploy/assets/python-django.yaml",
+      "to": "render-deploy/assets/python-django.yaml",
+      "sha256": "ce9e540e8cff7171557223044f61a83a058f0012831d07f99750cac70a4e236c",
+      "size": 2538
+    },
+    {
+      "path": "skills/.curated/render-deploy/assets/render-small.svg",
+      "to": "render-deploy/assets/render-small.svg",
+      "sha256": "27cc74f766850724ac4a01bda8fb4a765a997522cdf5b93748e2e0c546193623",
+      "size": 553
+    },
+    {
+      "path": "skills/.curated/render-deploy/assets/static-site.yaml",
+      "to": "render-deploy/assets/static-site.yaml",
+      "sha256": "d0a7df7c7a987049ec3609c28f1fdeef8e2e01f534c64372c6079746df286ac1",
+      "size": 1352
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/blueprint-spec.md",
+      "to": "render-deploy/references/blueprint-spec.md",
+      "sha256": "52cdb41c930c22ec5578c2e56cef33ffbba910ef6c72de57965908be7ec54139",
+      "size": 16013
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/codebase-analysis.md",
+      "to": "render-deploy/references/codebase-analysis.md",
+      "sha256": "54c4fe84ae50a4b358f7c9048dfcd68f9eddd88ddfbe24c50b4be7949dc9f6a7",
+      "size": 2300
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/configuration-guide.md",
+      "to": "render-deploy/references/configuration-guide.md",
+      "sha256": "f0bdee2c78db76066e797139b1ee1230cf277192e8fbe9c42d277e82bef2ec40",
+      "size": 11735
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/deployment-details.md",
+      "to": "render-deploy/references/deployment-details.md",
+      "sha256": "fa6aa90a707494fcc9438b65829ef4891b9ed03c1cf69d6323fbd997b1f6782a",
+      "size": 5345
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/direct-creation.md",
+      "to": "render-deploy/references/direct-creation.md",
+      "sha256": "3b148def3c12061582229599616b680f57972c86a8782e22a765cf261ec80adc",
+      "size": 2786
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/error-patterns.md",
+      "to": "render-deploy/references/error-patterns.md",
+      "sha256": "b5556cdd3ba832e8f33602cf207cd80872df9c89ed17fe92129a56903176675b",
+      "size": 833
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/post-deploy-checks.md",
+      "to": "render-deploy/references/post-deploy-checks.md",
+      "sha256": "bd1e3e24abe6c9eb63164ac8ada9b285ceaffbd1722f58bbc1d3d94af4c59911",
+      "size": 1025
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/runtimes.md",
+      "to": "render-deploy/references/runtimes.md",
+      "sha256": "285b66f9fbb7b20195be80d3bc91bdfc82944c779debbffad85f08ba338b414f",
+      "size": 9849
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/service-types.md",
+      "to": "render-deploy/references/service-types.md",
+      "sha256": "459590bed5b5600f155f8a9d39c7ca3a32e307270e58d636b30e7b25e6ca4e64",
+      "size": 11338
+    },
+    {
+      "path": "skills/.curated/render-deploy/references/troubleshooting-basics.md",
+      "to": "render-deploy/references/troubleshooting-basics.md",
+      "sha256": "f999b13fc56ff62ccf6eec593d0e4cee94e52dec27a815e40d68532bf558a4ca",
+      "size": 1361
+    },
+    {
+      "path": "skills/.curated/vercel-deploy/LICENSE.txt",
+      "to": "vercel-deploy/LICENSE.txt",
+      "sha256": "e0fad1e120e56b02bb8e65745ff5be6d3234368f2df9d0dd183183879e595fc1",
+      "size": 1063
+    },
+    {
+      "path": "skills/.curated/vercel-deploy/SKILL.md",
+      "to": "vercel-deploy/SKILL.md",
+      "sha256": "f4a6cbfbb378a320fae179a79f727a881d19677e9b3db96ed49d2dc02a74fa46",
+      "size": 2653
+    },
+    {
+      "path": "skills/.curated/vercel-deploy/agents/openai.yaml",
+      "to": "vercel-deploy/agents/openai.yaml",
+      "sha256": "5fdfff98a8cd084737f47231d65e7b8315e9036e12c8f2c90df7593f75abcf74",
+      "size": 306
+    },
+    {
+      "path": "skills/.curated/vercel-deploy/assets/vercel-small.svg",
+      "to": "vercel-deploy/assets/vercel-small.svg",
+      "sha256": "169e5fedb5898d756254c29e02873508eef714a8dd11638f283ca8e7c46096a5",
+      "size": 243
+    },
+    {
+      "path": "skills/.curated/vercel-deploy/scripts/deploy.sh",
+      "to": "vercel-deploy/scripts/deploy.sh",
+      "sha256": "91f16c6a298c8b70eff7b7722f860e54101be2f23cea75d2e26ec0778006f9b4",
+      "size": 8877
+    }
+  ],
+  "notes": {
+    "netlify-deploy": [
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ],
+    "render-deploy": [
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ],
+    "vercel-deploy": [
+      "1 script the agent may ask to run",
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ]
+  }
+}

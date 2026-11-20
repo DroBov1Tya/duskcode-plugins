@@ -1,0 +1,36 @@
+# Checks the repository and the official list, and fetches every file the pinned packs
+# (pinned/<pack>/pins.json) name from their authors' repositories, failing when one no
+# longer matches its SHA-256: a repository deleted, renamed or rewritten under a pin.
+# Weekly as well as on every change, since an upstream can change without a commit here.
+# It reads only; nothing is signed or published here.
+name: check
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Tools
+        run: |
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --quiet pyyaml==6.0.3
+          echo "$RUNNER_TEMP/venv/bin" >> "$GITHUB_PATH"
+      - name: Repository
+        run: python scripts/check-index.py --repo .
+      - name: Official list
+        run: python scripts/check-index.py site/index.json --fetch
+      - name: Pinned files against their hashes
+        run: python scripts/check-index.py --pins

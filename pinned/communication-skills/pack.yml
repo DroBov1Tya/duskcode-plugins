@@ -1,0 +1,11 @@
+name: communication-skills
+title: "Communication Skills"
+description: "Internal communications in a company's own formats (status reports, updates, newsletters, FAQs), and a nudge to check a substantive answer before the user acts on it. Written by Anthropic and published under Apache-2.0; installed from its repository at a pinned commit. Not affiliated with or endorsed by Anthropic."
+vendor: Anthropic
+kind: skills
+license: Apache-2.0
+repo: anthropics/skills
+commit: e4bb5d960d87126ff3b3a8af1a104b7db67560ba
+items:
+  internal-comms: skills/internal-comms
+  discernment-nudge: skills/discernment-nudge
