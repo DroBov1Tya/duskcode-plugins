@@ -42,3 +42,65 @@ What the brand pages say about that (read 2026-11-18):
 The author is named as a fact in
 `vendor`, `upstream`, the notices and one clause of the description, each description
 ends with "Not affiliated with or endorsed by <author>", and no logo is used.
+
+## Packs pinned in their authors' repositories
+
+Checked on 2026-11-19. These packs copy nothing: `pinned/<pack>/pins.json` names the
+author's files at one commit with their SHA-256, and duskcode fetches them from GitHub.
+The licence and notice files of each skill's folder are pinned with it byte for byte.
+Where a licence sits only at the repository's top (NVIDIA's `LICENSE-APACHE` and
+`LICENSE-CC-BY-4.0`), those files are pinned into each skill's folder. Leaving out the
+upstream's binaries (fonts, images) makes the pin a pointer, not a modified copy, by the
+owner's decision; each skill's notes in `pins.json` say what was left out.
+
+| Packs | Author | Source, commit | License |
+| --- | --- | --- | --- |
+| office-document-skills, visual-design-skills, communication-skills | Anthropic | https://github.com/anthropics/skills `e4bb5d9` (`skills/<item>/LICENSE.txt`) | Apache-2.0 |
+| hosting-deploy-skills, team-workspace-skills, dotnet-app-skills, speech-audio-skills, repository-utility-skills | OpenAI | https://github.com/openai/skills `49f948f` (`skills/.curated/<item>/LICENSE.txt`) | Apache-2.0; `vercel-deploy` and the four Notion skills MIT |
+| tile-kernel-skills, gpu-simulation-skills, multi-gpu-memory-skills, optimization-solver-skills, gpu-acceleration-skills | NVIDIA | https://github.com/NVIDIA/skills `b0694f6` (front matter `license`, root `LICENSE-*`) | Apache-2.0, or CC-BY-4.0 (text) AND Apache-2.0 (code) |
+
+**What was left out, and why.**
+- anthropics/skills:
+  - `frontend-design`, `mcp-builder` and `webapp-testing` are already in
+    web-builder-skills.
+  - `skill-creator` is the name of a duskcode built-in skill.
+  - `claude-api`'s description is over 1024 characters, so it would not load.
+  - `doc-coauthoring` has no licence file.
+  - `academy-guide` points users to the vendor's own courses, and `brand-guidelines`
+    applies the vendor's brand; neither is useful as a neutral pack.
+- openai/skills:
+  - The six skills of dev-workflow-skills are already there.
+  - `chatgpt-apps`, `openai-docs` and `migrate-to-codex` declare names with an
+    assistant's or company's word.
+  - The eight Figma skills are under Figma's own terms ("governed by the Figma Developer
+    Terms"), not an allowed licence.
+  - `cloudflare-deploy` has 311 files.
+  - `skill-creator` is a built-in name.
+  - `cli-creator`, `hatch-pet`, `imagegen`, `define-goal`, `playwright-interactive`,
+    `plugin-creator` and `skill-installer` are written for another agent's own tools.
+- NVIDIA/skills: only five subjects of its 472 skills are packed. `compute-sanitizer` and
+  `cudf` are already in gpu-computing-skills. The rest (robotics, medical imaging, data
+  centre networking and others) can be packed the same way when wanted.
+
+**Review.** Every pinned text file was scanned for:
+- instructions to hide things from the user or to ignore earlier instructions;
+- piping a download into a shell;
+- base64 decoding;
+- reading `~/.ssh` or cloud credentials;
+- exfiltration;
+- bidi and zero-width characters.
+
+The six hits are benign:
+- apt and `/tmp` clean-ups;
+- an evaluation case that checks the skill *refuses* `curl | bash`;
+- a security note in a benchmark;
+- `render-deploy` and `sentry`, which show their vendors' official CLI installers
+  (`curl … | sh`) as an instruction. The agent runs that only through the user's command
+  approval.
+
+Scripts are kept, and each skill's notes count them. `warp-compile-time-optimizer` names
+`allowed-tools`, which grants nothing in duskcode.
+
+Names and titles say what the packs do; the authors appear only in `vendor`, `repo`, the
+licence files and the "Not affiliated with or endorsed by" clause, and the covers are the
+Workshop's own generated ones.

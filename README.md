@@ -20,6 +20,7 @@ address; the old page address no longer answers.)
 plugins/<name>/                 a plugin: plugin.yml, its source, icons
 packs/<pack>/pack.yml           a pack: name, title, description, vendor, kind, items, license
 packs/<pack>/<item>/            each item: a skill folder (SKILL.md, LICENSE, NOTICE) or an agent folder
+pinned/<pack>/                  a pack pinned in its author's GitHub repository: pack.yml and pins.json, no files
 covers/<name>.webp              the card picture of each plugin and pack (at most 512 KiB)
 covers/src/<name>.svg           its source; scripts/make-covers.py writes them, render-covers.sh renders
 screenshots/<name>/             optional demo pictures of an item (up to 8, at most 1 MiB each)
@@ -38,10 +39,25 @@ site/                           the page and the signed list (index.json, index.
 | [web-builder-skills](packs/web-builder-skills) | skills | Verified | Anthropic ([source](https://github.com/anthropics/skills)) | Apache-2.0 |
 | [dev-workflow-skills](packs/dev-workflow-skills) | skills | Verified | OpenAI ([source](https://github.com/openai/skills)) | Apache-2.0 |
 | [gpu-computing-skills](packs/gpu-computing-skills) | skills | Verified | NVIDIA ([source](https://github.com/NVIDIA/skills)) | CC-BY-4.0 AND Apache-2.0 |
+| [communication-skills](pinned/communication-skills) | skills, pinned | Verified | Anthropic ([source](https://github.com/anthropics/skills/tree/e4bb5d960d87126ff3b3a8af1a104b7db67560ba)) | Apache-2.0 |
+| [dotnet-app-skills](pinned/dotnet-app-skills) | skills, pinned | Verified | OpenAI ([source](https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431)) | Apache-2.0 |
+| [gpu-acceleration-skills](pinned/gpu-acceleration-skills) | skills, pinned | Verified | NVIDIA ([source](https://github.com/NVIDIA/skills/tree/b0694f6d55b4037ffd414aba5759b59f38380c5e)) | CC-BY-4.0 AND Apache-2.0 |
+| [gpu-simulation-skills](pinned/gpu-simulation-skills) | skills, pinned | Verified | NVIDIA ([source](https://github.com/NVIDIA/skills/tree/b0694f6d55b4037ffd414aba5759b59f38380c5e)) | Apache-2.0 |
+| [hosting-deploy-skills](pinned/hosting-deploy-skills) | skills, pinned | Verified | OpenAI ([source](https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431)) | Apache-2.0 AND MIT |
+| [multi-gpu-memory-skills](pinned/multi-gpu-memory-skills) | skills, pinned | Verified | NVIDIA ([source](https://github.com/NVIDIA/skills/tree/b0694f6d55b4037ffd414aba5759b59f38380c5e)) | Apache-2.0 |
+| [office-document-skills](pinned/office-document-skills) | skills, pinned | Verified | Anthropic ([source](https://github.com/anthropics/skills/tree/e4bb5d960d87126ff3b3a8af1a104b7db67560ba)) | Apache-2.0 |
+| [optimization-solver-skills](pinned/optimization-solver-skills) | skills, pinned | Verified | NVIDIA ([source](https://github.com/NVIDIA/skills/tree/b0694f6d55b4037ffd414aba5759b59f38380c5e)) | Apache-2.0 |
+| [repository-utility-skills](pinned/repository-utility-skills) | skills, pinned | Verified | OpenAI ([source](https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431)) | Apache-2.0 |
+| [speech-audio-skills](pinned/speech-audio-skills) | skills, pinned | Verified | OpenAI ([source](https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431)) | Apache-2.0 |
+| [team-workspace-skills](pinned/team-workspace-skills) | skills, pinned | Verified | OpenAI ([source](https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431)) | Apache-2.0 AND MIT |
+| [tile-kernel-skills](pinned/tile-kernel-skills) | skills, pinned | Verified | NVIDIA ([source](https://github.com/NVIDIA/skills/tree/b0694f6d55b4037ffd414aba5759b59f38380c5e)) | CC-BY-4.0 AND Apache-2.0 |
+| [visual-design-skills](pinned/visual-design-skills) | skills, pinned | Verified | Anthropic ([source](https://github.com/anthropics/skills/tree/e4bb5d960d87126ff3b3a8af1a104b7db67560ba)) | Apache-2.0 |
 
 `duskcode-agents` holds every agent of duskcode, including those it also builds in.
 Official is duskcode's own work; Verified is somebody else's, checked and signed here.
-Those packs keep their license and notice files and name their changes
+The pinned packs are not copied here: duskcode fetches their files from the author's
+repository at the reviewed commit and checks every file's SHA-256 ([docs/mirrors.md](docs/mirrors.md)).
+The copied packs keep their license and notice files and name their changes
 ([docs/third-party.md](docs/third-party.md)); duskcode is not affiliated with or endorsed
 by their authors, and their names are used only to say who wrote the work.
 

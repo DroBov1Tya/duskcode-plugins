@@ -64,11 +64,14 @@ mirrors:
     ref: main                    # optional: branch, tag or commit; default branch otherwise
     author: Someone              # optional: for skills whose front matter names no author
     categories: [coding]         # optional fallback, 1 to 3 of the fixed list
+    match: '^web-'               # optional: the slice taken when the command names none
+    limit: 20                    # optional, likewise offset
     manual: false                # true: never run by --all
 ```
 
-A `hermes-index` mirror names `url` instead of `repo`. Name a mirror after the repository
-it reads, not as if it were the vendor's own list. See "Names" below.
+A `hermes-index` mirror names `url` instead of `repo`. Name a mirror for what it holds,
+never for whose it is. See "Names" below; the script refuses a mirror name with a company's
+word in it.
 
 ## Running it
 
@@ -77,15 +80,27 @@ optional but recommended.
 
 ```sh
 scripts/mirror.py --list                                  # the mirrors of mirrors.yml
-scripts/mirror.py anthropics-skills                       # dist/mirrors/anthropics-skills/
-scripts/mirror.py anthropics-skills --dry-run             # the report only, nothing written
-scripts/mirror.py --all                                   # every mirror not marked manual
-scripts/mirror.py claude-plugins-official --match '^(frontend|security)' --limit 10
-scripts/mirror.py hermes-hub --survey                     # what of the index can be converted
-scripts/mirror.py hermes-hub --match '^official/' --limit 50 --out /some/folder
-scripts/mirror.py hermes-hub --match '^skills-sh/' --offset 2000 --limit 2000
-scripts/check-index.py --unsigned dist/mirrors/anthropics-skills/index.json
-scripts/check-index.py --unsigned dist/mirrors/anthropics-skills/index.json --fetch pdf docx
+scripts/mirror.py --all                                   # the Unverified lists, see below
+scripts/mirror.py document-design-dev-skills              # dist/mirrors/document-design-dev-skills/
+scripts/mirror.py document-design-dev-skills --dry-run    # the report only, nothing written
+scripts/mirror.py plugin-directory-skills --match '^(frontend|security)' --limit 10
+scripts/mirror.py skills-hub-index --survey               # what of the index can be converted
+scripts/mirror.py skills-hub-index --match '^github/' --limit 50 --out /some/folder
+scripts/mirror.py skills-hub-index --match '^skills-sh/' --offset 2000 --limit 2000
+scripts/check-index.py --unsigned dist/mirrors/document-design-dev-skills/index.json
+scripts/check-index.py --unsigned dist/mirrors/document-design-dev-skills/index.json --fetch pdf docx
+```
+
+**The Unverified lists in one command.** `scripts/mirror.py --all` builds every mirror
+`mirrors.yml` does not mark `manual`:
+- `dist/mirrors/document-design-dev-skills/`: the whole of `anthropics/skills`;
+- `dist/mirrors/skills-hub-index/`: the slice `mirrors.yml` names, the first 20 of the
+  Hermes index's own `official/` skills.
+
+Nothing is published and no source is added: the lists stay in the uncommitted `dist/`
+until the owner decides.
+
+```sh
 ```
 
 - `--match PATTERN` is a regular expression, ignoring case. It is matched against a skill
@@ -99,8 +114,8 @@ scripts/check-index.py --unsigned dist/mirrors/anthropics-skills/index.json --fe
 - `report.md` lists every skill taken (upstream, file count, licence, author, notes), every
   item skipped with its reason, and a count of the reasons. "Flagged" counts skills that
   were taken but use a feature of Claude Code or Hermes that Dusk lacks. An example is
-  [examples/anthropics-skills-report.md](examples/anthropics-skills-report.md), the
-  `--dry-run` of `anthropics-skills`.
+  [examples/document-design-dev-skills-report.md](examples/document-design-dev-skills-report.md),
+  the `--dry-run` of `document-design-dev-skills`.
 
 **Same input, same bytes.** Entries are sorted by name and files by path. An entry whose
 pinned files did not change keeps its earlier commit and version, even when its branch has
@@ -148,9 +163,9 @@ into the skill's folder as `LICENSE`.
   - `description` is missing, empty or over 1024 characters;
   - `links`, `tags`, `skills` or `tools` is not a list of words;
   - `entry` is not true or false.
-- A front matter `name` that is not the folder's name.
 - A licence that is not on the allow-list, an unrecognised licence file, or no licence
   (see below).
+- A name that carries a company's word and that its front matter fixes (see "Names").
 - A repository, commit or file GitHub does not serve, or a skill name already taken by an
   earlier entry of the same list.
 - A name that is, or is one edit away from, one of Dusk's own (`skill-creator`,
@@ -196,15 +211,26 @@ left out.
 - **Files are copied byte for byte**, so licence and notice files in the skill's folder
   reach the user unchanged. Dusk does not host or modify the files: the user's Dusk fetches
   them from GitHub.
-- **Leaving files out is not a modified copy.** Binaries and empty files are left out, so
-  an installed copy can be incomplete. But Dusk hosts no copy, so the list is a pointer,
-  not a modified redistribution. If the owner reads this differently, mirrored skills need
-  the archive path with a `NOTICE.md`, as the Verified packs have.
-- **Names.** Mirrors are named after the GitHub repository they read
-  (`anthropics-skills`), never as a vendor's own catalogue. A list's page and title must
-  not suggest it is the vendor's. Item names are the upstream authors' own, so they can
-  carry a company name (`claude-api`, `openai-docs`). `check-index.py --unsigned` warns
-  about such names instead of refusing them.
+- **Leaving files out is not a modified copy.** By the owner's decision, an upstream pin
+  is a pointer, not a modified copy: Dusk hosts nothing, and the binaries, fonts, images
+  and empty files it leaves out stay in the author's folder at the pinned commit. Each
+  entry's notes say what was left out ("2 binary files left out of the pin (they stay in
+  the upstream folder)").
+- **Names.** No listing, pack or mirror name or title carries a company's or an
+  assistant's name; it says what the thing does. The company appears only in `author` or
+  `vendor`, in `source` and the upstream repository, and in the licence text. The words
+  refused are repo.py's `COMPANIES` and mirror.py's `EXTRA_COMPANIES` (`claude`, `chatgpt`,
+  `gpt`, `gemini`, `copilot`, `codex`, `hermes`, `anthropics`).
+  - Mirrors are named for their content: `document-design-dev-skills`,
+    `skills-hub-index`, `plugin-directory-skills`, `curated-dev-skills`,
+    `gpu-and-ai-infra-skills`.
+  - A skill is listed under the name its front matter declares, because Dusk loads a
+    skill only under that name. When the upstream folder has another name, the entry says
+    so ("listed as X, the name its front matter declares; the upstream folder is Y").
+  - A skill whose name carries a company word is listed without that word
+    (`microsoft-foundry` becomes `foundry`) when its front matter declares no name. When
+    the front matter declares the name, renaming would stop it loading, so it is skipped
+    ("company in name").
 
 ## Adding a list as a source
 
@@ -224,8 +250,8 @@ source's name is `a-z 0-9 -`, at most 32 characters:
   ```yaml
   workshop:
     sources:
-      - name: anthropics-skills
-        url: https://drobov1tya.github.io/duskcode-workshop/mirrors/anthropics-skills/index.json
+      - name: document-design-dev-skills
+        url: https://drobov1tya.github.io/duskcode-workshop/mirrors/document-design-dev-skills/index.json
   ```
 
 - **From a chat:** the agent calls `add_workshop_source { name, url }`, with no `key`.
@@ -235,8 +261,8 @@ source's name is `a-z 0-9 -`, at most 32 characters:
 
 An agent asked to "connect the Hermes skills for X":
 
-1. Runs `scripts/mirror.py hermes-hub --survey`, then
-   `scripts/mirror.py hermes-hub --match '<what the user asked for>' --limit N --out <folder>`.
+1. Runs `scripts/mirror.py skills-hub-index --survey`, then
+   `scripts/mirror.py skills-hub-index --match '<what the user asked for>' --limit N --out <folder>`.
    `--limit` keeps the GitHub requests bounded.
 2. Goes through `report.md` with the user: what was taken, what was skipped, and the notes.
 3. Publishes `index.json` at an https address the user controls.
@@ -257,3 +283,31 @@ keyless sources:
 
 `--fetch [NAME ...]` also downloads the pinned files and checks each one's size, SHA-256
 and UTF-8 text, and that each `SKILL.md` loads.
+
+## Pinned packs of the official list
+
+The same converter fills the **signed official list** with reviewed third-party packs
+that are pinned in their authors' repositories, not copied here:
+
+- `pinned/<pack>/pack.yml` is written by hand and reviewed. It holds:
+  - the name, title and description (neutral, saying what the pack does);
+  - `vendor` and `license`;
+  - the GitHub `repo` and the reviewed `commit`;
+  - `items`: each skill mapped to its folder in that repository.
+- `pinned/<pack>/pins.json` is written by `scripts/mirror.py --pin <pack>`. Each item goes
+  through the converter's rules: text only, the caps, the front matter, the licence within
+  the pack's, names that load. The file holds the commit, the SHA-256 and size of every
+  file, and each item's notes.
+- One upstream pins at most 200 files, so a larger source is split into packs by subject.
+- `scripts/check-index.py --repo .` checks both files.
+- `scripts/publish.py --format=3` turns each pack into a list entry with `upstream`
+  instead of a package. Dusk fetches exactly those files from GitHub and checks each hash.
+  A format 2 list leaves these packs out, and says so.
+- In the app, the listing is Verified (somebody else's work in the official list). It
+  shows `github.com/<repo> at <commit>` and the author; the install record keeps the tree
+  address.
+- To refresh a pack: `scripts/mirror.py --pin <pack> --bump` moves it to the current
+  commit. Review the diff of `pins.json` and the upstream changes, then sign.
+- CI (`.github/workflows/check.yml`) runs `scripts/check-index.py --pins` on every change
+  and weekly. It fails when an author's repository no longer serves a pinned file with its
+  hash.
