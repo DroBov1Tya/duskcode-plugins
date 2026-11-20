@@ -8,6 +8,7 @@ key, and duskcode shows what it offers as Unverified. See docs/mirrors.md.
     scripts/mirror.py NAME                   one mirror of mirrors.yml
     scripts/mirror.py --all                  every mirror that is not `manual`
     scripts/mirror.py --list                 the mirrors of mirrors.yml
+    scripts/mirror.py --pin [PACK ...]       the pins of the official list's pinned packs
       --limit N        the first N items: skill folders (skills-repo), plugins
                        (claude-marketplace) or index entries (hermes-index), after --match
       --offset N       skip the first N items first, to take a long catalogue in slices
@@ -17,6 +18,9 @@ key, and duskcode shows what it offers as Unverified. See docs/mirrors.md.
       --out DIR        write into DIR instead of dist/mirrors/NAME
       --refresh        fetch a cached catalogue index again (the Hermes index is kept a day)
       --no-gh          use GitHub's API over https even when `gh` is logged in
+      --pin [PACK ...] write pinned/PACK/pins.json (every pack when none is named): the
+                       files of the official list's pinned packs, by the same rules
+      --bump           with --pin, move each pack to its repository's current commit
       --survey         hermes-index only: count, by hub, the entries that name a GitHub
                        location (and so can be converted), reading only the index
 
@@ -86,6 +90,9 @@ NAME = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
 # Names duskcode keeps for itself: its built-in skills (resources/skills) and the duskcode
 # pack. An Unverified listing that is, or is one edit from, one of them is refused as taken
 # (store/guard.rs `shadow`), so it is skipped here rather than listed dead.
+# Words no listing of the Workshop carries beside the companies of repo.py: assistants'
+# and agents' names. A skill whose name has one is listed under a neutral name, or skipped.
+EXTRA_COMPANIES = ("anthropics", "claude", "chatgpt", "gpt", "gemini", "copilot", "codex", "hermes")
 RESERVED = ("computer-use", "skill-creator", "skill-evolve", "token-thrift", "duskcode")
 # Folders the skill graph never reads as nodes (graph.rs SKIPPED).
 GRAPH_SKIPS = ("node_modules", "target", "venv", "__pycache__", "dist", "build")
@@ -315,7 +322,7 @@ class GitHub:
                 if error.code == 429:
                     wait = max(wait, min(int(error.headers.get("Retry-After") or 10), 120))
                     print(f"raw.githubusercontent.com asks to slow down; waiting {wait} s", file=sys.stderr)
-            except (urllib.error.URLError, TimeoutError) as error:
+            except (urllib.error.URLError, OSError) as error:
                 if attempt == 5:
                     raise Skip("file not fetched", f"{path}: {error}")
             time.sleep(wait)
@@ -395,9 +402,9 @@ def split_front(text):
     raise Skip("will not load", "SKILL.md's front matter has no closing --- line")
 
 
-def read_front(data, name):
+def read_front(data, name=None):
     """The front matter as duskcode reads a skill (graph.rs parse_node), or why it will not
-    load as the node `name`."""
+    load as the node `name` (any name the front matter declares, when None)."""
     if len(data) > MAX_NODE_BYTES:
         raise Skip("will not load", f"SKILL.md is over {MAX_NODE_BYTES} bytes")
     text = data.decode()
@@ -417,7 +424,7 @@ def read_front(data, name):
     if len(description) > MAX_DESCRIPTION:
         raise Skip("will not load", f"description is longer than {MAX_DESCRIPTION} characters")
     declared = front.get("name")
-    if declared is not None and declared != name:
+    if name is not None and declared is not None and declared != name:
         raise Skip("name differs from folder", f"front matter names {str(declared)[:64]!r}, the folder is {name}")
     strings = lambda value: isinstance(value, list) and all(isinstance(item, str) for item in value)
     for key in ("links", "skills", "tags"):
@@ -477,16 +484,16 @@ def license_of(text):
 
 
 def find_license(c, front, bodies, fetch):
-    """The skill's licence, and the repository file to pin into its folder as LICENSE when
+    """The skill's licence, and the repository's licence files to pin into its folder when
     the licence is the repository's: its front matter's when that is an SPDX expression;
-    else a licence file in its folder; else the repository's licence file, or the licence
-    GitHub detects for the repository."""
+    else a licence file in its folder; else the repository's licence files (all of them,
+    joined with AND), or the licence GitHub detects for the repository."""
     metadata = front.get("metadata") if isinstance(front.get("metadata"), dict) else {}
     declared = spdx(front.get("license")) or spdx(metadata.get("license"))
     if declared:
         if not allowed(declared):
             raise Skip("licence not allowed", declared)
-        return declared, None
+        return declared, []
     if isinstance(front.get("license"), str) and re.search(
             r"proprietar|all rights reserved|non-?commercial|\bgpl\b|source[- ]available", front["license"], re.I):
         raise Skip("licence not allowed", " ".join(front["license"].split())[:60])
@@ -496,19 +503,26 @@ def find_license(c, front, bodies, fetch):
         if found:
             if found not in LICENSES:
                 raise Skip("licence not allowed", f"{found} ({rel})")
-            return found, None
+            return found, []
     if own:
         raise Skip("licence not recognised", f"{own[0]} in the skill's folder")
     root = sorted(p for p in c.tree if "/" not in p and LICENSE_FILE.match(p) and c.tree[p]["type"] == "blob"
                   and 0 < c.tree[p]["size"] <= MAX_FILE_BYTES)
+    recognised = {p: license_of(fetch(p).decode("utf-8", "replace")) for p in root}
+    recognised = {p: found for p, found in recognised.items() if found}
+    if recognised:
+        refused = sorted({found for found in recognised.values() if found not in LICENSES})
+        if refused:
+            raise Skip("licence not allowed", f"{', '.join(refused)} (the repository's)")
+        # Several licence files (text under one, code under another) bind together.
+        return " AND ".join(sorted(set(recognised.values()))), sorted(recognised)
     detected = c.meta.get("repo_license")
     detected = detected if detected not in (None, "NOASSERTION", "NONE", "other") else None
-    found = next((license_of(fetch(p).decode("utf-8", "replace")) for p in root), None) or detected
-    if not found:
+    if not detected:
         raise Skip("no licence", "none in the front matter, the skill's folder or the repository")
-    if found not in LICENSES:
-        raise Skip("licence not allowed", f"{found} (the repository's)")
-    return found, root[0] if root else None
+    if detected not in LICENSES:
+        raise Skip("licence not allowed", f"{detected} (the repository's)")
+    return detected, root[:1]
 
 
 def is_text(data):
@@ -564,16 +578,46 @@ def close(a, b):
     return short[start + 1:] == long[start + 1:] if len(short) == len(long) else short[start:] == long[start + 1:]
 
 
-def convert(gh, c, fallback):
-    """The list entry of candidate `c`, with its notes; or Skip."""
-    name = c.folder.rsplit("/", 1)[-1] if c.folder else c.repo.split("/")[1]
+def company_word(name):
+    """A company or product word in `name`: the Workshop's list (repo.py) and the names of
+    assistants, which are no listing's to carry."""
+    words = set(re.split(r"[^a-z0-9]+", name.lower()))
+    return next((w for w in tuple(workshop.COMPANIES) + EXTRA_COMPANIES if w in words), None)
+
+
+def entry_name(folder_name, front):
+    """The name the skill is listed and installed under, and a note when that is not its
+    upstream folder's: its front matter's name when it declares one, since duskcode loads
+    a skill only under the name it declares; a company's word is taken out of a name the
+    front matter does not fix, and a skill whose declared name carries one is skipped."""
+    declared = front.get("name")
+    name = declared if isinstance(declared, str) else folder_name
+    if declared is not None and not isinstance(declared, str):
+        raise Skip("will not load", "its front matter's name is not text")
+    note = f"listed as {name}, the name its front matter declares; the upstream folder is {folder_name}" \
+        if name != folder_name else None
+    word = company_word(name)
+    if word and isinstance(declared, str):
+        raise Skip("company in name", f"{name} carries {word}, and its front matter declares that name, "
+                                      "so it cannot be listed under a neutral one")
+    if word:
+        neutral = "-".join(part for part in name.split("-") if not company_word(part))
+        if len(neutral) < 3:
+            raise Skip("company in name", f"{name} carries {word}, and no neutral name is left without it")
+        name, note = neutral, f"listed as {neutral}; the upstream folder is {folder_name}"
     if not NAME.match(name):
-        raise Skip("name not allowed", f"{name!r}: a-z, 0-9, - and _, at most 64, starting with a letter or digit")
+        raise Skip("name not allowed", f"{name[:64]!r}: a-z, 0-9, - and _, at most 64, starting with a letter or digit")
     taken = next((r for r in RESERVED if close(name, r)), None)
     if taken:
         raise Skip("name taken in Dusk", f"{name} is or is too close to Dusk's own {taken}")
     if name in GRAPH_SKIPS:
         raise Skip("name not allowed", f"{name}: Dusk's skill graph never reads a folder of that name")
+    return name, note
+
+
+def convert(gh, c, fallback):
+    """The list entry of candidate `c`, with its notes; or Skip."""
+    folder_name = c.folder.rsplit("/", 1)[-1] if c.folder else c.repo.split("/")[1]
     if c.folder and not plain_path(c.folder):
         raise Skip("path not allowed", f"{c.folder}: only A-Z, a-z, 0-9, ., _ and - in a path")
     prefix = f"{c.folder}/" if c.folder else ""
@@ -592,7 +636,7 @@ def convert(gh, c, fallback):
             left["submodules"] += 1
         elif item["mode"] == "120000":
             left["links"] += 1
-        elif not plain_path(rel) or not plain_path(f"{prefix}{rel}") or not plain_path(f"{name}/{rel}"):
+        elif not plain_path(rel) or not plain_path(f"{prefix}{rel}"):
             left["files with paths Dusk refuses"] += 1
         elif item["size"] == 0:
             left["empty files"] += 1
@@ -613,13 +657,18 @@ def convert(gh, c, fallback):
                 raise Skip("will not load", "SKILL.md is not UTF-8 text")
             left["binary files"] += 1
             del keep[rel], bodies[rel]
-    front, description, body = read_front(bodies["SKILL.md"], name)
-    license, extra = find_license(c, front, bodies, fetch)
+    front, description, body = read_front(bodies["SKILL.md"])
+    name, renamed = entry_name(folder_name, front)
+    for rel in list(keep):
+        if not plain_path(f"{name}/{rel}"):
+            left["files with paths Dusk refuses"] += 1
+            del keep[rel], bodies[rel]
+    license, extras = find_license(c, front, bodies, fetch)
     files = [(f"{prefix}{rel}", f"{name}/{rel}", bodies[rel]) for rel in keep]
-    if extra and f"{name}/LICENSE" not in {to for _, to, _ in files}:
-        data = fetch(extra)
-        if is_text(data):
-            files.append((extra, f"{name}/LICENSE", data))
+    for extra in extras:
+        to = f"{name}/{extra.rsplit('/', 1)[-1]}"
+        if to not in {t for _, t, _ in files} and is_text(fetch(extra)):
+            files.append((extra, to, fetch(extra)))
     if len(files) > MAX_FILES:
         raise Skip("too many files", f"{len(files)} text files, at most {MAX_FILES}")
 
@@ -643,11 +692,12 @@ def convert(gh, c, fallback):
     if scripts:
         notes.append(f"{scripts} {'script' if scripts == 1 else 'scripts'} the agent may ask to run")
     for what, count in sorted(left.items()):
-        notes.append(f"{count} {what if count > 1 else SINGULAR.get(what, what)} left out")
+        notes.append(f"{count} {what if count > 1 else SINGULAR.get(what, what)} left out of the pin "
+                     "(they stay in the upstream folder)")
     if "name" not in front:
         notes.append("no name in its front matter")
-    if company := workshop.company_in(name):
-        notes.append(f"its name carries the company name {company}")
+    if renamed:
+        notes.append(renamed)
 
     author = None
     for value in (front.get("author"), (front.get("metadata") or {}).get("author")
@@ -1070,12 +1120,60 @@ def load_config():
             raise SystemExit(f"mirrors.yml: {m['name']}: a hermes-index mirror names its index's https url")
         if m["kind"] != "hermes-index" and not re.match(r"^[A-Za-z0-9._-]+/[A-Za-z0-9._-]+$", str(m.get("repo", ""))):
             raise SystemExit(f"mirrors.yml: {m['name']}: repo is owner/name on GitHub")
+        if company_word(m["name"]):
+            raise SystemExit(f"mirrors.yml: {m['name']}: a mirror's name says what it holds, not whose it is")
         if set(m.get("categories") or []) - set(workshop.CATEGORIES):
             raise SystemExit(f"mirrors.yml: {m['name']}: categories are from {' '.join(workshop.CATEGORIES)}")
     return mirrors
 
 
+PINNED = ROOT / "pinned"
+PIN_FIELDS = {"name", "title", "description", "vendor", "kind", "license", "repo", "commit", "items"}
+
+
+def pin(gh, folder, bump):
+    """pinned/<pack>/pins.json: the files of each item of the pack at its commit, taken by
+    the same rules as a mirror's skills, for the official list (scripts/publish.py). With
+    `bump`, the pack moves to the commit its repository's default branch names now; review
+    the diff of pins.json before it is signed."""
+    file = folder / "pack.yml"
+    pack = yaml.safe_load(file.read_text())
+    if not isinstance(pack, dict) or set(pack) != PIN_FIELDS or not isinstance(pack["items"], dict):
+        raise SystemExit(f"{file}: holds exactly {', '.join(sorted(PIN_FIELDS))}; items maps each item to its folder")
+    repo, commit, date = gh.commit(pack["repo"], None if bump else pack["commit"])
+    if repo != pack["repo"]:
+        raise SystemExit(f"{file}: {pack['repo']} is now {repo} on GitHub; write the new name")
+    if bump and commit != pack["commit"]:
+        text = file.read_text().replace(pack["commit"], commit)
+        file.write_text(text)
+        print(f"{folder.name}: {pack['commit'][:7]} -> {commit[:7]}", file=sys.stderr)
+    meta = {"repo_license": gh.repo(repo)["license"]}
+    allowed_here = set(pack["license"].split()[::2])
+    files, notes = [], {}
+    for item, path in pack["items"].items():
+        candidate = Candidate(item, repo, commit, date, path, gh.tree(repo, commit, path), author=pack["vendor"], meta=meta)
+        try:
+            entry, item_notes = convert(gh, candidate, ["productivity"])
+        except Skip as skip:
+            raise SystemExit(f"{folder.name}/{item}: {skip}")
+        if entry["name"] != item:
+            raise SystemExit(f"{folder.name}/{item}: listed as {entry['name']} by its front matter; name the item so")
+        if not set(entry["license"].split()[::2]) <= allowed_here:
+            raise SystemExit(f"{folder.name}/{item}: {entry['license']} is not within the pack's {pack['license']}")
+        files += entry["upstream"]["files"]
+        notes[item] = item_notes
+    if len(files) > MAX_FILES:
+        raise SystemExit(f"{folder.name}: {len(files)} files; one upstream pins at most {MAX_FILES}: split the pack")
+    pins = {"repo": repo, "commit": commit, "files": sorted(files, key=lambda f: f["to"]), "notes": notes}
+    (folder / "pins.json").write_text(json.dumps(pins, indent=2, ensure_ascii=False) + "\n")
+    print(f"{folder.name}: {len(pack['items'])} skills, {len(files)} files at {repo}@{commit[:7]}", file=sys.stderr)
+
+
 def run_mirror(gh, cfg, args):
+    args = argparse.Namespace(**vars(args))
+    for key in ("match", "offset", "limit"):
+        if key in cfg and getattr(args, key) in (None, 0):
+            setattr(args, key, re.compile(cfg[key], re.I) if key == "match" else cfg[key])
     out_dir = pathlib.Path(args.out) if args.out else ROOT / "dist" / "mirrors" / cfg["name"]
     old = out_dir / "index.json"
     previous = json.loads(old.read_text()) if old.is_file() else {}
@@ -1107,8 +1205,17 @@ def main():
     parser.add_argument("--refresh", action="store_true")
     parser.add_argument("--no-gh", action="store_true")
     parser.add_argument("--survey", action="store_true")
+    parser.add_argument("--pin", nargs="*")
+    parser.add_argument("--bump", action="store_true")
     args = parser.parse_args()
     mirrors = load_config()
+    if args.pin is not None:
+        folders = [PINNED / name for name in args.pin] or sorted(f.parent for f in PINNED.glob("*/pack.yml"))
+        gh = GitHub(use_gh=not args.no_gh)
+        for folder in folders:
+            pin(gh, folder, args.bump)
+        print(f"GitHub API requests: {gh.calls} ({'gh' if gh.gh else 'https'})", file=sys.stderr)
+        return
     if args.list:
         for m in mirrors:
             print(f"{m['name']:28} {m['kind']:20} {m.get('repo') or m.get('url')}{'  (manual)' if m.get('manual') else ''}")

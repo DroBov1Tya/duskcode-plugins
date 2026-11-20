@@ -1,8 +1,8 @@
 # Outside skill catalogues that scripts/mirror.py turns into unsigned Dusk lists, one per
 # mirror, in dist/mirrors/<name>/. See docs/mirrors.md.
 #
-#   name        a-z, 0-9 and -; the list's folder. Name it for the repository it reads,
-#               never as if it were that vendor's own list.
+#   name        a-z, 0-9 and -; the list's folder. It says what the list holds, never whose
+#               it is: the author is named only in each entry's author, licence and source.
 #   kind        skills-repo | claude-marketplace | hermes-index
 #   repo        owner/name on GitHub (skills-repo, claude-marketplace)
 #   ref         optional: a branch, tag or commit; the default branch when left out
@@ -10,25 +10,51 @@
 #   url         the index's https address (hermes-index)
 #   author      optional: who wrote a skill whose front matter names nobody
 #   categories  optional: 1 to 3 of the fixed list, for a skill no word of which says one
+#   match, offset, limit
+#               optional: the slice taken when the command line names none
 #   manual      optional: true leaves it out of --all; run it by name with --match/--limit
+#
+# scripts/mirror.py --all builds every mirror that is not manual: the whole of
+# document-design-dev-skills and a 20-skill slice of skills-hub-index.
 mirrors:
-  - name: anthropics-skills
+  # anthropics/skills: office documents, visual design, web and MCP development.
+  - name: document-design-dev-skills
     kind: skills-repo
     repo: anthropics/skills
     path: skills
     author: Anthropic
     categories: [productivity]
 
-  - name: claude-plugins-official
+  # Hermes Agent's hub index: 104k pointers, 45 MB. Only a slice is built by default;
+  # nothing of it is published or added as a source by default.
+  - name: skills-hub-index
+    kind: hermes-index
+    url: https://nousresearch.github.io/hermes-agent/docs/api/skills-index.json
+    categories: [productivity]
+    match: '^official/'
+    limit: 20
+
+  # A plugin directory (anthropics/claude-plugins-official): only its plugins' skills.
+  - name: plugin-directory-skills
     kind: claude-marketplace
     repo: anthropics/claude-plugins-official
     categories: [coding]
     manual: true
 
-  # 104k pointers, 45 MB. Nothing of it is listed by default: a slice is converted on
-  # request, e.g. scripts/mirror.py hermes-hub --match 'optional-skills/' --limit 50.
-  - name: hermes-hub
-    kind: hermes-index
-    url: https://nousresearch.github.io/hermes-agent/docs/api/skills-index.json
-    categories: [productivity]
+  # openai/skills: curated developer skills.
+  - name: curated-dev-skills
+    kind: skills-repo
+    repo: openai/skills
+    path: skills
+    author: OpenAI
+    categories: [coding]
+    manual: true
+
+  # NVIDIA/skills: GPU computing, AI training and infrastructure, about 470 skills.
+  - name: gpu-and-ai-infra-skills
+    kind: skills-repo
+    repo: NVIDIA/skills
+    path: skills
+    author: NVIDIA
+    categories: [coding]
     manual: true
