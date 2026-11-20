@@ -1,0 +1,687 @@
+{
+  "repo": "NVIDIA/skills",
+  "commit": "b0694f6d55b4037ffd414aba5759b59f38380c5e",
+  "files": [
+    {
+      "path": "skills/cuopt-developer/BENCHMARK.md",
+      "to": "cuopt-developer/BENCHMARK.md",
+      "sha256": "dd2ebe4e3f68f791aacf5e6487d49ec75406945d82c686fe7da23aaa963f0c84",
+      "size": 4010
+    },
+    {
+      "path": "skills/cuopt-developer/SKILL.md",
+      "to": "cuopt-developer/SKILL.md",
+      "sha256": "92a3aef4cf607656d665087b69829663dcca2a518c19adeb5f52018fbf2929a4",
+      "size": 13008
+    },
+    {
+      "path": "skills/cuopt-developer/benchmark/evals.json",
+      "to": "cuopt-developer/benchmark/evals.json",
+      "sha256": "21d45dcd233a0c18c76b5322903168ddfeccae99fc1a109ba9605708e12a4799",
+      "size": 57177
+    },
+    {
+      "path": "skills/cuopt-developer/evals/evals.json",
+      "to": "cuopt-developer/evals/evals.json",
+      "sha256": "0aa71a39577151b574d6088539759bb3e2637e3c916f1ff3b2ab71537d0e82fb",
+      "size": 4830
+    },
+    {
+      "path": "skills/cuopt-developer/references/build_and_test.md",
+      "to": "cuopt-developer/references/build_and_test.md",
+      "sha256": "06b51e2be78237d32174fba708fddef7320b5c5375018553f4c9933ea553938a",
+      "size": 1674
+    },
+    {
+      "path": "skills/cuopt-developer/references/contributing.md",
+      "to": "cuopt-developer/references/contributing.md",
+      "sha256": "5915285f12bd30c1ebbc19f28052b9bbfd4e838d52ee060360e9ad60164b488d",
+      "size": 5483
+    },
+    {
+      "path": "skills/cuopt-developer/references/conventions.md",
+      "to": "cuopt-developer/references/conventions.md",
+      "sha256": "9919506d2ef728109bc85995820a03711da3dd65f2b61b559641a6236f9a8d3a",
+      "size": 1869
+    },
+    {
+      "path": "skills/cuopt-developer/references/first_time_setup.md",
+      "to": "cuopt-developer/references/first_time_setup.md",
+      "sha256": "e5e505175fe2f63e114be7fe19927b8420dc587f3f6a126816af5a608fd76313",
+      "size": 2619
+    },
+    {
+      "path": "skills/cuopt-developer/references/python_bindings.md",
+      "to": "cuopt-developer/references/python_bindings.md",
+      "sha256": "6a43638017d3592e25b7c64a0b6abd02446ccdd242b8a4fdd72bd02b4dbf2294",
+      "size": 7959
+    },
+    {
+      "path": "skills/cuopt-developer/references/troubleshooting.md",
+      "to": "cuopt-developer/references/troubleshooting.md",
+      "sha256": "92ad6bd1a2c668c28bc6f50ccc649a6a95a8b7086158be0d6892be95717e3a57",
+      "size": 2411
+    },
+    {
+      "path": "skills/cuopt-developer/references/vrp_skills.md",
+      "to": "cuopt-developer/references/vrp_skills.md",
+      "sha256": "99a0fdff6b4648bfb0be26d6e379d539f2bd18f7f3c0dac98b182603ba9ba8ad",
+      "size": 9004
+    },
+    {
+      "path": "skills/cuopt-developer/resources/numerical_debugging.md",
+      "to": "cuopt-developer/resources/numerical_debugging.md",
+      "sha256": "d54961eff729850c3e178062f7f64e532a9c895123ce1da1f7627574f6232681",
+      "size": 5927
+    },
+    {
+      "path": "skills/cuopt-developer/skill-card.md",
+      "to": "cuopt-developer/skill-card.md",
+      "sha256": "4499608dc63a7c9cb1da6c884ba2dd81d64e49eae25790dcc4fd4e9702da2e07",
+      "size": 4591
+    },
+    {
+      "path": "skills/cuopt-developer/skill.oms.sig",
+      "to": "cuopt-developer/skill.oms.sig",
+      "sha256": "21c9621e2bb0d4426925ff4385e1ba5dd590b4c830e41d815de9026b031bcda0",
+      "size": 6749
+    },
+    {
+      "path": "skills/cuopt-install/BENCHMARK.md",
+      "to": "cuopt-install/BENCHMARK.md",
+      "sha256": "5c9f881c52d37bc7cbf2109ec81da69d8342f9dffbfa96380a61fefa401f6777",
+      "size": 4923
+    },
+    {
+      "path": "skills/cuopt-install/SKILL.md",
+      "to": "cuopt-install/SKILL.md",
+      "sha256": "37940e3e785a71bef54c07cac265327218b1cf4177078d1e67a251aac79e4187",
+      "size": 4230
+    },
+    {
+      "path": "skills/cuopt-install/benchmark/evals.json",
+      "to": "cuopt-install/benchmark/evals.json",
+      "sha256": "096eae9abbd79ae3c73bbe00adbb03eae96d5bd94ca57c519d9201b4d8d6e26c",
+      "size": 16196
+    },
+    {
+      "path": "skills/cuopt-install/evals/evals.json",
+      "to": "cuopt-install/evals/evals.json",
+      "sha256": "d54697cfe273e626d58e6934f491eb92e08986cdb272d49b11c0033cbb3fac47",
+      "size": 6847
+    },
+    {
+      "path": "skills/cuopt-install/references/verification_examples.md",
+      "to": "cuopt-install/references/verification_examples.md",
+      "sha256": "fcdd39391171eeeec5dfd15d38d327db95cda1784c9a47b6fae0c34ef63a6db0",
+      "size": 4256
+    },
+    {
+      "path": "skills/cuopt-install/skill-card.md",
+      "to": "cuopt-install/skill-card.md",
+      "sha256": "f3225761cfb8569d45e7aae8e4e025ceba69cf2dbf49270fa25ca3c1c66edc9b",
+      "size": 3996
+    },
+    {
+      "path": "skills/cuopt-install/skill.oms.sig",
+      "to": "cuopt-install/skill.oms.sig",
+      "sha256": "e4d2b49d52ed3c4a3c707cc92c4e11a3a403a24c38c2747469c8a5f7ad3c3e9a",
+      "size": 5065
+    },
+    {
+      "path": "skills/cuopt-multi-objective-exploration/BENCHMARK.md",
+      "to": "cuopt-multi-objective-exploration/BENCHMARK.md",
+      "sha256": "f60db1d26f3653f4cd8469dcbcb55f37e7276d9eed47ee9f112216c47c702db2",
+      "size": 9066
+    },
+    {
+      "path": "skills/cuopt-multi-objective-exploration/SKILL.md",
+      "to": "cuopt-multi-objective-exploration/SKILL.md",
+      "sha256": "8ef889c64cfa0024b3818ef78ab5c4c52cbabf9c78b4e6660cea2336fc8c2c46",
+      "size": 15383
+    },
+    {
+      "path": "skills/cuopt-multi-objective-exploration/evals/evals.json",
+      "to": "cuopt-multi-objective-exploration/evals/evals.json",
+      "sha256": "b5b8eba27d4b90392f2323196054ff4b22651051f1500b1095446ba60f67aa6a",
+      "size": 14800
+    },
+    {
+      "path": "skills/cuopt-multi-objective-exploration/skill-card.md",
+      "to": "cuopt-multi-objective-exploration/skill-card.md",
+      "sha256": "b4c012717eada8b37afe4ab6d1c8bd10d3f768de978c6ee3186de1d148b0f49f",
+      "size": 5220
+    },
+    {
+      "path": "skills/cuopt-multi-objective-exploration/skill.oms.sig",
+      "to": "cuopt-multi-objective-exploration/skill.oms.sig",
+      "sha256": "ffcb7e93b52ce0d1d1f6dd7be1c40af9719b83a119095793c568c5089b651398",
+      "size": 4613
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/BENCHMARK.md",
+      "to": "cuopt-numerical-optimization-api/BENCHMARK.md",
+      "sha256": "a40bb148f54f9c03e7ee0c1c111a79daddfa6df361d9ca09a10ee9a333e17ec6",
+      "size": 11742
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/SKILL.md",
+      "to": "cuopt-numerical-optimization-api/SKILL.md",
+      "sha256": "0473c400c1e0afc4c562a47895dee1a439d8591a5dc126774fe77a22d1284b63",
+      "size": 4947
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/c/README.md",
+      "sha256": "80080653f6b4f90f4a44f12f6705c7b933e6bf5586d721d536a417ea3099b99d",
+      "size": 1712
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/lp_basic/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/c/lp_basic/README.md",
+      "sha256": "149c23ab76c3fbd8a1c0786723f140e8ca4967106ddcfd38168c186a089e355c",
+      "size": 463
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/lp_basic/lp_simple.c",
+      "to": "cuopt-numerical-optimization-api/assets/c/lp_basic/lp_simple.c",
+      "sha256": "54df28f49a0c1afae13bbb9368d50a9080e4d3766b39b3a25771cf1d5548d07a",
+      "size": 3705
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/lp_duals/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/c/lp_duals/README.md",
+      "sha256": "2b2691617a00a8a59cb4ec2cf27f3d475dbe198846c8b68e7bac4a9ba977b5d0",
+      "size": 497
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/lp_duals/lp_duals.c",
+      "to": "cuopt-numerical-optimization-api/assets/c/lp_duals/lp_duals.c",
+      "sha256": "6c4b059ce1220dca853cd628a3582d1381c76a5723d3192caf013ac85fce9675",
+      "size": 4060
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/lp_warmstart/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/c/lp_warmstart/README.md",
+      "sha256": "8eb19380b49c41036bf0e2ed4dc2a91a9ef3bc699c00362b8b7ea983d9acad43",
+      "size": 289
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/milp_basic/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/c/milp_basic/README.md",
+      "sha256": "72dd319fac96bb58aa4febbf0cd889dc9bfc0eb4475b988681663d705ee66a77",
+      "size": 402
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/milp_basic/milp_simple.c",
+      "to": "cuopt-numerical-optimization-api/assets/c/milp_basic/milp_simple.c",
+      "sha256": "8b5289b788cd220f99a8f4e9d6c1de9dc26abd4b3743dd64332626b116f7e07b",
+      "size": 3463
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/milp_production_planning/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/c/milp_production_planning/README.md",
+      "sha256": "fc557fb8b8a7f7fbb976a4968289cf92f25aea6a35a4a8c5260733aec69cfeb3",
+      "size": 456
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/milp_production_planning/milp_production.c",
+      "to": "cuopt-numerical-optimization-api/assets/c/milp_production_planning/milp_production.c",
+      "sha256": "5ca46828f62971b70e481fc5c6fc2b8eff1ca06cb5bbd4e001f9e2beeb4994fa",
+      "size": 3546
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/mps_solver/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/c/mps_solver/README.md",
+      "sha256": "3ca021fd5fc1703511ef8dc22b5c792fe345b4ded77c3a87fb37699b13bd8371",
+      "size": 587
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/mps_solver/data/sample.mps",
+      "to": "cuopt-numerical-optimization-api/assets/c/mps_solver/data/sample.mps",
+      "sha256": "30b3f871918160e9c1c5e760e39e9e5a973e51aaad09798765c8ca741641bb04",
+      "size": 490
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/c/mps_solver/mps_solver.c",
+      "to": "cuopt-numerical-optimization-api/assets/c/mps_solver/mps_solver.c",
+      "sha256": "f53299f1bb6833e9edfdd12b7112845c240c2da0521f88b03e3f65ea0aab5eff",
+      "size": 3493
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/cli/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/cli/README.md",
+      "sha256": "e0ba100e776ae7047b4014da489c3e4f3d730752271998debc9af029953acc45",
+      "size": 856
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/cli/lp_production/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/cli/lp_production/README.md",
+      "sha256": "b25af53197c5d20ec2976ba786e6e6a25f0eb568d7c532eefeec06736d1925a8",
+      "size": 192
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/cli/lp_production/production.mps",
+      "to": "cuopt-numerical-optimization-api/assets/cli/lp_production/production.mps",
+      "sha256": "e56ae2fef98dfa6b341566942aad5b7467958fcd92b793402f49d0c7bf762c01",
+      "size": 375
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/cli/lp_simple/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/cli/lp_simple/README.md",
+      "sha256": "bc13fe6884a32d9da5b11475ccf98f68f1fdabe706d4b3c38c7be08401435bf5",
+      "size": 191
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/cli/lp_simple/sample.mps",
+      "to": "cuopt-numerical-optimization-api/assets/cli/lp_simple/sample.mps",
+      "sha256": "30b3f871918160e9c1c5e760e39e9e5a973e51aaad09798765c8ca741641bb04",
+      "size": 490
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/cli/milp_facility/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/cli/milp_facility/README.md",
+      "sha256": "cda5b7afe62b7169a160618ad16311924d3a07fadede5db41edb7df325c63b05",
+      "size": 199
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/cli/milp_facility/facility.mps",
+      "to": "cuopt-numerical-optimization-api/assets/cli/milp_facility/facility.mps",
+      "sha256": "368705697db45b3b3e1708bd1391e167d5a9f5348816514d0a801c2ce579f08c",
+      "size": 694
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/README.md",
+      "sha256": "3f00ae01e616a3ddab689ce695cf610da5562c4a5c8333310744af9234b205f3",
+      "size": 584
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/least_squares/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/least_squares/README.md",
+      "sha256": "668b72b0d819ac36af2381614ebb78db5377d091745f29e49801f28cce7f6acd",
+      "size": 136
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/least_squares/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/least_squares/model.py",
+      "sha256": "2caa81435a4136e871a3fbb4bbe108cc1b56fa392a466257884fc2f5c39e4d87",
+      "size": 831
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/lp_basic/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/lp_basic/README.md",
+      "sha256": "4acc17c77d3de29d7afe4d4176001f945f58f4f1f219854e57c7b28519284d25",
+      "size": 207
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/lp_basic/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/lp_basic/model.py",
+      "sha256": "f941f7956ce689afbe9e8018899d651ae8823f1357fcaad14ab9e475e15f37bc",
+      "size": 1122
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/lp_duals/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/lp_duals/README.md",
+      "sha256": "24d1649b4200621a6d5f6be74923c797c7c8e551f4384da51a282262dff5bef0",
+      "size": 227
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/lp_duals/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/lp_duals/model.py",
+      "sha256": "50888d88c2df91597c5dfa4b223e75806eeda818232ab5c766301b7d5f248463",
+      "size": 1213
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/lp_warmstart/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/lp_warmstart/README.md",
+      "sha256": "8dc345421a300259c62537e3eb6f040ba25de3ccabef07355423f3448ace5f88",
+      "size": 140
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/lp_warmstart/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/lp_warmstart/model.py",
+      "sha256": "9635433e3ce953b023a0bdb6082b35ea9dd756afe6162ea802ff53d021898fd7",
+      "size": 2084
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/maximization_workaround/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/maximization_workaround/README.md",
+      "sha256": "f936a6b8a716a92aa909de3e9215c67a309b2122a8a809cdd9dd654c5cc627b9",
+      "size": 152
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/maximization_workaround/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/maximization_workaround/model.py",
+      "sha256": "4157cbfa815fe878316b95f1d4f6688c77cd0aa3bb8caa0835d98a4a108f0bf7",
+      "size": 736
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/milp_basic/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/milp_basic/README.md",
+      "sha256": "0d6c4ba7dba018764c89699b9723bf59ba1ac4fc155c7551900665cfe929db4b",
+      "size": 433
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/milp_basic/incumbent_callback.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/milp_basic/incumbent_callback.py",
+      "sha256": "1220591fbbcd51807f1d126f8960fbd417177f56bab2e214cbc760169faacd16",
+      "size": 1857
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/milp_basic/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/milp_basic/model.py",
+      "sha256": "d48f179e2a8c097a80f532a1bc20c12944059affd42d2e50e226f66767918aa4",
+      "size": 1184
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/milp_production_planning/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/milp_production_planning/README.md",
+      "sha256": "4d7b2481d7e7cecb7ae7364078d3660dc511fe16b67f7288a521c7a8f6af3557",
+      "size": 165
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/milp_production_planning/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/milp_production_planning/model.py",
+      "sha256": "0109d316bfdc037f2707f909e4134c4169d3703b3420c1239f140fed4439ccbf",
+      "size": 1235
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/mps_solver/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/mps_solver/README.md",
+      "sha256": "78a9078033d49a96774251aa7edf1322cf964b293a4f6376ed5b97aa199cffaa",
+      "size": 2248
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/mps_solver/data/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/mps_solver/data/README.md",
+      "sha256": "9eee8b6826cb45a360e923838ece0f7a05dc10385f47bff8b74e4b22d40042af",
+      "size": 2022
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/mps_solver/data/sample.mps",
+      "to": "cuopt-numerical-optimization-api/assets/python/mps_solver/data/sample.mps",
+      "sha256": "30b3f871918160e9c1c5e760e39e9e5a973e51aaad09798765c8ca741641bb04",
+      "size": 490
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/mps_solver/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/mps_solver/model.py",
+      "sha256": "64980f8f67f1b126d5c03b4fc92950914a682182f410e4644196e348adcf7450",
+      "size": 8441
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/mps_solver/results.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/mps_solver/results.md",
+      "sha256": "eb0cc93e3fb15c982a187cdca51068689380f2198cd4426a64f73b227ce8bf0e",
+      "size": 2521
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/portfolio/README.md",
+      "to": "cuopt-numerical-optimization-api/assets/python/portfolio/README.md",
+      "sha256": "cde994399c0ce6224eea2ad9b03cfc5fd650e9d29474678cf11355e93fc7ff78",
+      "size": 177
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/assets/python/portfolio/model.py",
+      "to": "cuopt-numerical-optimization-api/assets/python/portfolio/model.py",
+      "sha256": "9dcf115d5887e4d903a897dbbbb49fe14fd8ad5f7ab420fd62df5601eebfc3b2",
+      "size": 1610
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/evals/evals.json",
+      "to": "cuopt-numerical-optimization-api/evals/evals.json",
+      "sha256": "8b7e5b590082222a1ad0c286987cc0b4fdb7f301547b00035113ce805c7a3017",
+      "size": 13978
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/references/c_api.md",
+      "to": "cuopt-numerical-optimization-api/references/c_api.md",
+      "sha256": "76332a6d7754297d6c67bc31ad2a278739520f88a7710d7a7e3b246e619b6d31",
+      "size": 4327
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/references/cli_api.md",
+      "to": "cuopt-numerical-optimization-api/references/cli_api.md",
+      "sha256": "5752a8f17ee0576cb72698a4bed380a65c29677f03b77e57d49cfb4219c3fd5c",
+      "size": 5406
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/references/python_api.md",
+      "to": "cuopt-numerical-optimization-api/references/python_api.md",
+      "sha256": "3ff6d239f2e5ae9d9b59591a7b8bbfdd1b13e10056d992d226500b51296e7ff2",
+      "size": 3314
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/references/qp_examples.md",
+      "to": "cuopt-numerical-optimization-api/references/qp_examples.md",
+      "sha256": "010b0516f445b2ee17231445103d11af7091b7b5324db426fa1a80f6275b8403",
+      "size": 5673
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/skill-card.md",
+      "to": "cuopt-numerical-optimization-api/skill-card.md",
+      "sha256": "a27f3d12355a76555637911bfabe004d4a161aa57e878810a32edde718ae8ca6",
+      "size": 7048
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-api/skill.oms.sig",
+      "to": "cuopt-numerical-optimization-api/skill.oms.sig",
+      "sha256": "14ccfc31901698a211f5c094453e312e88335571bf3c27d15ad8156763624519",
+      "size": 16285
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-formulation/BENCHMARK.md",
+      "to": "cuopt-numerical-optimization-formulation/BENCHMARK.md",
+      "sha256": "4a39d3426971725b4e1b7acf86da4bd0c4365b7276fed5ca2c671c027c55b4ed",
+      "size": 4989
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-formulation/SKILL.md",
+      "to": "cuopt-numerical-optimization-formulation/SKILL.md",
+      "sha256": "349af0dc4e57a34b40eb27734229c3c2298ad4d9b91b5489e6191ba2b2aaa36f",
+      "size": 19584
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-formulation/evals/evals.json",
+      "to": "cuopt-numerical-optimization-formulation/evals/evals.json",
+      "sha256": "f20765169fafb15e6d8c1c44c26a0c714f8deaeee3f957b90ecd2bd2066bdfc5",
+      "size": 5371
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-formulation/skill-card.md",
+      "to": "cuopt-numerical-optimization-formulation/skill-card.md",
+      "sha256": "c31ab2ed997d39dd974e199651bee32e43fc61d9d326783f9812c12e997c57f8",
+      "size": 3831
+    },
+    {
+      "path": "skills/cuopt-numerical-optimization-formulation/skill.oms.sig",
+      "to": "cuopt-numerical-optimization-formulation/skill.oms.sig",
+      "sha256": "e18a56a11506044d928c3e890615f039dccef5f9426cd655deec26918bf240e4",
+      "size": 4621
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/BENCHMARK.md",
+      "to": "cuopt-routing-api-python/BENCHMARK.md",
+      "sha256": "2661ccc3422bab389aad46e8efb9fcca17bf9add9da30c906ee1aa5da4dc9056",
+      "size": 4752
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/SKILL.md",
+      "to": "cuopt-routing-api-python/SKILL.md",
+      "sha256": "def1266eecee8c0acb5895b573e31cd305bc026d17b201b8e79cb949ec41d9a9",
+      "size": 3698
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/assets/README.md",
+      "to": "cuopt-routing-api-python/assets/README.md",
+      "sha256": "c7002a3121983f3294efbe8c9541943bf24c89a07bea6a32007c774a2c808021",
+      "size": 553
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/assets/pdp_basic/README.md",
+      "to": "cuopt-routing-api-python/assets/pdp_basic/README.md",
+      "sha256": "e0d1a1fd7d0ad4e454d08f55de91bbede78ff1222d6a542d55aaacf71c5a7e62",
+      "size": 257
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/assets/pdp_basic/model.py",
+      "to": "cuopt-routing-api-python/assets/pdp_basic/model.py",
+      "sha256": "144da1df5de28d785a9b467b3d14417e716f532ac9b989046eaf7e4f5299a5fd",
+      "size": 1568
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/assets/vrp_basic/README.md",
+      "to": "cuopt-routing-api-python/assets/vrp_basic/README.md",
+      "sha256": "0a85aef1c1be59989de40aa6ce9fe54e720e7095f086bc6f684f2b3c9da33894",
+      "size": 272
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/assets/vrp_basic/model.py",
+      "to": "cuopt-routing-api-python/assets/vrp_basic/model.py",
+      "sha256": "5245b77465a26b68aefbaa3249b51ef0da4505f4e1974cf6d0f44b1c78fc8070",
+      "size": 838
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/evals/evals.json",
+      "to": "cuopt-routing-api-python/evals/evals.json",
+      "sha256": "356684826b8e12d12e635538549b4a343fe2d333cbf6ab7c7db0b8c6ccac5f19",
+      "size": 8932
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/references/examples.md",
+      "to": "cuopt-routing-api-python/references/examples.md",
+      "sha256": "5eb35735559d935c21e20a49591d54c9b6fa9247217aa4776a5f8983cbd27f81",
+      "size": 7019
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/references/server_examples.md",
+      "to": "cuopt-routing-api-python/references/server_examples.md",
+      "sha256": "508bf4ae8cb5bc7e249b377260f1421b70d9d345bb5a6d16c6fa0b56e256825b",
+      "size": 5794
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/skill-card.md",
+      "to": "cuopt-routing-api-python/skill-card.md",
+      "sha256": "724b0b7eeaf8e2f113c123aada7a0dfa8a89ab6389862ac33205e1b1f74963f1",
+      "size": 4059
+    },
+    {
+      "path": "skills/cuopt-routing-api-python/skill.oms.sig",
+      "to": "cuopt-routing-api-python/skill.oms.sig",
+      "sha256": "9fb782892bc579ef981aa088809cd1f01ceaa25e54dad84f58794c5bc99c5ce7",
+      "size": 6253
+    },
+    {
+      "path": "skills/cuopt-server-api-python/BENCHMARK.md",
+      "to": "cuopt-server-api-python/BENCHMARK.md",
+      "sha256": "6d42549558eaa00b2212404f4c4a42345dd348a5721f9dc04d807c6ebf55adfa",
+      "size": 8985
+    },
+    {
+      "path": "skills/cuopt-server-api-python/SKILL.md",
+      "to": "cuopt-server-api-python/SKILL.md",
+      "sha256": "272d2f7f0f6aad7b4c6254985be24b801bff3d7688b847ee889b4eb972f0e2d8",
+      "size": 5985
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/README.md",
+      "to": "cuopt-server-api-python/assets/README.md",
+      "sha256": "bde18890fd9119f41af84deae4894f1bb8f4142c14ca10960dcbd7f80d76c3fa",
+      "size": 608
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/lp_basic/README.md",
+      "to": "cuopt-server-api-python/assets/lp_basic/README.md",
+      "sha256": "8ecff4c847c5a554c34e5a07c4eb0c8e422aab9af310334ef20704a2da22da13",
+      "size": 368
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/lp_basic/client.py",
+      "to": "cuopt-server-api-python/assets/lp_basic/client.py",
+      "sha256": "54a7a8511dc43088fd27d07182210b44b374496c391c02f8ac6a52760f5a0260",
+      "size": 2920
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/milp_basic/README.md",
+      "to": "cuopt-server-api-python/assets/milp_basic/README.md",
+      "sha256": "d0f1cd59e36951ea7afa2edc69223a4f40f25e2ae81d93c2d09f5a141302b6eb",
+      "size": 360
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/milp_basic/client.py",
+      "to": "cuopt-server-api-python/assets/milp_basic/client.py",
+      "sha256": "7a75d5fcb3bce26c423801ba292f742ba91076dbb5038c7dec3ad95f06be5b8d",
+      "size": 2913
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/pdp_basic/README.md",
+      "to": "cuopt-server-api-python/assets/pdp_basic/README.md",
+      "sha256": "8e7712429df41f45b06796b87f9bf10c95176e91a34704b1e0d4dd377cd0e072",
+      "size": 287
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/pdp_basic/client.py",
+      "to": "cuopt-server-api-python/assets/pdp_basic/client.py",
+      "sha256": "9cc8840bca79faa518df93d76dcf30dd93ba43e4025bcc94131e5289b58002da",
+      "size": 3337
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/vrp_basic/README.md",
+      "to": "cuopt-server-api-python/assets/vrp_basic/README.md",
+      "sha256": "75bf4f7fe460f275a0e1b113e560dc67f9f3a0f297ecd4dcefec769a31269ef0",
+      "size": 376
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/vrp_basic/client.py",
+      "to": "cuopt-server-api-python/assets/vrp_basic/client.py",
+      "sha256": "b51e14176dc2da48465758508a23a4b975cada3f370c37ee5aebdb629d865498",
+      "size": 3586
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/vrp_simple/README.md",
+      "to": "cuopt-server-api-python/assets/vrp_simple/README.md",
+      "sha256": "5eb58051964533f14e28c9c40cd67ddfe595057b017fd5613c6bdddacfdb6c7d",
+      "size": 254
+    },
+    {
+      "path": "skills/cuopt-server-api-python/assets/vrp_simple/client.py",
+      "to": "cuopt-server-api-python/assets/vrp_simple/client.py",
+      "sha256": "9187a10b973e77a7dd36e7223d80181df25af444e575a82ee58746759b7f70dd",
+      "size": 3270
+    },
+    {
+      "path": "skills/cuopt-server-api-python/evals/evals.json",
+      "to": "cuopt-server-api-python/evals/evals.json",
+      "sha256": "759908ed3a58adaff57db85d03e0ecb7fe3e555c74b1fa5b87626ddde2a3c70a",
+      "size": 8716
+    },
+    {
+      "path": "skills/cuopt-server-api-python/skill-card.md",
+      "to": "cuopt-server-api-python/skill-card.md",
+      "sha256": "3a2eb71064b42aac07e7528fc43bbcbe42825759958f5c7db0ba0c989192c4fb",
+      "size": 4351
+    },
+    {
+      "path": "skills/cuopt-server-api-python/skill.oms.sig",
+      "to": "cuopt-server-api-python/skill.oms.sig",
+      "sha256": "cd148db4a0c1b99a7435429aea9afe3845aaa2a380b34ca7142ef7137361a7c1",
+      "size": 7213
+    }
+  ],
+  "notes": {
+    "cuopt-developer": [],
+    "cuopt-install": [],
+    "cuopt-multi-objective-exploration": [],
+    "cuopt-numerical-optimization-api": [
+      "10 scripts the agent may ask to run"
+    ],
+    "cuopt-numerical-optimization-formulation": [],
+    "cuopt-routing-api-python": [
+      "2 scripts the agent may ask to run"
+    ],
+    "cuopt-server-api-python": [
+      "5 scripts the agent may ask to run"
+    ]
+  }
+}

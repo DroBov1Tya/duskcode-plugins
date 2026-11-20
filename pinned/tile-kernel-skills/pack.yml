@@ -1,0 +1,16 @@
+name: tile-kernel-skills
+title: "Tile Kernel Skills"
+description: "Write, tune and port tile-based GPU kernels in Python: add kernels, autotune them, convert them to Triton or Julia and patch them into Transformers models. Written by NVIDIA (text under CC-BY-4.0, code under Apache-2.0); installed from its repository at a pinned commit. Not affiliated with or endorsed by NVIDIA."
+vendor: NVIDIA
+kind: skills
+license: CC-BY-4.0 AND Apache-2.0
+repo: NVIDIA/skills
+commit: b0694f6d55b4037ffd414aba5759b59f38380c5e
+items:
+  tilegym-adding-cutile-kernel: skills/tilegym-adding-cutile-kernel
+  tilegym-converting-cutile-to-julia: skills/tilegym-converting-cutile-to-julia
+  tilegym-converting-cutile-to-triton: skills/tilegym-converting-cutile-to-triton
+  tilegym-cutile-autotuning: skills/tilegym-cutile-autotuning
+  tilegym-cutile-python: skills/tilegym-cutile-python
+  tilegym-improve-cutile-kernel-perf: skills/tilegym-improve-cutile-kernel-perf
+  tilegym-monkey-patch-kernels-to-transformers: skills/tilegym-monkey-patch-kernels-to-transformers

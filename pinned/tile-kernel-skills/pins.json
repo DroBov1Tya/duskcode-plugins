@@ -1,0 +1,757 @@
+{
+  "repo": "NVIDIA/skills",
+  "commit": "b0694f6d55b4037ffd414aba5759b59f38380c5e",
+  "files": [
+    {
+      "path": "skills/tilegym-adding-cutile-kernel/BENCHMARK.md",
+      "to": "tilegym-adding-cutile-kernel/BENCHMARK.md",
+      "sha256": "5d635931c4782e1cb0a169a8e88ed57b5857bb5b1ac3387622d53460c2a4dbbd",
+      "size": 4255
+    },
+    {
+      "path": "skills/tilegym-adding-cutile-kernel/SKILL.md",
+      "to": "tilegym-adding-cutile-kernel/SKILL.md",
+      "sha256": "27068b4e36a8dd2ea782c3c9661452b157cafc36a5e245bda6729e2fe18b6d84",
+      "size": 8230
+    },
+    {
+      "path": "skills/tilegym-adding-cutile-kernel/evals/evals.json",
+      "to": "tilegym-adding-cutile-kernel/evals/evals.json",
+      "sha256": "37b04ac1be01c65003379bc21425aac5bc5a079b51ead520a3ffaca7dbfca381",
+      "size": 5576
+    },
+    {
+      "path": "skills/tilegym-adding-cutile-kernel/skill-card.md",
+      "to": "tilegym-adding-cutile-kernel/skill-card.md",
+      "sha256": "83fc695b2fa88283dc939df0de5330eb71cba96ed27e0c166b2259835919e30e",
+      "size": 3728
+    },
+    {
+      "path": "skills/tilegym-adding-cutile-kernel/skill.oms.sig",
+      "to": "tilegym-adding-cutile-kernel/skill.oms.sig",
+      "sha256": "0df66455820ee4871b52e1f67a35e7138b4fabcaed29781dfc20f18690022ee7",
+      "size": 4605
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/BENCHMARK.md",
+      "to": "tilegym-converting-cutile-to-julia/BENCHMARK.md",
+      "sha256": "1a35cd61b5f22e71ccae8364176afbe835936e6673402ee6a3a817f82aaea907",
+      "size": 11420
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/SKILL.md",
+      "to": "tilegym-converting-cutile-to-julia/SKILL.md",
+      "sha256": "2f8d0329cfe899ae85fd33d333c48dda44ed3a9d52ceea91cae2005634a70716",
+      "size": 8078
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/evals/evals.json",
+      "to": "tilegym-converting-cutile-to-julia/evals/evals.json",
+      "sha256": "6e5e47a8b4585e3d022eda861fa4d9776c44874e616967cb1e4468007590d92f",
+      "size": 5374
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/examples/01_add/cutile_julia.jl",
+      "to": "tilegym-converting-cutile-to-julia/examples/01_add/cutile_julia.jl",
+      "sha256": "c59080b035786fd8b2b0e588de897f433ba11d7fb6b830ddc3e2caec93f59ac6",
+      "size": 3689
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/examples/01_add/cutile_python.py",
+      "to": "tilegym-converting-cutile-to-julia/examples/01_add/cutile_python.py",
+      "sha256": "fdf0aae91cbd359f8362df676f18020b2bac2f749477f960ae6c6a27a65ebc22",
+      "size": 3818
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/examples/02_matmul/cutile_julia.jl",
+      "to": "tilegym-converting-cutile-to-julia/examples/02_matmul/cutile_julia.jl",
+      "sha256": "d518fea11109172f8f05c1fd0145f351ceac30b2aa0c1752ad044081d0e588cb",
+      "size": 5137
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/examples/02_matmul/cutile_python.py",
+      "to": "tilegym-converting-cutile-to-julia/examples/02_matmul/cutile_python.py",
+      "sha256": "6ab70da63819c7392ad29185c8b75c1746cca5825319f39663334f2b53abc171",
+      "size": 2429
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/examples/03_softmax/cutile_julia.jl",
+      "to": "tilegym-converting-cutile-to-julia/examples/03_softmax/cutile_julia.jl",
+      "sha256": "14c584f19a39771d0ad685e3a31b439fb01d59042d5ecfb811a143b593325135",
+      "size": 10527
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/examples/03_softmax/cutile_python.py",
+      "to": "tilegym-converting-cutile-to-julia/examples/03_softmax/cutile_python.py",
+      "sha256": "c5f4d9192f0ae24c40a99d4e342da626830a48c63b8b0aaf8978ce2bfa8d1035",
+      "size": 8741
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/references/api-mapping.md",
+      "to": "tilegym-converting-cutile-to-julia/references/api-mapping.md",
+      "sha256": "0adfc7f6cbaf0f395000349c11cf551c83c3a222cbdb148d87040bb9ebaf4136",
+      "size": 22137
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/references/critical-rules.md",
+      "to": "tilegym-converting-cutile-to-julia/references/critical-rules.md",
+      "sha256": "412d348d59b031b3c32c3110b2363bcf9f3379660a525305482897fb82b2e91d",
+      "size": 6824
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/references/debugging.md",
+      "to": "tilegym-converting-cutile-to-julia/references/debugging.md",
+      "sha256": "cfe2b174bc446471f6550ed7b35365569fd3cad50f2af385c250a6997daa7795",
+      "size": 5488
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/references/testing.md",
+      "to": "tilegym-converting-cutile-to-julia/references/testing.md",
+      "sha256": "64748fe7e547455420f5c20a63a2b58cc19f463ed3172b416073b689f4608566",
+      "size": 4722
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/scripts/validate_cutile_jl.py",
+      "to": "tilegym-converting-cutile-to-julia/scripts/validate_cutile_jl.py",
+      "sha256": "016658eeb1e60518f12f2478eea6e4071363c6521c38e479c0aa982a82c4754c",
+      "size": 10165
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/skill-card.md",
+      "to": "tilegym-converting-cutile-to-julia/skill-card.md",
+      "sha256": "229255794b548c50dc439b87c8b81181d51ed2c29d759e32a73d997e4175b9d9",
+      "size": 4621
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/skill.oms.sig",
+      "to": "tilegym-converting-cutile-to-julia/skill.oms.sig",
+      "sha256": "e3d66911d7d7733a93070d96269602cd77c3c6c34e9b00abd1ef4e9f4d5365cd",
+      "size": 7533
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-julia/translations/workflow.md",
+      "to": "tilegym-converting-cutile-to-julia/translations/workflow.md",
+      "sha256": "567fd669a4ad69311e0a1b0dbfdf9a160b89ccd839caf56e4d740d65920d89f1",
+      "size": 18612
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/BENCHMARK.md",
+      "to": "tilegym-converting-cutile-to-triton/BENCHMARK.md",
+      "sha256": "c3e5b0cabd659d8e1be2d7a1cd51e28f68eab278cad80a734331592f130242fc",
+      "size": 8261
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/SKILL.md",
+      "to": "tilegym-converting-cutile-to-triton/SKILL.md",
+      "sha256": "3a857b76afb3b734380505847d89e2d47b997cb118b1c3226ab0a183df4d9606",
+      "size": 17064
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/evals/evals.json",
+      "to": "tilegym-converting-cutile-to-triton/evals/evals.json",
+      "sha256": "2ac6335cc77833f1eece1f08a5d8f766ad56bb5776a4079a428164d8b05a0ccf",
+      "size": 5399
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/01_vector_add/cutile_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/01_vector_add/cutile_kernel.py",
+      "sha256": "4211ccba262b6ae63dc244100b428e9c0a1cb14b03d5ebc18a48d2bf6b53268f",
+      "size": 3862
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/01_vector_add/triton_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/01_vector_add/triton_kernel.py",
+      "sha256": "ee1f4866071b05bba75969ef26b61bbb7b8bf47414b6b2d40c591c2c12b015ef",
+      "size": 3395
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/02_softmax/cutile_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/02_softmax/cutile_kernel.py",
+      "sha256": "99e92d91556deb9c8fe2314c07c6a483f510b0395da897f50b49781d8ae530fc",
+      "size": 5004
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/02_softmax/triton_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/02_softmax/triton_kernel.py",
+      "sha256": "3eebff02c3655c9582d1d89a2c543e42f73d215ef52275ab94521b50dca165c0",
+      "size": 8872
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/03_layernorm/cutile_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/03_layernorm/cutile_kernel.py",
+      "sha256": "45ae30772e0bd0b65064c5ccbb00a4ad730722b46cd2a3aebef51ab0965f619e",
+      "size": 10818
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/03_layernorm/triton_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/03_layernorm/triton_kernel.py",
+      "sha256": "a44274f98850ae1fbe636efe765e09fe616a8a07946c308f6242a286d4a2cf63",
+      "size": 12036
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/04_matmul/cutile_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/04_matmul/cutile_kernel.py",
+      "sha256": "e8320c259987e777c1772287d578b58872dd431a3c06b279b7ad3ea8e2e3e4ed",
+      "size": 6957
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/04_matmul/triton_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/04_matmul/triton_kernel.py",
+      "sha256": "0f68bf9e620c60224c07abbeac2c846f9ff606b3c558de3e84be17d481426f4c",
+      "size": 13640
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/05_attention/cutile_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/05_attention/cutile_kernel.py",
+      "sha256": "e0d6a6843de8e0ee2afbc61261983040fdf5829f8397870b0f1d616dcf2511a7",
+      "size": 8011
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/examples/05_attention/triton_kernel.py",
+      "to": "tilegym-converting-cutile-to-triton/examples/05_attention/triton_kernel.py",
+      "sha256": "d22806246f8a20ef0e5914e8eba8e3f4d3d766d263f25641f83a2370ab0a28af",
+      "size": 17945
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/references/api-mapping.md",
+      "to": "tilegym-converting-cutile-to-triton/references/api-mapping.md",
+      "sha256": "d5a0390d4fa9d93305aee4fc0ac630c97ef7e2c287f13dbbdd03f81c1115e0b5",
+      "size": 17281
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/references/debugging.md",
+      "to": "tilegym-converting-cutile-to-triton/references/debugging.md",
+      "sha256": "4a535331bea6dad1b141c4de9cb8dd7cad9d1ba24f091ec78a33cbd8d0961a4c",
+      "size": 11686
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/references/gotchas.md",
+      "to": "tilegym-converting-cutile-to-triton/references/gotchas.md",
+      "sha256": "7db2e03524a6490fabe72d11eaed241cdb9b4fa619cb342908c2888421d46e38",
+      "size": 4180
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/references/harness-integration.md",
+      "to": "tilegym-converting-cutile-to-triton/references/harness-integration.md",
+      "sha256": "9faba4468e4988ac683035535aac170bdc503b06c465b592425bcf3665a69313",
+      "size": 6476
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/references/optimization-strategy.md",
+      "to": "tilegym-converting-cutile-to-triton/references/optimization-strategy.md",
+      "sha256": "dd3c9f00c68b84c04005340e31223468296678ba796999ca0ef55c05339744b2",
+      "size": 7999
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/references/optimizing-reference.md",
+      "to": "tilegym-converting-cutile-to-triton/references/optimizing-reference.md",
+      "sha256": "cee20688b3f7651b18813aa87debdf6fa5e0022ce1cd07e6394a21a70e8d226a",
+      "size": 24007
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/references/performance-gotchas.md",
+      "to": "tilegym-converting-cutile-to-triton/references/performance-gotchas.md",
+      "sha256": "41f63ea6c3ca542ca8abe7deb17fc4e37ba73818f9576013e47ee5307d5ee842",
+      "size": 2375
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/skill-card.md",
+      "to": "tilegym-converting-cutile-to-triton/skill-card.md",
+      "sha256": "a31d20858759f0022550127e529a2a69f6329a08e4bde0f85a7ab543bdac46de",
+      "size": 5795
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/skill.oms.sig",
+      "to": "tilegym-converting-cutile-to-triton/skill.oms.sig",
+      "sha256": "bc2877c0f26e2fb38c8b90bb12e73030c9a24c5c51a945613149b8df337f6aee",
+      "size": 9577
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/translations/advanced-patterns.md",
+      "to": "tilegym-converting-cutile-to-triton/translations/advanced-patterns.md",
+      "sha256": "a729ecd2e2e915b6c66b97a33110b6f8a91a8154126f652f6d8e7f403f652f7a",
+      "size": 8117
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/translations/file-structure.md",
+      "to": "tilegym-converting-cutile-to-triton/translations/file-structure.md",
+      "sha256": "4f3a2b17aa6a9e136573d7767bdc9a853aa0a393fa3ac4284027e459e4681ccd",
+      "size": 3119
+    },
+    {
+      "path": "skills/tilegym-converting-cutile-to-triton/translations/workflow.md",
+      "to": "tilegym-converting-cutile-to-triton/translations/workflow.md",
+      "sha256": "d60932e752b939b7fc46c1538b6081589178771f597236a3c50a0f5a7eace8df",
+      "size": 26722
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/BENCHMARK.md",
+      "to": "tilegym-cutile-autotuning/BENCHMARK.md",
+      "sha256": "9bdd8067dbca9e9d06309777bfb034f2517d164a851dfe2a1ad06302835fb57f",
+      "size": 5399
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/SKILL.md",
+      "to": "tilegym-cutile-autotuning/SKILL.md",
+      "sha256": "f6ec77fb83a032497735ef41c90a370d7c9261d6ee413c590f289caf805de8af",
+      "size": 18703
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/assets/examples/01_rmsnorm_occupancy_only/autotuned_launch.py",
+      "to": "tilegym-cutile-autotuning/assets/examples/01_rmsnorm_occupancy_only/autotuned_launch.py",
+      "sha256": "49fc8ab77d7797bb2cfacb46d215b1ba2acf5b3ff8b76ac4bc8f963c27a4a1e8",
+      "size": 8084
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/assets/examples/01_rmsnorm_occupancy_only/fixed_launch.py",
+      "to": "tilegym-cutile-autotuning/assets/examples/01_rmsnorm_occupancy_only/fixed_launch.py",
+      "sha256": "e057854b7bdd32f1e626915398e40cf0cad0002a778dd790ef4432dc2836c9ca",
+      "size": 5736
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/assets/examples/02_matmul_full_search/autotuned_launch.py",
+      "to": "tilegym-cutile-autotuning/assets/examples/02_matmul_full_search/autotuned_launch.py",
+      "sha256": "1109270e0ab42b20829fcfa71b41db979c9c020ff0dc7f275ef3fb4f855d16b4",
+      "size": 9659
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/assets/examples/02_matmul_full_search/fixed_launch.py",
+      "to": "tilegym-cutile-autotuning/assets/examples/02_matmul_full_search/fixed_launch.py",
+      "sha256": "0b1573e764ab3b2ff52ec12f3898d0db6a8129b645fbbee948e651ce3643e663",
+      "size": 5559
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/assets/examples/03_rope_inplace_splitbuffer/autotuned_launch.py",
+      "to": "tilegym-cutile-autotuning/assets/examples/03_rope_inplace_splitbuffer/autotuned_launch.py",
+      "sha256": "b9f43806c2135800b6079cf7dd9c4fd4dca088f44dc6191098f095260c9f3d9a",
+      "size": 11536
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/assets/examples/03_rope_inplace_splitbuffer/fixed_launch.py",
+      "to": "tilegym-cutile-autotuning/assets/examples/03_rope_inplace_splitbuffer/fixed_launch.py",
+      "sha256": "ceaf66920132a534516b55cb0c9bf902325e0fbc3c0a097e7583525d1541e4ac",
+      "size": 7724
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/evals/evals.json",
+      "to": "tilegym-cutile-autotuning/evals/evals.json",
+      "sha256": "5658752326b9996d0b133f0d2304c7c8761fde005249a9d8274308dea5be564f",
+      "size": 5405
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/references/api-reference.md",
+      "to": "tilegym-cutile-autotuning/references/api-reference.md",
+      "sha256": "f9c847583635e85aeed331bd374a1db29f604d6ca24e4160a8550afb3d0e49a1",
+      "size": 8005
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/references/hardware-constraints.md",
+      "to": "tilegym-cutile-autotuning/references/hardware-constraints.md",
+      "sha256": "4e03081eac40539c1d6a45137f8da4f988006eda39a77ed27d8d2d83a291f7a7",
+      "size": 11402
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/references/kernel-type-templates.md",
+      "to": "tilegym-cutile-autotuning/references/kernel-type-templates.md",
+      "sha256": "ed0fc7dbad5ab0f4e0aa80e7e8b581d6370d135039379109f2e5490e687583f2",
+      "size": 51640
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/references/parameter-space-design.md",
+      "to": "tilegym-cutile-autotuning/references/parameter-space-design.md",
+      "sha256": "a3a284d14ae2175c9dfc9195e2cb32fb4dbcf4da4a77e2a81a03fe5b23b412cd",
+      "size": 11164
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/references/pitfalls.md",
+      "to": "tilegym-cutile-autotuning/references/pitfalls.md",
+      "sha256": "f7d95cdbee9cd0943780d8269f259322a58e94cf0cba33eef1c4661d5a99d7b0",
+      "size": 5584
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/references/search-strategies.md",
+      "to": "tilegym-cutile-autotuning/references/search-strategies.md",
+      "sha256": "fe47e39de3c77a42c12f9323fdc528324160deb557e7740a0679a2f1c12885ae",
+      "size": 9024
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/references/workflow.md",
+      "to": "tilegym-cutile-autotuning/references/workflow.md",
+      "sha256": "d380f5442e5253726a1c029b427367ce971b4d31811e29f86248cb7cda82deff",
+      "size": 17136
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/skill-card.md",
+      "to": "tilegym-cutile-autotuning/skill-card.md",
+      "sha256": "bc9520a1a5f8f308c4e094cf0d27dc9216a1d5676bca223f4cf06dbade567947",
+      "size": 4020
+    },
+    {
+      "path": "skills/tilegym-cutile-autotuning/skill.oms.sig",
+      "to": "tilegym-cutile-autotuning/skill.oms.sig",
+      "sha256": "553145b2463a99921a42e0efe02564c1ed47fd60cfe6da10961dce3e6c870b98",
+      "size": 7993
+    },
+    {
+      "path": "skills/tilegym-cutile-python/BENCHMARK.md",
+      "to": "tilegym-cutile-python/BENCHMARK.md",
+      "sha256": "9bf18fd10e1ca6b3a55ea053d655c3fcee6ef0b1be4719d9f1932acf95276ef2",
+      "size": 7591
+    },
+    {
+      "path": "skills/tilegym-cutile-python/SKILL.md",
+      "to": "tilegym-cutile-python/SKILL.md",
+      "sha256": "965c281a642d00d733301c2067ba30f9827b98c5d9ba302df40d5bf2a0055214",
+      "size": 20397
+    },
+    {
+      "path": "skills/tilegym-cutile-python/evals/evals.json",
+      "to": "tilegym-cutile-python/evals/evals.json",
+      "sha256": "74174a6497c1c94566a25b76a4ab5f034bddab99cf2d3af7ebc6b4c0d7d5ce6f",
+      "size": 4020
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/convolution/README.md",
+      "to": "tilegym-cutile-python/examples/convolution/README.md",
+      "sha256": "ac9a1f0f375428b68ca18ea929c204a4f5965a3f5fdd89a4c98247159675cfb8",
+      "size": 2965
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/convolution/conv2d_with_bias_dilation_groups.py",
+      "to": "tilegym-cutile-python/examples/convolution/conv2d_with_bias_dilation_groups.py",
+      "sha256": "d103c5d5f1b5321d24f712ceeb4c707a7402c79e033a2a8e6e76f32833abd1ec",
+      "size": 14820
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/convolution/conv3d_with_bias_dilation_groups.py",
+      "to": "tilegym-cutile-python/examples/convolution/conv3d_with_bias_dilation_groups.py",
+      "sha256": "87b6b35a691da937444f23c20ba5ceab7a920a35fc3bc144094659ec3b358e67",
+      "size": 15644
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/convolution/conv_transpose_2d.py",
+      "to": "tilegym-cutile-python/examples/convolution/conv_transpose_2d.py",
+      "sha256": "a30a831a0c637a82fadc687824106e61c31bf31774fc474446218d01f2b2d37d",
+      "size": 14615
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/convolution/conv_transpose_3d.py",
+      "to": "tilegym-cutile-python/examples/convolution/conv_transpose_3d.py",
+      "sha256": "143e6953aa6afd7cfc75b5cd0b147f9ab7467297dc30087a36e6546ea833f9d2",
+      "size": 15925
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/matmul/README.md",
+      "to": "tilegym-cutile-python/examples/matmul/README.md",
+      "sha256": "b059b9cf5295042e24f6b7011bd99ed682114f57d2671e8f2dc474fccfc36b24",
+      "size": 429
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/matmul/matmul_4d_tensors.py",
+      "to": "tilegym-cutile-python/examples/matmul/matmul_4d_tensors.py",
+      "sha256": "7055af71d1bbde37a0edf8a487982479fd82bafc9bca27211ebe44e41df0ae46",
+      "size": 4317
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/matmul/matrix_vector_multiplication.py",
+      "to": "tilegym-cutile-python/examples/matmul/matrix_vector_multiplication.py",
+      "sha256": "79b723a74f740e448390f8b012bfef3b75bead34000507fdbed6090e5e1f220d",
+      "size": 2426
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/matmul/split_k_gemm.py",
+      "to": "tilegym-cutile-python/examples/matmul/split_k_gemm.py",
+      "sha256": "5723f8b3bf546b3c40a7938431c62a6619839ed2f1c0b34da2255abdaa08ecc5",
+      "size": 4912
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/normalization/README.md",
+      "to": "tilegym-cutile-python/examples/normalization/README.md",
+      "sha256": "49a82d0d0139ef3a94a2f8dbf542d4d43f53e4a8d544b2e0ebbc6ede6343b4b0",
+      "size": 241
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/normalization/group_norm.py",
+      "to": "tilegym-cutile-python/examples/normalization/group_norm.py",
+      "sha256": "a9528f0761585e418deea87bc04bab371546b58996beb478d69bd79ecb1034ba",
+      "size": 5652
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/pooling/README.md",
+      "to": "tilegym-cutile-python/examples/pooling/README.md",
+      "sha256": "40fdc802b2fadb85e0af3ae769de10297b910178f4c05eae5b290872781be68b",
+      "size": 121
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/pooling/avgpool3d.py",
+      "to": "tilegym-cutile-python/examples/pooling/avgpool3d.py",
+      "sha256": "80bcecb612f89e9c9101ecc9719e20c105ae766f2e72d8d2e6e7b76abd4b9825",
+      "size": 6780
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/pooling/maxpool3d.py",
+      "to": "tilegym-cutile-python/examples/pooling/maxpool3d.py",
+      "sha256": "fe02d70bdc8fb1becbc9d97142a16b5390f5e29c68d6e6d3854ce0e83f5c964d",
+      "size": 7427
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/scan/README.md",
+      "to": "tilegym-cutile-python/examples/scan/README.md",
+      "sha256": "e8ab09629693496fb3f4a2f8642ffdfc7fa4d9096761ca13ee7332220a210488",
+      "size": 116
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/scan/cumsum_cumprod_blocking.py",
+      "to": "tilegym-cutile-python/examples/scan/cumsum_cumprod_blocking.py",
+      "sha256": "7efa2af50d5d42c2b462eb5a7c2325a3960499c3dd13887063e733a1b9d88f1a",
+      "size": 2186
+    },
+    {
+      "path": "skills/tilegym-cutile-python/examples/tilegym_and_examples_guide.md",
+      "to": "tilegym-cutile-python/examples/tilegym_and_examples_guide.md",
+      "sha256": "9f78f26f9165026c06ffb3279df8f7b3246d2198466b18cf9778f2609969f88d",
+      "size": 3358
+    },
+    {
+      "path": "skills/tilegym-cutile-python/guidelines/01_implementation_lessons.md",
+      "to": "tilegym-cutile-python/guidelines/01_implementation_lessons.md",
+      "sha256": "42b0f32ca7906b3681eb197ab775fbd5d97173a54b22ae90b1d5939471707b21",
+      "size": 8262
+    },
+    {
+      "path": "skills/tilegym-cutile-python/guidelines/02_code_generation_rules.md",
+      "to": "tilegym-cutile-python/guidelines/02_code_generation_rules.md",
+      "sha256": "d3830c88e3aee27fef1caeb8ef5e51b467197c0906bb713b33c2db7223ad8b46",
+      "size": 10827
+    },
+    {
+      "path": "skills/tilegym-cutile-python/guidelines/03_concepts.md",
+      "to": "tilegym-cutile-python/guidelines/03_concepts.md",
+      "sha256": "d44dce12d0119f963000a1733799d0bac9c1d447ff0e0436cc599f7386b8effc",
+      "size": 4788
+    },
+    {
+      "path": "skills/tilegym-cutile-python/orchestration/analyzer_agent.md",
+      "to": "tilegym-cutile-python/orchestration/analyzer_agent.md",
+      "sha256": "1121e3f8ad568f82523735eac875c26ca0ca66161a7efe8ab398a8065a899065",
+      "size": 11971
+    },
+    {
+      "path": "skills/tilegym-cutile-python/orchestration/composer_agent.md",
+      "to": "tilegym-cutile-python/orchestration/composer_agent.md",
+      "sha256": "e9eed9a1b4e5857be8cb6d57f99f3e82b35a431c8d3d31060ec35851e5e887b5",
+      "size": 11431
+    },
+    {
+      "path": "skills/tilegym-cutile-python/orchestration/kernel_agent.md",
+      "to": "tilegym-cutile-python/orchestration/kernel_agent.md",
+      "sha256": "409987fb7a1e3d4794ff88d3198c04c1e5f326f6742bd774df43e4422a9ed704",
+      "size": 7469
+    },
+    {
+      "path": "skills/tilegym-cutile-python/orchestration/overview.md",
+      "to": "tilegym-cutile-python/orchestration/overview.md",
+      "sha256": "d60f4b5bf68f5fbe5e381c631a45707f388813834cd47ef5039778c48d4f7d3c",
+      "size": 9953
+    },
+    {
+      "path": "skills/tilegym-cutile-python/orchestration/workflow.md",
+      "to": "tilegym-cutile-python/orchestration/workflow.md",
+      "sha256": "fda004bfb6f4829bf2f24d33e8dcab72eee3a523d0e049e2aa06f6adf65d293b",
+      "size": 9138
+    },
+    {
+      "path": "skills/tilegym-cutile-python/skill-card.md",
+      "to": "tilegym-cutile-python/skill-card.md",
+      "sha256": "d0910d60918a154bcad2b9073dded43887dfedf94f8aee1066e99e9d38a4cf3a",
+      "size": 5257
+    },
+    {
+      "path": "skills/tilegym-cutile-python/skill.oms.sig",
+      "to": "tilegym-cutile-python/skill.oms.sig",
+      "sha256": "ed532ada16025708d3c6918a07128861687808552d4411d60bb3f68ce918bc82",
+      "size": 12673
+    },
+    {
+      "path": "skills/tilegym-cutile-python/torch-learner/examples/lstm_trace.md",
+      "to": "tilegym-cutile-python/torch-learner/examples/lstm_trace.md",
+      "sha256": "7577422ce54bc0b28fe5f96047045329d179c250196b3440a63708cfbade88fe",
+      "size": 11444
+    },
+    {
+      "path": "skills/tilegym-cutile-python/torch-learner/references/1_pytorch_codebase_map.md",
+      "to": "tilegym-cutile-python/torch-learner/references/1_pytorch_codebase_map.md",
+      "sha256": "6f32124f603c99acd385e42eb06901186f6818bda2128532f30cecdbaad80cf5",
+      "size": 9146
+    },
+    {
+      "path": "skills/tilegym-cutile-python/torch-learner/references/2_dispatch_mechanism.md",
+      "to": "tilegym-cutile-python/torch-learner/references/2_dispatch_mechanism.md",
+      "sha256": "d5f55ead4ef94fb9e137ce624e2ff910233921fcd654443c820a0f8603e6d67d",
+      "size": 9075
+    },
+    {
+      "path": "skills/tilegym-cutile-python/torch-learner/references/3_tracing_strategies.md",
+      "to": "tilegym-cutile-python/torch-learner/references/3_tracing_strategies.md",
+      "sha256": "d8846bbbe014161148708f2b7de59fb95d1d7154de42146c107e121e3cf16423",
+      "size": 9024
+    },
+    {
+      "path": "skills/tilegym-cutile-python/torch-learner/references/4_language_layers.md",
+      "to": "tilegym-cutile-python/torch-learner/references/4_language_layers.md",
+      "sha256": "d7e9a0b1aaec6055940ad9b722fe1b5c7e6ca444baa50369da67c48b350c5319",
+      "size": 13038
+    },
+    {
+      "path": "skills/tilegym-cutile-python/torch-learner/references/5_well_known_ops.md",
+      "to": "tilegym-cutile-python/torch-learner/references/5_well_known_ops.md",
+      "sha256": "dc08d2b3a296472a4c85a8452d9050e5674ef745780888d080fdc5be78506570",
+      "size": 11439
+    },
+    {
+      "path": "skills/tilegym-cutile-python/torch-learner/tracing_workflow.md",
+      "to": "tilegym-cutile-python/torch-learner/tracing_workflow.md",
+      "sha256": "3b4f59d051bb30972ce496097cf38f2d5362698e4c22938c6de8b9ddfd92fe98",
+      "size": 7417
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/BENCHMARK.md",
+      "to": "tilegym-improve-cutile-kernel-perf/BENCHMARK.md",
+      "sha256": "e2bee879cea5656c78558bf31bd0f9eee329c387b01052a26d6e81d79b29caa5",
+      "size": 3632
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/SKILL.md",
+      "to": "tilegym-improve-cutile-kernel-perf/SKILL.md",
+      "sha256": "50031cc274b9039b70a4d59c62efc3c7b737a5c0c450c3779f68295129052ecb",
+      "size": 7812
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/evals/evals.json",
+      "to": "tilegym-improve-cutile-kernel-perf/evals/evals.json",
+      "sha256": "6a3765cfef1ac175b9cfe0c2db49a0e91e73756a39ddc60b98086f4a102319f3",
+      "size": 5377
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/references/cutile-api-reference.md",
+      "to": "tilegym-improve-cutile-kernel-perf/references/cutile-api-reference.md",
+      "sha256": "3ec4044d66211377107e3a242ade3582da16dc4f110757dd8db479d32734f55c",
+      "size": 31179
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/references/cutile-patterns-reference.md",
+      "to": "tilegym-improve-cutile-kernel-perf/references/cutile-patterns-reference.md",
+      "sha256": "e84706e7100ace00aedb7cc62e168ed3195172efd56bb12a18b1bdf4eda9f21a",
+      "size": 7788
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/references/ir-dump-guide.md",
+      "to": "tilegym-improve-cutile-kernel-perf/references/ir-dump-guide.md",
+      "sha256": "2072767bdbc75a19d22ba2c3e034f6db17bb83d3d34ff8ea553c0ead535df8af",
+      "size": 8042
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/references/optimization-playbook.md",
+      "to": "tilegym-improve-cutile-kernel-perf/references/optimization-playbook.md",
+      "sha256": "2d7cc924764c752b452fcacea3ffed2daf1dabeaf8c14e14ebbce0af0fadc3fa",
+      "size": 15106
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/references/perf-knobs-catalog.md",
+      "to": "tilegym-improve-cutile-kernel-perf/references/perf-knobs-catalog.md",
+      "sha256": "ac187fdeface924a94565d7011502850bcc692da4795849987c93aee9eb1475a",
+      "size": 6686
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/references/performance-model.md",
+      "to": "tilegym-improve-cutile-kernel-perf/references/performance-model.md",
+      "sha256": "17d793c940d80a48fff853753364b55dd52f44022a36c38607e9e529c39c40b7",
+      "size": 19029
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/skill-card.md",
+      "to": "tilegym-improve-cutile-kernel-perf/skill-card.md",
+      "sha256": "0dbcf7e721ee4a743c71237ba1adc781e5fd3f5c4bf82754b6adc73fc8fb5fd2",
+      "size": 4270
+    },
+    {
+      "path": "skills/tilegym-improve-cutile-kernel-perf/skill.oms.sig",
+      "to": "tilegym-improve-cutile-kernel-perf/skill.oms.sig",
+      "sha256": "917af31e91561302958f369f3fb4e71e5fea19c5ce730e1dea259e2785246137",
+      "size": 6097
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/BENCHMARK.md",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/BENCHMARK.md",
+      "sha256": "35e1ba9fba9af272b3d9b101e920767437c7bf6a0687e8f624f19b193d913e4a",
+      "size": 3654
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/SKILL.md",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/SKILL.md",
+      "sha256": "de7a00ee69c859ccbda4ba8ac91a26655491e9e3039b1ae0cadc7966a8aa7a93",
+      "size": 2966
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/evals/evals.json",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/evals/evals.json",
+      "sha256": "b311058e7de5b18aa228b5f4e850a31603a34e7acf94c94140bb00a7af559da4",
+      "size": 5080
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/references/auto-kernelize.md",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/references/auto-kernelize.md",
+      "sha256": "7597b0422c247baa4fb180fb92565cd9b7d397ceba001f067cb35a8488be74d7",
+      "size": 7848
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/references/environment-setup.md",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/references/environment-setup.md",
+      "sha256": "b39ec8e53e2d85411d3fe16eb738130ee8afac47dd88e90a7654cca08ca8ca47",
+      "size": 1658
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/references/kernel-integration.md",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/references/kernel-integration.md",
+      "sha256": "24f84a44041e33ea1b0adea0cae05a16c5f78f56486c44f1ed7db9b959ae9879",
+      "size": 14770
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/references/kernel-inventory-schema.md",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/references/kernel-inventory-schema.md",
+      "sha256": "9c5a7612dd2a5237ee66a0d3d38ece34b130ad50b8991f47ae8156074bd22042",
+      "size": 3841
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/skill-card.md",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/skill-card.md",
+      "sha256": "17499b79a876206044371b7e7b37a3e37795d491c3ac8e353d2957321433d896",
+      "size": 4628
+    },
+    {
+      "path": "skills/tilegym-monkey-patch-kernels-to-transformers/skill.oms.sig",
+      "to": "tilegym-monkey-patch-kernels-to-transformers/skill.oms.sig",
+      "sha256": "b5360e37858df98b14783ea7bd9519f6c8f2a479b748a1ea618b2d4a41e26037",
+      "size": 5857
+    }
+  ],
+  "notes": {
+    "tilegym-adding-cutile-kernel": [],
+    "tilegym-converting-cutile-to-julia": [
+      "4 scripts the agent may ask to run"
+    ],
+    "tilegym-converting-cutile-to-triton": [
+      "10 scripts the agent may ask to run"
+    ],
+    "tilegym-cutile-autotuning": [
+      "6 scripts the agent may ask to run"
+    ],
+    "tilegym-cutile-python": [
+      "11 scripts the agent may ask to run"
+    ],
+    "tilegym-improve-cutile-kernel-perf": [],
+    "tilegym-monkey-patch-kernels-to-transformers": [
+      "1 binary file left out of the pin (they stay in the upstream folder)"
+    ]
+  }
+}

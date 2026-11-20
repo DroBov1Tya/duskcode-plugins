@@ -1,0 +1,12 @@
+name: gpu-simulation-skills
+title: "GPU Simulation Skills"
+description: "Differentiable GPU simulation in Python with Warp: cut kernel compile times, debug gradients and evaluate changes. Written by NVIDIA and published under Apache-2.0; installed from its repository at a pinned commit. Not affiliated with or endorsed by NVIDIA."
+vendor: NVIDIA
+kind: skills
+license: Apache-2.0
+repo: NVIDIA/skills
+commit: b0694f6d55b4037ffd414aba5759b59f38380c5e
+items:
+  warp-compile-time-optimizer: skills/warp-compile-time-optimizer
+  warp-debug-gradients: skills/warp-debug-gradients
+  warp-eval: skills/warp-eval
