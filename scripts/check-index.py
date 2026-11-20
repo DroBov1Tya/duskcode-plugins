@@ -12,7 +12,9 @@ repository brings (scripts/repo.py `brings`), since duskcode refuses the package
     scripts/check-index.py /path/to/index.json
     scripts/check-index.py --repo /path/to/repository   its catalog.yml, packs and plugins,
                                                         before a list is built (scripts/repo.py)
-    scripts/check-index.py --unsigned /path/to/index.json [--fetch [NAME ...]]
+    scripts/check-index.py [--unsigned] /path/to/index.json [--fetch [NAME ...]]
+    scripts/check-index.py --pins [/path/to/repository]  fetch every file pinned/*/pins.json
+                                                          names and check its SHA-256
 
 A format 3 skill or pack may name `upstream`, files pinned at a commit of its author's
 GitHub repository (store/upstream.rs), instead of `downloads`. `--unsigned` checks a list
@@ -122,19 +124,51 @@ def check_upstream(n, e):
             fail(n, "an upstream pack's files are exactly its skills' folders, each with a SKILL.md")
 
 
+def raw(n, url, limit):
+    """The bytes at `url` on GitHub's raw host, waiting out a 429; a missing file, or a
+    redirect duskcode would not follow, fails."""
+    import time
+    import urllib.error
+    import urllib.request
+    request = urllib.request.Request(url, headers={"User-Agent": "duskcode-workshop-check"})
+    for attempt in range(6):
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                if response.geturl() != url:
+                    fail(n, f"{url}: the raw host redirected, and duskcode follows no redirect here")
+                return response.read(limit)
+        except urllib.error.HTTPError as error:
+            if (error.code != 429 and error.code < 500) or attempt == 5:
+                fail(n, f"{url}: HTTP {error.code}; the pinned file is gone")
+            time.sleep(max(2 ** attempt, min(int(error.headers.get("Retry-After") or 0), 120)))
+        except (urllib.error.URLError, OSError) as error:
+            # A dropped connection or a timeout is the network's, not the pin's: try again.
+            if attempt == 5:
+                fail(n, f"{url}: {getattr(error, 'reason', error)}")
+            time.sleep(2 ** attempt)
+
+
+def check_pins(root):
+    """Every file of every pinned pack (pinned/<pack>/pins.json), fetched again from GitHub
+    and checked against its size and SHA-256: fails when an author's repository no longer
+    serves exactly what the list will pin."""
+    import pinned
+    count = 0
+    folders = sorted(f.parent for f in pathlib.Path(root).glob("pinned/*/pins.json"))
+    for folder in folders:
+        _, pins = pinned.read(folder)
+        count += fetch_upstream(folder.name, {"upstream": pinned.upstream(pins)})
+    print(f"ok: {len(folders)} pinned packs, {count} files match their pins")
+
+
 def fetch_upstream(n, e):
     """Every pinned file, fetched from GitHub's raw host and checked as store/upstream.rs
     `assemble` does, and each SKILL.md read as the skill graph reads it."""
-    import urllib.request
     import mirror
     up = e["upstream"]
     for f in up["files"]:
         url = f"https://raw.githubusercontent.com/{up['repo']}/{up['commit']}/{f['path']}"
-        request = urllib.request.Request(url, headers={"User-Agent": "duskcode-workshop-check"})
-        with urllib.request.urlopen(request, timeout=60) as response:
-            if response.geturl() != url:
-                fail(n, f"{f['path']}: the raw host redirected, and duskcode follows no redirect here")
-            data = response.read(f["size"] + 1)
+        data = raw(n, url, f["size"] + 1)
         if len(data) != f["size"] or hashlib.sha256(data).hexdigest() != f["sha256"]:
             fail(n, f"{f['path']} is not the file the list pins")
         try:
@@ -270,11 +304,16 @@ def check(path, root=ROOT, unsigned=False, fetch=None):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 3 and sys.argv[1] == "--repo":
-        check_repo(sys.argv[2])
-    elif len(sys.argv) >= 3 and sys.argv[1] == "--unsigned" and (len(sys.argv) == 3 or sys.argv[3] == "--fetch"):
-        check(pathlib.Path(sys.argv[2]), unsigned=True, fetch=sys.argv[4:] if len(sys.argv) > 3 else None)
-    elif len(sys.argv) == 2:
-        check(pathlib.Path(sys.argv[1]))
+    args = sys.argv[1:]
+    unsigned = "--unsigned" in args
+    args = [a for a in args if a != "--unsigned"]
+    fetch = args[args.index("--fetch") + 1:] if "--fetch" in args else None
+    args = args[:args.index("--fetch")] if "--fetch" in args else args
+    if len(args) == 2 and args[0] == "--repo" and not unsigned and fetch is None:
+        check_repo(args[1])
+    elif args[:1] == ["--pins"] and len(args) <= 2 and not unsigned and fetch is None:
+        check_pins(args[1] if len(args) == 2 else ROOT)
+    elif len(args) == 1 and not args[0].startswith("--"):
+        check(pathlib.Path(args[0]), unsigned=unsigned, fetch=fetch)
     else:
         sys.exit(__doc__)
