@@ -30,6 +30,11 @@ the official list, and a count of this repository's or a vendor's whole reposito
 stars is not the item's, so duskcode drops it anyway. A pack is built by
 scripts/package-packs.sh; its version is 1.<date of its last commit>.0.
 
+A connector (connectors/<name>/connector.yml) has no package: its entry carries the
+`server` that duskcode adds to the user's connectors, the address or the pinned npx/uvx
+package, how it signs in and the names of the secrets the user fills in. A duskcode
+before connectors leaves such an entry out of the list and reads the rest.
+
 A plugin's release is tagged <name>-v<version>; its packages are named
 <name>-<version>-<os>-<arch>.tar.gz by scripts/package.sh.
 """
@@ -268,6 +273,22 @@ def entry(manifest_file, local, signed, confirm, out):
     }
 
 
+def connector_entry(file, out):
+    doc = yaml.safe_load(file.read_text())
+    name = doc["name"]
+    meta = CATALOG["connectors"][name]
+    server = doc["server"]
+    return {
+        "name": name,
+        "version": str(doc["version"]),
+        "kind": "connector",
+        "description": doc["description"],
+        **({"homepage": server["docs"]} if server.get("docs") else {}),
+        "server": server,
+        **extras(name, file.parent, meta, out, meta["author"], meta["license"], meta["source"]),
+    }
+
+
 def sign(data):
     key = subprocess.run(
         ["security", "find-generic-password", "-s", KEYCHAIN_SERVICE, "-a", KEYCHAIN_ACCOUNT, "-w"],
@@ -303,6 +324,7 @@ def main():
     signed = {item["name"]: item for item in old.get("plugins", [])}
     plugins = [entry(f, local, signed, confirm, out) for f in sorted(ROOT.glob("plugins/*/plugin.yml"))]
     plugins += [pack_entry(f, local or dry, confirm, signed, out) for f in sorted(ROOT.glob("packs/*/pack.yml"))]
+    plugins += [connector_entry(f, out) for f in sorted(ROOT.glob("connectors/*/connector.yml"))]
     expires = (datetime.now(timezone.utc) + LIFETIME).replace(microsecond=0)
     index = {
         "format": FORMAT,

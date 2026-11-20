@@ -27,12 +27,13 @@ import pictures
 import repo
 
 ENTRY = {"name", "version", "kind", "description", "platforms", "clients", "permissions", "homepage",
-         "providers", "downloads", "category", "tags", "cover", "screenshots", "stars", "created", "updated", "skills"}
+         "providers", "downloads", "category", "tags", "cover", "screenshots", "stars", "created", "updated", "skills",
+         "server"}
 DOWNLOAD = {"os", "arch", "url", "sha256", "size"}
 WORD = re.compile(r"^[a-z0-9-]{1,32}$")
 NAME = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
 SHA = re.compile(r"^[0-9a-f]{64}$")
-KINDS = {"plugin", "skill", "pack", "agent"}
+KINDS = {"plugin", "skill", "pack", "agent", "connector"}
 # What format 3 adds to an entry; all of them or none.
 CREDIT = {"author", "license", "source", "categories", "badge"}
 # What format 3 adds to a plugin: what it runs and adds, checked against its manifest.
@@ -62,14 +63,15 @@ def check_credit(n, e):
     """Who made it and how it is filed, and the badge that follows from the author."""
     if not CREDIT <= set(e):
         fail(n, f"a format 3 entry names {sorted(CREDIT)}")
-    why = repo.credit_problems(n, e["author"], e["license"], e["source"]) + repo.meta_problems(n, e)
+    connector = e.get("kind") == "connector"
+    why = repo.credit_problems(n, e["author"], e["license"], e["source"], connector) + repo.meta_problems(n, e)
     if why:
         sys.exit(why[0])
     if e["badge"] not in ("official", "verified") or (e["badge"] == "official" and e["author"] not in repo.OWNERS):
         fail(n, f"the badge is verified for an author who is not {' or '.join(repo.OWNERS)}")
     if e["badge"] == "verified" and e.get("kind") == "pack" and repo.UNAFFILIATED not in e["description"].lower():
         fail(n, "the description of somebody else's work says it is not affiliated")
-    if company := repo.company_in(n):
+    if not connector and (company := repo.company_in(n)):
         fail(n, f"the name carries the company name {company}")
 
 
@@ -119,9 +121,18 @@ def check(path, root=ROOT):
             fail(n, "unknown kind")
         if not e["version"] or len(e["version"]) > 40:
             fail(n, "bad version")
-        if not e["downloads"]:
+        if e.get("kind") == "connector":
+            if e.get("downloads") or set(e) & (BRINGS | {"skills", "providers", "permissions"}):
+                fail(n, "a connector has no downloads, mcp, programs, skills, providers or permissions")
+            if not repo.WORD.match(n):
+                fail(n, "a connector's name is a word of a-z, 0-9 and -")
+            if why := repo.server_problems(n, e.get("server")):
+                sys.exit(why[0])
+        elif "server" in e:
+            fail(n, "only a connector names a server")
+        elif not e["downloads"]:
             fail(n, "no downloads")
-        for d in e["downloads"]:
+        for d in e.get("downloads", []):
             if set(d) - DOWNLOAD or not d["url"].startswith("https://") or not SHA.match(d["sha256"]) \
                     or not 1 <= d["size"] <= 64 * 1024 * 1024:
                 fail(n, f"bad download {d}")

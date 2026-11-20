@@ -1,0 +1,9 @@
+name: intercom
+version: 1.0.0
+description: Conversations, contacts and help articles of an Intercom workspace hosted in the US. Intercom's own server; you sign in with your Intercom account. Not affiliated with or endorsed by Intercom.
+server:
+  url: https://mcp.intercom.com/mcp
+  auth: oauth
+  docs: https://developers.intercom.com/docs/guides/mcp
+  run_by: vendor
+  reaches: the conversations and contacts of the US-hosted Intercom workspace you allow

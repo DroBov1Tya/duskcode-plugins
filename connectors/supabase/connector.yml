@@ -1,0 +1,9 @@
+name: supabase
+version: 1.0.0
+description: Projects, tables, migrations and logs of your Supabase organization. Supabase's own server; you sign in and pick the organization. Not affiliated with or endorsed by Supabase.
+server:
+  url: https://mcp.supabase.com/mcp
+  auth: oauth
+  docs: https://supabase.com/docs/guides/getting-started/mcp
+  run_by: vendor
+  reaches: the projects and databases of the Supabase organization you allow, with your permissions

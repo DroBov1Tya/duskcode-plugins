@@ -1,0 +1,9 @@
+name: deepwiki
+version: 1.0.0
+description: Ask questions about public GitHub repositories and read their generated wikis. DeepWiki's own server; no account needed. Not affiliated with or endorsed by Cognition.
+server:
+  url: https://mcp.deepwiki.com/mcp
+  auth: none
+  docs: https://docs.devin.ai/work-with-devin/deepwiki-mcp
+  run_by: vendor
+  reaches: the wikis DeepWiki generates for public repositories

@@ -35,6 +35,9 @@ next list; nothing reaches users before that.
   in `upstream` / `source`, in the license and notice files, and once in the description
   ("written by X"). A product's name (Claude, GPT, CUDA) may appear in a description, where
   it says what the item works with; never in a title or a cover.
+- A connector is the exception for names: it is named for the service it connects to,
+  and its description says it is that service's own server. Its cover still names what
+  the service is for, never the service ([connectors.md](connectors.md)).
 - The description of somebody else's work ends with "Not affiliated with or endorsed by
   <author>."
 - No license, or one that does not allow copying (anything outside MIT, Apache-2.0,

@@ -26,10 +26,19 @@ LICENSES = ("MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "0BSD", 
             "CC-BY-4.0", "CC0-1.0", "Unlicense")
 # Company and product names an item's name and title never carry: the item is not theirs to
 # brand, whoever wrote it. The author field is where a company is named, and a product's
-# name may sit in a description. Checked only in a pack's name and title and a plugin's name.
+# name may sit in a description. Checked only in a pack's name and title and a plugin's name:
+# a connector is named for the service it connects to, which is a fact, not a brand.
 COMPANIES = ("anthropic", "claude", "openai", "chatgpt", "gpt", "codex", "nvidia", "microsoft",
              "copilot", "google", "gemini", "amazon", "aws", "apple", "meta", "hermes", "nous")
 UNAFFILIATED = "not affiliated with or endorsed by"
+# A connector to a hosted service copies nothing here; the service's own terms apply.
+VENDOR_TERMS = "LicenseRef-vendor-terms"
+# What a connector's server may say, as duskcode's reader takes it (store/connector.rs).
+SERVER_FIELDS = {"url", "command", "args", "auth", "secrets", "docs", "run_by", "reaches"}
+CONNECTOR_FIELDS = {"name", "version", "description", "server"}
+RUNNERS = {"npx": "@", "uvx": "=="}
+MAX_SECRETS = 4
+MAX_ARGS = 16
 
 WORD = re.compile(r"^[a-z0-9-]{1,32}$")
 PACK_NAME = re.compile(r"^[a-z0-9-]{1,64}$")
@@ -86,11 +95,11 @@ def meta_problems(name, meta):
     return found
 
 
-def credit_problems(name, author, license, source):
+def credit_problems(name, author, license, source, connector=False):
     found = []
     if not plain(author, 64):
         found.append(f"{name}: no author")
-    if not license_ok(license):
+    if not (license_ok(license) or connector and license == VENDOR_TERMS):
         found.append(f"{name}: the license is not an SPDX expression of {', '.join(LICENSES)}")
     if not https(source):
         found.append(f"{name}: the source is not an https address")
@@ -238,6 +247,105 @@ def plugin_problems(folder, meta):
         + meta_problems(name, meta)
 
 
+def public_https(url):
+    """An https address on a named public host, as duskcode's reader wants a connector's."""
+    if not https(url):
+        return False
+    host = url[len("https://"):].split("/", 1)[0].split("?", 1)[0]
+    if "@" in host or "#" in url:
+        return False
+    host = host.rsplit(":", 1)[0] if host.count(":") == 1 else host
+    if re.fullmatch(r"[0-9.]+|\[.*\]", host):
+        return False
+    return "." in host.rstrip(".") and not host.lower().rstrip(".").endswith(
+        (".localhost", ".local", ".internal", ".test", ".home.arpa"))
+
+
+def server_problems(name, server):
+    """A connector's `server`: an https address on a public host, or npx/uvx with a package
+    pinned to one exact version; how it signs in; the names of its secrets, never values."""
+    if not isinstance(server, dict) or set(server) - SERVER_FIELDS:
+        return [f"{name}: server holds {' '.join(sorted(SERVER_FIELDS))}, nothing else"]
+    found = []
+    url, command, args = server.get("url"), server.get("command"), server.get("args") or []
+    auth, secrets = server.get("auth", "none"), server.get("secrets") or []
+    if (url is None) == (command is None):
+        found.append(f"{name}: a server has a url or a command, not both")
+    elif url is not None:
+        if not public_https(url):
+            found.append(f"{name}: the url is not https on a named public host")
+        if args:
+            found.append(f"{name}: a remote server has no args")
+    else:
+        found += command_problems(name, command, args)
+        line = " ".join([command, *args])
+        if not line_ok(line):
+            found.append(f"{name}: the command is not one plain line of up to {MAX_LINE}")
+    if auth not in ("none", "oauth", "key"):
+        found.append(f"{name}: auth is none, oauth or key")
+    elif auth == "key" and not 1 <= len(secrets) <= MAX_SECRETS:
+        found.append(f"{name}: a key names 1 to {MAX_SECRETS} secrets the user fills in")
+    elif auth != "key" and secrets:
+        found.append(f"{name}: secrets only with auth: key")
+    if auth == "oauth" and url is None:
+        found.append(f"{name}: only a remote server signs in")
+    pattern = r"[A-Za-z0-9-]{1,64}" if url is not None else r"[A-Za-z_][A-Za-z0-9_]{0,63}"
+    if not all(isinstance(s, str) and re.fullmatch(pattern, s) for s in secrets) \
+            or len({str(s).lower() for s in secrets}) != len(secrets):
+        found.append(f"{name}: secrets are header names (remote) or variable names (local), once each")
+    if "docs" in server and not https(server["docs"]):
+        found.append(f"{name}: docs is an https address")
+    if server.get("run_by", "vendor") not in ("vendor", "community"):
+        found.append(f"{name}: run_by is vendor or community")
+    if not line_ok(server.get("reaches")):
+        found.append(f"{name}: reaches is one plain line of up to {MAX_LINE}: what the agent reaches")
+    return found
+
+
+def command_problems(name, command, args):
+    """npx -y or uvx, then the package pinned to one version, then its own arguments."""
+    if command not in RUNNERS:
+        return [f"{name}: the command is npx or uvx"]
+    if not isinstance(args, list) or len(args) > MAX_ARGS or not all(isinstance(a, str) and line_ok(a) for a in args):
+        return [f"{name}: args are up to {MAX_ARGS} plain lines"]
+    start = next((i for i, arg in enumerate(args) if not arg.startswith("-")), None)
+    if start is None:
+        return [f"{name}: no package"]
+    flags = {"-y", "--yes"} if command == "npx" else set()
+    if not set(args[:start]) <= flags or command == "npx" and start == 0:
+        return [f"{name}: npx takes -y before the package and nothing else"]
+    package, sep = args[start], RUNNERS[command]
+    package_name, _, version = package.rpartition(sep) if sep == "@" else package.partition(sep)
+    if not package_name or not re.fullmatch(r"[A-Za-z0-9@/._-]+", package_name) \
+            or not re.fullmatch(r"[0-9][A-Za-z0-9.+-]*", version):
+        return [f"{name}: the package is pinned to one exact version: name{sep}1.2.3"]
+    return []
+
+
+def connector_problems(folder, meta):
+    name = folder.name
+    try:
+        doc = yaml.safe_load((folder / "connector.yml").read_text())
+    except (OSError, yaml.YAMLError) as error:
+        return [f"{name}: connector.yml cannot be read: {error}"]
+    if not isinstance(doc, dict) or set(doc) != CONNECTOR_FIELDS:
+        return [f"{name}: connector.yml holds {' '.join(sorted(CONNECTOR_FIELDS))}, nothing else"]
+    found = []
+    if doc["name"] != name or not WORD.match(name):
+        found.append(f"{name}: the name is the folder's, a word of a-z, 0-9 and - (its MCP server's name)")
+    if not plain(str(doc["version"]), 40):
+        found.append(f"{name}: no version")
+    if not plain(doc["description"]):
+        found.append(f"{name}: the description is one line of up to {MAX_TEXT} characters")
+    elif badge(meta.get("author")) == "verified" and UNAFFILIATED not in doc["description"].lower():
+        found.append(f"{name}: the description of somebody else's server says \"{UNAFFILIATED} <author>\"")
+    if {p.name for p in folder.iterdir()} - {"connector.yml", ".DS_Store"}:
+        found.append(f"{name}: a connector's folder holds only connector.yml")
+    return found + server_problems(name, doc["server"]) + credit_problems(
+        name, meta.get("author"), meta.get("license"), meta.get("source"), connector=True) \
+        + meta_problems(name, meta)
+
+
 def picture_problems(root, name, meta):
     found = []
     for file in root.glob(f"covers/{name}.*"):
@@ -268,11 +376,13 @@ def problems(root):
         catalog = yaml.safe_load((root / "catalog.yml").read_text())
     except (OSError, yaml.YAMLError) as error:
         return [f"catalog.yml cannot be read: {error}"], []
-    if not isinstance(catalog, dict) or set(catalog) - {"plugins", "packs"}:
-        return ["catalog.yml holds plugins and packs, nothing else"], []
+    if not isinstance(catalog, dict) or set(catalog) - {"plugins", "packs", "connectors"}:
+        return ["catalog.yml holds plugins, packs and connectors, nothing else"], []
     found, items = [], []
     kinds = (("packs", "pack.yml", pack_problems, {"categories", "tags", "screenshots"}),
              ("plugins", "plugin.yml", plugin_problems,
+              {"categories", "tags", "screenshots", "author", "license", "source"}),
+             ("connectors", "connector.yml", connector_problems,
               {"categories", "tags", "screenshots", "author", "license", "source"}))
     for kind, manifest, check, fields in kinds:
         listed = catalog.get(kind) or {}
@@ -292,5 +402,5 @@ def problems(root):
                 mark = badge(meta.get("author"))
             items.append((kind[:-1], name, mark))
     if len({name for _, name, _ in items}) != len(items):
-        found.append("a plugin and a pack share a name")
+        found.append("two items share a name")
     return found, items

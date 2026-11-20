@@ -1,0 +1,9 @@
+name: gitlab
+version: 1.0.0
+description: Projects, issues, merge requests and pipelines on GitLab.com. GitLab's own server; you sign in with your GitLab account. Not affiliated with or endorsed by GitLab.
+server:
+  url: https://gitlab.com/api/v4/mcp
+  auth: oauth
+  docs: https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/
+  run_by: vendor
+  reaches: the projects, issues and merge requests your GitLab account can see

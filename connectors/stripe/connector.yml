@@ -1,0 +1,9 @@
+name: stripe
+version: 1.0.0
+description: Customers, payments, subscriptions and the Stripe docs. Stripe's own server; you sign in and pick the accounts and sandboxes it may use. Not affiliated with or endorsed by Stripe.
+server:
+  url: https://mcp.stripe.com
+  auth: oauth
+  docs: https://docs.stripe.com/mcp
+  run_by: vendor
+  reaches: the Stripe accounts and sandboxes you allow, including writes such as refunds

@@ -1,0 +1,9 @@
+name: neon
+version: 1.0.0
+description: Neon Postgres projects, branches and queries. Neon's own server, meant for development and testing; you sign in with your Neon account. Not affiliated with or endorsed by Neon.
+server:
+  url: https://mcp.neon.tech/mcp
+  auth: oauth
+  docs: https://neon.com/docs/ai/neon-mcp-server
+  run_by: vendor
+  reaches: the Neon projects and databases you allow, including running SQL
