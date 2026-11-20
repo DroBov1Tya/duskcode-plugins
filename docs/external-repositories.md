@@ -101,8 +101,9 @@ source are in `pack.yml`); a plugin also takes `author`, `license` and `source`.
 - In a pack: an executable file or a binary file. A pack is text the model reads; a
   program belongs in a plugin, where the user sees and approves its permissions.
 - A field the reader does not know, in `pack.yml`, `catalog.yml` or the list.
-- A company's name (Anthropic, OpenAI, NVIDIA, Microsoft, Google, Amazon, Apple, Meta) in
-  an item's name or title. Name the item for what it does and the company in `vendor`.
+- A company's or a product's name from `COMPANIES` in `scripts/repo.py` (Anthropic, OpenAI,
+  NVIDIA, Claude, ChatGPT, Gemini and the like) in a pack's name or title, or in a plugin's
+  name. Name the item for what it does and the company in `vendor`.
 - A picture whose bytes are not the PNG or WebP its name says, or over the caps.
 - Text that tells the model to hide what it does, to skip the user's approvals or to send
   data out. The script cannot see this; a reviewer of a Verified mirror does, and a user

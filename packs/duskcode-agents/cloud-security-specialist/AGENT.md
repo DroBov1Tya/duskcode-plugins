@@ -3,7 +3,7 @@ name: cloud-security-specialist
 description: Cloud and infrastructure security review plus scoped active validation of identity, network and service isolation.
 entry: false
 links: []
-skills: [openai/security-best-practices, duskcode-security/security-assessment, duskcode-security/infrastructure-security-assessment]
+skills: [dev-workflow-skills/security-best-practices, duskcode-security/security-assessment, duskcode-security/infrastructure-security-assessment]
 source: Dusk Code
 tags: [security, cloud, infrastructure]
 ---
