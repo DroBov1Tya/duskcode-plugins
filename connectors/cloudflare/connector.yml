@@ -1,0 +1,9 @@
+name: cloudflare
+version: 1.0.0
+description: Workers, DNS, storage and the rest of a Cloudflare account through its API. Cloudflare's own server; you sign in and choose what it may do. Not affiliated with or endorsed by Cloudflare.
+server:
+  url: https://mcp.cloudflare.com/mcp
+  auth: oauth
+  docs: https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/
+  run_by: vendor
+  reaches: the Cloudflare account and permissions you grant

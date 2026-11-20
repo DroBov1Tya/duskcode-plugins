@@ -1,0 +1,15 @@
+name: monday
+version: 1.0.0
+description: Boards, items and updates of a monday.com account. monday.com's own server, run on this computer with npx; it takes an API token you put in its settings. Not affiliated with or endorsed by
+  monday.com.
+server:
+  command: npx
+  args:
+  - -y
+  - '@mondaydotcomorg/monday-api-mcp@3.3.1'
+  auth: key
+  secrets:
+  - monday_token
+  docs: https://developer.monday.com/apps/docs/mondaycom-mcp-integration
+  run_by: vendor
+  reaches: the boards and items your monday.com token allows

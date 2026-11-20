@@ -1,0 +1,9 @@
+name: sentry
+version: 1.0.0
+description: Errors, issues and traces of your Sentry projects, to find what broke and why. Sentry's own server; you sign in with your Sentry account. Not affiliated with or endorsed by Sentry.
+server:
+  url: https://mcp.sentry.dev/mcp
+  auth: oauth
+  docs: https://mcp.sentry.dev/
+  run_by: vendor
+  reaches: the errors, issues and traces of the Sentry organizations you allow

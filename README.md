@@ -20,6 +20,7 @@ address; the old page address no longer answers.)
 plugins/<name>/                 a plugin: plugin.yml, its source, icons
 packs/<pack>/pack.yml           a pack: name, title, description, vendor, kind, items, license
 packs/<pack>/<item>/            each item: a skill folder (SKILL.md, LICENSE, NOTICE) or an agent folder
+connectors/<name>/connector.yml a connector: a service's MCP server duskcode adds to the connectors
 pinned/<pack>/                  a pack pinned in its author's GitHub repository: pack.yml and pins.json, no files
 covers/<name>.webp              the card picture of each plugin and pack (at most 512 KiB)
 covers/src/<name>.svg           its source; scripts/make-covers.py writes them, render-covers.sh renders
@@ -66,6 +67,14 @@ by their authors, and their names are used only to say who wrote the work.
 | [ios-simulator](plugins/ios-simulator) | Xcode's iOS Simulator in a panel, and a tool for the agent to use it | macOS |
 | [telegram](plugins/telegram) | Talk to duskcode from Telegram: messages, answers, questions and approvals | macOS |
 | [vphone](plugins/vphone) | A vphone virtual iPhone in a panel, and a tool for the agent to use it | macOS |
+
+Connectors are the services' own MCP servers, added in one click under Customize,
+Connectors, Discover: Notion, Linear, Atlassian, GitHub, GitLab, Sentry, Stripe,
+Cloudflare, Intercom, Supabase, Neon, Context7, Hugging Face, DeepWiki and Microsoft Learn
+over the network, and Playwright, fetch and monday.com run on the computer with a pinned
+package. Each is named for the service it reaches and runs there; duskcode is not
+affiliated with or endorsed by any of them. [docs/connectors.md](docs/connectors.md) says
+how to submit one.
 
 `crates/phone-kit` is shared by ios-simulator and vphone: the phone panel and the MCP
 tool over one `Phone` trait.

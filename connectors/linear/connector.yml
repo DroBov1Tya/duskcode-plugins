@@ -1,0 +1,9 @@
+name: linear
+version: 1.0.0
+description: Find, create and update the issues, projects and cycles of a Linear workspace. Linear's own server; you sign in with your Linear account. Not affiliated with or endorsed by Linear.
+server:
+  url: https://mcp.linear.app/mcp
+  auth: oauth
+  docs: https://linear.app/docs/mcp
+  run_by: vendor
+  reaches: the issues, projects and comments of the Linear workspace you allow

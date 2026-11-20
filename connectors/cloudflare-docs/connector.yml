@@ -1,0 +1,9 @@
+name: cloudflare-docs
+version: 1.0.0
+description: Search the Cloudflare developer documentation. Cloudflare's own server; no account needed. Not affiliated with or endorsed by Cloudflare.
+server:
+  url: https://docs.mcp.cloudflare.com/mcp
+  auth: none
+  docs: https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/
+  run_by: vendor
+  reaches: the public Cloudflare documentation

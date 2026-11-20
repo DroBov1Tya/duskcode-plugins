@@ -1,0 +1,13 @@
+name: playwright
+version: 1.0.0
+description: 'A browser the agent drives: open pages, click, type, read and take screenshots. Microsoft''s Playwright MCP, run on this computer with npx (needs Node.js 20). Not affiliated with or endorsed
+  by Microsoft.'
+server:
+  command: npx
+  args:
+  - -y
+  - '@playwright/mcp@0.0.86'
+  auth: none
+  docs: https://github.com/microsoft/playwright-mcp
+  run_by: vendor
+  reaches: any web page the agent opens in a browser on this computer

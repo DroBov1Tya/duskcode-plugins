@@ -1,0 +1,12 @@
+name: fetch
+version: 1.0.0
+description: Fetch a web page and give it to the agent as Markdown. The reference server of the Model Context Protocol project, run on this computer with uvx. Not affiliated with or endorsed by Model Context
+  Protocol.
+server:
+  command: uvx
+  args:
+  - mcp-server-fetch===2026.11.18
+  auth: none
+  docs: https://github.com/modelcontextprotocol/servers/tree/main/src/fetch
+  run_by: community
+  reaches: any web address the agent asks for, from this computer

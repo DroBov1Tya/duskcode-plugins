@@ -1,0 +1,9 @@
+name: notion
+version: 1.0.0
+description: Search, read and edit the pages and databases of a Notion workspace. Notion's own server; you sign in with your Notion account. Not affiliated with or endorsed by Notion.
+server:
+  url: https://mcp.notion.com/mcp
+  auth: oauth
+  docs: https://developers.notion.com/docs/get-started-with-mcp
+  run_by: vendor
+  reaches: the pages and databases of the Notion workspace you allow

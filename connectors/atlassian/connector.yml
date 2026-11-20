@@ -1,0 +1,9 @@
+name: atlassian
+version: 1.0.0
+description: Jira issues and Confluence pages of an Atlassian Cloud site. Atlassian's own server; you sign in with your Atlassian account. Not affiliated with or endorsed by Atlassian.
+server:
+  url: https://mcp.atlassian.com/v2/mcp
+  auth: oauth
+  docs: https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/
+  run_by: vendor
+  reaches: the Jira issues and Confluence pages your Atlassian account can see

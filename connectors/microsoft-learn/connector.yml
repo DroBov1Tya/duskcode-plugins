@@ -1,0 +1,9 @@
+name: microsoft-learn
+version: 1.0.0
+description: Search and read the Microsoft Learn documentation and code samples. Microsoft's own server; no account needed. Not affiliated with or endorsed by Microsoft.
+server:
+  url: https://learn.microsoft.com/api/mcp
+  auth: none
+  docs: https://learn.microsoft.com/en-us/training/support/mcp
+  run_by: vendor
+  reaches: the public Microsoft Learn documentation

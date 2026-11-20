@@ -1,0 +1,9 @@
+name: context7
+version: 1.0.0
+description: Current documentation and code examples of libraries, fetched for the version you use. Context7's own server; no account needed. Not affiliated with or endorsed by Upstash.
+server:
+  url: https://mcp.context7.com/mcp
+  auth: none
+  docs: https://context7.com/docs/installation
+  run_by: vendor
+  reaches: the public library documentation Context7 indexes

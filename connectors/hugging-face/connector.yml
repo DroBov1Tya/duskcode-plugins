@@ -1,0 +1,9 @@
+name: hugging-face
+version: 1.0.0
+description: Search models, datasets, Spaces, papers and the docs of the Hugging Face Hub. Hugging Face's own server; no account needed for public content. Not affiliated with or endorsed by Hugging Face.
+server:
+  url: https://huggingface.co/mcp
+  auth: none
+  docs: https://huggingface.co/docs/hub/en/hf-mcp-server
+  run_by: vendor
+  reaches: the public models, datasets and Spaces of the Hugging Face Hub

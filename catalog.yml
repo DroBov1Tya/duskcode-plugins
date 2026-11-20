@@ -6,6 +6,8 @@
 #   screenshots  optional, up to 8: [{file, caption}], files in screenshots/<item>/
 # A plugin also names its `author`, `license` (SPDX) and `source` (https) here; a pack
 # has them in its pack.yml as `vendor`, `license` and `upstream`.
+# A connector names the same three here, beside its connectors/<name>/connector.yml
+# (docs/connectors.md).
 # No badge and no stars: the badge follows from the author (Official for duskcode's own
 # work, Verified for anybody else's), and stars are not the item's.
 plugins:
@@ -59,3 +61,118 @@ packs:
   multi-gpu-memory-skills: {categories: [coding, devops], tags: [gpu, multi-node, networking, performance]}
   optimization-solver-skills: {categories: [data, coding], tags: [optimization, routing, solver, gpu]}
   gpu-acceleration-skills: {categories: [coding, data], tags: [gpu, porting, machine-learning, dataframes]}
+connectors:
+  notion:
+    author: Notion
+    license: LicenseRef-vendor-terms
+    source: "https://developers.notion.com/docs/get-started-with-mcp"
+    categories: [productivity, writing]
+    tags: [docs, wiki, notes, databases]
+  linear:
+    author: Linear
+    license: LicenseRef-vendor-terms
+    source: "https://linear.app/docs/mcp"
+    categories: [productivity, coding]
+    tags: [issues, projects, tracker]
+  atlassian:
+    author: Atlassian
+    license: LicenseRef-vendor-terms
+    source: "https://support.atlassian.com/atlassian-rovo-mcp-server/"
+    categories: [productivity, writing]
+    tags: [jira, confluence, issues, wiki]
+  github:
+    author: GitHub
+    license: LicenseRef-vendor-terms
+    source: "https://github.com/github/github-mcp-server"
+    categories: [coding, review, devops]
+    tags: [git, issues, pull-requests, actions]
+  gitlab:
+    author: GitLab
+    license: LicenseRef-vendor-terms
+    source: "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/"
+    categories: [coding, review, devops]
+    tags: [git, merge-requests, pipelines]
+  sentry:
+    author: Sentry
+    license: LicenseRef-vendor-terms
+    source: "https://mcp.sentry.dev/"
+    categories: [devops, testing]
+    tags: [errors, monitoring, debugging]
+  stripe:
+    author: Stripe
+    license: LicenseRef-vendor-terms
+    source: "https://docs.stripe.com/mcp"
+    categories: [data, coding]
+    tags: [payments, billing, api]
+  cloudflare:
+    author: Cloudflare
+    license: LicenseRef-vendor-terms
+    source: "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
+    categories: [devops]
+    tags: [workers, dns, edge, api]
+  cloudflare-docs:
+    author: Cloudflare
+    license: LicenseRef-vendor-terms
+    source: "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
+    categories: [research, devops]
+    tags: [docs, search]
+  intercom:
+    author: Intercom
+    license: LicenseRef-vendor-terms
+    source: "https://developers.intercom.com/docs/guides/mcp"
+    categories: [communication, productivity]
+    tags: [support, conversations, customers]
+  supabase:
+    author: Supabase
+    license: LicenseRef-vendor-terms
+    source: "https://supabase.com/docs/guides/getting-started/mcp"
+    categories: [data, devops]
+    tags: [postgres, database, migrations]
+  neon:
+    author: Neon
+    license: LicenseRef-vendor-terms
+    source: "https://neon.com/docs/ai/neon-mcp-server"
+    categories: [data, devops]
+    tags: [postgres, database, branches]
+  context7:
+    author: Upstash
+    license: LicenseRef-vendor-terms
+    source: "https://context7.com/docs/installation"
+    categories: [research, coding]
+    tags: [docs, libraries, examples]
+  hugging-face:
+    author: "Hugging Face"
+    license: LicenseRef-vendor-terms
+    source: "https://huggingface.co/docs/hub/en/hf-mcp-server"
+    categories: [research, data]
+    tags: [models, datasets, ml]
+  deepwiki:
+    author: Cognition
+    license: LicenseRef-vendor-terms
+    source: "https://docs.devin.ai/work-with-devin/deepwiki-mcp"
+    categories: [research, coding]
+    tags: [repositories, wiki, questions]
+  microsoft-learn:
+    author: Microsoft
+    license: LicenseRef-vendor-terms
+    source: "https://learn.microsoft.com/en-us/training/support/mcp"
+    categories: [research, coding]
+    tags: [docs, azure, dotnet]
+  playwright:
+    author: Microsoft
+    license: Apache-2.0
+    source: "https://github.com/microsoft/playwright-mcp"
+    categories: [testing, research]
+    tags: [browser, automation, e2e]
+  fetch:
+    author: "Model Context Protocol"
+    license: MIT
+    source: "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch"
+    categories: [research]
+    tags: [web, markdown, reference]
+  monday:
+    author: monday.com
+    license: MIT
+    source: "https://github.com/mondaycom/mcp"
+    categories: [productivity]
+    tags: [boards, tasks, projects]
