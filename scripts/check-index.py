@@ -152,12 +152,13 @@ def check_pins(root):
     """Every file of every pinned pack (pinned/<pack>/pins.json), fetched again from GitHub
     and checked against its size and SHA-256: fails when an author's repository no longer
     serves exactly what the list will pin."""
+    import concurrent.futures
     import pinned
-    count = 0
     folders = sorted(f.parent for f in pathlib.Path(root).glob("pinned/*/pins.json"))
-    for folder in folders:
-        _, pins = pinned.read(folder)
-        count += fetch_upstream(folder.name, {"upstream": pinned.upstream(pins)})
+    one = lambda folder: fetch_upstream(folder.name, {"upstream": pinned.upstream(pinned.read(folder)[1])})
+    # A pack at a time per worker: the first pin that fails stops the check.
+    with concurrent.futures.ThreadPoolExecutor(6) as pool:
+        count = sum(pool.map(one, folders))
     print(f"ok: {len(folders)} pinned packs, {count} files match their pins")
 
 
