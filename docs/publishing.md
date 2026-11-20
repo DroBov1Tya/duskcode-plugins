@@ -143,6 +143,46 @@ know. A pack with `upstream` keeps a `LICENSE*` and a `NOTICE.md` in every item 
 Each item is a folder next to `pack.yml`. `scripts/package-packs.sh <pack> <version>`
 builds `dist/<pack>-<version>.tar.gz` deterministically.
 
+## A pack pinned in its author's repository
+
+Somebody else's skills can also be offered without copying them here: `pinned/<pack>/`
+holds a hand-written, reviewed `pack.yml`:
+
+```yaml
+name: office-document-skills       # for what it does; never a company's name
+title: "Office Document Skills"
+description: "... Not affiliated with or endorsed by <vendor>."
+vendor: Someone                    # the author
+kind: skills
+license: Apache-2.0                # covering every item's own licence
+repo: someone/skills               # on GitHub
+commit: <40 hex digits>            # the commit that was reviewed
+items:
+  docx: skills/docx                # the item, and its folder in that repository
+```
+
+Beside it is `pins.json`, which `scripts/mirror.py --pin <pack>` writes: every file at
+that commit with its SHA-256, at most 200 files per pack. A catalog.yml entry and a cover
+are needed as for any pack. Only a format 3 list carries these packs, and duskcode fetches
+the files from GitHub itself ([mirrors.md](mirrors.md#pinned-packs-of-the-official-list)).
+
+### Signing and publishing, for the maintainer
+
+From a clean checkout of `main` with the pinned packs merged, on the maintainer's machine:
+
+```sh
+pip install pyyaml                  # once; plus rsvg-convert and cwebp for the covers
+scripts/make-covers.py && scripts/render-covers.sh   # covers/<pack>.webp
+scripts/check-index.py --repo . && scripts/check-index.py --pins
+scripts/publish.py --dry-run --format=3              # review the unsigned list it prints
+scripts/publish.py --format=3                        # asks before signing new packages
+scripts/check-index.py site/index.json --fetch
+git add covers site && git commit -m "site: sign the list with the pinned packs" && git push
+```
+
+Pushing `site/` publishes the page and the signed list. Format 3 is needed for the pinned
+packs; duskcode 0.76 reads it.
+
 ## A mirror
 
 [external-repositories.md](external-repositories.md) has the full requirements. In short:

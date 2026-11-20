@@ -47,6 +47,20 @@ packs:
   web-builder-skills: {categories: [design, coding, testing], tags: [frontend, mcp, web]}
   dev-workflow-skills: {categories: [review, testing, security], tags: [github, ci, playwright, notebooks]}
   gpu-computing-skills: {categories: [coding, data], tags: [cuda, gpu, dataframes]}
+  # Pinned in their author's repository (pinned/<pack>): pack.yml and pins.json there.
+  office-document-skills: {categories: [writing, data, productivity], tags: [docx, pdf, slides, spreadsheets]}
+  visual-design-skills: {categories: [design], tags: [generative-art, posters, themes, gif]}
+  communication-skills: {categories: [writing, communication], tags: [status-reports, newsletters, review]}
+  hosting-deploy-skills: {categories: [devops], tags: [deploy, hosting, preview]}
+  team-workspace-skills: {categories: [productivity, communication], tags: [issues, errors, wiki, meetings]}
+  dotnet-app-skills: {categories: [coding], tags: [dotnet, web, desktop, csharp]}
+  speech-audio-skills: {categories: [data, productivity], tags: [speech, transcription, audio]}
+  repository-utility-skills: {categories: [coding, security], tags: [git, pull-requests, screenshots, pdf]}
+  tile-kernel-skills: {categories: [coding], tags: [gpu, kernels, triton, autotuning]}
+  gpu-simulation-skills: {categories: [coding, research], tags: [gpu, simulation, gradients]}
+  multi-gpu-memory-skills: {categories: [coding, devops], tags: [gpu, multi-node, networking, performance]}
+  optimization-solver-skills: {categories: [data, coding], tags: [optimization, routing, solver, gpu]}
+  gpu-acceleration-skills: {categories: [coding, data], tags: [gpu, porting, machine-learning, dataframes]}
 connectors:
   notion:
     author: Notion

@@ -1,0 +1,647 @@
+{
+  "repo": "NVIDIA/skills",
+  "commit": "b0694f6d55b4037ffd414aba5759b59f38380c5e",
+  "files": [
+    {
+      "path": "skills/cudf-query-engine-builder/BENCHMARK.md",
+      "to": "cudf-query-engine-builder/BENCHMARK.md",
+      "sha256": "63b6d5c5069592406c1dcf057ef9ddbc3c7b62008b1346ff1b2c847333e7a626",
+      "size": 10984
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/LICENSE",
+      "to": "cudf-query-engine-builder/LICENSE",
+      "sha256": "66d1b1695d4456e2bacd9bf84bb5258be718587ec6b23ff194eb654cb70b1324",
+      "size": 30511
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/LICENSE-APACHE",
+      "to": "cudf-query-engine-builder/LICENSE-APACHE",
+      "sha256": "4f321b887d0350e672e06c8a8bc85cff17ee2d1f3c360617079041ceee324c81",
+      "size": 11432
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/LICENSE-CC-BY-4.0",
+      "to": "cudf-query-engine-builder/LICENSE-CC-BY-4.0",
+      "sha256": "576383a5f9cbccae7aa403578059ae939fbe79aa77fad7b9fdf6f2c958d60e71",
+      "size": 18730
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/SKILL.md",
+      "to": "cudf-query-engine-builder/SKILL.md",
+      "sha256": "fafb54890b5c528c686cfd50e2200f4a2bd28f801976c0051ff1dad3d2c3934b",
+      "size": 9291
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/THIRD_PARTY_NOTICES.md",
+      "to": "cudf-query-engine-builder/THIRD_PARTY_NOTICES.md",
+      "sha256": "62bf43e069444a4b4acea99ccf72010c7ba192c922c3b8fd356dc3edb9595149",
+      "size": 3300
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/.reference/Dockerfile.cudf-cpp",
+      "to": "cudf-query-engine-builder/evals/.reference/Dockerfile.cudf-cpp",
+      "sha256": "cae16ac1006f123df020b2b57a58898543da9156e3e510aceb52cabaa87c7e52",
+      "size": 272
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/EVAL.md",
+      "to": "cudf-query-engine-builder/evals/EVAL.md",
+      "sha256": "66fe327cfa818f33c0da4d683c8b242582377b4877f7e5521ad8199fc44f038c",
+      "size": 7586
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/config.yml",
+      "to": "cudf-query-engine-builder/evals/config.yml",
+      "sha256": "804e30db3167cef26b2c434adc159fd49b0a3085fab73522a4a8e6967848aa37",
+      "size": 505
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/evals.json",
+      "to": "cudf-query-engine-builder/evals/evals.json",
+      "sha256": "4990bc8e3436a77fcae501f88173b250959fbcfc63fb22b93c52d706329e99fe",
+      "size": 20153
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/async-copy-cleanup/TASK.md",
+      "to": "cudf-query-engine-builder/evals/files/async-copy-cleanup/TASK.md",
+      "sha256": "43f3709cbe7e3d64cd3556e8464914d388efebd59f9817b0c311b0881d113a19",
+      "size": 3175
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/async-copy-cleanup/adapter.hpp",
+      "to": "cudf-query-engine-builder/evals/files/async-copy-cleanup/adapter.hpp",
+      "sha256": "512cd40d4f0903179a5c045ccaabfa012ee76c2a5e99e7c1207c3b4fcd553990",
+      "size": 683
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/async-copy-cleanup/run_checks.py",
+      "to": "cudf-query-engine-builder/evals/files/async-copy-cleanup/run_checks.py",
+      "sha256": "0e198858a4fa02c995bd2ea92841e924cdc928ae19445f76f2e8826df01979f3",
+      "size": 4976
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/async-copy-cleanup/sim_backend.hpp",
+      "to": "cudf-query-engine-builder/evals/files/async-copy-cleanup/sim_backend.hpp",
+      "sha256": "c0a4dffb6f5b240fc9b339c6c6e88f5b56f35ca048a08f63ddc2b9032a5830d4",
+      "size": 6299
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/async-copy-cleanup/test_adapter.cpp",
+      "to": "cudf-query-engine-builder/evals/files/async-copy-cleanup/test_adapter.cpp",
+      "sha256": "b7bcdd02e5563a19e3d96484606927e4c8b2107fb114cea300a9e8c5ad2146e9",
+      "size": 3685
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/worker-result-handoff/TASK.md",
+      "to": "cudf-query-engine-builder/evals/files/worker-result-handoff/TASK.md",
+      "sha256": "0f88d729f9acfea3e55a7e702b826bdc940059b05adcaa366490aa9c9a87ddbe",
+      "size": 3336
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/worker-result-handoff/adapter.hpp",
+      "to": "cudf-query-engine-builder/evals/files/worker-result-handoff/adapter.hpp",
+      "sha256": "667ca656dd5335201ee6d5c907769273898d79ee5ea39f5302b5d25ea7b72ef6",
+      "size": 1402
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/worker-result-handoff/run_checks.py",
+      "to": "cudf-query-engine-builder/evals/files/worker-result-handoff/run_checks.py",
+      "sha256": "0e198858a4fa02c995bd2ea92841e924cdc928ae19445f76f2e8826df01979f3",
+      "size": 4976
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/worker-result-handoff/sim_backend.hpp",
+      "to": "cudf-query-engine-builder/evals/files/worker-result-handoff/sim_backend.hpp",
+      "sha256": "c0a4dffb6f5b240fc9b339c6c6e88f5b56f35ca048a08f63ddc2b9032a5830d4",
+      "size": 6299
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/files/worker-result-handoff/test_adapter.cpp",
+      "to": "cudf-query-engine-builder/evals/files/worker-result-handoff/test_adapter.cpp",
+      "sha256": "a36b780cc47e110d48f1b03497331b49fd49b3922d3a6b9413bdd6a35d86073d",
+      "size": 4246
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/evals/grader.py",
+      "to": "cudf-query-engine-builder/evals/grader.py",
+      "sha256": "1f41b819ca7de418d231f4a434216607bff6e28d80a47454f4162df667293143",
+      "size": 11705
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/references/asynchronous-cleanup.md",
+      "to": "cudf-query-engine-builder/references/asynchronous-cleanup.md",
+      "sha256": "f7ce2da8a90a5c2ab490620a83aee3a419d72b9f24c18b7233dc8d4c49151411",
+      "size": 7935
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/skill-card.md",
+      "to": "cudf-query-engine-builder/skill-card.md",
+      "sha256": "5ca6cb0f3b25ba32d926da6aaa004dde6d3cb41940c8ba86103232b9ea949e9b",
+      "size": 5241
+    },
+    {
+      "path": "skills/cudf-query-engine-builder/skill.oms.sig",
+      "to": "cudf-query-engine-builder/skill.oms.sig",
+      "sha256": "9a0a5981894490a2fcfa62b0e2c0b93da40589d7624209d911c241b5b0157f73",
+      "size": 9305
+    },
+    {
+      "path": "skills/cuml/BENCHMARK.md",
+      "to": "cuml/BENCHMARK.md",
+      "sha256": "88f36259d3452125abb29976d5ef6a67f30133ecb55a42b143a9b452d05ede49",
+      "size": 14237
+    },
+    {
+      "path": "LICENSE-APACHE",
+      "to": "cuml/LICENSE-APACHE",
+      "sha256": "4f321b887d0350e672e06c8a8bc85cff17ee2d1f3c360617079041ceee324c81",
+      "size": 11432
+    },
+    {
+      "path": "LICENSE-CC-BY-4.0",
+      "to": "cuml/LICENSE-CC-BY-4.0",
+      "sha256": "8aca1bec720ca7a68f5e6a13e61eed6ca21c3925db15620bc39878be250af846",
+      "size": 18731
+    },
+    {
+      "path": "skills/cuml/README.md",
+      "to": "cuml/README.md",
+      "sha256": "49b98a53be4c1b47651ac5fe1b6e7a21ba8117025d6126d07678d1932fbb58fe",
+      "size": 1134
+    },
+    {
+      "path": "skills/cuml/SKILL.md",
+      "to": "cuml/SKILL.md",
+      "sha256": "738ef73de0cc5136964741d77616c83da6677449bdcf50ed9f95cbea0e43d319",
+      "size": 7564
+    },
+    {
+      "path": "skills/cuml/evals/.gitignore",
+      "to": "cuml/evals/.gitignore",
+      "sha256": "f370ad043ec0c98a166fd98646c3b94280ed78bc996223b6cca2ba936f7c6781",
+      "size": 9
+    },
+    {
+      "path": "skills/cuml/evals/.reference/Dockerfile.cuml-image",
+      "to": "cuml/evals/.reference/Dockerfile.cuml-image",
+      "sha256": "bde56da57c94fe09ce0a869f470af19b1264e56ee5c8286bba445720ffcddb3a",
+      "size": 1163
+    },
+    {
+      "path": "skills/cuml/evals/config.yml",
+      "to": "cuml/evals/config.yml",
+      "sha256": "5837b754b9cc3ac7b6865769d3bd266bd92545ded06beff5be85f86b1cc9a9d6",
+      "size": 433
+    },
+    {
+      "path": "skills/cuml/evals/evals.json",
+      "to": "cuml/evals/evals.json",
+      "sha256": "553220d86ef9fb4e717bb83cf3f55f311ef81d2891a1d1a330bff6780c5b047f",
+      "size": 51529
+    },
+    {
+      "path": "skills/cuml/references/parity-and-numerics.md",
+      "to": "cuml/references/parity-and-numerics.md",
+      "sha256": "398036bae72947878f7d24be2a46cfbeca4c5174655c4479f2fce479d51529e0",
+      "size": 3854
+    },
+    {
+      "path": "skills/cuml/scripts/check_removed_apis.py",
+      "to": "cuml/scripts/check_removed_apis.py",
+      "sha256": "288d46abae6c86bc9ec57b06d680ee5d46ab9c0fc66e915ac4528919498c59cb",
+      "size": 11772
+    },
+    {
+      "path": "skills/cuml/scripts/removed_apis.json",
+      "to": "cuml/scripts/removed_apis.json",
+      "sha256": "5785cdc2bd8fca2625d63f0eb71b6a9e8304c1583aeaa72acdbae31143ef019f",
+      "size": 2002
+    },
+    {
+      "path": "skills/cuml/skill-card.md",
+      "to": "cuml/skill-card.md",
+      "sha256": "8e24ae726ff73157c8d1a8c29465b7a9100baba8dc70454f0d730e5d267268cd",
+      "size": 7493
+    },
+    {
+      "path": "skills/cuml/skill.oms.sig",
+      "to": "cuml/skill.oms.sig",
+      "sha256": "b1c7d421d725c672e8c1e319af687cc10faea26ea5c485969eb0af580fc0a67f",
+      "size": 6221
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/BENCHMARK.md",
+      "to": "nsight-port-cpu-to-gpu/BENCHMARK.md",
+      "sha256": "3d3457a02ff9a802ba10b9b09c61d11c628a93bce92788181dbe499cd4a0f596",
+      "size": 16636
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/SKILL.md",
+      "to": "nsight-port-cpu-to-gpu/SKILL.md",
+      "sha256": "4bc49ad0b9f3b25abf1fafc137dad2f1c3dc906d202122cf9ee4fd1c463f7d6c",
+      "size": 23831
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/assets/config-template.json",
+      "to": "nsight-port-cpu-to-gpu/assets/config-template.json",
+      "sha256": "5a980808d1dccfcefb4114a4a1ffb544b8d94afe7cf92408dd646d691bf3d461",
+      "size": 555
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/assets/nsight-port-gitignore-template",
+      "to": "nsight-port-cpu-to-gpu/assets/nsight-port-gitignore-template",
+      "sha256": "5ce2be14955dc6ff73e5edb1557cb2ae8d53c631b35701091b2fc960152eb1f0",
+      "size": 477
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/assets/progress-template.json",
+      "to": "nsight-port-cpu-to-gpu/assets/progress-template.json",
+      "sha256": "767cabfce31e02a1c75d6f82a34f4ddba33b82e3eeeb443ed184082a05be6256",
+      "size": 374
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/assets/skill_feedback-template.json",
+      "to": "nsight-port-cpu-to-gpu/assets/skill_feedback-template.json",
+      "sha256": "f803c251180e1451282ed3b9aa15f8bfdfbd05cd02e46b3c19eae66de5c4e37b",
+      "size": 112
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/assets/test-harness/compare_field.f90",
+      "to": "nsight-port-cpu-to-gpu/assets/test-harness/compare_field.f90",
+      "sha256": "78b273f9672187cee8eedbc1d19a933ff66dd82beadb4793b83df0e4bb22ffc3",
+      "size": 17134
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/assets/test-harness/compare_field.hpp",
+      "to": "nsight-port-cpu-to-gpu/assets/test-harness/compare_field.hpp",
+      "sha256": "208e84789108d28e8bac0a249e9b620898108f6e2e5a3c8a2c6ed98c130a48bc",
+      "size": 6923
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/evals/EVAL.md",
+      "to": "nsight-port-cpu-to-gpu/evals/EVAL.md",
+      "sha256": "7e56e0d511042b471d264b82cbc617c6588fe74cb5a0e047e474e035e45a969e",
+      "size": 3838
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/evals/config.yml",
+      "to": "nsight-port-cpu-to-gpu/evals/config.yml",
+      "sha256": "5d5516b44d22f048c0456fcfc782f83aa9cfe1b47e0915581f6be1854066c7ac",
+      "size": 1211
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/evals/evals.json",
+      "to": "nsight-port-cpu-to-gpu/evals/evals.json",
+      "sha256": "3c37de3f02e39f01928a3a517dca5d50ddff7b384c82813f0f5a9f7102f10e3e",
+      "size": 25749
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/evals/files/advection/Makefile",
+      "to": "nsight-port-cpu-to-gpu/evals/files/advection/Makefile",
+      "sha256": "66b8a46b7f3ee713b9b81a41380490496388e2df59898955eac34e2937a3408b",
+      "size": 309
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/evals/files/advection/advection_code.f90",
+      "to": "nsight-port-cpu-to-gpu/evals/files/advection/advection_code.f90",
+      "sha256": "5d9de128998db1bb79113869be58befdef44ee53c7b35158cf54183c31f7dc95",
+      "size": 2415
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/cuda/build-integration.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/cuda/build-integration.md",
+      "sha256": "454c24e25b1edfeccc6538333b06b77779062bb65874037184bcd2ffd5b7c944",
+      "size": 15738
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/cuda/device-utils.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/cuda/device-utils.md",
+      "sha256": "2ec82f5fd140b11d19e68805c63fbf31d26cc5e52938851d2bef8ceaed578a53",
+      "size": 4011
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/cuda/manifest.json",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/cuda/manifest.json",
+      "sha256": "438ef53ffd73e79b47564b92c0847e28bb51284cfa4d85bb1b3e512547ccee97",
+      "size": 421
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/cuda/patterns.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/cuda/patterns.md",
+      "sha256": "17f6156f6e0a012ae1544c948ffdc2a0b6bea901226c94fd46b8dda38c244615",
+      "size": 18945
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/cuda/refactoring.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/cuda/refactoring.md",
+      "sha256": "5ca5830ad188fea0847ada3bfe5d1badd33cedfaf1813b3b5ec7607e1e897876",
+      "size": 1628
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/cuda/translation.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/cuda/translation.md",
+      "sha256": "d71c2e8e5cd34af2d7c94de13c6fc3a9f03c1e85b6b845509eb87e2f0516a1c5",
+      "size": 23901
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/kokkos/build-integration.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/kokkos/build-integration.md",
+      "sha256": "49e8ab60fb113b65a7c049ef8c21638c9bfa7e115625317d0046278ffd514a8b",
+      "size": 9946
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/kokkos/device-utils.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/kokkos/device-utils.md",
+      "sha256": "e856df6e7007577d4b765e0a837f29dd1c1ad1ea7bfec77fa1464b9994bc154d",
+      "size": 4817
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/kokkos/manifest.json",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/kokkos/manifest.json",
+      "sha256": "377951ee2414637902f015a43d2bc7c85123dc27e1eb89c254ea6bbbcc683485",
+      "size": 383
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/kokkos/nvtx.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/kokkos/nvtx.md",
+      "sha256": "72b17acca8c7aa84f863eb2d3680094c18547cb915b08029596be438b9152802",
+      "size": 3963
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/kokkos/patterns.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/kokkos/patterns.md",
+      "sha256": "a37076a5dd08eb7a713feb3a0eab223d7144a59e17d7d4ab7262771c3f0523ea",
+      "size": 19208
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/kokkos/refactoring.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/kokkos/refactoring.md",
+      "sha256": "4a01559cdcc2c7499a4fabb04d2e432939226cb63bcf9000713acc264ccc0696",
+      "size": 1250
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/kokkos/translation.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/kokkos/translation.md",
+      "sha256": "3304ff0134760bff0b93bc5509506531b005d0c01c3078a24b50d20442102314",
+      "size": 25920
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/nvtx.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/nvtx.md",
+      "sha256": "6c49122892c5116310495c55cbee9342ab6c5334248f61cb1e49898e422625fa",
+      "size": 6082
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/cpp/refactoring.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/cpp/refactoring.md",
+      "sha256": "6364cccffb4a67497ecce245d86f454a2e63f733ba24b0cacf52ebad12869a5e",
+      "size": 11946
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/nvtx.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/nvtx.md",
+      "sha256": "598f5efacc9ffa702dab5fb4b03b88a523601193b5c54a2fdf5fe2ef01a5530c",
+      "size": 6248
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/build-integration.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/build-integration.md",
+      "sha256": "c7379f45c19abec320b00db82add4740858ebe5a0cb6f757ef2173ef87a47081",
+      "size": 5445
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/device-utils-inline.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/device-utils-inline.md",
+      "sha256": "4ebf8bce26b4a960b97495b1f03ccc030b2b61ff9331e6c2eec44a5af9ecf9bc",
+      "size": 1120
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/device-utils-sibling.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/device-utils-sibling.md",
+      "sha256": "d43179ff91b05c666b1f9cec88207a64aee7e3eb1e45cf1410c873202f41e838",
+      "size": 5991
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/device-utils.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/device-utils.md",
+      "sha256": "56b0c23bf84d6e7d9faed617b39b537e3a08671f0a8f02e4b5b95c59b0919eeb",
+      "size": 388
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/manifest.json",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/manifest.json",
+      "sha256": "1bf8173f0909572dd14ae8bb75a529324fb8c2456195da50fc9b6af5762d36e5",
+      "size": 267
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/patterns.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/patterns.md",
+      "sha256": "b804f686a0d52f002c8a70f0eacf74aadf5690bf3d91b36e49bf03910fa37835",
+      "size": 19998
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/refactoring.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/refactoring.md",
+      "sha256": "6970ea4d8273ce70f34f521bc3c355eccb6e15dec185e7d90d031bc4519bea15",
+      "size": 1439
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/translation-inline.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/translation-inline.md",
+      "sha256": "7962316a6c7b214f7da2b551a4d5cd7fe0588de36a4a05099181b987abf80905",
+      "size": 13753
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/translation-sibling.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/translation-sibling.md",
+      "sha256": "af0880ae001fef174d930db2dcca92240086cf2aae098a7a49e84e406aae442b",
+      "size": 27339
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openacc/translation.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openacc/translation.md",
+      "sha256": "61ac0abcc060f33d37a7a1ad6a439364f8b537d797793bb5ede26887aeadbb30",
+      "size": 364
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/build-integration.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/build-integration.md",
+      "sha256": "54c70e1592a0637bf5d06c4c5500097a0a61c9770fc509d5d7ba463336982310",
+      "size": 8342
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/device-utils-inline.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/device-utils-inline.md",
+      "sha256": "31ea2d5db7d00cbd9fe6fe5cdfb3cf3519fd0bd4f5a30226ce26b37174b9274d",
+      "size": 1136
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/device-utils-sibling.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/device-utils-sibling.md",
+      "sha256": "158c0ec21e40ba7ca17583597fdc5caa0623ca8ce532b101f2123ad9c138db57",
+      "size": 5917
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/device-utils.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/device-utils.md",
+      "sha256": "7f6f26f53805acb0cd151cad45fab29389b7f392fa9edc71400f03e1527b5d6e",
+      "size": 395
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/manifest.json",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/manifest.json",
+      "sha256": "1ad3a945509aa2cc81ffff221cf1fcc38b486a176311c0ba826d1d06b03db4e2",
+      "size": 372
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/patterns.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/patterns.md",
+      "sha256": "a139a31576b84df55d2e73b268527ef163849389174d0ed68b88ce0707fbd1cb",
+      "size": 15690
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/refactoring.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/refactoring.md",
+      "sha256": "49b2a3aedec9e9d6a94c4484352a8b4e86cd05c819aa32d7f54d97c3028ee200",
+      "size": 1463
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/translation-inline.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/translation-inline.md",
+      "sha256": "530a0dbf68ec03a4ccbc4d8e44159a221031cf7d998ed6d1dde88f2a291fccb6",
+      "size": 14375
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/translation-sibling.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/translation-sibling.md",
+      "sha256": "24922fc088d9ad7e074715560ea1fd9444722e9004bef65d134e95f92c594507",
+      "size": 28825
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/openmp/translation.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/openmp/translation.md",
+      "sha256": "bf77334b993f4a610385ba320609ace73070eb939aa97d23d28326b9fabecf8e",
+      "size": 363
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/flavors/fortran/refactoring.md",
+      "to": "nsight-port-cpu-to-gpu/flavors/fortran/refactoring.md",
+      "sha256": "707c826467a6ed8d6182124a1d1b485a88019a81917786a7c4ae9579d4f4c7ac",
+      "size": 16533
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/orchestrators/nsys/orchestrator.md",
+      "to": "nsight-port-cpu-to-gpu/orchestrators/nsys/orchestrator.md",
+      "sha256": "674a9f1310446a03d3f74233e77b150638da6239bd06fa108c9d6e1771fa4e03",
+      "size": 5538
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/orchestrators/nsys/references/iteration-report-template.md",
+      "to": "nsight-port-cpu-to-gpu/orchestrators/nsys/references/iteration-report-template.md",
+      "sha256": "052a8e34ffe81b698a4d94762735f4fb7cc9e59fa83a11394f095e1ac2b37d6b",
+      "size": 3368
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/orchestrators/nsys/references/planning-from-trace.md",
+      "to": "nsight-port-cpu-to-gpu/orchestrators/nsys/references/planning-from-trace.md",
+      "sha256": "a37a39ece02640508405413837369dd375abe56be83f39df0b5ee1a8e9ed784e",
+      "size": 11632
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/orchestrators/nsys/references/profiling-guide.md",
+      "to": "nsight-port-cpu-to-gpu/orchestrators/nsys/references/profiling-guide.md",
+      "sha256": "44a614c30aa6f4c53eaee0432e44fd16353871b19486c671fac24901dde90ffe",
+      "size": 16059
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/references/coverage-set-guide.md",
+      "to": "nsight-port-cpu-to-gpu/references/coverage-set-guide.md",
+      "sha256": "0d98fb17c31a7704ee00eb5259267f825e35421a283b39522cd67e836bca5297",
+      "size": 5167
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/references/session-retrospective-template.md",
+      "to": "nsight-port-cpu-to-gpu/references/session-retrospective-template.md",
+      "sha256": "42256d219e4b73c1e77a1919661f4fbbb82b0ea44527acf0d45133ab8c449b74",
+      "size": 2332
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/references/setup-guide.md",
+      "to": "nsight-port-cpu-to-gpu/references/setup-guide.md",
+      "sha256": "cf8db48eeed3a29570a4135cfc8ddf0805b4bdcec05d732f51927b5d50e55564",
+      "size": 52531
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/references/skill-feedback-log.md",
+      "to": "nsight-port-cpu-to-gpu/references/skill-feedback-log.md",
+      "sha256": "dff5ad170edbd1e754b9915f7ee3d8decd6fc9d66d000d088ad04d6d5511d6f7",
+      "size": 9392
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/references/verification-guide.md",
+      "to": "nsight-port-cpu-to-gpu/references/verification-guide.md",
+      "sha256": "3d070f911cbee86cb19ccca288e59e6c82aca3d9fd46a71e2270aedd546d326b",
+      "size": 35773
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/scripts/gpu-check.sh",
+      "to": "nsight-port-cpu-to-gpu/scripts/gpu-check.sh",
+      "sha256": "2148647fc9193be9667c3c9cb705f556b06eb1d9aef02fb13f3477929fa9b94e",
+      "size": 4016
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/scripts/profile-check.sh",
+      "to": "nsight-port-cpu-to-gpu/scripts/profile-check.sh",
+      "sha256": "3a7bf48695af20852009b12d071376f89598661bd7e6c0786718ebecc8ec14a6",
+      "size": 5657
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/skill-card.md",
+      "to": "nsight-port-cpu-to-gpu/skill-card.md",
+      "sha256": "cbedc84fa46aeaf85280e5ab3a9fd3e84b9829bb58983c9ec23238f19699f108",
+      "size": 3822
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/skill.oms.sig",
+      "to": "nsight-port-cpu-to-gpu/skill.oms.sig",
+      "sha256": "49b564b1fd909bab2d196f4d3351e818b2f60b8003e3a35cf00dfb73f4389442",
+      "size": 20229
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/subskills/refactor-task/workflow.md",
+      "to": "nsight-port-cpu-to-gpu/subskills/refactor-task/workflow.md",
+      "sha256": "f62987efad3306de52ec7631ddb0e3c1107c2b2ce5b67d590a5277bef3505601",
+      "size": 1197
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/subskills/translate-function/workflow.md",
+      "to": "nsight-port-cpu-to-gpu/subskills/translate-function/workflow.md",
+      "sha256": "78e644ad1225c5bbfcc1e395fba7052b00945c76f48d155baf73dac7c3e5f505",
+      "size": 3422
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/subskills/translate-utility/workflow.md",
+      "to": "nsight-port-cpu-to-gpu/subskills/translate-utility/workflow.md",
+      "sha256": "64416d81bd1962006b09463f9cf65cf6113c28212509ca5782f406eb2491493c",
+      "size": 1065
+    },
+    {
+      "path": "skills/nsight-port-cpu-to-gpu/transitions/fortran-to-cpp.md",
+      "to": "nsight-port-cpu-to-gpu/transitions/fortran-to-cpp.md",
+      "sha256": "434b6d516d706b697ae7847379edd5d3ebaf4fe378526cf1be2c0fb9af69afe5",
+      "size": 26762
+    }
+  ],
+  "notes": {
+    "nsight-port-cpu-to-gpu": [
+      "2 scripts the agent may ask to run"
+    ],
+    "cuml": [
+      "1 script the agent may ask to run"
+    ],
+    "cudf-query-engine-builder": [
+      "3 scripts the agent may ask to run"
+    ]
+  }
+}

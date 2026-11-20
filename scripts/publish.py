@@ -11,7 +11,10 @@ keychain and never reaches GitHub.
                                   categories and badge, and for a plugin the mcp,
                                   programs and skills its plugin.yml brings; only once
                                   the duskcode in use reads format 3, since an older one
-                                  refuses the list
+                                  refuses the list. Only format 3 carries the packs of
+                                  pinned/, pinned to a commit of their author's
+                                  repository with the SHA-256 of every file
+                                  (pins.json, from scripts/mirror.py --pin)
 
 The repository is checked first (scripts/repo.py), and nothing is written when it fails.
 Another repository laid out the same way publishes its own list with WORKSHOP_REPO set to
@@ -54,6 +57,7 @@ from datetime import datetime, timedelta, timezone
 import yaml
 
 import pictures
+import pinned
 import repo
 
 REPO = os.environ.get("WORKSHOP_REPO", "DroBov1Tya/duskcode-workshop")
@@ -243,6 +247,26 @@ def pack_entry(file, local, confirm, signed, out):
     }
 
 
+def pinned_entry(file, out):
+    """A pack pinned in its author's repository (pinned/<pack>): no package, but the commit
+    and the SHA-256 of every file duskcode fetches from GitHub, from pins.json. Format 3 only."""
+    folder = file.parent
+    pack, pins = pinned.read(folder)
+    upstream = pinned.upstream(pins)
+    print(f"{pack['name']}: {len(upstream['files'])} files pinned at {upstream['repo']}@{upstream['commit'][:7]}")
+    return {
+        "name": pack["name"],
+        "version": pack_version(folder),
+        "kind": "pack",
+        "description": pack["description"],
+        "homepage": pinned.source(pack),
+        "skills": list(pack["items"]),
+        "upstream": upstream,
+        **extras(pack["name"], folder, CATALOG["packs"][pack["name"]], out, pack["vendor"], pack["license"],
+                 pinned.source(pack), pinned.source(pack)),
+    }
+
+
 def entry(manifest_file, local, signed, confirm, out):
     manifest = yaml.safe_load(manifest_file.read_text())
     name, version = manifest["name"], str(manifest["version"])
@@ -324,6 +348,12 @@ def main():
     signed = {item["name"]: item for item in old.get("plugins", [])}
     plugins = [entry(f, local, signed, confirm, out) for f in sorted(ROOT.glob("plugins/*/plugin.yml"))]
     plugins += [pack_entry(f, local or dry, confirm, signed, out) for f in sorted(ROOT.glob("packs/*/pack.yml"))]
+    held = sorted(ROOT.glob("pinned/*/pack.yml"))
+    if FORMAT == 3:
+        plugins += [pinned_entry(f, out) for f in held]
+    elif held:
+        print(f"{len(held)} pinned packs left out: only a format 3 list (--format=3) can name upstream files",
+              file=sys.stderr)
     plugins += [connector_entry(f, out) for f in sorted(ROOT.glob("connectors/*/connector.yml"))]
     expires = (datetime.now(timezone.utc) + LIFETIME).replace(microsecond=0)
     index = {

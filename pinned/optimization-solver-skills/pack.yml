@@ -1,0 +1,16 @@
+name: optimization-solver-skills
+title: "Optimization Solver Skills"
+description: "Formulate and solve linear, mixed-integer and routing problems on a GPU optimization solver: install it, model problems, use its Python and server APIs and explore trade-offs between objectives. Written by NVIDIA and published under Apache-2.0; installed from its repository at a pinned commit. Not affiliated with or endorsed by NVIDIA."
+vendor: NVIDIA
+kind: skills
+license: Apache-2.0
+repo: NVIDIA/skills
+commit: b0694f6d55b4037ffd414aba5759b59f38380c5e
+items:
+  cuopt-developer: skills/cuopt-developer
+  cuopt-install: skills/cuopt-install
+  cuopt-multi-objective-exploration: skills/cuopt-multi-objective-exploration
+  cuopt-numerical-optimization-api: skills/cuopt-numerical-optimization-api
+  cuopt-numerical-optimization-formulation: skills/cuopt-numerical-optimization-formulation
+  cuopt-routing-api-python: skills/cuopt-routing-api-python
+  cuopt-server-api-python: skills/cuopt-server-api-python

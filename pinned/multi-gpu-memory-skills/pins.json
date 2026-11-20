@@ -1,0 +1,565 @@
+{
+  "repo": "NVIDIA/skills",
+  "commit": "b0694f6d55b4037ffd414aba5759b59f38380c5e",
+  "files": [
+    {
+      "path": "skills/nvshmem-collect-performance-data/BENCHMARK.md",
+      "to": "nvshmem-collect-performance-data/BENCHMARK.md",
+      "sha256": "0dce1a03345ef0cfd07f7ee418b1743304b6278f06ed0dd63cf333ce36a282ac",
+      "size": 9642
+    },
+    {
+      "path": "skills/nvshmem-collect-performance-data/SKILL.md",
+      "to": "nvshmem-collect-performance-data/SKILL.md",
+      "sha256": "da9614b005fdc82147c39f5215504cdb68a20169445525e58e5ea0683e2db9b7",
+      "size": 17547
+    },
+    {
+      "path": "skills/nvshmem-collect-performance-data/assets/performance-report-template.md",
+      "to": "nvshmem-collect-performance-data/assets/performance-report-template.md",
+      "sha256": "3d41d2531a3ca2ac2d0a5c1a10d400ba58beb7afe4fca02ea9dee79ad1122965",
+      "size": 4214
+    },
+    {
+      "path": "skills/nvshmem-collect-performance-data/evals/evals.json",
+      "to": "nvshmem-collect-performance-data/evals/evals.json",
+      "sha256": "78a5fb1d9901d6b2de69db1bb7f1d93f0e370d03093353ddb522d1379b1346e0",
+      "size": 13043
+    },
+    {
+      "path": "skills/nvshmem-collect-performance-data/references/perftest-catalog.md",
+      "to": "nvshmem-collect-performance-data/references/perftest-catalog.md",
+      "sha256": "4b09e14b7dfe1d17032b0ced0b4b299c47265d87ebca46451e972111e251509c",
+      "size": 8630
+    },
+    {
+      "path": "skills/nvshmem-collect-performance-data/scripts/collect-performance-environment.sh",
+      "to": "nvshmem-collect-performance-data/scripts/collect-performance-environment.sh",
+      "sha256": "b555621ea76cf698caf59ba7ff2ca92621a6b143631f2d5f5d877e2396200c39",
+      "size": 12965
+    },
+    {
+      "path": "skills/nvshmem-collect-performance-data/skill-card.md",
+      "to": "nvshmem-collect-performance-data/skill-card.md",
+      "sha256": "ce57f35bf2117530a11572f4bdbd922bce429af1125c5029ab53c8297c8cfccf",
+      "size": 3921
+    },
+    {
+      "path": "skills/nvshmem-collect-performance-data/skill.oms.sig",
+      "to": "nvshmem-collect-performance-data/skill.oms.sig",
+      "sha256": "5e6eb857fb126d0bed206214811b5bd89140a33c338d9fcace940b6ebfb01335",
+      "size": 5369
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/BENCHMARK.md",
+      "to": "nvshmem-configure-nic-pe-mapping/BENCHMARK.md",
+      "sha256": "c71b5b7d06a9f7fea42c8262ab7e4608c19250b33b0b39e176be730dd0835646",
+      "size": 10966
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/SKILL.md",
+      "to": "nvshmem-configure-nic-pe-mapping/SKILL.md",
+      "sha256": "cf921f5fe7b088812484141bd7099cbb847599a3b7ce046b17b3c87a9f78860c",
+      "size": 15019
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/evals/evals.json",
+      "to": "nvshmem-configure-nic-pe-mapping/evals/evals.json",
+      "sha256": "74023d845c888ee9b8bd493e27d0034ab5d5bccdce298ab9bb277f020718fbfb",
+      "size": 16316
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/evals/files/ambiguous-two-gpu-two-ib.txt",
+      "to": "nvshmem-configure-nic-pe-mapping/evals/files/ambiguous-two-gpu-two-ib.txt",
+      "sha256": "bab227affea5fbcd4b3148033bb7c262af7373ff553667d9d35a3bc249cb2a0b",
+      "size": 448
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/evals/files/four-gpu-four-ib.txt",
+      "to": "nvshmem-configure-nic-pe-mapping/evals/files/four-gpu-four-ib.txt",
+      "sha256": "30f955637520d2f3ebd452a0b93fc9f500004e9feaae9af24096107b26f3aa6c",
+      "size": 1109
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/evals/files/four-gpu-two-ib.txt",
+      "to": "nvshmem-configure-nic-pe-mapping/evals/files/four-gpu-two-ib.txt",
+      "sha256": "e3094109f6e0c5de8a7b53a6f057da05158062a5d384bdcd1e11f4ebc519529e",
+      "size": 618
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/evals/files/mixed-link-inactive.txt",
+      "to": "nvshmem-configure-nic-pe-mapping/evals/files/mixed-link-inactive.txt",
+      "sha256": "245f0d067211b7487e7cc9cd601398da8ef4844d77b03623cc3f80f5b58e6f48",
+      "size": 829
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/evals/files/two-gpu-five-ib.txt",
+      "to": "nvshmem-configure-nic-pe-mapping/evals/files/two-gpu-five-ib.txt",
+      "sha256": "691e9c570333312cc4163f88c3088dcd6f64272b64f3256ec1b47fca0c09b96f",
+      "size": 817
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/evals/files/two-gpu-four-ib.txt",
+      "to": "nvshmem-configure-nic-pe-mapping/evals/files/two-gpu-four-ib.txt",
+      "sha256": "da6ecadfba906a742fc1a87dbb23f81a960653715fa76354a03ce81971d9fad0",
+      "size": 840
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/references/topology-and-output.md",
+      "to": "nvshmem-configure-nic-pe-mapping/references/topology-and-output.md",
+      "sha256": "fea21e2f404d64339b106ea0ccf783aa932b0e1423a8dd2a0808fd12430dff37",
+      "size": 11223
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/references/version-transport-matrix.md",
+      "to": "nvshmem-configure-nic-pe-mapping/references/version-transport-matrix.md",
+      "sha256": "f5833fe2bfcb4e66733b1b27e2835a4beb590ed16470202c8b9572828f4cc6cc",
+      "size": 11370
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/scripts/collect-nic-topology.sh",
+      "to": "nvshmem-configure-nic-pe-mapping/scripts/collect-nic-topology.sh",
+      "sha256": "fc480c319c09bac0f6af1be25f9fe72800b663a2e8a05ec4dff4cf1518be0fc8",
+      "size": 8443
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/skill-card.md",
+      "to": "nvshmem-configure-nic-pe-mapping/skill-card.md",
+      "sha256": "9e25833f71bbcb416cfb229a7ff6e36eacc2a9e4bf0a9f710db46f9edd31dd40",
+      "size": 3993
+    },
+    {
+      "path": "skills/nvshmem-configure-nic-pe-mapping/skill.oms.sig",
+      "to": "nvshmem-configure-nic-pe-mapping/skill.oms.sig",
+      "sha256": "06dbc062cc4a6687b5a3e5b33c1d1a8249c1f6d96cc3abb8bb3be9614be7c68a",
+      "size": 6845
+    },
+    {
+      "path": "skills/nvshmem-docs/BENCHMARK.md",
+      "to": "nvshmem-docs/BENCHMARK.md",
+      "sha256": "f490758a7283b57bece419123cde115b577ff5d89b27153754c4e4a375614eaf",
+      "size": 8390
+    },
+    {
+      "path": "skills/nvshmem-docs/SKILL.md",
+      "to": "nvshmem-docs/SKILL.md",
+      "sha256": "9d3085a7c69d55ec663d3550d6a0a5ef2a295f9438200554bd1d75b50534d0e2",
+      "size": 6819
+    },
+    {
+      "path": "skills/nvshmem-docs/evals/evals.json",
+      "to": "nvshmem-docs/evals/evals.json",
+      "sha256": "286d99253885b0a87683e5bec56f483c84ec17a42166db8a561b17fff8b37817",
+      "size": 8528
+    },
+    {
+      "path": "skills/nvshmem-docs/references/topic-map.md",
+      "to": "nvshmem-docs/references/topic-map.md",
+      "sha256": "d18826f9a2724b3ac664f71f4fafb99de3da4b2eeb13317ccf41ea7467997277",
+      "size": 22733
+    },
+    {
+      "path": "skills/nvshmem-docs/skill-card.md",
+      "to": "nvshmem-docs/skill-card.md",
+      "sha256": "73d497b9154ecc3aab4b98b4ad16f812d182ecb911249d4b36f8b2573094f83b",
+      "size": 4173
+    },
+    {
+      "path": "skills/nvshmem-docs/skill.oms.sig",
+      "to": "nvshmem-docs/skill.oms.sig",
+      "sha256": "f78437a7e80bf16a6b54fca5f5146a5bf89369a6520bdca10cdbf567d3f7f5bf",
+      "size": 4813
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/BENCHMARK.md",
+      "to": "nvshmem-enable-tma/BENCHMARK.md",
+      "sha256": "a78c80c0d7a552eb75412f5d4984859177f6964d767bf7a395ae36b6415f25aa",
+      "size": 7671
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/SKILL.md",
+      "to": "nvshmem-enable-tma/SKILL.md",
+      "sha256": "ac8c216a069107bd393b015ead7ce337d5506e5c57c9805e28b39205872ceffb",
+      "size": 9242
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/evals/evals.json",
+      "to": "nvshmem-enable-tma/evals/evals.json",
+      "sha256": "fa29888cd234c290964be0b0ef76e72d5ef2cf187474f2e4d8a9faac371a27b3",
+      "size": 6179
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/evals/files/cuda-transpose.cu",
+      "to": "nvshmem-enable-tma/evals/files/cuda-transpose.cu",
+      "sha256": "7ee4d6db02f359b074a5b1a7a9320ba0fd0bb92bc2c73b5b68c02f42de44be40",
+      "size": 628
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/evals/files/direct-smem-put.cu",
+      "to": "nvshmem-enable-tma/evals/files/direct-smem-put.cu",
+      "sha256": "f13853f3ddb0f1732ee498b28eb3888efafddcc5588fdbd646d8c256d886fdd6",
+      "size": 908
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/evals/files/gmem-staging.cu",
+      "to": "nvshmem-enable-tma/evals/files/gmem-staging.cu",
+      "sha256": "aeea4dc7ba6cd2fb9032992dd8f0246a0ca12f9bd943b458916042b9933feea4",
+      "size": 872
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/evals/files/multi-node-put.cu",
+      "to": "nvshmem-enable-tma/evals/files/multi-node-put.cu",
+      "sha256": "7a98ac81bbb1308005dca1bbf6bdb00192d16b1c82995f5adaaf7c92c132922d",
+      "size": 527
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/references/direct-smem-put.md",
+      "to": "nvshmem-enable-tma/references/direct-smem-put.md",
+      "sha256": "669cb39f04003bced4269962aca331ee12e2f22c899c6976e2cc612563e37f46",
+      "size": 2009
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/references/gmem-staging.md",
+      "to": "nvshmem-enable-tma/references/gmem-staging.md",
+      "sha256": "29ffaad76c876af510b161e716d5a82b5156e56464dccd730726fad1cd7f56f5",
+      "size": 1256
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/references/registration-and-launch.md",
+      "to": "nvshmem-enable-tma/references/registration-and-launch.md",
+      "sha256": "2cb78a07fd82c80ebaeeb8c5e18fd936391bb4a290ec9198f21bc92787ca9f99",
+      "size": 6886
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/references/validation-and-troubleshooting.md",
+      "to": "nvshmem-enable-tma/references/validation-and-troubleshooting.md",
+      "sha256": "dfa6b613243d09659f37f42572d0f6072ca88a107710a928992f2773f95b7666",
+      "size": 2543
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/skill-card.md",
+      "to": "nvshmem-enable-tma/skill-card.md",
+      "sha256": "3dc93dcfa720c7626bd95d710dcabdaebc7d0a6b42caea282ed3408a0d27760f",
+      "size": 4306
+    },
+    {
+      "path": "skills/nvshmem-enable-tma/skill.oms.sig",
+      "to": "nvshmem-enable-tma/skill.oms.sig",
+      "sha256": "8bb367c21cdc9fa14565ef65cca1c609a5562e44471cbf4972924d226534c6a7",
+      "size": 6553
+    },
+    {
+      "path": "skills/nvshmem-get-started/BENCHMARK.md",
+      "to": "nvshmem-get-started/BENCHMARK.md",
+      "sha256": "91ada2a1aae1571ba66d3dacd7beef4a8896fd348bd0b3b91e09e5c96970332d",
+      "size": 8168
+    },
+    {
+      "path": "skills/nvshmem-get-started/SKILL.md",
+      "to": "nvshmem-get-started/SKILL.md",
+      "sha256": "fb1b07738b568cd30e10e7ea6259dc1828bd4071f3cdaddb0aef278511c8c56b",
+      "size": 17505
+    },
+    {
+      "path": "skills/nvshmem-get-started/evals/evals.json",
+      "to": "nvshmem-get-started/evals/evals.json",
+      "sha256": "9486dcc20fb71ed7d420035c4ff36dfa8494fa6abaea2f87a2d8d5af85cc7882",
+      "size": 5489
+    },
+    {
+      "path": "skills/nvshmem-get-started/references/basic-api-calls.md",
+      "to": "nvshmem-get-started/references/basic-api-calls.md",
+      "sha256": "29aa474b1a7f068648d8a9196c45aeca080bdf33d1fc20f7a61eb83a2a9ee26a",
+      "size": 12619
+    },
+    {
+      "path": "skills/nvshmem-get-started/references/mental-model.md",
+      "to": "nvshmem-get-started/references/mental-model.md",
+      "sha256": "ba44da60c352b0b8a338e70354400365f02d60d3d3cdf29515903b131456985c",
+      "size": 4059
+    },
+    {
+      "path": "skills/nvshmem-get-started/references/nvshmem4py-programs.md",
+      "to": "nvshmem-get-started/references/nvshmem4py-programs.md",
+      "sha256": "fdb85baee4b66c661507ee31d004ab71dc31d30ef609393222d39cc07f3b40c3",
+      "size": 5464
+    },
+    {
+      "path": "skills/nvshmem-get-started/skill-card.md",
+      "to": "nvshmem-get-started/skill-card.md",
+      "sha256": "bcec10f8ce1e475be84fc67e3d870b525126c45a0a700e74e6f2166840d2beb9",
+      "size": 4611
+    },
+    {
+      "path": "skills/nvshmem-get-started/skill.oms.sig",
+      "to": "nvshmem-get-started/skill.oms.sig",
+      "sha256": "3aada5d896fe595797629d80adc76f23cf9e1a79571e62cae8fd39ceacde87ab",
+      "size": 5321
+    },
+    {
+      "path": "skills/nvshmem-install/BENCHMARK.md",
+      "to": "nvshmem-install/BENCHMARK.md",
+      "sha256": "33499bdffd5d568b113a679053e6ae04840993feff95980e018171d6547aaa03",
+      "size": 8460
+    },
+    {
+      "path": "skills/nvshmem-install/SKILL.md",
+      "to": "nvshmem-install/SKILL.md",
+      "sha256": "d117df77a8a32fdfb8fee5afdd3c5f53ec3c25baf9a2f5da24d384fa973c08d8",
+      "size": 17764
+    },
+    {
+      "path": "skills/nvshmem-install/evals/evals.json",
+      "to": "nvshmem-install/evals/evals.json",
+      "sha256": "05af6625fbc8b5c07a3661e76a85585f57b71f0d36bd0fbc461efde674ad12bc",
+      "size": 12287
+    },
+    {
+      "path": "skills/nvshmem-install/references/execution-and-validation.md",
+      "to": "nvshmem-install/references/execution-and-validation.md",
+      "sha256": "0079b1acfc1f9ca8a77b0ab0ac71c732854918a253ff7d53bed2e20c2f74bd28",
+      "size": 4971
+    },
+    {
+      "path": "skills/nvshmem-install/references/failure-handoff.md",
+      "to": "nvshmem-install/references/failure-handoff.md",
+      "sha256": "d561628ed1aff112bd5d53f107e82a35b559727d4c6cd4d8de2951776bfe68f4",
+      "size": 1829
+    },
+    {
+      "path": "skills/nvshmem-install/references/installation-matrix.md",
+      "to": "nvshmem-install/references/installation-matrix.md",
+      "sha256": "bb679be99892f0816903a3820b4d3cd052c8b0d0cbfd7fd5b8ec9ea9b326ade5",
+      "size": 8416
+    },
+    {
+      "path": "skills/nvshmem-install/references/source-build.md",
+      "to": "nvshmem-install/references/source-build.md",
+      "sha256": "e6fe2cd06cef414397cef950aae496ac64d71cba11f5eb54af4f74deb41d64dd",
+      "size": 9831
+    },
+    {
+      "path": "skills/nvshmem-install/scripts/collect-system-info.sh",
+      "to": "nvshmem-install/scripts/collect-system-info.sh",
+      "sha256": "9d55badc6441f47fc363e0a40259e8ac12f4f40cde88860dc269ae3a29175bdf",
+      "size": 4690
+    },
+    {
+      "path": "skills/nvshmem-install/skill-card.md",
+      "to": "nvshmem-install/skill-card.md",
+      "sha256": "677ea06231ef3ee264f6021951f26744f292326234fd3292753dfdccd14980e3",
+      "size": 4270
+    },
+    {
+      "path": "skills/nvshmem-install/skill.oms.sig",
+      "to": "nvshmem-install/skill.oms.sig",
+      "sha256": "adf52150eac0913146432b64bc8364169b41cb7ded7364e63a53db5fe2bac0e8",
+      "size": 5813
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/BENCHMARK.md",
+      "to": "nvshmem-select-remote-transport/BENCHMARK.md",
+      "sha256": "a78c738539c7dc706f414827f24f694a4c980efb9120eff7cd5a4ef26e6120ab",
+      "size": 10090
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/SKILL.md",
+      "to": "nvshmem-select-remote-transport/SKILL.md",
+      "sha256": "cd6fdd70615c4c6a2800eade9f44353a9eadec797cd536cd744a88d379a5c918",
+      "size": 16407
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/evals.json",
+      "to": "nvshmem-select-remote-transport/evals/evals.json",
+      "sha256": "c8d2fb399b379a0c785224db7b312c87e1b105d88be99fe11733927a8feb94fd",
+      "size": 16183
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/efa.txt",
+      "to": "nvshmem-select-remote-transport/evals/files/efa.txt",
+      "sha256": "a6c030d35e770a197b9129e7019cd4d4705ddeb9b09e3746af73fd59cbee7e05",
+      "size": 609
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/fine-grained.cu",
+      "to": "nvshmem-select-remote-transport/evals/files/fine-grained.cu",
+      "sha256": "6b5ff6ef97c6e6e506dfaad23e11e34149e8939aa04bf206fe84e1066b79da54",
+      "size": 584
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/mellanox-gpunetio.txt",
+      "to": "nvshmem-select-remote-transport/evals/files/mellanox-gpunetio.txt",
+      "sha256": "b9212713bedf5d8b4a603cb440f8620bf7ae710eb243f9f21cf2751e091b0856",
+      "size": 625
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/mellanox-ibgda.txt",
+      "to": "nvshmem-select-remote-transport/evals/files/mellanox-ibgda.txt",
+      "sha256": "1a142edae0b96986c2fec367a3d3fc5b851d03edf07b91d387beed590436a258",
+      "size": 735
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/missing-plugin.txt",
+      "to": "nvshmem-select-remote-transport/evals/files/missing-plugin.txt",
+      "sha256": "1e59454578725c9064916e8fbc3d872f4fa9444719d2321131c28713e9d7cae3",
+      "size": 462
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/mixed-api.cu",
+      "to": "nvshmem-select-remote-transport/evals/files/mixed-api.cu",
+      "sha256": "2646ccdaf9e7765e1292003985c6775086bd478b40788afd506039d7d3b5dde2",
+      "size": 616
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/nvlink-only.txt",
+      "to": "nvshmem-select-remote-transport/evals/files/nvlink-only.txt",
+      "sha256": "bf1e9800b6a49b589dc268ff278bd26bf354f35e2cb04ca153c81dd6f99e35de",
+      "size": 584
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/packed-put.cu",
+      "to": "nvshmem-select-remote-transport/evals/files/packed-put.cu",
+      "sha256": "a5fa638fb351e5afa3d17e747575b71980b9fef881e1d0e439c39c22b613ac2d",
+      "size": 431
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/slingshot-cxi.txt",
+      "to": "nvshmem-select-remote-transport/evals/files/slingshot-cxi.txt",
+      "sha256": "8a1cf145c7942d6f1d5997c2a6a3282d83294ab2f2ac6dfa5664a1db044e8b7c",
+      "size": 545
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/ucx-only.txt",
+      "to": "nvshmem-select-remote-transport/evals/files/ucx-only.txt",
+      "sha256": "02c56ab0ea41b8ae24b73d7223eea0f7ae73872bdc69eb16ad9fdad2356d9d97",
+      "size": 543
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/evals/files/unknown-version.txt",
+      "to": "nvshmem-select-remote-transport/evals/files/unknown-version.txt",
+      "sha256": "ddb8ba8c0f870085cfe10418be016330e56e161eba8d8de65e0f0da11dfc94fb",
+      "size": 530
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/references/kernel-fit.md",
+      "to": "nvshmem-select-remote-transport/references/kernel-fit.md",
+      "sha256": "88e9d1ad933d10f16a77d2fe471ae3402d4f31c012ad2c6a5dd9b266a02bbabb",
+      "size": 8715
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/references/transport-matrix.md",
+      "to": "nvshmem-select-remote-transport/references/transport-matrix.md",
+      "sha256": "a5c7a0471de3990bb3401c0e9698ffb8be1c36c9f77e398e8c477d7179d27c7c",
+      "size": 13806
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/scripts/collect-transport-facts.sh",
+      "to": "nvshmem-select-remote-transport/scripts/collect-transport-facts.sh",
+      "sha256": "9578f2f8e4b79af7a6d457eaa57c062eeba0712215b4b2b2c7483cdc79c079f9",
+      "size": 17873
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/skill-card.md",
+      "to": "nvshmem-select-remote-transport/skill-card.md",
+      "sha256": "24be8ee109ece0dbf5c9b19bf24f6ff02ac7201ff763050e4e4efb8ac3c5a506",
+      "size": 3990
+    },
+    {
+      "path": "skills/nvshmem-select-remote-transport/skill.oms.sig",
+      "to": "nvshmem-select-remote-transport/skill.oms.sig",
+      "sha256": "9cc0c21f35f77a15ecb9a957ae52d0468b089fdff51a027df664ace3ff223b0e",
+      "size": 7977
+    },
+    {
+      "path": "skills/nvshmem-troubleshoot-and-report-bugs/BENCHMARK.md",
+      "to": "nvshmem-troubleshoot-and-report-bugs/BENCHMARK.md",
+      "sha256": "617dc2bf6818471b01e799a90829dfceac40230df537d20cc62fb812bd3b45ee",
+      "size": 7853
+    },
+    {
+      "path": "skills/nvshmem-troubleshoot-and-report-bugs/SKILL.md",
+      "to": "nvshmem-troubleshoot-and-report-bugs/SKILL.md",
+      "sha256": "4087d1ab838d3182b6d27affb987e7f99c771d5d41bb786460e7820eb8080dbf",
+      "size": 15203
+    },
+    {
+      "path": "skills/nvshmem-troubleshoot-and-report-bugs/evals/evals.json",
+      "to": "nvshmem-troubleshoot-and-report-bugs/evals/evals.json",
+      "sha256": "86ef37cb0e9569371d286fa3202c0ca856509a2450f5eb91553d9d4317229ed9",
+      "size": 4768
+    },
+    {
+      "path": "skills/nvshmem-troubleshoot-and-report-bugs/references/bug-report-template.md",
+      "to": "nvshmem-troubleshoot-and-report-bugs/references/bug-report-template.md",
+      "sha256": "bbcd1ec4278cf303f6a855671dcca193550ec2a3f5118bfe0cd555046a2d123b",
+      "size": 4324
+    },
+    {
+      "path": "skills/nvshmem-troubleshoot-and-report-bugs/references/troubleshooting-knowledge-base.md",
+      "to": "nvshmem-troubleshoot-and-report-bugs/references/troubleshooting-knowledge-base.md",
+      "sha256": "4f1fe4a265b9907d5f4af477c7a90562aaa12c3aa9468c7b27c6aad1ce94469f",
+      "size": 35676
+    },
+    {
+      "path": "skills/nvshmem-troubleshoot-and-report-bugs/skill-card.md",
+      "to": "nvshmem-troubleshoot-and-report-bugs/skill-card.md",
+      "sha256": "e5aefcc379994110c6f819bb75242acccdd5facd1793fe7c66e3f024b8d6739d",
+      "size": 3988
+    },
+    {
+      "path": "skills/nvshmem-troubleshoot-and-report-bugs/skill.oms.sig",
+      "to": "nvshmem-troubleshoot-and-report-bugs/skill.oms.sig",
+      "sha256": "d7be773355104d114bb1bd7d24145fcec5b5771b8f4c2246eb0237f0bfb3c893",
+      "size": 5125
+    },
+    {
+      "path": "skills/nvshmem-tune-performance/BENCHMARK.md",
+      "to": "nvshmem-tune-performance/BENCHMARK.md",
+      "sha256": "7fcaafc1fafb0cea50c4b70a7c1b7990e18d1595a38cd6f4ac878cdd2e08e73b",
+      "size": 8541
+    },
+    {
+      "path": "skills/nvshmem-tune-performance/SKILL.md",
+      "to": "nvshmem-tune-performance/SKILL.md",
+      "sha256": "d7a2f0a5d9ac25678086b2bfef088f3ca5085ee89cf43a05387b66e50b2a242d",
+      "size": 7928
+    },
+    {
+      "path": "skills/nvshmem-tune-performance/evals/evals.json",
+      "to": "nvshmem-tune-performance/evals/evals.json",
+      "sha256": "19dff8aa212c7f983900c718a96cecca6a93198815450cbf16cceab3085e0242",
+      "size": 6833
+    },
+    {
+      "path": "skills/nvshmem-tune-performance/skill-card.md",
+      "to": "nvshmem-tune-performance/skill-card.md",
+      "sha256": "4f9e5d259c698444c6269238652f391dec6d5f97ff13a217db6ad061c9707c78",
+      "size": 3864
+    },
+    {
+      "path": "skills/nvshmem-tune-performance/skill.oms.sig",
+      "to": "nvshmem-tune-performance/skill.oms.sig",
+      "sha256": "ab1c19e6ec2d89a1b57721b989fd24f8d3e8b862e10991ecda14478cbff6499d",
+      "size": 4597
+    }
+  ],
+  "notes": {
+    "nvshmem-collect-performance-data": [
+      "1 script the agent may ask to run"
+    ],
+    "nvshmem-configure-nic-pe-mapping": [
+      "1 script the agent may ask to run"
+    ],
+    "nvshmem-docs": [],
+    "nvshmem-enable-tma": [],
+    "nvshmem-get-started": [],
+    "nvshmem-install": [
+      "1 script the agent may ask to run"
+    ],
+    "nvshmem-select-remote-transport": [
+      "1 script the agent may ask to run"
+    ],
+    "nvshmem-troubleshoot-and-report-bugs": [],
+    "nvshmem-tune-performance": []
+  }
+}

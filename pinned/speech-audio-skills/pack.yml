@@ -1,0 +1,11 @@
+name: speech-audio-skills
+title: "Speech Audio Skills"
+description: "Text-to-speech narration and transcription of audio and video with speaker labels, through bundled command-line scripts that call a hosted speech API with the user's own key. Written by OpenAI and published under Apache-2.0; installed from its repository at a pinned commit. Not affiliated with or endorsed by OpenAI."
+vendor: OpenAI
+kind: skills
+license: Apache-2.0
+repo: openai/skills
+commit: 49f948faa9258a0c61caceaf225e179651397431
+items:
+  speech: skills/.curated/speech
+  transcribe: skills/.curated/transcribe

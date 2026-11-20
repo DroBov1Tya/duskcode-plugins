@@ -1,0 +1,13 @@
+name: office-document-skills
+title: "Office Document Skills"
+description: "Read, create and edit Word documents, PDFs, slide decks and spreadsheets, with the Python and Node helper scripts each skill runs. Written by Anthropic and published under Apache-2.0; installed from its repository at a pinned commit, file by file. Not affiliated with or endorsed by Anthropic."
+vendor: Anthropic
+kind: skills
+license: Apache-2.0
+repo: anthropics/skills
+commit: e4bb5d960d87126ff3b3a8af1a104b7db67560ba
+items:
+  docx: skills/docx
+  pdf: skills/pdf
+  pptx: skills/pptx
+  xlsx: skills/xlsx
